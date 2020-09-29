@@ -1,26 +1,21 @@
 export const MenuItems = [
     {
-        title: 'Home',
+        title: 'Examens in wachtrij',
         url: '#',
         cName: 'nav-links',
     },
     {
-        title: 'Services',
+        title: 'Courses',
         url: '#',
         cName: 'nav-links',
     },
     {
-        title: 'Products',
+        title: 'Instellingen',
         url: '#',
         cName: 'nav-links',
     },
     {
-        title: 'Contact Us',
-        url: '#',
-        cName: 'nav-links',
-    },
-    {
-        title: 'Sign up',
+        title: 'Log uit',
         url: '#',
         cName: 'nav-links-mobile',
     },

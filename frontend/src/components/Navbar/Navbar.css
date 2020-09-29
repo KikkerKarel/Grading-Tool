@@ -1,5 +1,5 @@
 .NavbarItems{
-    background: linear-gradient(90deg,rgb(110,94,254) 0%,rgba(73,63,252,1) 100%);
+    background: white;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -8,15 +8,17 @@
 }
 
 .navbar-logo{
-    color: #fff;
+    color: #383230;
     justify-self: start;
     margin: 20px;
     cursor: pointer;
 }
 
-.fa-react{
+.Citrus-logo{
     margin-left: 0.5rem;
     font-size: 1.6rem;
+    width: 168px;
+    height: 70px;
 }
 
 .nav-menu {
@@ -31,19 +33,19 @@
 }
 
 .nav-links {
-    color: white;
+    color: #383230;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
 .nav-links:hover{
-    background-color: #6d76f7;
+    color: #e94f2c;
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
 
 .fa-bars{
-    color: #fff;
+    color: black;
 }
 
 .nav-links-mobile{
@@ -71,7 +73,7 @@
     }
 
     .nav-menu.active{
-        background-color: #6568F4;
+        background-color: white;
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -85,16 +87,10 @@
         display: table;
     }
 
-    .nav-links:hover{
-        background-color: #7577fa;
-        border-radius: 0;
-    }
-
     .navbar-logo {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(25%, 50%);
     }
 
     .menu-icon{
@@ -108,7 +104,7 @@
     }
 
     .fa-times{
-        color: #fff;
+        color: black;
         font-size: 2rem;
     }
 
@@ -119,7 +115,7 @@
         margin: 2rem auto;
         border-radius: 4px;
         width: 80%;
-        background: #4ad9e4;
+        background: #e94f2c;
         text-decoration: none;
         color: #fff;
         font-size: 1.5rem;
@@ -127,7 +123,7 @@
 
     .nav-links-mobile:hover{
         background: #fff;
-        color: #6568F4;
+        color: #383230;
         transition: 250ms;
     }
 
