@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import * as React from "react";
 import {MenuItems} from "./MenuItems";
-import {Button} from "../Buttons";
 import './Navbar.css';
+import {Component} from "react";
+import {Button} from "react-bootstrap";
+import '../Button.css';
 
 
-class Navbar extends Component{
-    state = { clicked: false }
+class Navbar extends Component {
+    state = {clicked: false}
 
-    handleClick= () => {
+    handleClick = () => {
         this.setState({clicked: !this.state.clicked})
     }
 
 
-    render(){
-        return(
-            <nav className="NavbarItems">
-                <img src={process.env.PUBLIC_URL + '/Images/CitrusAndriessen.png'} className="Citrus-logo" alt="logo" />
+    render() {
+        return (
+            <nav className="NavbarItems fixed-top">
+                <img src={process.env.PUBLIC_URL + '/Images/CitrusAndriessen.png'} className="Citrus-logo" alt="logo"/>
                 <h1 className="navbar-logo">Gradest
 
                 </h1>
@@ -25,9 +27,9 @@ class Navbar extends Component{
                     </i>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active' :
-                'nav-menu'}>
-                    {MenuItems.map((item,index) => {
-                        return(
+                    'nav-menu'}>
+                    {MenuItems.map((item, index) => {
+                        return (
                             <li key={index}>
                                 <a className={item.cName} href={item.url}>
                                     {item.title}
@@ -36,7 +38,7 @@ class Navbar extends Component{
                         )
                     })}
                 </ul>
-                <Button>Log uit</Button>
+                <Button className="btn--medium">Log uit</Button>
             </nav>
         );
     }

@@ -1,8 +1,9 @@
-import React, {Component} from "react";
+import * as React from "react";
+import {Component, Props} from "react";
 import "./Footer.css"
 
 class Footer extends Component{
-    constructor(props) {
+    constructor(props: Props<any>) {
         super(props);
         this.state = {year : new Date().getFullYear()};
     }

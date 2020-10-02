@@ -6,6 +6,8 @@
     align-items: center;
     font-size: 1.2rem;
     border-bottom: 2px solid #383230;
+    position: fixed;
+    width: 100%;
 }
 
 .navbar-logo{
@@ -112,7 +114,6 @@
 
     .nav-links-mobile{
         display: block;
-        text-after: center;
         padding: 1.5rem;
         margin: 2rem auto;
         border-radius: 4px;
