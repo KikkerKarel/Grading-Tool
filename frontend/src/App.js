@@ -1,18 +1,39 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Footer from "./components/Footer";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import HomePage from "./components/HomePage";
+import ExamensPage from "./components/ExamensPage";
+import SettingsPage from "./components/SettingsPage";
+import CoursesPage from "./components/CoursesPage";
+import LogoutPage from "./components/LogoutPage";
 
 
 function App() {
-  return (
-    <div className="page-container">
-        <div className="content-wrap">
-      <Navbar />
-        </div>
-      <Footer />
-    </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <HomePage/>
+                </Route>
+                <Route path="/examens">
+                    <ExamensPage/>
+                </Route>
+                <Route path="/courses">
+                    <CoursesPage/>
+                </Route>
+                <Route path="/instellingen">
+                    <SettingsPage/>
+                </Route>
+                <Route path="/logout">
+                    <LogoutPage/>
+                </Route>
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;

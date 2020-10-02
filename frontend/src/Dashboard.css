@@ -1,0 +1,20 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap{
+  flex: 1;
+}
+
+.content-container{
+ top: 80px;
+  position: absolute;
+}
