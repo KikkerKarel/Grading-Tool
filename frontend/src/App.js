@@ -5,11 +5,11 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import ExamensPage from "./components/ExamensPage";
-import SettingsPage from "./components/SettingsPage";
-import CoursesPage from "./components/CoursesPage";
-import LogoutPage from "./components/LogoutPage";
+import HomePage from "./Components/Pages/HomePage";
+import ExamensPage from "./Components/Pages/ExamensPage";
+import SettingsPage from "./Components/Pages/SettingsPage";
+import CoursesPage from "./Components/Pages/CoursesPage";
+import LogoutPage from "./Components/Pages/LogoutPage";
 
 
 function App() {
