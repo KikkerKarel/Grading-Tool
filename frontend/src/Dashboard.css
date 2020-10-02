@@ -13,3 +13,8 @@
 .content-wrap{
   flex: 1;
 }
+
+.content-container{
+ top: 80px;
+  position: absolute;
+}
