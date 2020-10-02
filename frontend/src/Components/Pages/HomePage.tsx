@@ -1,9 +1,9 @@
 import * as React from "react";
-import './Navbar/Navbar.css';
+import '../Navbar/Navbar.css';
 import {Component} from "react";
-import NavbarComponent from "./Navbar/NavbarComponent";
-import Footer from "./Footer";
-import '../Dashboard.css'
+import NavbarComponent from "../Navbar/NavbarComponent";
+import Footer from "../Footer";
+import '../../Dashboard.css'
 
 interface props {
 }
@@ -18,7 +18,11 @@ class HomePage extends Component<props> {
                     </div>
 
                     <section className="content-container">
-
+                        <img
+                            alt="Logo Citrus Andriessen"
+                            src="/Images/Dev-test"
+                            className="w-100 h-100"
+                        />
 
                     </section>
 
