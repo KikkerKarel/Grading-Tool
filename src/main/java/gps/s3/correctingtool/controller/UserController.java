@@ -23,7 +23,7 @@ public class UserController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping("/register")
     public void signUp(@RequestBody AppUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()))
                 .setRegisterDate(Instant.now());
