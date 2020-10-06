@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collection;
 import java.util.Date;
 
 
@@ -35,4 +36,5 @@ public class UserController {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
+
 }
