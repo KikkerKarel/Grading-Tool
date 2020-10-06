@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Mp_answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int mp_answer_id;
 
     @Column(name = "answer_text")
     private String answerText;
@@ -22,11 +22,11 @@ public class Mp_answer {
     private boolean isCorrect;
 
     public int getId() {
-        return id;
+        return mp_answer_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.mp_answer_id = id;
     }
 
     public String getAnswerText() {

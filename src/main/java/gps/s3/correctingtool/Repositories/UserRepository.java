@@ -5,3 +5,4 @@ import gps.s3.correctingtool.Entities.*;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 }
+

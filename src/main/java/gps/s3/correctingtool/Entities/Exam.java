@@ -1,6 +1,7 @@
 package gps.s3.correctingtool.Entities;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 // Exam
 @Entity
@@ -9,11 +10,12 @@ import javax.persistence.*;
         @SecondaryTable(name = "exam_item", pkJoinColumns = @PrimaryKeyJoinColumn(name = "exam_id")),
         @SecondaryTable(name = "user", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id")),
         @SecondaryTable(name = "exam_status", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
+        //@SecondaryTable(name= "exam", pkJoinColumns = @PrimaryKeyJoinColumn(name="id"))
 })
-public class Exam {
+public class Exam  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int exam_id;
+    private int id;
 
     @Column(name = "student_name")
     private String studentName;
@@ -27,11 +29,11 @@ public class Exam {
     private User user;
 
     public int getExam_id() {
-        return exam_id;
+        return id;
     }
 
-    public void setExam_id(int exam_id) {
-        this.exam_id = exam_id;
+    public void setExam_id(int id) {
+        this.id = id;
     }
 
     public String getStudentName() {

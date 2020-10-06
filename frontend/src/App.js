@@ -5,17 +5,17 @@ import './App.css';
 class App extends Component {
   state = {
     isLoading: true,
-    users: []
+    Exams: [],
   };
 
   async componentDidMount() {
-    const response = await fetch('/demo/all');
+    const response = await fetch('/question/all');
     const body = await response.json();
-    this.setState({ users: body, isLoading: false });
+    this.setState({ Exams: body, isLoading: false });
   }
 
   render() {
-    const {users, isLoading} = this.state;
+    const {Exams, isLoading} = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -26,11 +26,13 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <div className="App-intro">
               <h2>JUG List</h2>
-              {users.map(user => <h1>{user.username}</h1>
-                  // <div key={user.id}>
-                  //   {user.username}
-                  // </div>
-              )}
+
+              {/*{Exams.map(Role => <h1>{Role.student_name}</h1>)}*/}
+              {/*{users.map(user => <h1>{user.question_id}</h1>*/}
+              {/*    // <div key={user.id}>*/}
+              {/*    //   {user.username}*/}
+              {/*    // </div>*/}
+              {/*)}*/}
             </div>
           </header>
         </div>
