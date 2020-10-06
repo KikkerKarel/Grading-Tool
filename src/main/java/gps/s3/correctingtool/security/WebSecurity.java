@@ -29,7 +29,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL, LOGIN_URL).permitAll()
-                .antMatchers(HttpMethod.GET, "/hello").permitAll()
                 //.anyRequest().authenticated() <---- This forces authentication on requests to any other endpoint than the ones we just whitelisted
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
