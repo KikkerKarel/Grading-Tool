@@ -1,5 +1,6 @@
 package gps.s3.correctingtool.exam;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import gps.s3.correctingtool.user.AppUser;
 
 import javax.persistence.*;
@@ -65,6 +66,12 @@ public class Exam {
     public Exam setItems(List<ExamItem> items) {
         this.items = items;
         return this;
+    }
+
+    @JsonGetter("progress")
+    public long getProgress()
+    {
+       return items.stream().filter(i -> i.getGradedCorrect() != null).count() * 100 / items.size();
     }
 
     @Override
