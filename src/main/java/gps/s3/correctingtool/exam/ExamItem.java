@@ -3,6 +3,7 @@ package gps.s3.correctingtool.exam;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @IdClass(ExamItemId.class)
@@ -23,10 +24,23 @@ public class ExamItem {
 
     private Boolean gradedCorrect;
 
+    @OneToOne
+    @JoinColumn(insertable = false, updatable = false)
+    private Question question;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)
     private Exam exam;
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public ExamItem setQuestion(Question question) {
+        this.question = question;
+        return this;
+    }
 
     public Exam getExam() {
         return exam;
@@ -80,5 +94,23 @@ public class ExamItem {
     public ExamItem setGradedCorrect(Boolean gradedCorrect) {
         this.gradedCorrect = gradedCorrect;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExamItem examItem = (ExamItem) o;
+        return getExamId() == examItem.getExamId() &&
+                getQuestionId() == examItem.getQuestionId() &&
+                getMpAnswer() == examItem.getMpAnswer() &&
+                Objects.equals(getTextAnswer(), examItem.getTextAnswer()) &&
+                Objects.equals(getGradedCorrect(), examItem.getGradedCorrect()) &&
+                Objects.equals(getExam(), examItem.getExam());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getExamId(), getQuestionId(), getTextAnswer(), getMpAnswer(), getGradedCorrect(), getExam());
     }
 }
