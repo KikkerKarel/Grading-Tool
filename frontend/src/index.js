@@ -19,10 +19,8 @@
     import React from 'react';
     import 'bootstrap/dist/css/bootstrap.css'
     import Test from './components/questionsTrackComponent'
-    import Test2 from './components/questionsTrackComponent'
     import {register} from "./serviceWorker";
     import './questionsTrackCSS.css';
 
     ReactDOM.render(<Test />, document.getElementById('root'))
-    ReactDOM.render(<Test2 />, document.getElementById('root'))
     register();
