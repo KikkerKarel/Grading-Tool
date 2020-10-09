@@ -1,5 +1,7 @@
 package gps.s3.correctingtool.exam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,20 @@ public class ExamItem {
     private int mpAnswer;
 
     private Boolean gradedCorrect;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(insertable = false, updatable = false)
+    private Exam exam;
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public ExamItem setExam(Exam exam) {
+        this.exam = exam;
+        return this;
+    }
 
     public int getExamId() {
         return examId;

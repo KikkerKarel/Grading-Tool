@@ -1,5 +1,7 @@
 package gps.s3.correctingtool.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -10,6 +12,8 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String username;
+
+    @JsonIgnore
     @Column(name = "password_hash")
     private String password;
     private Instant registerDate, lastLogin;

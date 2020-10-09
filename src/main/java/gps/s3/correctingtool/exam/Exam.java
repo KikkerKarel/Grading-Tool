@@ -1,9 +1,8 @@
 package gps.s3.correctingtool.exam;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import gps.s3.correctingtool.user.AppUser;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -12,12 +11,24 @@ public class Exam {
     @Id
     private int id;
     private int status;
-    private int examinerId;
     private String studentName;
+
+    @ManyToOne
+    @JoinColumn(name = "examiner_id", referencedColumnName = "id")
+    private AppUser examiner;
 
     @OneToMany
     @JoinColumn(name="exam_id", nullable=false)
     private List<ExamItem> items;
+
+    public AppUser getExaminer() {
+        return examiner;
+    }
+
+    public Exam setExaminer(AppUser examiner) {
+        this.examiner = examiner;
+        return this;
+    }
 
     public int getId() {
         return id;
@@ -34,15 +45,6 @@ public class Exam {
 
     public Exam setStatus(int status) {
         this.status = status;
-        return this;
-    }
-
-    public int getExaminerId() {
-        return examinerId;
-    }
-
-    public Exam setExaminerId(int examinerId) {
-        this.examinerId = examinerId;
         return this;
     }
 
