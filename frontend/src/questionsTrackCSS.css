@@ -5,7 +5,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: black;
+    background: #252424;
     border-radius: 10px;
 }
 
@@ -142,7 +142,7 @@
 {
     height: 10%;
     width: 100%;
-    display: inline-flex;
+    display: block;
 }
 .fa
 {
@@ -156,6 +156,16 @@
     width: 100%;
     font-size: 15px;
     color: black;
+    list-style-type: none;
+    font-weight: bold;
+}
+.Correct
+{
+    color: #1e7e34;
+}
+.False
+{
+    color: red;
 }
 
 
@@ -181,7 +191,7 @@
 {
     height: 10%;
     width: 100%;
-    display: inline-flex;
+    display: block;
 }
 .OpenQuestionText
 {
@@ -191,4 +201,6 @@
     width: 100%;
     font-size: 15px;
     color: black;
+    list-style-type: none;
+    font-weight: bold;
 }
