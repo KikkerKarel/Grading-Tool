@@ -1,18 +1,28 @@
-package gps.s3.correctingtool.entity;
+package gps.s3.correctingtool.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.time.Instant;
 
-public class User {
+@Entity(name = "user")
+public class AppUser {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String username, password;
+    private String username;
+
+    @JsonIgnore
+    @Column(name = "password_hash")
+    private String password;
     private Instant registerDate, lastLogin;
 
     public long getId() {
         return id;
     }
 
-    public User setId(long id) {
+    public AppUser setId(long id) {
         this.id = id;
         return this;
     }
@@ -21,7 +31,7 @@ public class User {
         return username;
     }
 
-    public User setUsername(String username) {
+    public AppUser setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -30,7 +40,7 @@ public class User {
         return password;
     }
 
-    public User setPassword(String pw) {
+    public AppUser setPassword(String pw) {
         this.password = pw;
         return this;
     }
@@ -39,7 +49,7 @@ public class User {
         return registerDate;
     }
 
-    public User setRegisterDate(Instant registerDate) {
+    public AppUser setRegisterDate(Instant registerDate) {
         this.registerDate = registerDate;
         return this;
     }
@@ -48,7 +58,7 @@ public class User {
         return lastLogin;
     }
 
-    public User setLastLogin(Instant lastLogin) {
+    public AppUser setLastLogin(Instant lastLogin) {
         this.lastLogin = lastLogin;
         return this;
     }
