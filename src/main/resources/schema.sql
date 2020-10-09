@@ -1,7 +1,7 @@
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET UNIQUE_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- -----------------------------------------------------
 -- Schema gradest
@@ -174,32 +174,6 @@ CREATE TABLE IF NOT EXISTS `gradest`.`exam_item` (
 ENGINE = InnoDB;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `gradest`.`question_type`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `gradest`;
-INSERT INTO `gradest`.`question_type` (`id`, `name`) VALUES (1, 'multiple-choice');
-INSERT INTO `gradest`.`question_type` (`id`, `name`) VALUES (2, 'text-input');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `gradest`.`exam_status`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `gradest`;
-INSERT INTO `gradest`.`exam_status` (`id`, `title`) VALUES (1, 'Awaiting Assignment');
-INSERT INTO `gradest`.`exam_status` (`id`, `title`) VALUES (2, 'Not graded');
-INSERT INTO `gradest`.`exam_status` (`id`, `title`) VALUES (3, 'Grading in progress');
-INSERT INTO `gradest`.`exam_status` (`id`, `title`) VALUES (4, 'Graded');
-
-COMMIT;
 
 SET UNIQUE_CHECKS=1;
 SET FOREIGN_KEY_CHECKS=1;
