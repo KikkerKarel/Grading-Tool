@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
-import ExamTable from "../ExamTable/ExamTable";
 
 class HomePage extends Component {
     state = {

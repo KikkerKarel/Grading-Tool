@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import '../../Dashboard.css'
 import ExamTable from "../ExamTable/ExamTable";
 
+
 interface props {
 }
 
@@ -31,9 +32,9 @@ class ExamensPage extends Component<props, {}> {
             <div className="page-container">
                 <div className="content-wrap">
                     <NavbarComponent/>
-                </div>
+                </div>cdd
                 <section className="content-container">
-                    <h1 className="text">Klik hieronder op het examen die u wilt beoordelen:</h1>
+                    <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>
                 </section>
                 <Footer/>
