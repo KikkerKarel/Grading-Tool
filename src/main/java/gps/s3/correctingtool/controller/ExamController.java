@@ -4,8 +4,10 @@ import gps.s3.correctingtool.exam.Exam;
 import gps.s3.correctingtool.exam.ExamItem;
 import gps.s3.correctingtool.exam.IExamItemRepo;
 import gps.s3.correctingtool.exam.IExamRepo;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -20,6 +22,11 @@ public class ExamController {
     public ExamController(IExamRepo repo, IExamItemRepo itemRepo) {
         this.repo = repo;
         this.itemRepo = itemRepo;
+    }
+
+    @RequestMapping("/find/all")
+    public Collection<Exam> findAllExams() {
+        return repo.findAll();
     }
 
     @RequestMapping("/find/{id}")

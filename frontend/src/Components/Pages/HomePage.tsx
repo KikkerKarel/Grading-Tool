@@ -1,34 +1,30 @@
-import * as React from "react";
-import '../Navbar/Navbar.css';
-import {Component} from "react";
+import React, {Component} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
-import '../../Dashboard.css'
+import ExamTable from "../ExamTable/ExamTable";
 
-interface props {
-}
+class HomePage extends Component {
+    state = {
 
-class HomePage extends Component<props> {
+    };
+
+    async componentDidMount() {
+
+    }
 
     render() {
+
+
         return (
-                <div className="page-container">
-                    <div className="content-wrap">
-                        <NavbarComponent/>
-                    </div>
-
-                    <section className="content-container">
-                        <img
-                            alt="Logo Citrus Andriessen"
-                            src="/Images/Dev-test"
-                            className="w-100 h-100"
-                        />
-
-                    </section>
-
-                        <Footer/>
+            <div className="page-container">
+                <div className="content-wrap">
+                    <NavbarComponent/>
                 </div>
-
+                <section className="content-container">
+                </section>
+                <Footer/>
+            </div>
         );
     }
 }

@@ -1,8 +1,8 @@
 import * as React from "react";
-import './Navbar.css';
 import {Component} from "react";
 import '../Button.css';
 import {Button, Nav, Navbar} from "react-bootstrap";
+import './Navbar.css';
 
 class NavbarComponent extends Component {
 
@@ -15,13 +15,11 @@ class NavbarComponent extends Component {
                     className="Citrus-logo"
                 /> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto nav-menu">
+                    <Nav className="nav-menu">
                     <Nav.Link className="nav-links" href="/courses">Courses</Nav.Link>
                         <Nav.Link className="nav-links" href="/examens">Examens</Nav.Link>
                         <Button href="/logout" className="btn--medium" variant="primary">Log Out</Button>
                     </Nav>
-                </Navbar.Collapse>
             </Navbar>
         );
     }
