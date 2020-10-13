@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './App.css';
 import {
     BrowserRouter as Router,
@@ -7,8 +8,8 @@ import {
 } from "react-router-dom";
 import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
-import SettingsPage from "./Components/Pages/SettingsPage";
 import CoursesPage from "./Components/Pages/CoursesPage";
+import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 
 
@@ -34,6 +35,7 @@ function App() {
             </Switch>
         </Router>
     );
+
 }
 
-export default App;
+export default App
