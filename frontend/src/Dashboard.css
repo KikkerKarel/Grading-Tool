@@ -10,6 +10,16 @@
   min-height: 100vh;
 }
 
+.text{
+    margin-top: 20px;
+    text-align: center;
+}
+
 .content-wrap{
   flex: 1;
+}
+
+.content-container{
+ top: 80px;
+  position: absolute;
 }

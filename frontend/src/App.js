@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import HomePage from "./Components/Pages/HomePage";
+import ExamensPage from "./Components/Pages/ExamensPage";
+import CoursesPage from "./Components/Pages/CoursesPage";
+import SettingsPage from "./Components/Pages/SettingsPage";
+import LogoutPage from "./Components/Pages/LogoutPage";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          coolio gangsta's paradise
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Test
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <HomePage/>
+                </Route>
+                <Route path="/examens">
+                    <ExamensPage/>
+                </Route>
+                <Route path="/courses">
+                    <CoursesPage/>
+                </Route>
+                <Route path="/instellingen">
+                    <SettingsPage/>
+                </Route>
+                <Route path="/logout">
+                    <LogoutPage/>
+                </Route>
+            </Switch>
+        </Router>
+    );
+
 }
 
-export default App;
+export default App
