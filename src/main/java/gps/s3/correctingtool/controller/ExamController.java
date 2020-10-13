@@ -26,25 +26,38 @@ public class ExamController {
     @RequestMapping("/find/{id}")
     public Exam findById(@PathVariable("id") int id)
     {
-        return repo.findById(id);
-    }
-
-    @RequestMapping("/find/{id}/mc")
-    public Exam getMultipleChoiceExam(@PathVariable ("id") int id){
         Exam exam = repo.findById(id);
         List<ExamItem> examItems = exam.getItems();
 
         for(ExamItem examItem : examItems){
-            int examType = examItem.getQuestion().getType();
-            if (examType != 1){
-                examItems.remove(examItem);
-            }
+            examItem.setGradedCorrect(examItem.getGradedCorrect());
+            examItem.getQuestion().getType();
         }
 
         exam.setItems(examItems);
         exam.getProgress();
+
         return exam;
+
+//        return repo.findById(id);
     }
+
+//    @RequestMapping("/find/{id}/mc")
+//    public Exam getMultipleChoiceExam(@PathVariable ("id") int id){
+//        Exam exam = repo.findById(id);
+//        List<ExamItem> examItems = exam.getItems();
+//
+//        for(ExamItem examItem : examItems){
+//            int examType = examItem.getQuestion().getType();
+//            if (examType != 1){
+//                examItems.remove(examItem);
+//            }
+//        }
+//
+//        exam.setItems(examItems);
+//        exam.getProgress();
+//        return exam;
+//    }
 
     @RequestMapping("/examiner/{id}")
     public Collection<Exam> byExaminer(@PathVariable("id") int id)
