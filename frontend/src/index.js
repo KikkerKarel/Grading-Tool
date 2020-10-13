@@ -18,9 +18,9 @@
 
     import React from 'react';
     import 'bootstrap/dist/css/bootstrap.css'
-    import Test from './components/QuestionsTrack/questionsTrackComponent'
+    import Test from './components/QuestionsTrack/QuestionsTrackComponent'
     import {register} from "./serviceWorker";
-    import './questionsTrackCSS.css';
+    import './components/QuestionsTrack/QuestionsTrack.css';
 
     ReactDOM.render(<Test />, document.getElementById('root'))
     register();

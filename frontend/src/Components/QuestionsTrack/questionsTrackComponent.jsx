@@ -18,8 +18,6 @@ class Test extends Component
      render() {
          const {Exam, isLoading} = this.state;
 
-         console.log(Exam.items)
-
          if (isLoading) {
              return <p>Loading...</p>;
          }
@@ -68,16 +66,15 @@ class Test extends Component
                                          {/*<i className="fa fa-arrow-right" aria-hidden="true"></i>*/}
                                          <ol>
                                              {(() => {
-                                                {{
-                                                    // if (Exam.items.map(examitem => examitem.question.type === 1))
-                                                    // {
-                                                    //     return Exam.items.map(examitem => <li key={examitem.questionId} className={setClassname(examitem.gradedCorrect, "Closed")}> {examitem.question.text} </li>)
-                                                    // }
-
-                                                    // return (Exam.items.map(examitem => examitem.question.type));
-
-                                                    return Exam.items.map(examitem => <li key={examitem.questionId} className={setClassname(examitem.gradedCorrect, "Closed")}> {examitem.question.text} </li>)
-                                                }}
+                                                 {{
+                                                     return Exam.items.map(examitem =>
+                                                     {
+                                                         if (examitem.question.type == 1)
+                                                         {
+                                                             return <li key={examitem.questionId} className={setClassname(examitem.gradedCorrect, "Closed")}> {examitem.question.text} </li>
+                                                         }
+                                                     })
+                                                 }}
                                              })()}
                                          </ol>
                                      </td>
@@ -99,10 +96,13 @@ class Test extends Component
                                          <ol>
                                              {(() => {
                                                  {{
-                                                     // if (Exam.items.map(examitem => examitem.type == 2))
-                                                     // {
-                                                     //     return Exam.items.map(examitem => <li key={examitem.questionId} className={setClassname(examitem.gradedCorrect, "Open")}> {examitem.question.text} </li>)
-                                                     // }
+                                                     return Exam.items.map(examitem =>
+                                                     {
+                                                         if (examitem.question.type == 2)
+                                                         {
+                                                             return <li key={examitem.questionId} className={setClassname(examitem.gradedCorrect, "Closed")}> {examitem.question.text} </li>
+                                                         }
+                                                     })
                                                  }}
                                              })()}
                                          </ol>
