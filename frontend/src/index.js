@@ -18,7 +18,7 @@
 
     import React from 'react';
     import 'bootstrap/dist/css/bootstrap.css'
-    import Test from './components/questionsTrackComponent'
+    import Test from './components/QuestionsTrack/questionsTrackComponent'
     import {register} from "./serviceWorker";
     import './questionsTrackCSS.css';
 
