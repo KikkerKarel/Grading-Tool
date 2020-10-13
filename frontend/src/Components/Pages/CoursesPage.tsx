@@ -1,6 +1,6 @@
 import * as React from "react";
 import '../Navbar/Navbar.css';
-import {Component} from "react";
+git
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 import '../../Dashboard.css'
