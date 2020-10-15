@@ -20,7 +20,7 @@ public class ExamItem {
 
     private String textAnswer;
 
-    private int mpAnswer;
+    private Integer mpAnswer;
 
     private Boolean gradedCorrect;
 
@@ -78,11 +78,11 @@ public class ExamItem {
         return this;
     }
 
-    public int getMpAnswer() {
+    public Integer getMpAnswer() {
         return mpAnswer;
     }
 
-    public ExamItem setMpAnswer(int mpAnswer) {
+    public ExamItem setMpAnswer(Integer mpAnswer) {
         this.mpAnswer = mpAnswer;
         return this;
     }
