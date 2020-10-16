@@ -1,0 +1,45 @@
+body{
+    font-family: 'Averta', sans-serif;
+}
+
+.Answer
+{
+    width: 20%;
+    height: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+.AnswerHeader
+{
+    font-size: 15px;
+    font-weight: lighter;
+    margin-left: 2%;
+}
+.AnswerText
+{
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.CorrectAnswer
+{
+    width: 20%;
+    height: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+.CorrectAnswerHeader
+{
+    font-size: 15px;
+    font-weight: lighter;
+    margin-left: 2%;
+}
+.CorrectAnswerText
+{
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
