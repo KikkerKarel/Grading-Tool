@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import * as React from "react";
+import {Component} from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import './QuestionsTrack.css'
 
-class Test extends Component
+class QuestionTracker extends Component
  {
      state = {
          isLoading: true,
@@ -120,4 +122,4 @@ class Test extends Component
      }
  }
 
-export default Test;
+export default QuestionTracker
