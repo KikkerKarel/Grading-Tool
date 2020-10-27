@@ -1,0 +1,44 @@
+body{
+    font-family: 'Averta', sans-serif;
+}
+
+.Answer
+{
+    width: 20%;
+    height: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+textarea
+{
+    resize: none;
+    border-radius: 5px;
+}
+.AnswerHeader
+{
+    font-size: 15px;
+    font-weight: lighter;
+    margin-left: 2%;
+}
+.CorrectAnswer
+{
+    width: 20%;
+    height: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttondiv
+{
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    margin-left: 40%;
+}
+.Button
+{
+    width: 50%;
+    color: white !important;
+}
+
