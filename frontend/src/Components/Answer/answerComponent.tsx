@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 
 class AnswerComponent extends Component
 {
@@ -14,6 +14,11 @@ class AnswerComponent extends Component
                     <Form.Label className="CorrectAnswerHeader">Goed gekeurde antwoorden (tekst)</Form.Label>
                     <Form.Control as="textarea" rows={3} cols={30} placeholder="berlijn, Berlijn" className="CorrectAnswerText" readOnly={true} />
                 </Form.Group>
+                <div className="buttondiv">
+                    <Button className="Button" variant="danger">Keur fout</Button>
+                    <Button className="Button" variant="success">Keur goed</Button>
+                    <Button className="Button" variant="warning">Wijzigen</Button>
+                </div>
             </>);
     }
 }

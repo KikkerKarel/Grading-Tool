@@ -29,3 +29,16 @@ textarea
     margin-right: auto;
 }
 
+.buttondiv
+{
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    margin-left: 40%;
+}
+.Button
+{
+    width: 50%;
+    color: white !important;
+}
+
