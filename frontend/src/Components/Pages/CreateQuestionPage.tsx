@@ -4,11 +4,13 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import QuickCard from "../QuickCard/QuickCard";
+import CreateQuestionForm from "../CreateQuestion/CreateQuestionForm";
 import QuickForm from "../QuickForm/QuickForm";
 
 interface props {
 }
+
+const data = [1,2,3,4,5]
 
 const array = [
     {"label" : "Vraag: ","type" : "text", "placeholder" : "Vul hier uw vraag in:" },
@@ -24,7 +26,7 @@ class CreateQuestionPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    <QuickForm data={array}/>
+                    <CreateQuestionForm ExamIds={data} />
                 </section>
                 <Footer/>
             </div>
