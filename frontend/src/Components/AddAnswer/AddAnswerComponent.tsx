@@ -6,8 +6,8 @@ class AddAnswerComponent extends Component
     render() {
         return (
             <>
-                <Form.Group>
-                    <Row>
+                <Form.Group className={"block-example border border-dark"}>
+                    <Row className={"RowPadding"}>
                         <Col>
                             <Form.Label>Antwoord toevoegen (tekst)</Form.Label>
                             <Form.Control as="textarea" rows={3}/>
@@ -18,6 +18,7 @@ class AddAnswerComponent extends Component
                             <br/>
                             <Button className="WhiteText" variant="success">Aanpassing/aanpassingen doorvoeren</Button>
                         </Col>
+                        <br/>
                     </Row>
                 </Form.Group>
             </>
