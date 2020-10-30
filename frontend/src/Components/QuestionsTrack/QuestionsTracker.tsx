@@ -4,9 +4,11 @@ import {Component, useState} from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 import './QuestionsTrack.css'
+import AnswerComponent from "../Answer/AnswerComponent";
 
 
 class QuestionTracker extends Component {
+
     state = {
         isLoading: true,
         Exam: []
@@ -19,15 +21,12 @@ class QuestionTracker extends Component {
         this.setState({Exam: body, isLoading: false});
     }
 
+
     render() {
         const {Exam, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
-        }
-
-        function handleClick(examitem: any){
-            console.log(examitem);
         }
 
         function setClassname(gradedtype: any) {
@@ -55,7 +54,7 @@ class QuestionTracker extends Component {
                                 {
                                     return Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 1) {
-                                            return <li onClick={() => handleClick(examitem)} key={examitem.questionId}
+                                            return <li key={examitem.questionId}
                                                        className={setClassname(examitem.gradedCorrect)}> {examitem.question.text} </li>
                                         }
                                     })

@@ -1,0 +1,17 @@
+.Mt2p
+{
+    margin-top: 2%;
+}
+
+.ButtonCol
+{
+    display: grid;
+}
+.AddButton
+{
+    color: white !important;
+}
+.ButtonSpacing
+{
+    padding: 15px;
+}
