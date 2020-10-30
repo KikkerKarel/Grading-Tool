@@ -18,11 +18,15 @@
 
     import React from 'react';
     import 'bootstrap/dist/css/bootstrap.css'
-    // import Test from './components/QuestionsTrack/QuestionsTrackComponent'
-    import Answer from './Components/Answer/answerComponent'
     import {register} from "./serviceWorker";
-    // import './components/QuestionsTrack/QuestionsTrack.css';
-    import './Components/Answer/Answer.css';
 
-    ReactDOM.render(<Answer />, document.getElementById('root'))
+    import Answer from './components/Answer/answerComponent'
+    import './components/Answer/Answer.css';
+
+    import AddAnswer from './components/AddAnswer/AddAnswerComponent'
+    import './components/AddAnswer/AddAnswer.css';
+    import AnswerComponent from "./components/AddAnswer/AddAnswerComponent";
+
+    // ReactDOM.render(<Answer />, document.getElementById('root'))
+    ReactDOM.render(<AnswerComponent />, document.getElementById('root'))
     register();
