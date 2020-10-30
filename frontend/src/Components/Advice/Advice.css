@@ -1,0 +1,58 @@
+body{
+    font-family: 'Averta', sans-serif;
+}
+
+.gradestadvice
+{
+    /*background-color: green;*/
+    width: 12%;
+    height: 15%;
+    margin-left: 40%;
+    margin-top: 10%;
+    position: fixed;
+    border-radius: 5px;
+}
+
+.headerdiv
+{
+    height: 30%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.header
+{
+    color: white;
+    margin-left: 6%;
+    font-weight: bold;
+    margin-top: 4%;
+}
+
+.expldiv
+{
+    border-top: solid thin black;
+    display: inline-block;
+}
+.h1
+{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 6%;
+    margin-top: 2%;
+}
+.infolabel
+{
+    color: white;
+    margin-top: 2%;
+    margin-left: 6%;
+    font-size: 13px;
+}
+
+#correct
+{
+    background-color: green;
+}
+#wrong
+{
+    background-color: red;
+}

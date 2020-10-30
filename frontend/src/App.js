@@ -13,6 +13,7 @@ import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import Stars from "./Components/Score/Stars";
 import AnswerComponent from "./Components/Answer/answerComponent";
+import GradeCorrect from "./Components/Advice/GradeAdviceComponent";
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
                 <Route path="/scoring">
                     <AnswerComponent/>
                     <Stars/>
+                </Route>
+                <Route path="/advice">
+                    <GradeCorrect/>
                 </Route>
             </Switch>
         </Router>
