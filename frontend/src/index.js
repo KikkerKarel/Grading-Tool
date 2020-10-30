@@ -19,10 +19,12 @@
     import React from 'react';
     import 'bootstrap/dist/css/bootstrap.css'
     // import Test from './components/QuestionsTrack/QuestionsTrackComponent'
-    import Answer from './Components/Answer/answerComponent'
+    // import Answer from './Components/Answer/answerComponent'
     import {register} from "./serviceWorker";
     // import './components/QuestionsTrack/QuestionsTrack.css';
-    import './Components/Answer/Answer.css';
+    // import './Components/Answer/Answer.css';
+    import './Components/Score/Scoring.css';
+    import ScoringComponent from "./Components/Score/ScoringComponent";
 
-    ReactDOM.render(<Answer />, document.getElementById('root'))
+    ReactDOM.render(<ScoringComponent />, document.getElementById('root'))
     register();

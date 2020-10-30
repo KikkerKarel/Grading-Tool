@@ -1,0 +1,33 @@
+body{
+    font-family: 'Averta', sans-serif;
+}
+
+.scoringdiv
+{
+    text-align: center;
+    display: block;
+    width: 14%;
+    margin: 2% auto;
+}
+.textlabel
+{
+    margin-top: 5%;
+    color: gray;
+    font-size: 15px;
+}
+
+.far
+{
+    font-size: 25px;
+    color: gray;
+    margin-left: 2%;
+    display: inline;
+}
+.far:hover
+{
+    color: black;
+}
+.far:active
+{
+    color: gold;
+}
