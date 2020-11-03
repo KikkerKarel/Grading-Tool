@@ -11,7 +11,7 @@ import ExamensPage from "./Components/Pages/ExamensPage";
 import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
-import QuestionsPage from "./Components/Pages/QuestionsPage";
+import QuestionPage from "./Components/Pages/QuestionPage";
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
                     <LogoutPage/>
                 </Route>
                 <Route path="/question">
-                    <QuestionsPage/>
+                    <QuestionPage/>
                 </Route>
             </Switch>
         </Router>
