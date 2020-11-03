@@ -25,11 +25,6 @@ class QuestionTracker extends Component {
 
 
     handleClick = (event : any) =>{
-        // this.setState({
-        //     questionId: event.target.value
-        // })
-        // console.log(event.target.value)
-        // console.log(this.state.questionId)
         axios.get( `/api/exams/question/${event.target.value}`).then(response =>{
             this.setState({
                 questionId: response.data[0].questionId,

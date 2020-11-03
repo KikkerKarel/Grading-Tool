@@ -9,7 +9,7 @@ import AddAnswerComponent from "../AddAnswer/AddAnswerComponent";
 import AnswerComponent from "../Answer/AnswerComponent";
 
 
-class QuestionsPage extends Component {
+class QuestionPage extends Component {
 
     render() {
         return (
@@ -27,4 +27,4 @@ class QuestionsPage extends Component {
     }
 }
 
-export default QuestionsPage
+export default QuestionPage
