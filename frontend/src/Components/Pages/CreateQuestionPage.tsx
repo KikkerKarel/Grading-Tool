@@ -7,17 +7,8 @@ import NavbarComponent from "../Navbar/NavbarComponent";
 import CreateQuestionForm from "../CreateQuestion/CreateQuestionForm";
 import QuickForm from "../QuickForm/QuickForm";
 
-interface props {
-}
 
-const data = [1,2,3,4,5]
-
-const array = [
-    {"label" : "Vraag: ","type" : "text", "placeholder" : "Vul hier uw vraag in:" },
-    {"label" : "Vraagsoort: ","type" : "radio", "placeholder" : "Vul hier uw vraag in:", "checkLabel1" : "MP", "checkLabel2": "Open"}
-];
-
-class CreateQuestionPage extends Component<props> {
+class CreateQuestionPage extends Component {
 
     render() {
         return (
@@ -26,7 +17,7 @@ class CreateQuestionPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    <CreateQuestionForm ExamIds={data} />
+                    <CreateQuestionForm  />
                 </section>
                 <Footer/>
             </div>
