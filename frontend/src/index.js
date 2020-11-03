@@ -20,13 +20,9 @@
     import 'bootstrap/dist/css/bootstrap.css'
     import {register} from "./serviceWorker";
 
-    import Answer from './components/Answer/answerComponent'
-    import './components/Answer/Answer.css';
-
-    import AddAnswer from './components/AddAnswer/AddAnswerComponent'
-    import './components/AddAnswer/AddAnswer.css';
-    import AnswerComponent from "./components/AddAnswer/AddAnswerComponent";
+    //import ExamPage from './components/Pages/ExamensPage'
+    import QuestionPage from './components/Pages/QuestionPage'
 
     // ReactDOM.render(<Answer />, document.getElementById('root'))
-    ReactDOM.render(<AnswerComponent />, document.getElementById('root'))
+    ReactDOM.render(<QuestionPage />, document.getElementById('root'))
     register();
