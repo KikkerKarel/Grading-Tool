@@ -3,9 +3,7 @@ import axios from 'axios'
 import {Component, useState} from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {ListGroup, ListGroupItem} from "react-bootstrap";
-import './QuestionsTrack.css'
-import AnswerComponent from "../Answer/AnswerComponent";
-
+import './QuestionsTracker.css'
 
 class QuestionTracker extends Component {
 
@@ -20,7 +18,6 @@ class QuestionTracker extends Component {
 
         this.setState({Exam: body, isLoading: false});
     }
-
 
     render() {
         const {Exam, isLoading} = this.state;
