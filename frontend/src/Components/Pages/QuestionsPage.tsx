@@ -17,26 +17,9 @@ class QuestionsPage extends Component {
                 <div className="content-wrap">
                     <NavbarComponent />
                 </div>
-                <div>
-                    <QuestionTracker />
-                </div>
                 <section className="content-container">
-                    <div className="AnswerComponent">
-                        <AnswerComponent/>
-                    </div>
-                    <div className="AddAnswer">
-                        <AddAnswerComponent/>
-                    </div>
-                    <div className="QuestionTracker">
-                        <QuestionTracker/>
-                    </div>
-                    <div className="ScoreComponent">
-
-                    </div>
-                    <div className="GradeAdviceComponent">
-
-                    </div>
-
+                    <QuestionTracker />
+                    <AnswerComponent questionId={1} />
                 </section>
                 <Footer/>
             </div>

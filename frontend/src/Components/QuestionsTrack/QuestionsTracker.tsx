@@ -5,13 +5,15 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 import './QuestionsTrack.css'
 import AnswerComponent from "../Answer/AnswerComponent";
+import QuickLoader from "@scrumble-nl/react-quick-loader";
 
 
 class QuestionTracker extends Component {
 
     state = {
         isLoading: true,
-        Exam: []
+        Exam: [],
+        questionId: 0,
     };
 
     async componentDidMount() {
@@ -21,6 +23,20 @@ class QuestionTracker extends Component {
         this.setState({Exam: body, isLoading: false});
     }
 
+
+    handleClick = (event : any) =>{
+        // this.setState({
+        //     questionId: event.target.value
+        // })
+        // console.log(event.target.value)
+        // console.log(this.state.questionId)
+        axios.get( `/api/exams/question/${event.target.value}`).then(response =>{
+            this.setState({
+                questionId: response.data[0].questionId,
+            })
+            console.log()
+        })
+    }
 
     render() {
         const {Exam, isLoading} = this.state;
@@ -42,6 +58,10 @@ class QuestionTracker extends Component {
         }
 
         return (
+            <>
+                <QuickLoader color="#000000" data={this.state.questionId}>
+                    <AnswerComponent questionId={this.state.questionId} />
+                </QuickLoader>
             <div className="Tracker">
                 <ListGroup className="ClosedQuestions">
                     <h1>
@@ -54,7 +74,7 @@ class QuestionTracker extends Component {
                                 {
                                     return Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 1) {
-                                            return <li key={examitem.questionId}
+                                            return <li value={examitem.questionId} onClick={this.handleClick} key={examitem.questionId}
                                                        className={setClassname(examitem.gradedCorrect)}> {examitem.question.text} </li>
                                         }
                                     })
@@ -73,7 +93,7 @@ class QuestionTracker extends Component {
                                 {
                                     return Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 2) {
-                                            return <li key={examitem.questionId}
+                                            return <li value={examitem.questionId} onClick={this.handleClick} key={examitem.questionId}
                                                        className={setClassname(examitem.gradedCorrect)}> {examitem.question.text} </li>
                                         }
                                     })
@@ -86,6 +106,7 @@ class QuestionTracker extends Component {
                     <ProgressBar className="ProgressBar" animated now={Exam.progress} label={`${Exam.progress}%`}/>
                 </div>
             </div>
+                </>
         );
     }
 }

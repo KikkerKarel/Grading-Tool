@@ -12,7 +12,6 @@ import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import QuestionsPage from "./Components/Pages/QuestionsPage";
-import Parent from "./TestNotRelevantPleaseINeedHelp/kanker";
 
 
 function App() {
