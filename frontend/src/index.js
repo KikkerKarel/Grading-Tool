@@ -20,7 +20,6 @@
     import 'bootstrap/dist/css/bootstrap.css'
     import {register} from "./serviceWorker";
 
-    //import ExamPage from './components/Pages/ExamensPage'
     import QuestionPage from './Components/Pages/QuestionPage'
 
     // ReactDOM.render(<Answer />, document.getElementById('root'))

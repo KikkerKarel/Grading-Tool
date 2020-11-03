@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
 import {Row, Col, Container} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Pages/QuestionPage.css'
-import '../../Dashboard.css'
+ import '../../Dashboard.css'
+// import '../Pages/QuestionPage.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
 import FooterComponent from "../Footer";
-// import AnswerComponent from "../Answer/answerComponent";
-import  "../Answer/Answer.css";
-import AddAnswerComponent from "../AddAnswer/AddAnswerComponent";
-import  "../AddAnswer/AddAnswer.css";
-//import ScoreComponent from "../";
-//import  "";
-//import GradeAdviseComponent from "../";
-//import  "";
-// import QuestionTrackComponent from "../QuestionsTrack/questionsTrackComponent";
-import '../QuestionsTrack/QuestionsTrack.css';
+// import AddAnswerComponent from "../Question/AddAnswer/AddAnswerComponent";
+// import AnswerComponent from "../Question/Answer/AnswerComponent";
+// import GradeAdviseComponent from "../Question/GradeAdvice/GradeAdviceComponent";
+// import QuestionComponent from "../Question/Question/QuestionComponent";
+// import QuestionsTrackComponent from "../Question/QuestionsTrack/QuestionsTracker";
+// import ScoreComponent from "../Question/Score/ScoreComponent";
 
 class QuestionPage extends Component {
     state = {
@@ -39,7 +35,7 @@ class QuestionPage extends Component {
                                     Question header
                                 </div>
                                 <div>
-                                    <span>Question</span>
+                                    {/*<QuestionComponent/>*/}
                                 </div>
 
                                 {/* Open questions */}
@@ -49,18 +45,19 @@ class QuestionPage extends Component {
                                         {/*<AnswerComponent/>*/}
                                     </Col>
                                     <Col>
-                                        Test2
+                                        {/*<ScoreComponent/>*/}
+                                        {/*<GradeAdviseComponent/>*/}
                                     </Col>
                                 </Row>
-                                <AddAnswerComponent/>
+                                {/*<AddAnswerComponent/>*/}
 
                                 {/* Closed questions */}
                             </Col>
-                            <Col xs={2}>
-                                blank
+                            <Col xs={1}>
+
                             </Col>
-                            <Col>
-                                {/*<QuestionTrackComponent/>*/}
+                            <Col xs={4}>
+                                {/*<QuestionsTrackComponent/>*/}
                             </Col>
                         </Row>
                     </Container>

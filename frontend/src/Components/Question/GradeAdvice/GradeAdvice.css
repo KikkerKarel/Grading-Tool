@@ -4,12 +4,7 @@ body{
 
 .gradestadvice
 {
-    /*background-color: green;*/
-    width: 12%;
-    height: 15%;
-    margin-left: 40%;
-    margin-top: 10%;
-    position: fixed;
+    margin-top: 2%;
     border-radius: 5px;
 }
 

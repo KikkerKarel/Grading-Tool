@@ -4,9 +4,9 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent"
-import QuestionTracker from "../QuestionsTrack/QuestionsTracker";
-import AddAnswerComponent from "../AddAnswer/AddAnswerComponent";
-import AnswerComponent from "../Answer/AnswerComponent";
+import QuestionTracker from "../Question/QuestionsTrack/QuestionsTrackerComponent";
+import AddAnswerComponent from "../Question/AddAnswer/AddAnswerComponent";
+import AnswerComponent from "../Question/Answer/AnswerComponent";
 
 
 class QuestionsPage extends Component {
