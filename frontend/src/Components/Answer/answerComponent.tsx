@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button, Form} from 'react-bootstrap';
+import './Answer.css';
 
 class AnswerComponent extends Component
 {
