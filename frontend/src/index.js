@@ -21,7 +21,7 @@
     import {register} from "./serviceWorker";
 
     //import ExamPage from './components/Pages/ExamensPage'
-    import QuestionPage from './components/Pages/QuestionPage'
+    import QuestionPage from './Components/Pages/QuestionPage'
 
     // ReactDOM.render(<Answer />, document.getElementById('root'))
     ReactDOM.render(<QuestionPage />, document.getElementById('root'))

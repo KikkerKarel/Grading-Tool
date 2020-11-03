@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Button, Form} from 'react-bootstrap';
 import './Answer.css';
 
-class AnswerComponent extends Component
-{
+class AnswerComponent extends Component {
+
     render() {
         return (
             <>
@@ -25,4 +25,3 @@ class AnswerComponent extends Component
 }
 
 export default AnswerComponent;
-

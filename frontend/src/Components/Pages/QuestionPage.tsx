@@ -5,7 +5,7 @@ import '../Pages/QuestionPage.css'
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
 import FooterComponent from "../Footer";
-import AnswerComponent from "../Answer/answerComponent";
+// import AnswerComponent from "../Answer/answerComponent";
 import  "../Answer/Answer.css";
 import AddAnswerComponent from "../AddAnswer/AddAnswerComponent";
 import  "../AddAnswer/AddAnswer.css";
@@ -13,7 +13,7 @@ import  "../AddAnswer/AddAnswer.css";
 //import  "";
 //import GradeAdviseComponent from "../";
 //import  "";
-import QuestionTrackComponent from "../QuestionsTrack/questionsTrackComponent";
+// import QuestionTrackComponent from "../QuestionsTrack/questionsTrackComponent";
 import '../QuestionsTrack/QuestionsTrack.css';
 
 class QuestionPage extends Component {
@@ -46,7 +46,7 @@ class QuestionPage extends Component {
 
                                 <Row>
                                     <Col>
-                                        <AnswerComponent/>
+                                        {/*<AnswerComponent/>*/}
                                     </Col>
                                     <Col>
                                         Test2
@@ -60,7 +60,7 @@ class QuestionPage extends Component {
                                 blank
                             </Col>
                             <Col>
-                                <QuestionTrackComponent/>
+                                {/*<QuestionTrackComponent/>*/}
                             </Col>
                         </Row>
                     </Container>
