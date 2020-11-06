@@ -2,11 +2,14 @@ package gps.s3.correctingtool.controller;
 
 import gps.s3.correctingtool.exam.*;
 import gps.s3.correctingtool.services.GradingTool;
+import gps.s3.correctingtool.user.AppUser;
+import gps.s3.correctingtool.user.IUserRepo;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/exams")
@@ -14,11 +17,13 @@ public class ExamController {
 
     private final IExamRepo repo;
     private final IExamItemRepo itemRepo;
+    private final IUserRepo uRepo;
     private final GradingTool gradingTool;
 
-    public ExamController(IExamRepo repo, IExamItemRepo itemRepo, GradingTool gradingTool) {
+    public ExamController(IExamRepo repo, IExamItemRepo itemRepo,IUserRepo uRepo , GradingTool gradingTool) {
         this.repo = repo;
         this.itemRepo = itemRepo;
+        this.uRepo = uRepo;
         this.gradingTool = gradingTool;
     }
 
@@ -45,5 +50,16 @@ public class ExamController {
     @RequestMapping("/grade/{id}")
     public Exam gradeExam(@PathVariable("id") int id) {
         return gradingTool.gradeMcExam(repo.findById(id));
+    }
+
+    @PostMapping("/create/{student}/{examiner}")
+    public void CreateExam(@PathVariable("student") String studentName, @PathVariable("examiner") int examinerID){
+        Exam exam = new Exam();
+        exam.setStudentName(studentName);
+        long longID = examinerID;
+        AppUser user = uRepo.findById(longID).get();
+        exam.setExaminer(user);
+        exam.setStatus(1);
+        repo.save(exam);
     }
 }

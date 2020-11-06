@@ -30,11 +30,11 @@ public class QuestionController {
 
         Question question = new Question();
         question.setType(type);
-        question.setText(text +"?");
+        question.setText(text);
         qRepo.save(question);
 
 
-        return qRepo.findByText(text + "?");
+        return qRepo.findByText(text);
     }
 
     @PostMapping("/addMcAnswer/{questionID}/{answerText}/{isCorrect}")
@@ -52,6 +52,16 @@ public class QuestionController {
         textAnswer.setQuestionId(questionID);
         textAnswer.setValue(text);
         taRepo.save(textAnswer);
+    }
+
+    @RequestMapping("/find/all")
+    public Collection<Question> GetAllQuestions(){
+       return qRepo.findAll();
+    }
+
+    @RequestMapping("/mc/{questionID}")
+    public Collection<MultipleChoiceAnswer> GetMcAnwersByQuestion(@PathVariable("questionID") int questionID){
+        return mcRepo.findByQuestionId(questionID);
     }
 
 }

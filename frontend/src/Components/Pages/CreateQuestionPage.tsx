@@ -5,7 +5,6 @@ import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
 import CreateQuestionForm from "../CreateQuestion/CreateQuestionForm";
-import QuickForm from "../QuickForm/QuickForm";
 
 
 class CreateQuestionPage extends Component {
