@@ -1,47 +1,102 @@
 import * as React from "react";
 import axios from 'axios'
-import {Component, useState} from "react";
+import {Component} from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import {ListGroup, ListGroupItem} from "react-bootstrap";
-import './QuestionsTrack.css'
+import {Button, ListGroup} from "react-bootstrap";
+import './QuestionsTracker.css'
 import AnswerComponent from "../Answer/AnswerComponent";
-import QuickLoader from "@scrumble-nl/react-quick-loader";
+import Cookies from "js-cookie";
 
+interface props{
+    Exam : Array<string>
+}
 
-class QuestionTracker extends Component {
-
+class QuestionTracker extends Component <props>{
     state = {
         isLoading: true,
         Exam: [],
         questionId: 0,
     };
 
-    async componentDidMount() {
-        const response = await fetch('http://localhost:8080/api/exams/find/1');
-        const body = await response.json();
+    private foundQuestion : boolean = false;
 
-        this.setState({Exam: body, isLoading: false});
+    async componentDidMount() {
+        await this.setState(
+            {
+                Exam : this.props.Exam,
+            }
+        )
+        Cookies.set('score', "0");
+
+        {(() => {
+            {
+                {
+                    this.state.Exam.items.map((examitem: any) => {
+                        if (examitem.question.type == 2 && examitem.gradedScore == null && !this.foundQuestion) {
+                            this.setState(
+                                {
+                                    questionId : examitem.question.id,
+                                    isLoading: false
+                                }
+                            )
+                            this.foundQuestion = true;
+                        }
+                        else if(examitem.question.type == 2 && examitem.questionId == this.state.questionId)
+                        {
+                            this.setState(
+                                {
+                                    questionId : examitem.question.id,
+                                    isLoading: false
+                                }
+                            )
+                            this.foundQuestion = true;
+                        }
+                    });
+                }
+            }
+        })()}
     }
 
-
     handleClick = (event : any) =>{
-        axios.get( `/api/exams/question/${event.target.value}`).then(response =>{
+        axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}`).then(response =>{
             this.setState({
                 questionId: response.data[0].questionId,
             })
-            console.log()
+            Cookies.set('score', response.data[0].gradedScore);
         })
     }
 
+    renderAnswerComponent()
+    {
+        if (!this.state.isLoading) {
+            return(
+                <>
+                    <AnswerComponent questionId={this.state.questionId} />
+               </>
+            )
+        }
+    }
+
     render() {
-        const {Exam, isLoading} = this.state;
+        const {isLoading} = this.state;
 
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <Button onClick={()=>
+                window.location.replace("../Examens")}
+            >Ga terug naar de examentabel</Button>
         }
 
-        function setClassname(gradedtype: any) {
-            let prefix = 'QuestionText'
+        let qID = this.state.questionId;
+        let keyCount = 1;
+
+        function setMpClassname(gradedtype: any, id: any) {
+            let prefix = 'QuestionText';
+
+            if(id ==  qID)
+            {
+                prefix = prefix + ' Bold'
+            }
+
             switch (gradedtype) {
                 case null:
                     return prefix
@@ -52,56 +107,80 @@ class QuestionTracker extends Component {
             }
         }
 
+        function setGradedClassname(gradedScore: any, id: any) {
+            let prefix = 'QuestionText';
+
+            if(id ==  qID)
+            {
+                prefix = prefix + ' Bold'
+            }
+
+            if (gradedScore >= 1)
+            {
+                return prefix + ' Correct'
+            }
+            else if(gradedScore == 0)
+            {
+                return prefix + ' False'
+            }
+            else{
+                return prefix
+            }
+        }
+
         return (
             <>
-                <QuickLoader color="#000000" data={this.state.questionId}>
-                    <AnswerComponent questionId={this.state.questionId} />
-                </QuickLoader>
+            {this.renderAnswerComponent()}
             <div className="Tracker">
                 <ListGroup className="ClosedQuestions">
                     <h1>
                        <p>Meerkeuze vragen:</p>
                     </h1>
-                    {/*<i className="fa fa-arrow-right" aria-hidden="true"></i>*/}
-                    <ListGroupItem as="ol">
                         {(() => {
                             {
                                 {
-                                    return Exam.items.map((examitem: any) => {
+                                    return this.state.Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 1) {
-                                            return <li value={examitem.questionId} onClick={this.handleClick} key={examitem.questionId}
-                                                       className={setClassname(examitem.gradedCorrect)}> {examitem.question.text} </li>
+                                            return <ListGroup.Item
+                                                       onClick={this.handleClick}
+                                                       eventKey={examitem.questionId}
+                                                       className={setMpClassname(examitem.gradedCorrect, examitem.questionId)}>
+                                                {keyCount++ + ". "+ examitem.question.text}
+                                            </ListGroup.Item>
                                         }
                                     })
                                 }
                             }
                         })()}
-                    </ListGroupItem>
                 </ListGroup>
                 <ListGroup className="OpenQuestions">
                     <h1>
                         <p>Open vragen:</p>
                     </h1>
-                    <ListGroup.Item as="ol">
                         {(() => {
                             {
                                 {
-                                    return Exam.items.map((examitem: any) => {
+                                    return this.state.Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 2) {
-                                            return <li value={examitem.questionId} onClick={this.handleClick} key={examitem.questionId}
-                                                       className={setClassname(examitem.gradedCorrect)}> {examitem.question.text} </li>
+                                            return <ListGroup.Item
+                                                onClick={this.handleClick}
+                                                eventKey={examitem.questionId}
+                                                className={setGradedClassname(examitem.gradedScore , examitem.questionId)}>
+                                                {keyCount++ + ". "+ examitem.question.text}
+                                            </ListGroup.Item>
                                         }
                                     })
                                 }
                             }
                         })()}
-                    </ListGroup.Item>
                 </ListGroup>
                 <div className="LoadingBar">
-                    <ProgressBar className="ProgressBar" animated now={Exam.progress} label={`${Exam.progress}%`}/>
+                    <ProgressBar className="ProgressBar"
+                                 animated now={this.state.Exam.progress}
+                                 label={`${this.state.Exam.progress}%`}/>
                 </div>
             </div>
-                </>
+            </>
         );
     }
 }

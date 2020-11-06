@@ -2,41 +2,41 @@ import React, {Component} from "react";
 // @ts-ignore
 import ReactStars from "react-rating-stars-component";
 import './Score.css';
-
-let ratingStars = {
-    edit: false,
-    size: 35,
-    count: 5,
-    color: "black",
-    activeColor: "gold",
-    value: 3,
-    a11y: true,
-    isHalf: false,
-    emptyIcon: <i className="far fa-star" />,
-    filledIcon: <i className="fa fa-star" />,
-    // onChange: (newValue) => {
-    //     console.log(`Score is ${newValue}`);
-    // }
-};
-
-let ratingStars2 = {
-    size: 35,
-    count: 5,
-    color: "black",
-    activeColor: "gold",
-    value: 7.5,
-    a11y: true,
-    isHalf: false,
-    emptyIcon: <i className="far fa-star" />,
-    filledIcon: <i className="fa fa-star" />,
-    onChange: (newValue: any) => {
-        console.log(`New score is ${newValue}`);
-    }
-};
+import Cookies from "js-cookie";
+import axios from "axios";
 
 class ScoreComponent extends Component {
-
     render() {
+        console.log(Cookies.get("score"));
+
+        let ratingStars = {
+            edit: false,
+            size: 35,
+            count: 5,
+            color: "black",
+            activeColor: "gold",
+            value: 3,
+            a11y: true,
+            isHalf: false,
+            emptyIcon: <i className="far fa-star" />,
+            filledIcon: <i className="fa fa-star" />,
+        };
+
+        let ratingStars2 = {
+            size: 35,
+            count: 5,
+            color: "black",
+            activeColor: "gold",
+            value: Math.floor(Math.random() * 6) + 1,
+            a11y: true,
+            isHalf: false,
+            emptyIcon: <i className="far fa-star" />,
+            filledIcon: <i className="fa fa-star" />,
+            onChange: (newValue: any) => {
+                Cookies.set('score', newValue);
+            }
+        };
+
         return (
             <>
                 <div className="scoringdiv">

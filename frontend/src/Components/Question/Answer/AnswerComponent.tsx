@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import {Button, Form} from 'react-bootstrap';
 import './Answer.css';
-
+import ScoreComponent from "../Score/ScoreComponent";
+import Cookies from "js-cookie";
 
 interface props {
     questionId?: number
@@ -11,22 +12,36 @@ interface props {
 class AnswerComponent extends Component<props> {
     state = {
         text: '',
-        answer: ''
+        answer: '',
+    }
+
+    async componentDidMount() {
+        axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
+            this.setState({
+                text: response.data[0].question.text,
+                answer: response.data[0].textAnswer,
+            })
+            Cookies.set('score', "0");
+        })
     }
 
     componentDidUpdate(prevProps : any, prevState : any) {
         if(prevProps.questionId !== this.props.questionId){
-            axios.get(`api/exams/question/${this.props.questionId}`).then(response => {
+            axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
                 this.setState({
                     text: response.data[0].question.text,
-                    answer: response.data[0].textAnswer
-
+                    answer: response.data[0].textAnswer,
                 })
-                console.log(this.state.answer)
-                console.log(this.state.text)
             })
         }
+    }
 
+    gradeClick = () =>{
+        let score = Cookies.get("score");
+
+        axios.put(`/api/exams/grade/question/${this.props.questionId}/${score}`).then(() => {
+            window.location.replace("./");
+        });
     }
 
     render() {
@@ -44,10 +59,11 @@ class AnswerComponent extends Component<props> {
                                   className="CorrectAnswerText" readOnly={true}/>
                 </Form.Group>
                 <div className="buttondiv">
-                    <Button className="Button" variant="danger">Keur fout</Button>
-                    <Button className="Button" variant="success">Keur goed</Button>
+                    <Button className="Button" variant="success" onClick={this.gradeClick} >Verstuur score</Button>
                     <Button className="Button" variant="warning">Wijzigen</Button>
                 </div>
+
+                <ScoreComponent />
             </>);
     }
 }

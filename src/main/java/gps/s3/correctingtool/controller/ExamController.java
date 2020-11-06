@@ -1,22 +1,9 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.exam.Exam;
-import gps.s3.correctingtool.exam.ExamItem;
-import gps.s3.correctingtool.exam.IExamItemRepo;
-import gps.s3.correctingtool.exam.IExamRepo;
-import org.springframework.data.domain.Sort;
 import gps.s3.correctingtool.exam.*;
 import gps.s3.correctingtool.services.GradingTool;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Arrays;
+import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/exams")
@@ -55,5 +42,20 @@ public class ExamController {
     @RequestMapping("/grade/{id}")
     public Exam gradeExam(@PathVariable("id") int id) {
         return gradingTool.gradeMcExam(repo.findById(id));
+    }
+
+    @PutMapping("/grade/question/{id}/{score}")
+    public @ResponseBody String UpdateQuestion(@PathVariable("id") int id, @PathVariable("score") int score) {
+        ExamItem examItem = itemRepo.findByQuestionId(id);
+        examItem.setGradedScore(score);
+
+        if (score >0)
+        {
+            examItem.setGradedCorrect(true);
+        }
+        examItem.setGradedCorrect(false);
+        itemRepo.save(examItem);
+
+        return "Updated";
     }
 }
