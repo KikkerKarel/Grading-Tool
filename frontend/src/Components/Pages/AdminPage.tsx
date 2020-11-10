@@ -1,30 +1,31 @@
 import * as React from "react";
 import '../Navbar/Navbar.css';
 import {Component} from "react";
-import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 import '../../Dashboard.css'
-import QuickForm from "../QuickForm/QuickForm";
+import NavbarComponent from "../Navbar/NavbarComponent";
+import QuickCard from "../QuickCard/QuickCard";
 
 interface props {
 }
 
-class CoursesPage extends Component<props> {
+class AdminPage extends Component<props> {
 
     render() {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <NavbarComponent />
                 </div>
                 <section className="content-container">
+                    <QuickCard image="Images/Dev-test" text="Maak examen" link="/create-exam" title="Maak examen"/>
+                    <QuickCard image="Images/Dev-test" text="Maak gebruiker" link="/create-user" title="Maak gebruiker"/>
 
                 </section>
                 <Footer/>
             </div>
-
         );
     }
 }
 
-export default CoursesPage
+export default AdminPage

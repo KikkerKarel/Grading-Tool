@@ -1,8 +1,13 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.exam.*;
+import gps.s3.correctingtool.exam.Exam;
+import gps.s3.correctingtool.exam.ExamItem;
+import gps.s3.correctingtool.exam.IExamItemRepo;
+import gps.s3.correctingtool.exam.IExamRepo;
 import gps.s3.correctingtool.services.GradingTool;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
