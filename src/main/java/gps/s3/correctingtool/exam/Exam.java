@@ -72,6 +72,9 @@ public class Exam {
     @JsonGetter("progress")
     public long getProgress()
     {
+        if(items.size() == 0){
+            return 0;
+        }
        return items.stream().filter(i -> i.getGradedCorrect() != null).count() * 100 / items.size();
     }
 
