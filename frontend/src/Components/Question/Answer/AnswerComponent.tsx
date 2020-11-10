@@ -13,13 +13,15 @@ class AnswerComponent extends Component<props> {
     state = {
         text: '',
         answer: '',
+        studentAnswer: ''
     }
 
     async componentDidMount() {
         axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
             this.setState({
                 text: response.data[0].question.text,
-                answer: response.data[0].textAnswer,
+                studentAnswer: response.data[0].textAnswer,
+                answer: response.data[0].question.textAnswer.value
             })
             Cookies.set('score', "0");
         })
@@ -30,7 +32,8 @@ class AnswerComponent extends Component<props> {
             axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
                 this.setState({
                     text: response.data[0].question.text,
-                    answer: response.data[0].textAnswer,
+                    studentAnswer: response.data[0].textAnswer,
+                    answer: response.data[0].question.textAnswer.value
                 })
             })
         }
@@ -50,7 +53,7 @@ class AnswerComponent extends Component<props> {
                 <h1>{this.state.text}</h1>
                 <Form.Group className="Answer">
                     <Form.Label className="AnswerHeader">Antwoord (tekst)</Form.Label>
-                    <Form.Control as="textarea" rows={3} cols={30} readOnly={true} placeholder="berlijn"
+                    <Form.Control as="textarea" rows={3} cols={30} readOnly={true} placeholder={this.state.studentAnswer}
                                   className="AnswerText"/>
                 </Form.Group>
                 <Form.Group className="Answer">

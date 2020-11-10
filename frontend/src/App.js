@@ -41,6 +41,7 @@ function App() {
                 </Route>
                 <Route path="/question">
                     <QuestionPage/>
+                </Route>
                 <Route path="/admin">
                 <AdminPage/>
             </Route>

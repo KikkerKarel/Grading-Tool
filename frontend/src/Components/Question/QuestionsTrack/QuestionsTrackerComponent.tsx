@@ -38,7 +38,7 @@ class QuestionTracker extends Component <props>{
                                     questionId : examitem.question.id,
                                     isLoading: false
                                 }
-                            )
+                            );
                             this.foundQuestion = true;
                         }
                         else if(examitem.question.type == 2 && examitem.questionId == this.state.questionId)
@@ -48,7 +48,7 @@ class QuestionTracker extends Component <props>{
                                     questionId : examitem.question.id,
                                     isLoading: false
                                 }
-                            )
+                            );
                             this.foundQuestion = true;
                         }
                     });
@@ -61,10 +61,10 @@ class QuestionTracker extends Component <props>{
         axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}`).then(response =>{
             this.setState({
                 questionId: response.data[0].questionId,
-            })
+            });
             Cookies.set('score', response.data[0].gradedScore);
         })
-    }
+    };
 
     renderAnswerComponent()
     {

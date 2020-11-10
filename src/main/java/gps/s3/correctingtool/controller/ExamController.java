@@ -4,10 +4,8 @@ import gps.s3.correctingtool.exam.*;
 import gps.s3.correctingtool.services.GradingTool;
 import gps.s3.correctingtool.user.AppUser;
 import gps.s3.correctingtool.user.IUserRepo;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Collection;
 import java.util.Optional;
 
@@ -53,7 +51,7 @@ public class ExamController {
     }
 
     @PostMapping("/create/{student}/{examiner}")
-    public void CreateExam(@PathVariable("student") String studentName, @PathVariable("examiner") int examinerID){
+    public void CreateExam(@PathVariable("student") String studentName, @PathVariable("examiner") int examinerID) {
         Exam exam = new Exam();
         exam.setStudentName(studentName);
         long longID = examinerID;
@@ -61,6 +59,7 @@ public class ExamController {
         exam.setExaminer(user);
         exam.setStatus(1);
         repo.save(exam);
+    }
 
     @PutMapping("/grade/question/{id}/{score}")
     public @ResponseBody String UpdateQuestion(@PathVariable("id") int id, @PathVariable("score") int score) {

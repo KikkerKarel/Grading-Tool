@@ -22,7 +22,7 @@ class QuestionPage extends Component {
             examId : Cookies.get("examId")
         });
 
-       await axios.get( `../api/exams/grade/${this.state.examId}`).then(response =>{
+       await axios.get( `/api/exams/grade/${this.state.examId}`).then(response =>{
             this.setState({
                 Exam: response.data,
                 isLoading: false

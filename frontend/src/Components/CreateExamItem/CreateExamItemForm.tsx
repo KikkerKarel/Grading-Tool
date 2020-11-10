@@ -28,9 +28,9 @@ class CreateExamItemForm extends Component{
     }
 
     componentDidMount() {
-         axios.get(`/api/exams/find/all`).then(response =>{
-             this.setState({exams : response.data});
-         })
+        axios.get(`/api/exams/find/all`).then(response =>{
+            this.setState({exams : response.data});
+        })
 
 
         axios.get(`/api/question/find/all`).then(response =>{
@@ -46,24 +46,24 @@ class CreateExamItemForm extends Component{
             }
         })
     }
-
-    Input = (value : number) =>{
-        if ( value === 1){
-            axios.get(`/api/question/mc/${this.state.questionID}`).then(response =>{
-                let mcOptions;
-                mcOptions = response.data.map(mc =>{
-                    return()
-                })
-
-
-                return(
-                    <option> {response.data}</option>
-                )
-                }
-            )
-
-        }
-    }
+    //
+    // Input = (value : number) =>{
+    //     if ( value === 1){
+    //         axios.get(`/api/question/mc/${this.state.questionID}`).then(response =>{
+    //                 let mcOptions;
+    //                 mcOptions = response.data.map(mc =>{
+    //                     return()
+    //                 })
+    //
+    //
+    //                 return(
+    //                     <option> {response.data}</option>
+    //                 )
+    //             }
+    //         )
+    //
+    //     }
+    // }
 
 
 
@@ -75,42 +75,38 @@ class CreateExamItemForm extends Component{
             )
         })
 
-         let ExamIds;
-         ExamIds = this.state.exams.map(e => {
-                 return (
-                     <option > {e.id.toString()}</option>
-                 )
-             }
-         )
-
-
-
-
+        let ExamIds;
+        ExamIds = this.state.exams.map(e => {
+                return (
+                    <option > {e.id.toString()}</option>
+                )
+            }
+        )
 
         return (
-             <Form>
-                 <Form.Group>
-                     <Form.Label> ExamID:</Form.Label>
-                          <Form.Control as="select">
-                              <option>abc</option>
-                              {ExamIds}
-                     </Form.Control>
-                 </Form.Group>
-                 <Form.Group>
-                     <Form.Label> Vraag:</Form.Label>
-                     <Form.Control as="select" onChange={(e) => this.SetQuestionType(e.target.value)}>
-                         {<option>abc</option>}
-                         {questions}
-                     </Form.Control>
-                 </Form.Group>
-                 <Form.Group>
-                     {}
-                 </Form.Group>
+            <Form>
+                <Form.Group>
+                    <Form.Label> ExamID:</Form.Label>
+                    <Form.Control as="select">
+                        <option>abc</option>
+                        {ExamIds}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label> Vraag:</Form.Label>
+                    <Form.Control as="select" onChange={(e) => this.SetQuestionType(e.target.value)}>
+                        {<option>abc</option>}
+                        {questions}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    {}
+                </Form.Group>
 
 
-                 <Button variant="primary m-2" > Submit</Button>
-                 <Button variant="primary m-2" onClick={() => console.log(this.state)} > get State</Button>
-                 <Button variant="primary m-2" onClick={() => this.setState({})}>clear fields</Button>
+                <Button variant="primary m-2" > Submit</Button>
+                <Button variant="primary m-2" onClick={() => console.log(this.state)} > get State</Button>
+                <Button variant="primary m-2" onClick={() => this.setState({})}>clear fields</Button>
             </Form>
         )
     }
