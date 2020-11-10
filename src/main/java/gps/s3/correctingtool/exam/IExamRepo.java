@@ -7,6 +7,5 @@ import java.util.Collection;
 public interface IExamRepo extends JpaRepository<Exam, Long> {
 
     Exam findById(int id);
-
     Collection<Exam> findAllByExaminerId(long examinerId);
 }

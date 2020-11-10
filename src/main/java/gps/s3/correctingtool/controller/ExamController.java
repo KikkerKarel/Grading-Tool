@@ -61,5 +61,19 @@ public class ExamController {
         exam.setExaminer(user);
         exam.setStatus(1);
         repo.save(exam);
+
+    @PutMapping("/grade/question/{id}/{score}")
+    public @ResponseBody String UpdateQuestion(@PathVariable("id") int id, @PathVariable("score") int score) {
+        ExamItem examItem = itemRepo.findByQuestionId(id);
+        examItem.setGradedScore(score);
+
+        if (score >0)
+        {
+            examItem.setGradedCorrect(true);
+        }
+        examItem.setGradedCorrect(false);
+        itemRepo.save(examItem);
+
+        return "Updated";
     }
 }

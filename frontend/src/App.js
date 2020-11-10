@@ -7,16 +7,17 @@ import {
     Route,
 } from "react-router-dom";
 
+
 import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
 import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
+import QuestionPage from "./Components/Pages/QuestionPage";
 import AdminPage from "./Components/Pages/AdminPage";
 import CreateExamPage from "./Components/Pages/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
-
 
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
                 <Route path="/logout">
                     <LogoutPage/>
                 </Route>
+                <Route path="/question">
+                    <QuestionPage/>
                 <Route path="/admin">
                 <AdminPage/>
             </Route>

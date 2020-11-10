@@ -159,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `gradest`.`exam_item` (
   `text_answer` VARCHAR(512) NULL,
   `mp_answer` INT NULL,
   `graded_correct` TINYINT NULL,
+  `graded_score` TINYINT(6) NULL,
   INDEX `fk_exam_questions_exam1_idx` (`exam_id` ASC),
   INDEX `fk_exam_questions_question1_idx` (`question_id` ASC),
   CONSTRAINT `fk_exam_questions_exam1`

@@ -24,6 +24,8 @@ public class ExamItem {
 
     private Boolean gradedCorrect;
 
+    private Integer gradedScore;
+
     @OneToOne
     @JoinColumn(insertable = false, updatable = false)
     private Question question;
@@ -104,13 +106,23 @@ public class ExamItem {
         return getExamId() == examItem.getExamId() &&
                 getQuestionId() == examItem.getQuestionId() &&
                 getMpAnswer() == examItem.getMpAnswer() &&
+                getGradedCorrect() == examItem.getGradedCorrect() &&
                 Objects.equals(getTextAnswer(), examItem.getTextAnswer()) &&
                 Objects.equals(getGradedCorrect(), examItem.getGradedCorrect()) &&
-                Objects.equals(getExam(), examItem.getExam());
+                Objects.equals(getExam(), examItem.getExam()) &&
+                Objects.equals(getGradedScore(), examItem.getGradedScore());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getExamId(), getQuestionId(), getTextAnswer(), getMpAnswer(), getGradedCorrect(), getExam());
+        return Objects.hash(getExamId(), getQuestionId(), getTextAnswer(), getMpAnswer(), getGradedCorrect(), getExam(), getGradedScore());
+    }
+
+    public Integer getGradedScore() {
+        return gradedScore;
+    }
+
+    public void setGradedScore(Integer gradedScore) {
+        this.gradedScore = gradedScore;
     }
 }
