@@ -71,7 +71,10 @@ public class Exam {
     @JsonGetter("progress")
     public long getProgress()
     {
-       return items.stream().filter(i -> i.getGradedCorrect() != null).count() * 100 / items.size();
+        if(items.size() == 0)
+            return 100;
+
+       return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
     }
 
     @Override

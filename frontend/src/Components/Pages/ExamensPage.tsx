@@ -1,6 +1,6 @@
 import * as React from "react";
-import '../Navbar/Navbar.css';
 import {Component} from "react";
+import '../Navbar/Navbar.css';
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 import '../../Dashboard.css'
@@ -32,7 +32,7 @@ class ExamensPage extends Component<props, {}> {
             <div className="page-container">
                 <div className="content-wrap">
                     <NavbarComponent/>
-                </div>cdd
+                </div>
                 <section className="content-container">
                     <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>

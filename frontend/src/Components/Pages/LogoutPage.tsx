@@ -1,14 +1,19 @@
 import * as React from "react";
-import '../Navbar/Navbar.css';
 import {Component} from "react";
+import '../Navbar/Navbar.css';
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 import '../../Dashboard.css'
+import AuthService from "../../Services/auth.service"
 
 interface props {
 }
 
 class LogoutPage extends Component<props> {
+
+    componentDidMount() {
+        AuthService.logout();
+    }
 
     render() {
         return (
@@ -17,7 +22,7 @@ class LogoutPage extends Component<props> {
                     <NavbarComponent/>
                 </div>
                 <section className="content-container">
-                    <h1>beepboop</h1>
+                    <h1>U bent uitgelogd</h1>
                 </section>
                 <Footer/>
             </div>

@@ -5,18 +5,24 @@ class AuthService {
         return axios
             .post("login", { username, password })
             .then((response) => {
-                if (response.headers["Authorization"]) {
-                    localStorage.setItem("token", response.headers["Authorization"]);
+                console.log(response);
+                if (response.status === 200 && response.data.token) {
+                    localStorage.setItem("token", response.data.token)
+                    console.log("Set token!")
                     return localStorage.getItem("token");
                 }
 
                 return response;
-
             });
+    }
+
+    isLoggedIn(){
+        return localStorage.getItem("token") != null;
     }
 
     logout() {
         localStorage.removeItem("user");
+        localStorage.removeItem("token");
     }
 
     register(username, password) {

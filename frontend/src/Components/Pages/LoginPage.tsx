@@ -7,6 +7,7 @@ import '../../Dashboard.css'
 import {Form} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import AuthService from "../../Services/auth.service"
+import {Redirect} from 'react-router-dom'
 
 interface props {
     name : string
@@ -14,23 +15,26 @@ interface props {
 
 class LoginPage extends Component<props> {
 
-    constructor(props: Readonly<props>) {
-        super(props);
-        this.state = {
-            username: '',
-            password: ''
-        }
+    state = {
+        redirect: false,
+        username : '',
+        password :''
     }
+
     handleClick(event: any)
     {
         event.preventDefault();
         console.log(this.state);
-        AuthService.login("Jonathan", "hunter2").then(data => {
-            console.log(data);
+        AuthService.login(this.state.username, this.state.password).then(data => {
+            this.setState({redirect: true});
         })
     }
 
     render() {
+
+        if(this.state.redirect || AuthService.isLoggedIn())
+            return <Redirect to='/examens' />
+
         return (
             <div className="page-container">
                 <div className="content-wrap d-flex justify-content-center">

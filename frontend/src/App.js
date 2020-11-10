@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch,} from "react-router-dom";
 import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
+import AdvicePage from "./Components/Pages/AdvicePage"
 import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
@@ -25,6 +26,9 @@ function App() {
                 </Route>
                 <Route path="/instellingen">
                     <SettingsPage/>
+                </Route>
+                <Route path="/advice">
+                    <AdvicePage/>
                 </Route>
                 <Route path="/logout">
                     <LogoutPage/>
