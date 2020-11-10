@@ -4,18 +4,10 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import QuickCard from "../QuickCard/QuickCard";
-import QuickForm from "../QuickForm/QuickForm";
+import CreateQuestionForm from "../CreateQuestion/CreateQuestionForm";
 
-interface props {
-}
 
-const array = [
-    {"label" : "Vraag: ","type" : "text", "placeholder" : "Vul hier uw vraag in:" },
-    {"label" : "Vraagsoort: ","type" : "radio", "placeholder" : "Vul hier uw vraag in:", "checkLabel1" : "MP", "checkLabel2": "Open"}
-];
-
-class CreateQuestionPage extends Component<props> {
+class CreateQuestionPage extends Component {
 
     render() {
         return (
@@ -24,7 +16,7 @@ class CreateQuestionPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    <QuickForm data={array}/>
+                    <CreateQuestionForm  />
                 </section>
                 <Footer/>
             </div>

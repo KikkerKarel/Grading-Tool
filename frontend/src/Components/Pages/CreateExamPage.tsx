@@ -4,15 +4,11 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import QuickCard from "../QuickCard/QuickCard";
-import QuickForm from "../QuickForm/QuickForm";
+import CreateExamForm from "../CreateExam/CreateExamForm";
 
 interface props {
 }
 
-const array = [
-    {"label" : "test","type" : "text", "placeholder" : "test" }
-];
 
 class CreateExamPage extends Component<props> {
 
@@ -23,8 +19,7 @@ class CreateExamPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    {/*<QuickForm data={[{"label":"test","type":"text","placeholder":"Hoi"}]}/>*/}
-<QuickForm data={array}/>
+                    <CreateExamForm> </CreateExamForm>
                 </section>
                 <Footer/>
             </div>
