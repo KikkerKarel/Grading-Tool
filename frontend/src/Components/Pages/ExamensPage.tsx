@@ -6,10 +6,8 @@ import Footer from "../Footer";
 import '../../Dashboard.css'
 import ExamTable from "../ExamTable/ExamTable";
 
-
 interface props {
 }
-
 
 class ExamensPage extends Component<props, {}> {
     state = {
@@ -39,7 +37,6 @@ class ExamensPage extends Component<props, {}> {
                 </section>
                 <Footer/>
             </div>
-
         );
     }
 }

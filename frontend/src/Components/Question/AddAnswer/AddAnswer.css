@@ -1,0 +1,12 @@
+.RowPadding
+{
+    padding: 8px 25px;
+}
+.ButtonCol
+{
+    display: grid;
+}
+.WhiteText
+{
+    color: white !important;
+}

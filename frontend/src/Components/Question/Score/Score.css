@@ -1,0 +1,20 @@
+body{
+    font-family: 'Averta', sans-serif;
+}
+
+.scoringdiv
+{
+    text-align: center;
+}
+.textlabel
+{
+    margin-top: 5%;
+    color: gray;
+    font-size: 15px;
+}
+
+.stars
+{
+    margin-left: auto;
+    margin-right: auto;
+}

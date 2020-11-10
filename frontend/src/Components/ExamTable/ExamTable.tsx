@@ -3,6 +3,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ExamTable.css';
+import Cookies from 'js-cookie';
 
 interface props{
     data?: any;
@@ -34,11 +35,12 @@ class ExamTable extends Component<props> {
         const {Exams} = this.state;
         const tableRowEvents = {
             onClick: (e: any, row: any, rowIndex: any) => {
-                window.location.replace('/logout/' + row.id);
-                console.log(`clicked on row with index: ${row.id}`);
+                Cookies.set('examId', row.id);
+                window.location.replace('/question/');
+                console.log(`Clicked on row with index: ${row.id}`);
             },
             onMouseEnter: (e: any, row: any, rowIndex: any) => {
-                console.log(`enter on row with index: ${row.id}`);
+                console.log(`Enter on row with index: ${row.id}`);
             }
         }
         return (
