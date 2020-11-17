@@ -13,8 +13,10 @@
 }
 
 .Tracker{
-    width: 500px;
+    width: 400px;
     height: 500px;
+    margin-left: 40px;
+    margin-top: 10px;
 
 }
 

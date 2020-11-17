@@ -49,8 +49,8 @@ class AnswerComponent extends Component<props> {
 
     render() {
         return (
-            <>
-                <h1>{this.state.text}</h1>
+            <div className="AnswerComponent">
+                <h2>{this.state.text}</h2>
                 <Form.Group className="Answer">
                     <Form.Label className="AnswerHeader">Antwoord (tekst)</Form.Label>
                     <Form.Control as="textarea" rows={3} cols={30} readOnly={true} placeholder={this.state.studentAnswer}
@@ -67,7 +67,7 @@ class AnswerComponent extends Component<props> {
                 </div>
 
                 <ScoreComponent />
-            </>);
+            </div>);
     }
 }
 
