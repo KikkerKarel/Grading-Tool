@@ -11,8 +11,8 @@
 }
 .btn:hover{
     padding: 8px 20px;
-    /*transition: all 0.3s ease-out;*/
-    /*background: #fff;*/
+    transition: all 0.3s ease-out;
+    background: #fff;
     color: #e94f2c;
 }
 
@@ -37,6 +37,37 @@
     color: white;
     background-color: #e94f2c;
     text-decoration: none;
+}
+
+.btn--yellow {
+    width: 49%;
+    margin-left: 5px;
+    border-radius: 4px;
+    color: white;
+    background-color: gold;
+    text-decoration: none;
+}
+
+.btn--yellow:hover{
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #EFCC00;
+    color: white;
+}
+
+.btn--green {
+    width: 49%;
+    border-radius: 4px;
+    color: white;
+    background-color: #5aad5a;
+    text-decoration: none;
+}
+
+.btn--green:hover{
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #228B22;
+    color: white;
 }
 
 .btn--large {

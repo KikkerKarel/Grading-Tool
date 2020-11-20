@@ -14,9 +14,8 @@
 
 .Tracker{
     width: 400px;
-    height: 500px;
+    height: 90%;
     margin-left: 40px;
-    margin-top: 10px;
 
 }
 
@@ -28,6 +27,13 @@ p{
 }
 
 .list-group-item{
+    border: none;
+}
+
+.list-group-item.active{
+    opacity: 1;
+    background-color: #dadbde;
+    color: black;
     border: none;
 }
 
@@ -94,11 +100,16 @@ p{
     display: flex;
     justify-content: center;
 }
-.ProgressBar
-{
+
+.ProgressBar {
     width: 90%;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.progress-bar{
+    background-color: #e94f2c;
+
 }
 
 .Bold{

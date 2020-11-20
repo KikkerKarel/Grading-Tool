@@ -2,18 +2,21 @@ body{
     font-family: 'Averta', sans-serif;
 }
 
-h2{
-    height: 80px;
-}
-.Answer
-{
+h4{
+    height: 110px;
+    text-align: center;
+    background-color: #e9ecef;
+    opacity: 1;
 
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding-top: 8px
 }
+
 
 .AnswerComponent{
-
-    max-height: 100%;
-    width: 300px;
+    height: 100%;
+    width: 400px;
 }
 
 textarea
@@ -21,11 +24,15 @@ textarea
     resize: none;
     border-radius: 5px;
 }
+
+.Answer{
+    width: 400px;
+}
+
 .AnswerHeader
 {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: lighter;
-    margin-left: 2%;
 }
 .CorrectAnswer
 {
