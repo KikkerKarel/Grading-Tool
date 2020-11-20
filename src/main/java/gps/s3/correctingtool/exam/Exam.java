@@ -2,11 +2,9 @@ package gps.s3.correctingtool.exam;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import gps.s3.correctingtool.user.AppUser;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Entity
 public class Exam {
@@ -14,6 +12,7 @@ public class Exam {
     @Id
     private int id;
     private int status;
+    @Column(nullable = false)
     private String studentName;
 
     @ManyToOne
