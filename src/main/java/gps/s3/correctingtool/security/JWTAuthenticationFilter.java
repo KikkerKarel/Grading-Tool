@@ -1,9 +1,7 @@
 package gps.s3.correctingtool.security;
 
-
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import gps.s3.correctingtool.user.AppUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,13 +31,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            AppUser creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), AppUser.class);
+            gps.s3.correctingtool.entity.User creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), gps.s3.correctingtool.entity.User.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             creds.getUsername(),
-                            creds.getPassword(),
+                            creds.getPasswordHash(),
                             new ArrayList<>())
             );
         } catch (IOException e) {

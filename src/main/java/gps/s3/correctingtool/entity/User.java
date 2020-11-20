@@ -1,11 +1,16 @@
 package gps.s3.correctingtool.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class User {
@@ -16,9 +21,10 @@ public class User {
     @Column(nullable = false)
     private String username;
 
-    @JsonIgnore
     @Column(nullable = false)
-    private String password_hash;
+    private String passwordHash;
 
-    private Instant registerDate, lastLogin;
+    private Instant registerDate;
+
+    private Instant lastLogin;
 }

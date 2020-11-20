@@ -24,11 +24,11 @@ public class ExamItem {
     private Integer gradedScore;
 
     @OneToOne
-    @JoinColumn(insertable = false, updatable = false)
+    @JoinColumn(insertable = false, updatable = false, name = "questionId")
     private Question question;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(insertable = false, updatable = false)
+    @JoinColumn(insertable = false, updatable = false, name = "examId")
     private Exam exam;
 }

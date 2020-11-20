@@ -1,13 +1,10 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.exam.*;
+import gps.s3.correctingtool.entity.*;
+import gps.s3.correctingtool.repo.*;
 import gps.s3.correctingtool.services.GradingTool;
-import gps.s3.correctingtool.user.AppUser;
-import gps.s3.correctingtool.user.IUserRepo;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/exams")
@@ -54,10 +51,14 @@ public class ExamController {
     public void CreateExam(@PathVariable("student") String studentName, @PathVariable("examiner") int examinerID) {
         Exam exam = new Exam();
         exam.setStudentName(studentName);
+
         long longID = examinerID;
-        AppUser user = uRepo.findById(longID).get();
+
+        User user = uRepo.findById(longID).get();
+
         exam.setExaminer(user);
-        exam.setStatus(1);
+        exam.setStatus(ExamStatus.NOT_GRADED);
+
         repo.save(exam);
     }
 

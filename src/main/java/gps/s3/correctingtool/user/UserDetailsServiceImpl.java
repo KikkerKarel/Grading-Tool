@@ -1,5 +1,6 @@
 package gps.s3.correctingtool.user;
 
+import gps.s3.correctingtool.repo.IUserRepo;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,10 +19,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser applicationUser = applicationUserRepository.findByUsername(username);
+        gps.s3.correctingtool.entity.User applicationUser = applicationUserRepository.findByUsername(username);
         if (applicationUser == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+        return new User(applicationUser.getUsername(), applicationUser.getPasswordHash(), emptyList());
     }
 }

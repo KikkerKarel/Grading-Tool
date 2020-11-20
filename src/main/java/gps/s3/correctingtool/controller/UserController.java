@@ -1,10 +1,10 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.user.AppUser;
-import gps.s3.correctingtool.user.IUserRepo;
+import gps.s3.correctingtool.repo.*;
+import gps.s3.correctingtool.entity.*;
+import gps.s3.correctingtool.user.UserDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.Instant;
 import java.util.Collection;
 
@@ -21,14 +21,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void signUp(@RequestBody AppUser user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()))
-                .setRegisterDate(Instant.now());
+    public void signUp(@RequestBody UserDTO userDTO) {
+        var user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPasswordHash(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        user.setRegisterDate(Instant.now());
+
         userRepo.save(user);
     }
 
     @RequestMapping("/all")
-    public Collection<AppUser> getUsers(){
+    public Collection<User> getUsers(){
         return userRepo.findAll();
     }
 }

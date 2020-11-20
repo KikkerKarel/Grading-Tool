@@ -22,6 +22,6 @@ public class Exam {
     private User examiner;
 
     @OneToMany
-    @JoinColumn(name="examId", nullable=false)
+    @JoinColumn(name="examId")
     private List<ExamItem> items;
 }
