@@ -7,9 +7,8 @@ h4{
     text-align: center;
     background-color: #e9ecef;
     opacity: 1;
-
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 10px;
     padding-top: 8px
 }
 
@@ -19,10 +18,14 @@ h4{
     width: 400px;
 }
 
+.form-control{
+    border-radius: 10px;
+}
+
 textarea
 {
     resize: none;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .Answer{
@@ -46,9 +49,6 @@ textarea
 {
     text-align: center;
 }
-.Button
-{
-    width: 50%;
-    color: white !important;
-}
+
+
 

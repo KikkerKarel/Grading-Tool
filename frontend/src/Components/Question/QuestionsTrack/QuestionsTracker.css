@@ -14,9 +14,9 @@
 
 .Tracker{
     width: 400px;
-    height: 90%;
+    height: 57%;
     margin-left: 40px;
-
+    border: #ced4da;
 }
 
 p{
@@ -28,6 +28,10 @@ p{
 
 .list-group-item{
     border: none;
+}
+
+.disabled-active{
+
 }
 
 .list-group-item.active{
@@ -44,12 +48,10 @@ p{
     overflow: scroll;
     overflow-x: hidden;
     border-style: solid;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
-
-
 }
 
 .OpenQuestions{
@@ -59,7 +61,7 @@ p{
     overflow: scroll;
     overflow-x: hidden;
     border-style: solid;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     border-radius: 0;
 }
@@ -71,6 +73,13 @@ p{
     font-size: 15px;
     color: black;
     font-weight: bold;
+}
+
+#disable-hover{
+    text-decoration: none;
+    cursor: auto;
+    background-color: white;
+    pointer-events: none;
 }
 
 .QuestionText:hover{
@@ -95,7 +104,7 @@ p{
     border-radius: 0 0 10px 10px;
     border-style: solid;
     border-top: none;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     display: flex;
     justify-content: center;

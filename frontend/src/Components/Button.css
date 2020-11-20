@@ -9,12 +9,6 @@
     border: none;
     cursor: pointer;
 }
-.btn:hover{
-    padding: 8px 20px;
-    transition: all 0.3s ease-out;
-    background: #fff;
-    color: #e94f2c;
-}
 
 .btn--primary{
     background-color: var(--primary);
@@ -37,15 +31,28 @@
     color: white;
     background-color: #e94f2c;
     text-decoration: none;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.6);
 }
+
+.btn--medium:hover{
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #fff;
+    color: #e94f2c;
+}
+
+/*#orange-button{*/
+/*    box-shadow: 5px 5px 10px rgba(0,0,0,0.6);*/
+/*}*/
 
 .btn--yellow {
     width: 49%;
     margin-left: 5px;
     border-radius: 4px;
     color: white;
-    background-color: gold;
+    background-color: #dfab42;
     text-decoration: none;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.6);
 }
 
 .btn--yellow:hover{
@@ -60,7 +67,7 @@
     border-radius: 4px;
     color: white;
     background-color: #5aad5a;
-    text-decoration: none;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.6);
 }
 
 .btn--green:hover{
