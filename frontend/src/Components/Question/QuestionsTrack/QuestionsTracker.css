@@ -14,10 +14,9 @@
 
 .Tracker{
     width: 400px;
-    height: 500px;
+    height: 57%;
     margin-left: 40px;
-    margin-top: 10px;
-
+    border: #ced4da;
 }
 
 p{
@@ -31,6 +30,17 @@ p{
     border: none;
 }
 
+.disabled-active{
+
+}
+
+.list-group-item.active{
+    opacity: 1;
+    background-color: #dadbde;
+    color: black;
+    border: none;
+}
+
 .ClosedQuestions{
     height: 50%;
     width: 100%;
@@ -38,12 +48,10 @@ p{
     overflow: scroll;
     overflow-x: hidden;
     border-style: solid;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
-
-
 }
 
 .OpenQuestions{
@@ -53,7 +61,7 @@ p{
     overflow: scroll;
     overflow-x: hidden;
     border-style: solid;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     border-radius: 0;
 }
@@ -65,6 +73,13 @@ p{
     font-size: 15px;
     color: black;
     font-weight: bold;
+}
+
+#disable-hover{
+    text-decoration: none;
+    cursor: auto;
+    background-color: white;
+    pointer-events: none;
 }
 
 .QuestionText:hover{
@@ -89,16 +104,21 @@ p{
     border-radius: 0 0 10px 10px;
     border-style: solid;
     border-top: none;
-    border-color: gray;
+    border-color: #ced4da;
     border-width: thin;
     display: flex;
     justify-content: center;
 }
-.ProgressBar
-{
+
+.ProgressBar {
     width: 90%;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.progress-bar{
+    background-color: #e94f2c;
+
 }
 
 .Bold{

@@ -21,7 +21,8 @@ public class Exam {
     private AppUser examiner;
 
     @OneToMany
-    @JoinColumn(name="exam_id", nullable=false)
+    //@JoinColumn(name="exam_id", nullable=false)
+    @JoinColumn(name="exam_id")
     private List<ExamItem> items;
 
     public AppUser getExaminer() {
@@ -67,6 +68,10 @@ public class Exam {
     public Exam setItems(List<ExamItem> items) {
         this.items = items;
         return this;
+    }
+
+    public void addExamItem(ExamItem examItem){
+        this.items.add(examItem);
     }
 
     @JsonGetter("progress")
