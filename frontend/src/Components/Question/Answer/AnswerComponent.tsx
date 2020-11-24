@@ -66,7 +66,7 @@ class AnswerComponent extends Component<props> {
                     <Button className="Button" variant="warning">Wijzigen</Button>
                 </div>
 
-                <ScoreComponent />
+                <ScoreComponent questionId={this.props.questionId}/>
             </div>);
     }
 }

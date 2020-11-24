@@ -22,3 +22,43 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+
+.rating-buttons {
+    background-color: #5a5a5a;
+    border: solid 1px black;
+    color: white;
+}
+
+.rating-buttons:focus {
+    background-color: #5aad5a;
+    color: black;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.rating-buttons-system:disabled {
+    background-color: black;
+    cursor: default;
+    color: white;
+    border: solid 1px black;
+}
+
+.rating-buttons-system:hover{
+    color: white;
+    cursor: default;
+}
+
+#correctorRating:hover{
+     background-color: #5aad5a;
+     color: white;
+ }
+
+.rating-buttons-system-correct:disabled{
+    background-color: green;
+    cursor: default;
+    border: solid 1px black;
+}
+.rating-buttons-system-correct:hover{
+    color: white;
+    cursor: default;
+}
