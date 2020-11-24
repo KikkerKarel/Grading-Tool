@@ -1,7 +1,6 @@
 package gps.s3.correctingtool.entity;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Collection;
 

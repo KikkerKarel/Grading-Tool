@@ -8,5 +8,5 @@ import java.util.Collection;
 
 public interface IExamItemRepo extends JpaRepository<ExamItem, ExamItemId> {
     Collection<ExamItem> findExamItemByQuestionId(int id);
-    ExamItem findByQuestionId(int id);
+    ExamItem findByQuestionIdAndExamId(int questionId, int examId);
 }

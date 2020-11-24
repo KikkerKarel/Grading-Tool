@@ -13,15 +13,18 @@ class AnswerComponent extends Component<props> {
     state = {
         text: '',
         answer: '',
-        studentAnswer: ''
+        studentAnswer: '',
+        examId: ''
     }
 
     async componentDidMount() {
         axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
+            console.log(response.data);
             this.setState({
                 text: response.data[0].question.text,
-                studentAnswer: response.data[0].textAnswer,
-                answer: response.data[0].question.textAnswer.value
+                studentAnswer: response.data[0].studentTextAnswer,
+                answer: response.data[0].question.correctAnswer.text,
+                examId: response.data[0].examId,
             })
             Cookies.set('score', "0");
         })
@@ -32,8 +35,9 @@ class AnswerComponent extends Component<props> {
             axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
                 this.setState({
                     text: response.data[0].question.text,
-                    studentAnswer: response.data[0].textAnswer,
-                    answer: response.data[0].question.textAnswer.value
+                    studentAnswer: response.data[0].studentTextAnswer,
+                    answer: response.data[0].question.correctAnswer.text,
+                    examId: response.data[0].examId,
                 })
             })
         }
@@ -41,8 +45,10 @@ class AnswerComponent extends Component<props> {
 
     gradeClick = () =>{
         let score = Cookies.get("score");
+        let examId = this.state.examId;
+        let questionId = this.props.questionId;
 
-        axios.put(`/api/exams/grade/question/${this.props.questionId}/${score}`).then(() => {
+        axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
             window.location.replace("./");
         });
     }

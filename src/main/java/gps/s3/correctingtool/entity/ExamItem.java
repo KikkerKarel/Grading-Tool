@@ -9,7 +9,6 @@ import javax.persistence.*;
 @IdClass(ExamItemId.class)
 public class ExamItem {
     @Id
-//    @Column(insertable = false, updatable = false)
     private int examId;
 
     @Id
@@ -31,4 +30,8 @@ public class ExamItem {
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false, name = "examId")
     private Exam exam;
+
+    public boolean isGraded(){
+        return gradedCorrect != null;
+    }
 }

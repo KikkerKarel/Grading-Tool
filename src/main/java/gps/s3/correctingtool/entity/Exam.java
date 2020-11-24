@@ -1,5 +1,6 @@
 package gps.s3.correctingtool.entity;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
@@ -24,4 +25,13 @@ public class Exam {
     @OneToMany
     @JoinColumn(name="examId")
     private List<ExamItem> items;
+
+    @JsonGetter("progress")
+    public long getProgress()
+    {
+        if(items.size() == 0)
+            return 100;
+
+        return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
+    }
 }

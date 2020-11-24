@@ -7,8 +7,6 @@ import axios from "axios";
 
 class ScoreComponent extends Component {
     render() {
-        console.log(Cookies.get("score"));
-
         let ratingStars = {
             edit: false,
             size: 35,

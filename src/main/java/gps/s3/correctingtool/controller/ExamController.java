@@ -62,18 +62,17 @@ public class ExamController {
         repo.save(exam);
     }
 
-    @PutMapping("/grade/question/{id}/{score}")
-    public @ResponseBody String UpdateQuestion(@PathVariable("id") int id, @PathVariable("score") int score) {
-        ExamItem examItem = itemRepo.findByQuestionId(id);
-        examItem.setGradedScore(score);
+    @PutMapping("/grade/{exam}/{question}/{score}")
+    public @ResponseBody ExamItem UpdateQuestion(@PathVariable("exam") int exam,
+                                                 @PathVariable("question") int question,
+                                                 @PathVariable("score") int score) {
+        ExamItem examItem = itemRepo.findByQuestionIdAndExamId(question, exam);
 
-        if (score >0)
-        {
-            examItem.setGradedCorrect(true);
-        }
-        examItem.setGradedCorrect(false);
+        examItem.setGradedScore(score);
+        examItem.setGradedCorrect(score > 0);
+
         itemRepo.save(examItem);
 
-        return "Updated";
+        return examItem;
     }
 }

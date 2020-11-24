@@ -27,7 +27,7 @@ class QuestionPage extends Component {
                 Exam: response.data,
                 isLoading: false
             })
-        })
+        });
     }
 
     renderQuestionTrackComponent()
