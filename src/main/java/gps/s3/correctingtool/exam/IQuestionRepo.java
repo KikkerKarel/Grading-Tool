@@ -6,4 +6,5 @@ import java.util.Collection;
 public interface IQuestionRepo extends JpaRepository<Question, Long> {
 
     Question findByText(String text);
+    Question findById(int id);
 }
