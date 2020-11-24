@@ -19,7 +19,7 @@ class QuickForm extends Component<props> {
         let formRadio;
         let formItems = this.props.data.map((d) => {
             if (d.type === "radio") {
-                return ([
+                return (
                     formRadio =
                         <>
                             <Form.Group>
@@ -30,7 +30,7 @@ class QuickForm extends Component<props> {
                                             id={d.checkLabel2}/>
                             </Form.Group>
                         </>
-                ])
+                )
             } else {
                 return (
                     <Form.Group>

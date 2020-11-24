@@ -61,8 +61,8 @@ class QuestionTracker extends Component <props>{
         axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}`).then(response =>{
             this.setState({
                 questionId: response.data[0].questionId,
-            });
-            Cookies.set('score', response.data[0].gradedScore);
+            },() => Cookies.set('score', response.data[0].gradedScore));
+            console.log(this.state.questionId);
         })
     };
 

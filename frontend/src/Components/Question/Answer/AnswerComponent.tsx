@@ -68,7 +68,7 @@ class AnswerComponent extends Component<props> {
                 </div>
                 </div>
 
-                <ScoreComponent />
+                <ScoreComponent questionId={this.props.questionId}/>
             </div>);
     }
 }
