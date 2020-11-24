@@ -20,9 +20,11 @@ public class ExamItem {
 
     private String textAnswer;
 
-    private int mpAnswer;
+    private Integer mpAnswer;
 
     private Boolean gradedCorrect;
+
+    private Integer gradedScore;
 
     @OneToOne
     @JoinColumn(insertable = false, updatable = false)
@@ -78,11 +80,11 @@ public class ExamItem {
         return this;
     }
 
-    public int getMpAnswer() {
+    public Integer getMpAnswer() {
         return mpAnswer;
     }
 
-    public ExamItem setMpAnswer(int mpAnswer) {
+    public ExamItem setMpAnswer(Integer mpAnswer) {
         this.mpAnswer = mpAnswer;
         return this;
     }
@@ -104,13 +106,23 @@ public class ExamItem {
         return getExamId() == examItem.getExamId() &&
                 getQuestionId() == examItem.getQuestionId() &&
                 getMpAnswer() == examItem.getMpAnswer() &&
+                getGradedCorrect() == examItem.getGradedCorrect() &&
                 Objects.equals(getTextAnswer(), examItem.getTextAnswer()) &&
                 Objects.equals(getGradedCorrect(), examItem.getGradedCorrect()) &&
-                Objects.equals(getExam(), examItem.getExam());
+                Objects.equals(getExam(), examItem.getExam()) &&
+                Objects.equals(getGradedScore(), examItem.getGradedScore());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getExamId(), getQuestionId(), getTextAnswer(), getMpAnswer(), getGradedCorrect(), getExam());
+        return Objects.hash(getExamId(), getQuestionId(), getTextAnswer(), getMpAnswer(), getGradedCorrect(), getExam(), getGradedScore());
+    }
+
+    public Integer getGradedScore() {
+        return gradedScore;
+    }
+
+    public void setGradedScore(Integer gradedScore) {
+        this.gradedScore = gradedScore;
     }
 }

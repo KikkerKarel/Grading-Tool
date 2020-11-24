@@ -4,12 +4,11 @@ import {Component} from "react";
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 import '../../Dashboard.css'
+import axios from 'axios'
 import ExamTable from "../ExamTable/ExamTable";
-
 
 interface props {
 }
-
 
 class ExamensPage extends Component<props, {}> {
     state = {
@@ -18,10 +17,9 @@ class ExamensPage extends Component<props, {}> {
     };
 
     async componentDidMount() {
-        const response = await fetch('/api/exams/find/all');
-        const body = await response.json();
-        this.setState({Exams: body, isLoading: false});
+        axios.get(`/api/exams/find/all`).then(response => this.setState({Exams: response.data, isLoading: false}));
     }
+
     render() {
         const {Exams, isLoading} = this.state;
 
@@ -32,14 +30,13 @@ class ExamensPage extends Component<props, {}> {
             <div className="page-container">
                 <div className="content-wrap">
                     <NavbarComponent/>
-                </div>cdd
+                </div>
                 <section className="content-container">
                     <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>
                 </section>
                 <Footer/>
             </div>
-
         );
     }
 }

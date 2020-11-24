@@ -6,6 +6,7 @@ import gps.s3.correctingtool.user.AppUser;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 public class Exam {
@@ -71,6 +72,9 @@ public class Exam {
     @JsonGetter("progress")
     public long getProgress()
     {
+        if(items.size() == 0){
+            return 0;
+        }
        return items.stream().filter(i -> i.getGradedCorrect() != null).count() * 100 / items.size();
     }
 
