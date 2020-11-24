@@ -141,6 +141,7 @@ class QuestionTracker extends Component <props>{
                                     return this.state.Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 1) {
                                             return <ListGroup.Item
+                                                       id="disable-hover"
                                                        eventKey={examitem.questionId}
                                                        className={setMpClassname(examitem.gradedCorrect, examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}

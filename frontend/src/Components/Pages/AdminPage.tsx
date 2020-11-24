@@ -5,6 +5,7 @@ import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
 import QuickCard from "../QuickCard/QuickCard";
+import {CardDeck} from "react-bootstrap";
 
 interface props {
 }
@@ -18,9 +19,12 @@ class AdminPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    <QuickCard image="Images/Dev-test" text="Maak examen" link="/create-exam" title="Maak examen"/>
-                    <QuickCard image="Images/Dev-test" text="Maak examen Item" link="/create-examitem" title="Maak examen Item"/>
-                    <QuickCard image="Images/Dev-test" text="Maak Vraag" link="/create-question" title="Maak vraag"/>
+                    <CardDeck>
+                        <QuickCard image="Images/Dev-test" text="Maak examen" link="/create-exam" title="Maak examen"/>
+                        <QuickCard image="Images/Dev-test" text="Maak examen Item" link="/create-examitem" title="Maak examen Item"/>
+                        <QuickCard image="Images/Dev-test" text="Maak Vraag" link="/create-question" title="Maak vraag"/>
+                    </CardDeck>
+
                 </section>
                 <Footer/>
             </div>

@@ -51,20 +51,22 @@ class AnswerComponent extends Component<props> {
     render() {
         return (
             <div className="AnswerComponent">
-                <h2>{this.state.text}</h2>
-                <Form.Group className="Answer">
+                <h4>{this.state.text}</h4>
+                <div className="Answer">
+                <Form.Group>
                     <Form.Label className="AnswerHeader">Antwoord (tekst)</Form.Label>
                     <Form.Control as="textarea" rows={3} cols={30} readOnly={true} placeholder={this.state.studentAnswer}
                                   className="AnswerText"/>
                 </Form.Group>
                 <Form.Group className="Answer">
-                    <Form.Label className="CorrectAnswerHeader">Goed gekeurde antwoorden (tekst)</Form.Label>
+                    <Form.Label className="AnswerHeader">Goed gekeurde antwoorden (tekst)</Form.Label>
                     <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer}
                                   className="CorrectAnswerText" readOnly={true}/>
                 </Form.Group>
                 <div className="buttondiv">
-                    <Button className="Button" variant="success" onClick={this.gradeClick} >Verstuur score</Button>
-                    <Button className="Button" variant="warning">Wijzigen</Button>
+                    <Button className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
+                    <Button className="btn--yellow" >Wijzigen</Button>
+                </div>
                 </div>
 
                 <ScoreComponent questionId={this.props.questionId}/>
