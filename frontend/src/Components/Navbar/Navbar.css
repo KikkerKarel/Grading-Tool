@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    border-bottom: 2px solid #383230;
     position: fixed;
     width: 100%;
     flex-grow: 0 !important;
@@ -19,16 +18,16 @@
 }
 
 .Citrus-logo{
-    margin-left: 0.5rem;
+
     font-size: 1.6rem;
-    width: 168px;
-    height: 70px;
+    width: 240px;
+    height: 100px;
 }
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 100px;
     list-style: none;
     text-align: center;
     width: 70vw;
@@ -37,6 +36,8 @@
 }
 
 .nav-links {
+    font-weight: bold;
+    font-size: 25px;
     color: #383230;
     text-decoration: none;
     padding: 0.5rem 1rem;
