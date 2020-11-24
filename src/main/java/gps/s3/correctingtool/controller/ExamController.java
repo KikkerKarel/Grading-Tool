@@ -61,6 +61,11 @@ public class ExamController {
         repo.save(exam);
     }
 
+    @RequestMapping("/previousgrading/{id}")
+    public ExamItem getExamItemPreviousGrade(@PathVariable("id") int id) {
+        return itemRepo.findByQuestionId(id);
+    }
+
     @PutMapping("/grade/question/{id}/{score}")
     public @ResponseBody String UpdateQuestion(@PathVariable("id") int id, @PathVariable("score") int score) {
         ExamItem examItem = itemRepo.findByQuestionId(id);

@@ -61,8 +61,8 @@ class QuestionTracker extends Component <props>{
         axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}`).then(response =>{
             this.setState({
                 questionId: response.data[0].questionId,
-            });
-            Cookies.set('score', response.data[0].gradedScore);
+            },() => Cookies.set('score', response.data[0].gradedScore));
+            console.log(this.state.questionId);
         })
     };
 
@@ -142,6 +142,7 @@ class QuestionTracker extends Component <props>{
                                     return this.state.Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == 1) {
                                             return <ListGroup.Item
+                                                       id="disable-hover"
                                                        eventKey={examitem.questionId}
                                                        className={setMpClassname(examitem.gradedCorrect, examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}
