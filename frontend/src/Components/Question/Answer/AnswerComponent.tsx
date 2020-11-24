@@ -41,6 +41,7 @@ class AnswerComponent extends Component<props> {
 
     gradeClick = () =>{
         let score = Cookies.get("score");
+        console.log(score);
 
         axios.put(`/api/exams/grade/question/${this.props.questionId}/${score}`).then(() => {
             window.location.replace("./");

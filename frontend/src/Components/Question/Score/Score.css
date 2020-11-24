@@ -36,6 +36,18 @@ body{
     box-shadow: none;
 }
 
+.rating-buttons-correct
+{
+    background-color: #5aad5a;
+    cursor: default;
+    border: solid 1px black;
+}
+
+.rating-buttons-correct:hover{
+    color: white;
+    cursor: default;
+}
+
 .rating-buttons-system:disabled {
     background-color: black;
     cursor: default;

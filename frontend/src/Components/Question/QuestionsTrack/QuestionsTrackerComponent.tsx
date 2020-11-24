@@ -62,7 +62,6 @@ class QuestionTracker extends Component <props>{
             this.setState({
                 questionId: response.data[0].questionId,
             },() => Cookies.set('score', response.data[0].gradedScore));
-            console.log(this.state.questionId);
         })
     };
 
