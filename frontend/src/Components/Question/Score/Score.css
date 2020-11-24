@@ -2,6 +2,10 @@ body{
     font-family: 'Averta', sans-serif;
 }
 
+.ScoreComponent{
+    justify-content: left;
+}
+
 .scoringdiv
 {
     text-align: center;
