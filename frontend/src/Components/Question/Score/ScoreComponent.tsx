@@ -38,7 +38,7 @@ class ScoreComponent extends Component {
         };
 
         return (
-            <>
+            <div className="ScoreComponent">
                 <div className="scoringdiv">
                     <label className="textlabel">Systeem aangeraadde score</label>
                     <ReactStars readOnly classNames="stars" {...ratingStars} />
@@ -50,7 +50,7 @@ class ScoreComponent extends Component {
                     <label className="textlabel">Gegeven score</label>
                     <ReactStars classNames="stars" {...ratingStars2} />
                 </div>
-            </>
+            </div>
         );
     }
 }
