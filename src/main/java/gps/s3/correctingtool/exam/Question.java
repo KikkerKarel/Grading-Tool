@@ -7,6 +7,9 @@ import java.util.Objects;
 @Entity
 public class Question {
 
+    public static final int TYPE_MULTIPLE_CHOICE = 1;
+    public static final int TYPE_TEXT_INPUT = 2;
+
     @Id
     private int id;
 
