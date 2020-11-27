@@ -18,6 +18,7 @@ import AdminPage from "./Components/Pages/AdminPage";
 import CreateExamPage from "./Components/Pages/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
+import NavbarComponent from "./Components/Navbar/NavbarComponent";
 
 
 function App() {
