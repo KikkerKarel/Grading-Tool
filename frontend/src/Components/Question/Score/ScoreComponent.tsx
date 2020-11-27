@@ -1,17 +1,14 @@
 import React, {Component} from "react";
-// @ts-ignore
-// import ReactStars from "react-rating-stars-component";
 import './Score.css';
 import Cookies from "js-cookie";
 import axios from "axios";
 import {Button, ButtonGroup} from "react-bootstrap";
 import highlight from "./Highlight";
-import highlightGraded from "./Gang";
-import gradedHighlight from "./GradedHighlight";
 
 interface props {
     questionId?: number
 }
+
 
 class ScoreComponent extends Component<props> {
     state = {
@@ -22,96 +19,84 @@ class ScoreComponent extends Component<props> {
     }
 
     changeValue(event: any){
-        this.setState({valueStars: event}, () => console.log("State 'valueStars' set to: " + this.state.valueStars))
+        this.setState({valueStars: event}, () => Cookies.set("score", event));
     }
 
-    async componentDidMount() {
-        console.log(this.props.questionId);
-        await axios.get(`../api/exams/previousgrading/${this.props.questionId}`).then(response =>
+    async componentDidUpdate() {
+        if (this.props.questionId !== Number(this.state.questionId))
+        {
+            await axios.get(`../api/exams/previousgrading/${this.props.questionId}`).then(response =>
                 this.setState(
                     {
-                    previousScore: response.data.gradedScore,
-                    valueStarts: 0,
-                    systemRating: 2
-                }
+                        previousScore: response.data.gradedScore,
+                        valueStarts: 0,
+                        systemRating: 2,
+                        questionId: this.props.questionId
+                    }
                 ));
-                console.log("State 'previousScore' set to: " + this.state.previousScore + "State 'valueStars' set to: "
-                    + this.state.valueStars + " and state 'systemRating' set to: " + this.state.systemRating);
+            console.log("State 'previousScore' set to: " + this.state.previousScore + "State 'valueStars' set to: "
+                + this.state.valueStars + " and state 'systemRating' set to: " + this.state.systemRating);
+        }
+
+    }
+
+     returnButtonClass(value:any) {
+         let Graded = this.state.previousScore;
+        let buttonInactive = "rating-buttons";
+        let buttonActive = "rating-buttons-correct";
+        if (value === Graded) {
+            return buttonActive;
+        }
+        return buttonInactive;
     }
 
     render() {
-        // let ratingStars = {
-        //     edit: false,
-        //     size: 35,
-        //     count: 5,
-        //     color: "black",
-        //     activeColor: "gold",
-        //     value: 3, // should be filled based on advice
-        //     a11y: true,
-        //     isHalf: false,
-        //     emptyIcon: <i className="far fa-star" />,
-        //     filledIcon: <i className="fa fa-star" />,
-        // };
-        //
-        // let ratingStars2 = {
-        //     size: 35,
-        //     count: 5,
-        //     color: "black",
-        //     activeColor: "gold",
-        //     value: this.state.valueStars,
-        //     a11y: true,
-        //     isHalf: false,
-        //     emptyIcon: <i className="far fa-star" />,
-        //     filledIcon: <i className="fa fa-star" />,
-        //     onChange: (newValue: any) => {
-        //         Cookies.set('score', newValue);
-        //     }
-        // };
-
-
         return (
             <div className="ScoreComponent">
                 <div className="scoringdiv">
                     <label className="textlabel">Systeem aangeraadde score</label>
                     {highlight(this.state.systemRating)}
-                    {/*<ReactStars readOnly classNames="stars" {...ratingStars} />*/}
                 </div>
 
                 <br/>
 
                 <div className="scoringdiv">
                     <label className="textlabel">Gegeven score</label>
-                    {/*{(() => {*/}
-                    {/*    {*/}
-                    {/*        {*/}
-                    {/*            let Graded = this.state.previousScore;*/}
-                    {/*            console.log(Graded);*/}
-                    {/*            // console.log(this.state.questionId);*/}
+                    {(() => {
+                        {
+                            {
+                                let Graded = this.state.previousScore;
+                                if(Graded !== null)
+                                {
+                                    return(
+                                        <ButtonGroup>
+                                            <Button className={this.returnButtonClass(0)} id="correctorRating" value={0} onClick={() => this.changeValue(0)} > 0 </Button>
+                                            <Button className={this.returnButtonClass(1)} id="correctorRating" value={1} onClick={() => this.changeValue(1)} > 1 </Button>
+                                            <Button className={this.returnButtonClass(2)} id="correctorRating" value={2} onClick={() => this.changeValue(2)} > 2 </Button>
+                                            <Button className={this.returnButtonClass(3)} id="correctorRating" value={3} onClick={() => this.changeValue(3)} > 3 </Button>
+                                            <Button className={this.returnButtonClass(4)} id="correctorRating" value={4} onClick={() => this.changeValue(4)} > 4 </Button>
+                                            <Button className={this.returnButtonClass(5)} id="correctorRating" value={5} onClick={() => this.changeValue(5)} > 5 </Button>
+                                        </ButtonGroup>
+                                    )
+                                }
+                                else{
+                                    return(
+                                        <ButtonGroup toggle>
+                                            <Button className="rating-buttons" id="correctorRating" value={0} onClick={() => this.changeValue(0)}>
+                                                0
+                                            </Button>
+                                            <Button className="rating-buttons" id="correctorRating" value={1} onClick={() => this.changeValue(1)}>1</Button>
+                                            <Button className="rating-buttons" id="correctorRating" value={2} onClick={() => this.changeValue(2)}>2</Button>
+                                            <Button className="rating-buttons" id="correctorRating" value={3} onClick={() => this.changeValue(3)}>3</Button>
+                                            <Button className="rating-buttons" id="correctorRating" value={4} onClick={() => this.changeValue(4)}>4</Button>
+                                            <Button className="rating-buttons" id="correctorRating" value={5} onClick={() => this.changeValue(5)}>5</Button>
+                                        </ButtonGroup>
+                                    )
+                                }
+                            }
+                        }
+                    })()}
 
-                    {/*            if(Graded !== null)*/}
-                    {/*            {*/}
-                    {/*                return(*/}
-                    {/*                    console.log("hallo")*/}
-                    {/*                )*/}
-                    {/*            }*/}
-                    {/*            else{*/}
-                    {/*                return(*/}
-                    {/*                    console.log("doei")*/}
-                    {/*                )*/}
-                    {/*            }*/}
-                    {/*        }*/}
-                    {/*    }*/}
-                    {/*})()}*/}
-                    <ButtonGroup toggle>
-                        <Button className="rating-buttons" id="correctorRating" value={0} onClick={() => this.changeValue(0)}>
-                            0
-                        </Button>
-                        <Button className="rating-buttons" id="correctorRating" value={1} onClick={() => this.changeValue(1)}>1</Button>
-                        <Button className="rating-buttons" id="correctorRating" value={2} onClick={() => this.changeValue(2)}>2</Button>
-                        <Button className="rating-buttons" id="correctorRating" value={3} onClick={() => this.changeValue(3)}>3</Button>
-                        <Button className="rating-buttons" id="correctorRating" value={4} onClick={() => this.changeValue(4)}>4</Button>
-                        <Button className="rating-buttons" id="correctorRating" value={5} onClick={() => this.changeValue(5)}>5</Button>
-                    </ButtonGroup>
                 </div>
             </div>
         );
