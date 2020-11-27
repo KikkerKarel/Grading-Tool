@@ -79,7 +79,7 @@ public class Exam {
         if(items.size() == 0)
             return 100;
 
-       return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
+        return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
     }
 
     @Override

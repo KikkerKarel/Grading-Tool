@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.Instant;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/users")
@@ -32,6 +33,11 @@ public class UserController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()))
                 .setRegisterDate(Instant.now());
         userRepo.save(user);
+    }
+
+    @RequestMapping("/all")
+    public Collection<AppUser> getUsers(){
+        return userRepo.findAll();
     }
 
     @GetMapping(value = "/me")

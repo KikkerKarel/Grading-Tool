@@ -10,7 +10,7 @@ import AuthService from "../../Services/auth.service"
 import {Redirect} from 'react-router-dom'
 
 interface props {
-    name : string
+    name? : string
 }
 
 class LoginPage extends Component<props> {
