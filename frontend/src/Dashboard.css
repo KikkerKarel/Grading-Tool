@@ -26,7 +26,6 @@
 /*}*/
 
 .content-container{
-    border: 2px green solid;
     top: 80px;
     position: fixed;
 }

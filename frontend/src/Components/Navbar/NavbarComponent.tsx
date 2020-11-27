@@ -20,7 +20,6 @@ class NavbarComponent extends Component {
                     <Nav className="nav-menu">
                     <Nav.Link className="nav-links" href="/courses">Courses</Nav.Link>
                         <Nav.Link className="nav-links" href="/examens">Examens</Nav.Link>
-                        {/*<Nav.Link className="nav-links" href="/advice">Advice</Nav.Link>*/}
                         {this.getButton()}
                     </Nav>
             </Navbar>

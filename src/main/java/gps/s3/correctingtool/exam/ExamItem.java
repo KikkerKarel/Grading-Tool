@@ -25,6 +25,8 @@ public class ExamItem {
 
     private Integer score;
 
+    private Boolean gradedCorrect;
+
     @OneToOne
     @JoinColumn(insertable = false, updatable = false)
     private Question question;
@@ -33,11 +35,6 @@ public class ExamItem {
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)
     private Exam exam;
-
-    public void setCorrect(boolean correct)
-    {
-        score = correct ? 5 : 0;
-    }
 
     public boolean isGraded()
     {

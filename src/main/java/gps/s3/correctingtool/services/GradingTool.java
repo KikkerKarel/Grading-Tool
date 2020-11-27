@@ -20,7 +20,7 @@ public class GradingTool {
             MultipleChoiceAnswer correct = question.getChoices().stream()
                 .filter(MultipleChoiceAnswer::isCorrect).findFirst().get();
 
-            examItem.setCorrect(examItem.getMpAnswer() == correct.getId());
+            examItem.setGradedCorrect(examItem.getMpAnswer() == correct.getId());
         }
         repo.save(exam);
         return exam;

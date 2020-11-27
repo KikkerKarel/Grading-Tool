@@ -6,7 +6,8 @@ import {Button, ButtonGroup} from "react-bootstrap";
 import highlight from "./Highlight";
 
 interface props {
-    questionId?: number
+    questionId?: number,
+    examId?: number,
 }
 
 
@@ -15,7 +16,8 @@ class ScoreComponent extends Component<props> {
         valueStars: Number,
         systemRating: Number,
         previousScore: Number,
-        questionId: Number
+        questionId: Number,
+        examId: Number
     }
 
     changeValue(event: any){
@@ -25,13 +27,14 @@ class ScoreComponent extends Component<props> {
     async componentDidUpdate() {
         if (this.props.questionId !== Number(this.state.questionId))
         {
-            await axios.get(`../api/exams/previousgrading/${this.props.questionId}`).then(response =>
+            await axios.get(`../api/exams/previousgrading/${this.props.questionId}/${this.props.examId}`).then(response =>
                 this.setState(
                     {
                         previousScore: response.data.gradedScore,
-                        valueStarts: 0,
+                        valueStars: 0,
                         systemRating: 2,
-                        questionId: this.props.questionId
+                        questionId: this.props.questionId,
+
                     }
                 ));
             console.log("State 'previousScore' set to: " + this.state.previousScore + "State 'valueStars' set to: "

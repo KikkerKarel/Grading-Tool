@@ -12,7 +12,7 @@ import axios from "axios";
 class QuestionPage extends Component {
     state = {
         isLoading: true,
-        Exam: [],
+        Exam: {},
         questionId: 0,
         examId: 0,
     };

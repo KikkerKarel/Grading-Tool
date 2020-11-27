@@ -6,7 +6,8 @@ import ScoreComponent from "../Score/ScoreComponent";
 import Cookies from "js-cookie";
 
 interface props {
-    questionId?: number
+    questionId?: number,
+    examId?: number,
 }
 
 class AnswerComponent extends Component<props> {
@@ -43,7 +44,7 @@ class AnswerComponent extends Component<props> {
         let score = Cookies.get("score");
         console.log(score);
 
-        axios.put(`/api/exams/grade/question/${this.props.questionId}/${score}`).then(() => {
+        axios.put(`/api/exams/grade/question/${this.props.questionId}/${this.props.examId}/${score}`).then(() => {
             window.location.replace("./");
         });
     }
@@ -69,7 +70,7 @@ class AnswerComponent extends Component<props> {
                 </div>
                 </div>
 
-                <ScoreComponent questionId={this.props.questionId}/>
+                <ScoreComponent questionId={this.props.questionId} examId={this.props.examId}/>
             </div>);
     }
 }

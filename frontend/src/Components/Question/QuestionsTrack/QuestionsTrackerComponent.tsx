@@ -8,14 +8,22 @@ import AnswerComponent from "../Answer/AnswerComponent";
 import Cookies from "js-cookie";
 
 interface props{
-    Exam : Array<string>
+    Exam : {}
 }
 
 class QuestionTracker extends Component <props>{
     state = {
         isLoading: true,
-        Exam: [],
+        Exam: {
+            examiner: {},
+            id: Number,
+            items: [],
+            progress: Number,
+            status: Number,
+            studentName: String
+        },
         questionId: 0,
+        examId: 0,
     };
 
     private foundQuestion : boolean = false;
@@ -23,20 +31,20 @@ class QuestionTracker extends Component <props>{
     async componentDidMount() {
         await this.setState(
             {
-                Exam : this.props.Exam,
+                Exam : this.props.Exam
             }
-        )
+        );
         Cookies.set('score', "0");
-
         {(() => {
             {
                 {
                     this.state.Exam.items.map((examitem: any) => {
-                        if (examitem.question.type == 2 && examitem.gradedScore == null && !this.foundQuestion) {
+                        if (examitem.question.type == 2 && examitem.score == null && !this.foundQuestion) {
                             this.setState(
                                 {
                                     questionId : examitem.question.id,
-                                    isLoading: false
+                                    isLoading: false,
+                                    examId: this.state.Exam.id,
                                 }
                             );
                             this.foundQuestion = true;
@@ -46,7 +54,8 @@ class QuestionTracker extends Component <props>{
                             this.setState(
                                 {
                                     questionId : examitem.question.id,
-                                    isLoading: false
+                                    isLoading: false,
+                                    examId: this.state.Exam.id,
                                 }
                             );
                             this.foundQuestion = true;
@@ -70,7 +79,7 @@ class QuestionTracker extends Component <props>{
         if (!this.state.isLoading) {
             return(
                 <>
-                    <AnswerComponent questionId={this.state.questionId} />
+                    <AnswerComponent questionId={this.state.questionId} examId={this.state.examId} />
                </>
             )
         }
@@ -106,7 +115,7 @@ class QuestionTracker extends Component <props>{
             }
         }
 
-        function setGradedClassname(gradedScore: any, id: any) {
+        function setGradedClassname(score: any, id: any) {
             let prefix = 'QuestionText';
 
             if(id ==  qID)
@@ -114,11 +123,11 @@ class QuestionTracker extends Component <props>{
                 prefix = prefix + ' Bold'
             }
 
-            if (gradedScore >= 1)
+            if (score >= 1)
             {
                 return prefix + ' Correct'
             }
-            else if(gradedScore == 0)
+            else if(score == 0)
             {
                 return prefix + ' False'
             }
@@ -143,7 +152,7 @@ class QuestionTracker extends Component <props>{
                                             return <ListGroup.Item
                                                        id="disable-hover"
                                                        eventKey={examitem.questionId}
-                                                       className={setMpClassname(examitem.gradedCorrect, examitem.questionId)}>
+                                                       className={setMpClassname(examitem.graded, examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}
                                             </ListGroup.Item>
                                         }
@@ -164,7 +173,7 @@ class QuestionTracker extends Component <props>{
                                             return <ListGroup.Item
                                                 onClick={this.handleClick}
                                                 eventKey={examitem.questionId}
-                                                className={setGradedClassname(examitem.gradedScore , examitem.questionId)}>
+                                                className={setGradedClassname(examitem.score , examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}
                                             </ListGroup.Item>
                                         }
@@ -175,7 +184,7 @@ class QuestionTracker extends Component <props>{
                 </ListGroup>
                 <div className="LoadingBar">
                     <ProgressBar className="ProgressBar"
-                                 animated now={this.state.Exam.progress}
+                                 animated now={parseInt(this.state.Exam.progress.toString())}
                                  label={`${this.state.Exam.progress}%`}/>
                 </div>
             </div>
