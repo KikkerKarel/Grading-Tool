@@ -18,14 +18,14 @@ class LoginPage extends Component<props> {
     state = {
         redirect: false,
         username : '',
-        passwordHash :''
+        password :''
     }
 
     handleClick(event: any)
     {
         event.preventDefault();
         console.log(this.state);
-        AuthService.login(this.state.username, this.state.passwordHash).then(data => {
+        AuthService.login(this.state.username, this.state.password).then(data => {
             this.setState({redirect: true});
         })
     }
@@ -54,7 +54,7 @@ class LoginPage extends Component<props> {
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={(event) => { this.setState({passwordHash: event.target.value})}} type="password" placeholder="Password" />
+                                <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check type="checkbox" label="Remember me" />
