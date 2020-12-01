@@ -7,14 +7,22 @@ import AnswerComponent from "../Answer/AnswerComponent";
 import Cookies from "js-cookie";
 
 interface props{
-    Exam : Array<string>
+    Exam : {}
 }
 
 class QuestionTracker extends Component <props>{
     state = {
         isLoading: true,
-        Exam: [],
+        Exam: {
+            examiner: {},
+            id: Number,
+            items: [],
+            progress: Number,
+            status: Number,
+            studentName: String
+        },
         questionId: 0,
+        examId: 0,
     };
 
     private foundQuestion : boolean = false;
@@ -22,12 +30,10 @@ class QuestionTracker extends Component <props>{
     async componentDidMount() {
         await this.setState(
             {
-                Exam : this.props.Exam,
+                Exam : this.props.Exam
             }
-        )
-
+        );
         Cookies.set('score', "0");
-
         {(() => {
             {
                 {
@@ -36,7 +42,8 @@ class QuestionTracker extends Component <props>{
                             this.setState(
                                 {
                                     questionId : examitem.question.id,
-                                    isLoading: false
+                                    isLoading: false,
+                                    examId: this.state.Exam.id,
                                 }
                             );
                             this.foundQuestion = true;
@@ -46,7 +53,8 @@ class QuestionTracker extends Component <props>{
                             this.setState(
                                 {
                                     questionId : examitem.question.id,
-                                    isLoading: false
+                                    isLoading: false,
+                                    examId: this.state.Exam.id,
                                 }
                             );
                             this.foundQuestion = true;
@@ -59,7 +67,7 @@ class QuestionTracker extends Component <props>{
 
     handleClick = (event : any) =>{
         let targetId = event.target.getAttribute('data-rb-event-key');
-        let item = this.state.Exam.items.find((x:any) => x.question.id == targetId);
+        let item: any= this.state.Exam.items.find((x:any) => x.question.id == targetId);
 
         this.setState({questionId: item.question.id});
         Cookies.set('score', item.score);
@@ -70,7 +78,7 @@ class QuestionTracker extends Component <props>{
         if (!this.state.isLoading) {
             return(
                 <>
-                    <AnswerComponent questionId={this.state.questionId} />
+                    <AnswerComponent questionId={this.state.questionId} examId={this.state.examId} />
                </>
             )
         }
@@ -80,16 +88,17 @@ class QuestionTracker extends Component <props>{
         const {isLoading} = this.state;
 
         if (isLoading) {
-            return <Button onClick={()=>
-                        window.location.replace("../Examens")}>
-                        Ga terug naar de examentabel
-                    </Button>
+            return (<><h1>Alle vragen zijn nagekeken: </h1>
+                <Button onClick={() => window.location.replace("../Examens")}>
+                    Ga terug naar de examentabel</Button>
+            </>)
         }
 
         let qID = this.state.questionId;
         let keyCount = 1;
 
         function setChoiceClassname(gradedtype: any, id: any) {
+
             let prefix = 'QuestionText';
 
             if(id ==  qID)
@@ -106,6 +115,7 @@ class QuestionTracker extends Component <props>{
                     return prefix + ' False'
             }
         }
+
 
         function setTextClassname(gradedScore: any, id: any) {
             let prefix = 'QuestionText';
@@ -142,6 +152,7 @@ class QuestionTracker extends Component <props>{
                                     return this.state.Exam.items.map((examitem: any) => {
                                         if (examitem.question.type == "CHOICE") {
                                             return <ListGroup.Item
+                                                       id="disable-hover"
                                                        eventKey={examitem.questionId}
                                                        className={setChoiceClassname(examitem.gradedCorrect, examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}
@@ -174,7 +185,7 @@ class QuestionTracker extends Component <props>{
                         })()}
                 </ListGroup>
                 <div className="LoadingBar">
-                    <ProgressBar className="ProgressBar" animated now={this.state.Exam.progress} label={`${this.state.Exam.progress}%`}/>
+                    <ProgressBar className="ProgressBar" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
                 </div>
             </div>
             </>

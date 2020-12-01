@@ -1,10 +1,12 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.repo.*;
 import gps.s3.correctingtool.entity.*;
 import gps.s3.correctingtool.user.UserDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import gps.s3.correctingtool.repo.IUserRepo;
+
+import java.security.Principal;
 import java.time.Instant;
 import java.util.Collection;
 
@@ -12,10 +14,11 @@ import java.util.Collection;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private IUserRepo userRepo;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final IUserRepo userRepo;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserController(IUserRepo userRepo, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(IUserRepo userRepo,
+                          BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepo = userRepo;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -26,12 +29,17 @@ public class UserController {
         user.setUsername(userDTO.getUsername());
         user.setPasswordHash(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         user.setRegisterDate(Instant.now());
-
         userRepo.save(user);
     }
 
     @RequestMapping("/all")
     public Collection<User> getUsers(){
         return userRepo.findAll();
+    }
+
+    @GetMapping(value = "/me")
+    @ResponseBody
+    public User getUsername(Principal principal) {
+        return userRepo.findByUsername(principal.getName());
     }
 }

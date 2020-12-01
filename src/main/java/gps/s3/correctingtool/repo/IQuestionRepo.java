@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IQuestionRepo extends JpaRepository<Question, Long> {
     Question findByText(String text);
+    Question findById(Integer id);
 }

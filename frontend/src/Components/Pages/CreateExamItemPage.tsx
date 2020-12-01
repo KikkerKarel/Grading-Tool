@@ -4,8 +4,7 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import CreateExamItemForm from "../CreateExamItem/CreateExamItemForm";
-
+import CreateExamItemForm from "../Admin/CreateExamItem/CreateExamItemForm";
 
 
 class CreateExamItemPage extends Component {

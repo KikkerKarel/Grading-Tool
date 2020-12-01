@@ -37,9 +37,9 @@ public class ExamController {
         return repo.findAllByExaminerId(id);
     }
 
-    @RequestMapping("/question/{id}")
-    public Collection<ExamItem> byQuestion(@PathVariable("id") int id) {
-        return itemRepo.findExamItemByQuestionId(id);
+    @RequestMapping("/question/{questionid}/{examid}")
+    public ExamItem byQuestion(@PathVariable("questionid") int questionid, @PathVariable("examid") int examid) {
+        return itemRepo.findByQuestionIdAndExamId(questionid, examid);
     }
 
     @RequestMapping("/grade/{id}")
@@ -70,9 +70,13 @@ public class ExamController {
 
         examItem.setGradedScore(score);
         examItem.setGradedCorrect(score > 0);
-
         itemRepo.save(examItem);
 
         return examItem;
+    }
+
+    @RequestMapping("/previousgrading/{questionid}/{examid}")
+    public ExamItem getExamItemPreviousGrade(@PathVariable("questionid") int questionid, @PathVariable("examid") int examid) {
+        return itemRepo.findByQuestionIdAndExamId(questionid, examid);
     }
 }

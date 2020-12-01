@@ -3,13 +3,14 @@ package gps.s3.correctingtool.entity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Data;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 public class Exam {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Enumerated(EnumType.STRING)
@@ -24,7 +25,7 @@ public class Exam {
 
     @OneToMany
     @JoinColumn(name="examId")
-    private List<ExamItem> items;
+    private List<ExamItem> items = new ArrayList<>();
 
     @JsonGetter("progress")
     public long getProgress()

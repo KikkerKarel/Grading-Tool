@@ -4,7 +4,7 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import CreateQuestionForm from "../CreateQuestion/CreateQuestionForm";
+import CreateQuestionForm from "../Admin/CreateQuestion/CreateQuestionForm";
 
 
 class CreateQuestionPage extends Component {

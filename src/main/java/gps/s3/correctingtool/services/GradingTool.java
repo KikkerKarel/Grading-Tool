@@ -22,6 +22,8 @@ public class GradingTool {
                 .filter(ChoiceAnswer::isCorrect).findFirst().get();
 
             examItem.setGradedCorrect(examItem.getStudentChoiceAnswer() == correct.getId());
+            int score = examItem.getGradedCorrect() ? 5 : 0;
+            examItem.setGradedScore(score);
         }
         repo.save(exam);
         return exam;

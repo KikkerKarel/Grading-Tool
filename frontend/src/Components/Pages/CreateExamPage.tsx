@@ -4,7 +4,7 @@ import {Component} from "react";
 import Footer from "../Footer";
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import CreateExamForm from "../CreateExam/CreateExamForm";
+import CreateExamForm from "../Admin/CreateExam/CreateExamForm";
 
 interface props {
 }
