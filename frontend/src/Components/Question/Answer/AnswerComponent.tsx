@@ -18,11 +18,11 @@ class AnswerComponent extends Component<props> {
     }
 
     async componentDidMount() {
-        axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
+        axios.get(`../api/exams/question/${this.props.questionId}/${this.props.examId}`).then(response => {
             this.setState({
-                text: response.data[0].question.text,
-                studentAnswer: response.data[0].textAnswer,
-                answer: response.data[0].question.textAnswer.value
+                text: response.data.question.text,
+                studentAnswer: response.data.textAnswer,
+                answer: response.data.question.textAnswer.value
             })
             Cookies.set('score', "0");
         })
@@ -30,11 +30,11 @@ class AnswerComponent extends Component<props> {
 
     componentDidUpdate(prevProps : any, prevState : any) {
         if(prevProps.questionId !== this.props.questionId){
-            axios.get(`../api/exams/question/${this.props.questionId}`).then(response => {
+            axios.get(`../api/exams/question/${this.props.questionId}/${this.props.examId}`).then(response => {
                 this.setState({
-                    text: response.data[0].question.text,
-                    studentAnswer: response.data[0].textAnswer,
-                    answer: response.data[0].question.textAnswer.value
+                    text: response.data.question.text,
+                    studentAnswer: response.data.textAnswer,
+                    answer: response.data.question.textAnswer.value
                 })
             })
         }

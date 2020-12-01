@@ -30,9 +30,9 @@ class ScoreComponent extends Component<props> {
             await axios.get(`../api/exams/previousgrading/${this.props.questionId}/${this.props.examId}`).then(response =>
                 this.setState(
                     {
-                        previousScore: response.data.gradedScore,
+                        previousScore: response.data.score,
                         valueStars: 0,
-                        systemRating: 2,
+                        systemRating: Math.random()*(5 - 0),
                         questionId: this.props.questionId,
 
                     }
@@ -57,7 +57,7 @@ class ScoreComponent extends Component<props> {
         return (
             <div className="ScoreComponent">
                 <div className="scoringdiv">
-                    <label className="textlabel">Systeem aangeraadde score</label>
+                    <label className="textlabel">Systeem aangeraden score</label>
                     {highlight(this.state.systemRating)}
                 </div>
 

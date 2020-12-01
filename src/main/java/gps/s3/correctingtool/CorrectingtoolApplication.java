@@ -20,7 +20,7 @@ public class CorrectingtoolApplication extends SpringBootServletInitializer{
     }
 
     @Bean
-    public ModelMapper mapper()
+        public ModelMapper mapper()
     {
         return new ModelMapper();
     }

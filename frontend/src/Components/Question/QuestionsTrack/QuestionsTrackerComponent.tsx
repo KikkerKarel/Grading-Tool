@@ -67,10 +67,10 @@ class QuestionTracker extends Component <props>{
     }
 
     handleClick = (event : any) =>{
-        axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}`).then(response =>{
+        axios.get( `/api/exams/question/${event.target.getAttribute('data-rb-event-key')}/${this.state.examId}`).then(response =>{
             this.setState({
-                questionId: response.data[0].questionId,
-            },() => Cookies.set('score', response.data[0].gradedScore));
+                questionId: response.data.questionId,
+            },() => Cookies.set('score', response.data.gradedScore));
         })
     };
 
@@ -89,15 +89,16 @@ class QuestionTracker extends Component <props>{
         const {isLoading} = this.state;
 
         if (isLoading) {
-            return <Button onClick={()=>
-                window.location.replace("../Examens")}
-            >Ga terug naar de examentabel</Button>
+            return (<><h1>Alle vragen zijn nagekeken: </h1>
+                <Button onClick={() => window.location.replace("../Examens")}>
+                    Ga terug naar de examentabel</Button>
+            </>)
         }
 
         let qID = this.state.questionId;
         let keyCount = 1;
 
-        function setMpClassname(gradedtype: any, id: any) {
+        function setMpClassname(gradedCorrect: any, id: any) {
             let prefix = 'QuestionText';
 
             if(id ==  qID)
@@ -105,7 +106,7 @@ class QuestionTracker extends Component <props>{
                 prefix = prefix + ' Bold'
             }
 
-            switch (gradedtype) {
+            switch (gradedCorrect) {
                 case null:
                     return prefix
                 case true:
@@ -152,7 +153,7 @@ class QuestionTracker extends Component <props>{
                                             return <ListGroup.Item
                                                        id="disable-hover"
                                                        eventKey={examitem.questionId}
-                                                       className={setMpClassname(examitem.graded, examitem.questionId)}>
+                                                       className={setMpClassname(examitem.gradedCorrect, examitem.questionId)}>
                                                 {keyCount++ + ". "+ examitem.question.text}
                                             </ListGroup.Item>
                                         }
@@ -183,9 +184,12 @@ class QuestionTracker extends Component <props>{
                         })()}
                 </ListGroup>
                 <div className="LoadingBar">
+                    {console.log(this.state.Exam.progress)}
                     <ProgressBar className="ProgressBar"
-                                 animated now={parseInt(this.state.Exam.progress.toString())}
+                                 // animated now={parseInt(this.state.Exam.progress.toString())}
+                                 animated now={Number(this.state.Exam.progress)}
                                  label={`${this.state.Exam.progress}%`}/>
+
                 </div>
             </div>
             </>
