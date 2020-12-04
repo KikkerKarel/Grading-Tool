@@ -17,7 +17,7 @@ class ExamensPage extends Component<props, {}> {
     };
 
     async componentDidMount() {
-        axios.get(`/api/exams/find/all`).then(response => this.setState({Exams: response.data, isLoading: false}));
+        axios.get(`/api/exams/me`).then(response => this.setState({Exams: response.data, isLoading: false}));
     }
 
     render() {
@@ -39,9 +39,8 @@ class ExamensPage extends Component<props, {}> {
                 <div className="footer">
                     <Footer/>
                 </div>
-
              </div>
-                </>
+            </>
         );
     }
 }

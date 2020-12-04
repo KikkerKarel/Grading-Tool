@@ -9,28 +9,28 @@ interface props{
     data?: any;
 }
 
-const columns = [{
-    dataField: 'id',
-    text: 'Exam ID',
-}, {
-    dataField: 'studentName',
-    text: 'Student Name'
-}, {
-    dataField: 'status',
-    text: 'Exam Status',
-    sort: true
-}
+const columns = [
+    {
+        dataField: 'id',
+        text: 'Exam ID'
+    },
+    {
+        dataField: 'studentName',
+        text: 'Student Name',
+    },
+    {
+        dataField: 'status',
+        text: 'Exam Status',
+        sort: true,
+    }
 ];
-
 
 class ExamTable extends Component<props> {
     state = {
         Exams: this.props.data
     };
-    private examstatus: any;
 
-    async componentDidMount() {
-    }
+    private examstatus: any;
 
     render() {
         const {Exams} = this.state;
@@ -38,29 +38,16 @@ class ExamTable extends Component<props> {
             onClick: (e: any, row: any, rowIndex: any) => {
                 Cookies.set('examId', row.id);
                 window.location.replace('/question/grade');
-                console.log(`clicked on row with index: ${rowIndex}`);
+                console.log(`Clicked on row with index: ${rowIndex}`);
             },
-            onMouseEnter: (e: any, row: any, rowIndex: any) => {
-                console.log(`enter on row with index: ${row.id}`);
+            onMouseEnter: (e: any, row: any) => {
+                console.log(`Enter on row with index: ${row.id}`);
                 console.log(row.status)
             }
         }
-        const rowStyle = (row: any, rowIndex: any) => {
-            if (row.status === 1)
-            {
-                return { backgroundColor: 'rgba(233,79,44,0.36)' }
-            }
-            else if (row.status === 2)
-            {
-                return { backgroundColor: 'rgba(178,0,0,0.48)' }
-            }
-            else if (row.status === 3)
-            {
-                return { backgroundColor: 'rgba(235,226,48,0.62)' }
-            }
-            else {
-                return { backgroundColor: 'rgba(0,98,0,0.5)' }
-            }
+
+        let rowClassnames = (row: any) => {
+            return row.status.toString();
         };
 
         return (
@@ -71,8 +58,12 @@ class ExamTable extends Component<props> {
                                 striped={false}
                                 bordered={false}
                                 hover
-                                rowEvents={ tableRowEvents }
-                                rowStyle={ rowStyle }
+                                rowEvents={tableRowEvents}
+                                rowClasses={rowClassnames}
+                                bodyClasses={"scroll"}
+                                classes={"theadClick"}
+                                defaultSortDirection={"asc"}
+
                 />
             </div>
         );

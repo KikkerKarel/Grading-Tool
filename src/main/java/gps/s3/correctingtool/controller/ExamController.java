@@ -4,6 +4,8 @@ import gps.s3.correctingtool.entity.*;
 import gps.s3.correctingtool.repo.*;
 import gps.s3.correctingtool.services.GradingTool;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.Collection;
 
 @RestController
@@ -30,6 +32,12 @@ public class ExamController {
     @RequestMapping("/find/{id}")
     public Exam findById(@PathVariable("id") int id) {
         return repo.findById(id);
+    }
+
+    @RequestMapping("/me")
+    public Collection<Exam> getMyExams(Principal principal) {
+        var user= uRepo.findByUsername(principal.getName());
+        return repo.findAllByExaminerId(user.getId());
     }
 
     @RequestMapping("/examiner/{id}")
