@@ -3,9 +3,6 @@ import * as React from "react";
 import axios from "axios";
 import {Button, Form} from "react-bootstrap";
 
-function Send(){
-    axios.post(``);
-}
 
 interface iChoice{
     id: number,
@@ -20,7 +17,8 @@ interface iQuestion{
 }
 
 interface iExam{
-    id : number
+    id : number,
+    studentName : string
 }
 
 
@@ -49,9 +47,13 @@ class CreateExamItemForm extends Component{
         });
     }
 
-    SetQuestion = (text : string) =>{
-        this.state.myQuestions.map(q =>{
-            if (q.text === text){
+    delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+
+    SetQuestion = (id : number) =>{
+        this.state.myQuestions.forEach((q) =>{
+            if (q.id === id){
                 this.setState({questionType : q.type, questionID : q.id});
             }
         })
@@ -59,7 +61,7 @@ class CreateExamItemForm extends Component{
 
 
     Input=(type : String, questionID : number)=>{
-        if (type=="CHOICE"){
+        if (type==="CHOICE"){
             let mcChoices = this.state.myQuestions.find(q => q.id === questionID)?.choices;
             let myChoices;
             myChoices = mcChoices?.map(c =>{
@@ -76,7 +78,7 @@ class CreateExamItemForm extends Component{
                 </>
             )
         }
-        else if(type=="TEXT"){
+        else if(type==="TEXT"){
             return(
                 <>
                     <Form.Control type="text" value={this.state.oqAnswer} placeholder="Open vraag antwoord" required onChange={(e) => this.setState({oqAnswer : e.target.value})} />
@@ -96,13 +98,13 @@ class CreateExamItemForm extends Component{
         let examID = this.state.examID;
         let questionID = this.state.questionID;
 
-        console.log(this.state.mcAnswer);
-
          if(this.state.questionType === "CHOICE"){
              axios.post(`/api/examitems/create/mc/${examID}/${questionID}/${this.state.mcAnswer}`).then(() =>{
                  this.setState({message : "Gelukt!"});
+                 this.delay(2500).then( () =>  this.setState({message: ``})  );
              }).catch(error =>{
                  this.setState({message : error.data});
+                 this.delay(2500).then( () =>  this.setState({message: ``})  );
              });
          }
          else if(this.state.questionType ==="TEXT"){
@@ -110,6 +112,7 @@ class CreateExamItemForm extends Component{
 
              axios.post(`/api/examitems/create/oq/${examID}/${questionID}/${questionText}`).then(() =>{
                  this.setState({message : "Gelukt!"});
+                 this.delay(2500).then( () =>  this.setState({message: ``})  );
              }).catch(error =>{
                  this.setState({message : error.data});
              });
@@ -122,14 +125,14 @@ class CreateExamItemForm extends Component{
         let questions;
         questions = this.state.myQuestions.map(q => {
             return (
-                <option> {q.text.toString()}</option>
+                <option value={q.id}> {q.text.toString()}</option>
             );
         });
 
         let ExamIds;
         ExamIds = this.state.exams.map(e => {
             return (
-                <option > {e.id.toString()}</option>
+                <option value={e.id.toString()} > {e.studentName.toString() }</option>
             );
         });
 
@@ -142,14 +145,14 @@ class CreateExamItemForm extends Component{
                 <h1>{this.state.message}</h1>
             <Form onSubmit={(e) => this.SubmitForm(e)}>
                 <Form.Group>
-                    <Form.Label> ExamID:</Form.Label>
+                    <Form.Label> Examen:</Form.Label>
                     <Form.Control as="select" onChange={(e) => this.setState({examID : e.target.value})}>
                         {ExamIds}
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label> Vraag:</Form.Label>
-                    <Form.Control as="select" onChange={(e) => this.SetQuestion(e.target.value)}>
+                    <Form.Control as="select" onChange={(e) => this.SetQuestion( parseInt( e.target.value) )    } >
                         {questions}
                     </Form.Control>
                 </Form.Group>

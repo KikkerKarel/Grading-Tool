@@ -27,7 +27,7 @@ public class UserController {
     public void signUp(@RequestBody UserDTO userDTO) {
         var user = new User();
         user.setUsername(userDTO.getUsername());
-        user.setPasswordHash(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         user.setRegisterDate(Instant.now());
         userRepo.save(user);
     }
