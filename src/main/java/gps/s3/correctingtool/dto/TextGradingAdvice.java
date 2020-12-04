@@ -10,6 +10,7 @@ public class TextGradingAdvice {
     private Integer suggestedScore;
     private Set<Integer> matchingWordPositions;
     private ExamItem examItem;
+    private String feedbackText;
 
     public TextGradingAdvice() {
         matchingWordPositions = new HashSet<>();
@@ -43,6 +44,15 @@ public class TextGradingAdvice {
 
     public TextGradingAdvice setExamItem(ExamItem examItem) {
         this.examItem = examItem;
+        return this;
+    }
+
+    public String getFeedbackText() {
+        return feedbackText;
+    }
+
+    public TextGradingAdvice setFeedbackText(String feedbackText) {
+        this.feedbackText = feedbackText;
         return this;
     }
 }
