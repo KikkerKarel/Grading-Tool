@@ -5,6 +5,7 @@ import {Button, ListGroup} from "react-bootstrap";
 import './QuestionsTracker.css'
 import AnswerComponent from "../Answer/AnswerComponent";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 interface props {
     Exam: {}
@@ -17,7 +18,7 @@ class QuestionTracker extends Component <props> {
             examiner: {},
             id: Number,
             items: [],
-            progress: Number,
+            progress: 0,
             status: Number,
             studentName: String
         },
@@ -79,8 +80,12 @@ class QuestionTracker extends Component <props> {
     render() {
         const {isLoading} = this.state;
 
-        if (isLoading) {
-            return (<><h1>Alle vragen zijn nagekeken: </h1>
+        if (isLoading && this.state.Exam.progress == 100 ) {
+            let examId = this.state.Exam.id;
+            axios.put(`/api/exams/${examId}/status/GRADED`).then(() =>{});
+            return (
+                <>
+                <h1>Alle vragen zijn nagekeken: </h1>
                 <Button onClick={() => window.location.replace("../Examens")}>
                     Ga terug naar de examentabel</Button>
             </>)

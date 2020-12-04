@@ -46,17 +46,17 @@ class ExamTable extends Component<props> {
             }
         }
         const rowStyle = (row: any, rowIndex: any) => {
-            if (row.status === 1)
+            if (row.status === "GRADING_IN_PROGRESS")
             {
-                return { backgroundColor: 'rgba(233,79,44,0.36)' }
+                return { backgroundColor: 'rgb(233,148,44)' }
             }
-            else if (row.status === 2)
+            else if (row.status === "NOT_GRADED")
             {
-                return { backgroundColor: 'rgba(178,0,0,0.48)' }
+                return { backgroundColor: 'rgb(177,82,82)' }
             }
-            else if (row.status === 3)
+            else if (row.status === "GRADED")
             {
-                return { backgroundColor: 'rgba(235,226,48,0.62)' }
+                return { backgroundColor: 'rgba(0,98,0,0.5)' }
             }
             else {
                 return { backgroundColor: 'rgba(0,98,0,0.5)' }

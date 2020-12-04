@@ -48,8 +48,9 @@ class AnswerComponent extends Component<props> {
         let score = Cookies.get("score");
         let examId = this.state.examId;
         let questionId = this.props.questionId;
+        axios.put(`/api/exams/${examId}/status/GRADING_IN_PROGRESS`).then(() =>{});
         axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
-            window.location.replace("./");
+            window.location.replace("./beoordeel");
         });
     }
 
