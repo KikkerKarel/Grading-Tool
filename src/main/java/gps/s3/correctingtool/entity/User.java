@@ -19,7 +19,7 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    private String passwordHash;
+    private String password;
 
     private Instant registerDate;
 

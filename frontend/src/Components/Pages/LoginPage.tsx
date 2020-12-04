@@ -31,7 +31,6 @@ class LoginPage extends Component<props> {
     }
 
     render() {
-
         if(this.state.redirect || AuthService.isLoggedIn())
             return <Redirect to='/examens' />
 
@@ -64,9 +63,7 @@ class LoginPage extends Component<props> {
                             </Button>
                         </Form>
                     </div>
-
                 </div>
-
                 <Footer/>
             </div>
         );
