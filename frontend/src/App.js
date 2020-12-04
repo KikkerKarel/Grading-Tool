@@ -26,6 +26,7 @@ import NavbarComponent from "./Components/Navbar/NavbarComponent";
 function App() {
     return (
         <Router>
+            <NavbarComponent/>
             <Switch>
                 <Route exact path="/">
                     <HomePage/>

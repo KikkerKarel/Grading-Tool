@@ -38,7 +38,6 @@ class LoginPage extends Component<props> {
         return (
             <div className="page-container">
                 <div className="content-wrap d-flex justify-content-center">
-                    <NavbarComponent/>
 
                     <h1>Inloggen</h1>
 

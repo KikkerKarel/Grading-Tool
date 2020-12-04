@@ -78,6 +78,7 @@ class QuestionTracker extends Component <props> {
     }
 
     render() {
+        // Als dit een tijdelijke oplossing wordt, laad een nieuwe component in in "QuestionTrackComponent" wanneer "progress" 100 is.
         const {isLoading} = this.state;
 
         if (isLoading && this.state.Exam.progress == 100 ) {

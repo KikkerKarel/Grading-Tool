@@ -19,7 +19,7 @@ class CreateExamPage extends Component<props> {
                     <NavbarComponent />
                 </div>
                 <section className="content-container">
-                    <CreateExamForm> </CreateExamForm>
+                    <CreateExamForm/>
                 </section>
                 <Footer/>
             </div>
