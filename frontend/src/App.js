@@ -19,6 +19,7 @@ import CreateExamPage from "./Components/Pages/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
+import ProfileComponent from "./Components/Profile/ProfileComponent";
 import NavbarComponent from "./Components/Navbar/NavbarComponent";
 
 
@@ -44,6 +45,9 @@ function App() {
                 </Route>
                 <Route path="/question">
                     <QuestionPage/>
+                </Route>
+                <Route path="/profile">
+                    <ProfileComponent />
                 </Route>
                 <Route path="/admin">
                 <AdminPage/>
