@@ -20,8 +20,8 @@ const columns = [{
     text: 'Examen Status',
     sort: true
 }
-];
 
+];
 
 class ExamTable extends Component<props> {
     state = {

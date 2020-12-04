@@ -6,11 +6,11 @@ import './QuestionsTracker.css'
 import AnswerComponent from "../Answer/AnswerComponent";
 import Cookies from "js-cookie";
 
-interface props{
-    Exam : {}
+interface props {
+    Exam: {}
 }
 
-class QuestionTracker extends Component <props>{
+class QuestionTracker extends Component <props> {
     state = {
         isLoading: true,
         Exam: {
@@ -25,56 +25,53 @@ class QuestionTracker extends Component <props>{
         examId: 0,
     };
 
-    private foundQuestion : boolean = false;
+    private foundQuestion: boolean = false;
 
     async componentDidMount() {
         await this.setState(
             {
-                Exam : this.props.Exam
+                Exam: this.props.Exam
             }
         );
         Cookies.set('score', "0");
 
-                    this.state.Exam.items.map((examitem: any) => {
-                        if (examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) {
-                            this.setState(
-                                {
-                                    questionId : examitem.question.id,
-                                    isLoading: false,
-                                    examId: this.state.Exam.id,
-                                }
-                            );
-                            this.foundQuestion = true;
-                        }
-                        else if(examitem.question.type === "TEXT" && examitem.questionId === this.state.questionId)
-                        {
-                            this.setState(
-                                {
-                                    questionId : examitem.question.id,
-                                    isLoading: false,
-                                    examId: this.state.Exam.id,
-                                }
-                            );
-                            this.foundQuestion = true;
-                        }
-                    });
+        this.state.Exam.items.map((examitem: any) => {
+            if (examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) {
+                this.setState(
+                    {
+                        questionId: examitem.question.id,
+                        isLoading: false,
+                        examId: this.state.Exam.id,
+                    }
+                );
+                this.foundQuestion = true;
+            } else if (examitem.question.type === "TEXT" && examitem.questionId === this.state.questionId) {
+                this.setState(
+                    {
+                        questionId: examitem.question.id,
+                        isLoading: false,
+                        examId: this.state.Exam.id,
+                    }
+                );
+                this.foundQuestion = true;
+            }
+        });
     }
 
-    handleClick = (event : any) =>{
+    handleClick = (event: any) => {
         let targetId = event.target.getAttribute('data-rb-event-key');
-        let item: any= this.state.Exam.items.find((x:any) => x.question.id === targetId);
+        let item: any = this.state.Exam.items.find((x: any) => x.question.id == targetId);
 
         this.setState({questionId: item.question.id});
         Cookies.set('score', item.score);
     };
 
-    renderAnswerComponent()
-    {
+    renderAnswerComponent() {
         if (!this.state.isLoading) {
-            return(
+            return (
                 <>
-                    <AnswerComponent questionId={this.state.questionId} examId={this.state.examId} />
-               </>
+                    <AnswerComponent questionId={this.state.questionId} examId={this.state.examId}/>
+                </>
             )
         }
     }
@@ -95,51 +92,48 @@ class QuestionTracker extends Component <props>{
         function setTextClassname(gradedScore: any, id: any) {
             let prefix = 'QuestionText';
 
-            if(id ==  qID)
-            {
+            if (id === qID) {
                 prefix = prefix + ' Bold'
             }
 
-            if (gradedScore >= 1)
-            {
+            if (gradedScore >= 1) {
                 return prefix + ' Correct'
-            }
-            else if(gradedScore == 0)
-            {
+            } else if (gradedScore == 0) {
                 return prefix + ' False'
-            }
-            else{
+            } else {
                 return prefix
             }
         }
 
         return (
             <>
-            {this.renderAnswerComponent()}
-            <div className="Tracker">
-                <ListGroup className="OpenQuestions">
-                    <h1>
-                        <p>Open vragen:</p>
-                    </h1>
+                {this.renderAnswerComponent()}
+                <div className="Tracker">
+                    <ListGroup className="OpenQuestions">
+                        <h1>
+                            <p>Open vragen:</p>
+                        </h1>
                         {(() => {
 
-                                    return this.state.Exam.items.map((examitem: any) => {
-                                        if (examitem.question.type === "TEXT") {
-                                            return <ListGroup.Item
-                                                onClick={this.handleClick}
-                                                eventKey={examitem.questionId}
-                                                className={setTextClassname(examitem.gradedScore , examitem.questionId)}>
-                                                {keyCount++ + ". "+ examitem.question.text}
-                                            </ListGroup.Item>
-                                        }
-                                    })
+                            return this.state.Exam.items.map((examitem: any) => {
+                                if (examitem.question.type === "TEXT") {
+                                    return <ListGroup.Item
+                                        onClick={this.handleClick}
+                                        eventKey={examitem.questionId}
+                                        className={setTextClassname(examitem.gradedScore, examitem.questionId)}>
+                                        {keyCount++ + ". " + examitem.question.text}
+                                    </ListGroup.Item>
+                                }
+                            })
 
                         })()}
-                </ListGroup>
-                <div className="LoadingBar">
-                    <ProgressBar className="ProgressBar" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
+                    </ListGroup>
+                    <div className="LoadingBar">
+                        <ProgressBar className="ProgressBar" animated
+                                     now={parseInt(this.state.Exam.progress.toString())}
+                                     label={`${this.state.Exam.progress}%`}/>
+                    </div>
                 </div>
-            </div>
             </>
         );
     }
