@@ -37,20 +37,7 @@ public class DefaultGrader extends GenericGrader {
         String studentAnswer = item.getStudentTextAnswer();
         String realAnswer = item.getQuestion().getCorrectAnswer().getText();
 
-        if(studentAnswer == null || studentAnswer.isBlank())
-            throw new IllegalStateException("Unable to grade question with empty answer!");
-
-        String[] studentAnswerWords = studentAnswer.split("\\s+");
         String[] correctWords = realAnswer.split("\\s+");
-
-        for(int i = 0; i < studentAnswerWords.length; i++)
-        {
-            String word = studentAnswerWords[i];
-
-            //If the word is found in the correct answer's list of words, add its index to the list of matches
-            if(Arrays.stream(correctWords).anyMatch(w -> StringUtils.compareWords(w, word)))
-                advice.getMatchingWordPositions().add(i);
-        }
 
         var questionHistory = repo.findExamItemByQuestionId(item.getQuestionId());
 
