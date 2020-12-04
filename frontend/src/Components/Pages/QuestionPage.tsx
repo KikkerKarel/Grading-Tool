@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import '../../Dashboard.css'
 import NavbarComponent from "../Navbar/NavbarComponent";
-import FooterComponent from "../Footer";
+import Footer from "../Footer";
 import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTrackerComponent";
 import Cookies from 'js-cookie';
 import axios from "axios";
@@ -39,13 +39,12 @@ class QuestionPage extends Component {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <NavbarComponent/>
-                </div>
                 <section className="content-container flex">
                         {this.renderQuestionTrackComponent()}
                 </section>
-                <FooterComponent/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

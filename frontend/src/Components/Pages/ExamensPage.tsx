@@ -29,7 +29,6 @@ class ExamensPage extends Component<props, {}> {
         return (
             <>
             <div className="page-container">
-
                 <div className="content-container">
                     <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>

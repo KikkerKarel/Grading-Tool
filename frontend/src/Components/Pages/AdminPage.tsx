@@ -15,9 +15,6 @@ class AdminPage extends Component<props> {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <NavbarComponent />
-                </div>
                 <section className="content-container">
                     <CardDeck>
                         <QuickCard image="Images/Dev-test" text="Maak examen" link="/create-exam" title="Maak examen"/>
@@ -26,7 +23,9 @@ class AdminPage extends Component<props> {
                     </CardDeck>
 
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }
