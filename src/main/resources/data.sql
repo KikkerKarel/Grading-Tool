@@ -31,14 +31,14 @@ ALTER TABLE gradest.correct_answer AUTO_INCREMENT = 1;
     Users
 */
 
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Admin', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Admin', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
 
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Youssef', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Jens', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Servi', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Nahir', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Rachid', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
-INSERT INTO gradest.user (username, password_hash, register_date, last_login) VALUES ('Sem', '$2a$10$o20qgZqCXBqUxfogcLQgEO.JZfDBdpjQb2cVPxtqAYjyrqIydyHsa', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Youssef', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Jens', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Servi', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Nahir', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Rachid', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Sem', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
 
 
 /*

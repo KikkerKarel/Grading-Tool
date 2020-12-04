@@ -3,6 +3,7 @@ package gps.s3.correctingtool.controller;
 import gps.s3.correctingtool.repo.*;
 import gps.s3.correctingtool.entity.*;
 import gps.s3.correctingtool.services.GradingTool;
+import org.hibernate.HibernateException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,15 +27,18 @@ public class QuestionController {
     }
 
     @PostMapping("/create/{questionText}/{questionType}")
-    public Question createQuestion(@PathVariable("questionText") String text, @PathVariable("questionType") int type){
+    public Question createQuestion(@PathVariable("questionText") String qText, @PathVariable("questionType") int type){
         Question question = new Question();
+
         var questionType = type == 1 ? QuestionType.CHOICE : QuestionType.TEXT;
         question.setType(questionType);
-        question.setText(text);
+        question.setText(qText);
 
         qRepo.save(question);
 
-        return qRepo.findByText(text);
+        Question myQuestion = qRepo.findAll().stream().filter(question1 -> question1.getText() == qText).filter(question1 -> question1.getType() == questionType).findFirst().get();
+        return myQuestion;
+        //return qRepo.findByText(text);
     }
 
     @PostMapping("/addMcAnswer/{questionID}/{answerText}/{isCorrect}")

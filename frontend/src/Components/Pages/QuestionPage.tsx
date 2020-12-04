@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Row, Col, Container} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import '../../Dashboard.css'
