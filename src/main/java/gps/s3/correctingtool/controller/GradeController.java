@@ -5,6 +5,7 @@ import gps.s3.correctingtool.entity.ExamItemId;
 import gps.s3.correctingtool.repo.IExamItemRepo;
 import gps.s3.correctingtool.repo.IExamRepo;
 import gps.s3.correctingtool.services.DefaultGrader;
+import gps.s3.correctingtool.services.GradeManager;
 import gps.s3.correctingtool.services.TextGradingService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +16,12 @@ public class GradeController {
 
 private final IExamRepo repo;
 private final IExamItemRepo itemRepo;
-private final DefaultGrader service;
+private final GradeManager manager;
 
-    public GradeController(IExamRepo repo, IExamItemRepo itemRepo, DefaultGrader service) {
+    public GradeController(IExamRepo repo, IExamItemRepo itemRepo, GradeManager manager) {
         this.repo = repo;
         this.itemRepo = itemRepo;
-        this.service = service;
+        this.manager = manager;
     }
 
     @RequestMapping("/advice/{exam_id}/{question_id}")
@@ -31,6 +32,6 @@ private final DefaultGrader service;
         if(item.isEmpty())
             return null;
 
-        return service.getAdvice(item.get());
+        return manager.getSummaryAdvice(item.get());
     }
 }
