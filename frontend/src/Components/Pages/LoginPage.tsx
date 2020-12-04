@@ -40,27 +40,22 @@ class LoginPage extends Component<props> {
                 <div className="content-wrap d-flex justify-content-center">
                     <NavbarComponent/>
 
-                    <div className="py-5">
-                    </div>
-
-                    <h1>Login</h1>
+                    <h1>Inloggen</h1>
 
                     <div className=" mt-5">
                         <Form>
                             <Form.Group controlId="formBasicName">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control onChange={(event) => { this.setState({username: event.target.value})}} type="username" placeholder="Username" />
+                                <Form.Control onChange={(event) => { this.setState({username: event.target.value})}} type="username" placeholder="gebruikersnaam" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="Password" />
+                                <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="wachtwoord" />
                             </Form.Group>
                             <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Remember me" />
+                                <Form.Check type="checkbox" label="Onthoudt mij" />
                             </Form.Group>
                             <Button variant="primary" type="submit" onClick={(event) => this.handleClick(event)}>
-                                Login
+                                Inloggen
                             </Button>
                         </Form>
                     </div>

@@ -34,11 +34,9 @@ class QuestionTracker extends Component <props>{
             }
         );
         Cookies.set('score', "0");
-        {(() => {
-            {
-                {
+
                     this.state.Exam.items.map((examitem: any) => {
-                        if (examitem.question.type == "TEXT" && examitem.gradedScore == null && !this.foundQuestion) {
+                        if (examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) {
                             this.setState(
                                 {
                                     questionId : examitem.question.id,
@@ -48,7 +46,7 @@ class QuestionTracker extends Component <props>{
                             );
                             this.foundQuestion = true;
                         }
-                        else if(examitem.question.type == "TEXT" && examitem.questionId == this.state.questionId)
+                        else if(examitem.question.type === "TEXT" && examitem.questionId === this.state.questionId)
                         {
                             this.setState(
                                 {
@@ -60,14 +58,11 @@ class QuestionTracker extends Component <props>{
                             this.foundQuestion = true;
                         }
                     });
-                }
-            }
-        })()}
     }
 
     handleClick = (event : any) =>{
         let targetId = event.target.getAttribute('data-rb-event-key');
-        let item: any= this.state.Exam.items.find((x:any) => x.question.id == targetId);
+        let item: any= this.state.Exam.items.find((x:any) => x.question.id === targetId);
 
         this.setState({questionId: item.question.id});
         Cookies.set('score', item.score);
@@ -97,26 +92,6 @@ class QuestionTracker extends Component <props>{
         let qID = this.state.questionId;
         let keyCount = 1;
 
-        function setChoiceClassname(gradedtype: any, id: any) {
-
-            let prefix = 'QuestionText';
-
-            if(id ==  qID)
-            {
-                prefix = prefix + ' Bold'
-            }
-
-            switch (gradedtype) {
-                case null:
-                    return prefix
-                case true:
-                    return prefix + ' Correct'
-                case false:
-                    return prefix + ' False'
-            }
-        }
-
-
         function setTextClassname(gradedScore: any, id: any) {
             let prefix = 'QuestionText';
 
@@ -142,36 +117,14 @@ class QuestionTracker extends Component <props>{
             <>
             {this.renderAnswerComponent()}
             <div className="Tracker">
-                <ListGroup className="ClosedQuestions">
-                    <h1>
-                       <p>Meerkeuze vragen:</p>
-                    </h1>
-                        {(() => {
-                            {
-                                {
-                                    return this.state.Exam.items.map((examitem: any) => {
-                                        if (examitem.question.type == "CHOICE") {
-                                            return <ListGroup.Item
-                                                       id="disable-hover"
-                                                       eventKey={examitem.questionId}
-                                                       className={setChoiceClassname(examitem.gradedCorrect, examitem.questionId)}>
-                                                {keyCount++ + ". "+ examitem.question.text}
-                                            </ListGroup.Item>
-                                        }
-                                    })
-                                }
-                            }
-                        })()}
-                </ListGroup>
                 <ListGroup className="OpenQuestions">
                     <h1>
                         <p>Open vragen:</p>
                     </h1>
                         {(() => {
-                            {
-                                {
+
                                     return this.state.Exam.items.map((examitem: any) => {
-                                        if (examitem.question.type == "TEXT") {
+                                        if (examitem.question.type === "TEXT") {
                                             return <ListGroup.Item
                                                 onClick={this.handleClick}
                                                 eventKey={examitem.questionId}
@@ -180,8 +133,7 @@ class QuestionTracker extends Component <props>{
                                             </ListGroup.Item>
                                         }
                                     })
-                                }
-                            }
+
                         })()}
                 </ListGroup>
                 <div className="LoadingBar">

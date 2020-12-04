@@ -18,7 +18,6 @@ class NavbarComponent extends Component {
                 /> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav className="nav-menu">
-                    <Nav.Link className="nav-links" href="/courses">Courses</Nav.Link>
                         <Nav.Link className="nav-links" href="/examens">Examens</Nav.Link>
                         {this.getButton()}
                     </Nav>
@@ -29,9 +28,9 @@ class NavbarComponent extends Component {
     getButton()
     {
         if(AuthService.isLoggedIn())
-            return <Button href="/logout" onClick={this.onLogOut} className="btn--medium" variant="primary">Log Out</Button>
+            return <Button href="/logout" onClick={this.onLogOut} className="btn--medium" variant="primary">Uitloggen</Button>
 
-        return <Button href="/login" className="btn--medium" variant="primary">Log in</Button>
+        return <Button href="/login" className="btn--medium" variant="primary">Inloggen</Button>
     }
 
     onLogOut()

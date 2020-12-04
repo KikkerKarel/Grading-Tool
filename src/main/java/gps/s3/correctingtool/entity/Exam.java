@@ -33,6 +33,9 @@ public class Exam {
         if(items.size() == 0)
             return 100;
 
-        return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
+        return items.stream()
+                .filter(x -> x.getQuestion().getType() == QuestionType.TEXT)
+                .filter(ExamItem::isGraded).count() * 100 / items.stream()
+                .filter(x -> x.getQuestion().getType() == QuestionType.TEXT).count();
     }
 }

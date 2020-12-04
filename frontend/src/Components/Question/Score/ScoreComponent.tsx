@@ -63,7 +63,7 @@ class ScoreComponent extends Component<props> {
                 <br/>
 
                 <div className="scoringdiv">
-                    <label className="textlabel">Gegeven score</label>
+                    <label className="textlabel">Gegeven score</label> <br/>
                     {(() => {
                         {
                             {
