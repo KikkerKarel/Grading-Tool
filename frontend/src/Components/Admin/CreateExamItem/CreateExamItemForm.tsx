@@ -18,7 +18,7 @@ interface iQuestion{
 
 interface iExam{
     id : number,
-    studentName : string
+    exam_title : string
 }
 
 
@@ -132,7 +132,7 @@ class CreateExamItemForm extends Component{
         let ExamIds;
         ExamIds = this.state.exams.map(e => {
             return (
-                <option value={e.id.toString()} > {e.studentName.toString() }</option>
+                <option value={e.id.toString()} > {e.exam_title.toString() }</option>
             );
         });
 
