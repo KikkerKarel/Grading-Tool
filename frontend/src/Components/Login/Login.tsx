@@ -19,14 +19,12 @@ class Login extends Component {
         event.preventDefault();
         console.log(this.state);
 
-        let errrormessage = document.getElementById("errormessage");
-        let errorbox = document.getElementsByClassName("errorbox")[0];
+        let errrormessage : any  = document.getElementById("errormessage");
+        let errorbox : any  = document.getElementsByClassName("errorbox")[0];
 
         if(!validateNames(this.state.username) || !validatePassword(this.state.password))
         {
-            // @ts-ignore
             errrormessage.innerText = "Vul een geldige gebruikersnaam en wachtwoord combinatie in.";
-            // @ts-ignore
             errorbox.style.display = "block";
         }
         else{
@@ -34,9 +32,7 @@ class Login extends Component {
                 this.setState({redirect: true});
             },error =>{
                 if(error.response.status === 401)
-                    // @ts-ignore
                     errrormessage.innerText = "Combinatie komt niet overeen, probeer het opnieuw.";
-                    // @ts-ignore
                     errorbox.style.display = "block";
             })
         }
