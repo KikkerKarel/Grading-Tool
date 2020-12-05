@@ -6,6 +6,8 @@ import Footer from "../Footer";
 import '../../Dashboard.css'
 import axios from 'axios'
 import ExamTable from "../ExamTable/ExamTable";
+import AuthService from "../../Services/auth.service";
+import {Redirect} from "react-router";
 
 interface props {
 }
@@ -23,9 +25,13 @@ class ExamensPage extends Component<props, {}> {
     render() {
         const {Exams, isLoading} = this.state;
 
+        if(!AuthService.isLoggedIn())
+            return <Redirect to='/login' />
+
         if (isLoading) {
             return <p>Loading...</p>;
         }
+
         return (
             <>
             <div className="page-container">

@@ -30,8 +30,6 @@ class ExamTable extends Component<props> {
         Exams: this.props.data
     };
 
-    private examstatus: any;
-
     render() {
         const {Exams} = this.state;
         const tableRowEvents = {
@@ -63,7 +61,6 @@ class ExamTable extends Component<props> {
                                 bodyClasses={"scroll"}
                                 classes={"theadClick"}
                                 defaultSortDirection={"asc"}
-
                 />
             </div>
         );

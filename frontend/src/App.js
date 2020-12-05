@@ -7,10 +7,8 @@ import {
     Route,
 } from "react-router-dom";
 
-
 import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
-import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import QuestionPage from "./Components/Pages/QuestionPage";
@@ -19,9 +17,6 @@ import CreateExamPage from "./Components/Pages/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
-import NavbarComponent from "./Components/Navbar/NavbarComponent";
-
-
 
 function App() {
     return (
@@ -32,9 +27,6 @@ function App() {
                 </Route>
                 <Route path="/examens">
                     <ExamensPage/>
-                </Route>
-                <Route path="/courses">
-                    <CoursesPage/>
                 </Route>
                 <Route path="/instellingen">
                     <SettingsPage/>
@@ -63,7 +55,6 @@ function App() {
             </Switch>
         </Router>
     );
-
 }
 
 export default App

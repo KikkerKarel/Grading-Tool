@@ -46,8 +46,6 @@ class QuickForm extends Component<props> {
             </Form>
         )
     }
-
-
 }
 
 export default QuickForm

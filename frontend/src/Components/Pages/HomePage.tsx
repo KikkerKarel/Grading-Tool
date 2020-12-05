@@ -4,17 +4,7 @@ import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
 
 class HomePage extends Component {
-    state = {
-
-    };
-
-    async componentDidMount() {
-
-    }
-
     render() {
-
-
         return (
             <div className="page-container">
                 <div className="content-wrap">

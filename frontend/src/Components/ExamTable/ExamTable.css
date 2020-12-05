@@ -7,8 +7,8 @@
 }
 
 .scroll{
-    overflow-y: scroll;
-    max-height: 200px !important;
+    overflow-y: auto;
+    max-height: 500px !important;
     display: block;
 }
 

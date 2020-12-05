@@ -25,7 +25,6 @@ class QuickCard extends Component<props>{
             </Card>
         )
     }
-
 }
 
 export default QuickCard
