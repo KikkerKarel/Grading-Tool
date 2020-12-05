@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Component} from "react";
 import axios from "axios";
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 import {Card} from "react-bootstrap";
 
 interface props{
@@ -55,7 +55,7 @@ class AdvicePage extends Component<props, {}> {
         return(
         <div className="page-container">
             <div className="content-wrap ">
-                <NavbarComponent/>
+                <HeaderNavbar/>
             </div>
             <div className="content-wrap d-flex justify-content-center">
             <section className="content-container">
@@ -70,7 +70,7 @@ class AdvicePage extends Component<props, {}> {
                             <p>{advice.examItem.question.textAnswer.value}</p>
 
                             <h4 className="text">Gegeven antwoord:</h4>
-                            <div dangerouslySetInnerHTML={{__html : words.join(" ")}}></div>
+                            <div dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
                         </Card.Text>
                         <Card.Title>Score: {advice.suggestedScore} out of 5</Card.Title>
                     </Card.Body>

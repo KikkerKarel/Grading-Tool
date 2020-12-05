@@ -1,12 +1,12 @@
 import * as React from "react";
 import {Component} from "react";
-import '../Button.css';
+import '../_CSS/Button.css';
 import {Button, Nav, Navbar} from "react-bootstrap";
-import './Navbar.css';
+import './HeaderNavbar.css';
 import AuthService from "../../Services/auth.service"
 import {Redirect} from 'react-router-dom'
 
-class NavbarComponent extends Component {
+class HeaderNavbar extends Component {
     render() {
         return (
             <Navbar className="NavbarItems" expand="lg">
@@ -54,4 +54,4 @@ class NavbarComponent extends Component {
     }
 }
 
-export default NavbarComponent
+export default HeaderNavbar

@@ -3,7 +3,7 @@ import {Component} from "react";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, ListGroup} from "react-bootstrap";
 import './QuestionsTracker.css'
-import AnswerComponent from "../Answer/AnswerComponent";
+import Answer from "../Answer/Answer";
 import Cookies from "js-cookie";
 
 interface props{
@@ -78,7 +78,7 @@ class QuestionTracker extends Component <props>{
         if (!this.state.isLoading) {
             return(
                 <>
-                    <AnswerComponent questionId={this.state.questionId} examId={this.state.examId} />
+                    <Answer questionId={this.state.questionId} examId={this.state.examId} />
                </>
             )
         }

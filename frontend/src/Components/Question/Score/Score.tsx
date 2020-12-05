@@ -11,7 +11,7 @@ interface props {
 }
 
 
-class ScoreComponent extends Component<props> {
+class Score extends Component<props> {
     state = {
         valueStars: Number,
         systemRating: Number,
@@ -32,7 +32,7 @@ class ScoreComponent extends Component<props> {
                     {
                         previousScore: response.data.gradedScore,
                         valueStars: 0,
-                        systemRating: Math.random()*(5 - 0),
+                        systemRating: Math.random()*(5),
                         questionId: this.props.questionId,
                     }
                 ));
@@ -103,4 +103,4 @@ class ScoreComponent extends Component<props> {
     }
 }
 
-export default ScoreComponent;
+export default Score;

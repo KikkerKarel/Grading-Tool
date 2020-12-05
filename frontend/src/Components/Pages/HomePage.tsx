@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 
 class HomePage extends Component {
     render() {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <HeaderNavbar/>
                 </div>
                 <section className="content-container">
                 </section>

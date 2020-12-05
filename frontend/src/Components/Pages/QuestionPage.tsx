@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Row, Col, Container} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import '../../Dashboard.css'
-import NavbarComponent from "../Navbar/NavbarComponent";
-import FooterComponent from "../Footer";
-import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTrackerComponent";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import FooterComponent from "../Footer/Footer";
+import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTracker";
 import Cookies from 'js-cookie';
 import axios from "axios";
 
@@ -40,7 +39,7 @@ class QuestionPage extends Component {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <HeaderNavbar/>
                 </div>
                 <section className="content-container flex">
                         {this.renderQuestionTrackComponent()}

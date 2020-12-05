@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Component} from "react";
-import '../Navbar/Navbar.css';
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
+import '../HeaderNavbar/HeaderNavbar.css';
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 import '../../Dashboard.css'
 import AuthService from "../../Services/auth.service"
 
@@ -19,7 +19,7 @@ class LogoutPage extends Component<props> {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <HeaderNavbar/>
                 </div>
                 <section className="content-container">
                     <h1>U bent uitgelogd.</h1>

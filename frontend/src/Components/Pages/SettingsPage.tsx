@@ -1,9 +1,9 @@
 import * as React from "react";
-import '../Navbar/Navbar.css';
+import '../HeaderNavbar/HeaderNavbar.css';
 import {Component} from "react";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import '../../Dashboard.css'
-import NavbarComponent from "../Navbar/NavbarComponent";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 
 interface props {
 }
@@ -14,7 +14,7 @@ class SettingsPage extends Component<props> {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent />
+                    <HeaderNavbar />
                 </div>
                 <section className="content-container">
                     <h1>beepboop</h1>

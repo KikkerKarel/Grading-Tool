@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Form, Col, Row} from 'react-bootstrap';
 
-class AddAnswerComponent extends Component
+class AddAnswer extends Component
 {
     render() {
         return (
@@ -26,4 +26,4 @@ class AddAnswerComponent extends Component
     }
 }
 
-export default AddAnswerComponent;
+export default AddAnswer;

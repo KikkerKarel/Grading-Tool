@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import {Button, Form} from 'react-bootstrap';
 import './Answer.css';
-import ScoreComponent from "../Score/ScoreComponent";
+import Score from "../Score/Score";
 import Cookies from "js-cookie";
 
 interface props {
@@ -10,7 +10,7 @@ interface props {
     examId?: number,
 }
 
-class AnswerComponent extends Component<props> {
+class Answer extends Component<props> {
     state = {
         text: '',
         answer: '',
@@ -74,9 +74,9 @@ class AnswerComponent extends Component<props> {
                 </div>
                 </div>
 
-                <ScoreComponent questionId={this.props.questionId} examId={this.props.examId}/>
+                <Score questionId={this.props.questionId} examId={this.props.examId}/>
             </div>);
     }
 }
 
-export default AnswerComponent;
+export default Answer;
