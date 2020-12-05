@@ -3,8 +3,6 @@ import {Component} from "react";
 import {Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
 
-
-
 function Send(questionText : string,
               questionType : number,
               mcAnswer1? : string,
@@ -13,8 +11,9 @@ function Send(questionText : string,
               mcAnswer4? : string,
               mcCorrectAnswer? : string,
               oqCorrectAnswer? : string,
-        ) {
+        ){
     let questiontext = encodeURIComponent(questionText);
+
     axios.post(`/api/question/create/${questiontext}/${questionType}`).then(response => {
         console.log("Vraag toegevoegd");
 
@@ -47,15 +46,11 @@ function Send(questionText : string,
                 axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer4}/${false}`);
             }
         }
-
         else if(oqCorrectAnswer !== ''){
             axios.post(`/api/question/addTextAnswer/${response.data.id}/${oqCorrectAnswer}`)
         }
-
     } );
-
 }
-
 
 class CreateQuestionForm extends Component {
     state ={
@@ -70,11 +65,9 @@ class CreateQuestionForm extends Component {
         OqCorrectAnswer : String,
     }
 
-
 componentDidMount() {
     this.setState({McAnswer1 : '', McAnswer2: '', McAnswer3 : '', McAnswer4 : '', questionText : ''});
 }
-
     test = (value : any) =>{
         if(value.trim() !== ""){
             return(<option> {value} </option>)
@@ -108,12 +101,6 @@ componentDidMount() {
             )
         }
     }
-
-
-
-
-
-
     render() {
         return (
             <Form>
@@ -122,11 +109,11 @@ componentDidMount() {
                     <Form.Control value={this.state.questionText.toString()}  placeholder="Vul een vraag in"  type="text" onChange={(e) => this.setState({questionText : e.target.value})}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Check inline label="Multiple Choice" name="QuestionType" id="MP" type="radio" onChange={() => this.setState({type: 1})} />
-                    <Form.Check inline label="Open Question" name="QuestionType" id="OQ" type="radio" onChange={() => this.setState({type: 2})}/>
+                    <Form.Check inline label="Gesloten vraag" name="QuestionType" id="MP" type="radio" onChange={() => this.setState({type: 1})} />
+                    <Form.Check inline label="Open vraag" name="QuestionType" id="OQ" type="radio" onChange={() => this.setState({type: 2})}/>
                 </Form.Group>
                 <Col>
-                    <Form.Group  >
+                    <Form.Group >
                         {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
                 </Col>
@@ -141,9 +128,8 @@ componentDidMount() {
                         this.state.McCorrectAnswer.toString(),
                         this.state.OqCorrectAnswer.toString()
                         ) }>
-
-                    Submit</Button>
-                <Button variant="primary m-2" type="" onClick={() => this.setState({McAnswer1 : '', McAnswer2: '', McAnswer3 : '', McAnswer4 : '',questionText : '', type : 0}) }> clear fields</Button>
+                    Maak vraag</Button>
+                <Button variant="primary m-2" type="" onClick={() => this.setState({McAnswer1 : '', McAnswer2: '', McAnswer3 : '', McAnswer4 : '',questionText : '', type : 0}) }> Velden legen</Button>
             </Form>
         )
     }

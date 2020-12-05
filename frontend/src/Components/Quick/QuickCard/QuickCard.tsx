@@ -10,7 +10,6 @@ interface props {
 }
 
 class QuickCard extends Component<props>{
-
     render() {
         return (
             <Card className="quick-cards" style={{ width: '18rem' }}>

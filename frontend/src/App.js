@@ -12,10 +12,10 @@ import ExamensPage from "./Components/Pages/ExamensPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import QuestionPage from "./Components/Pages/QuestionPage";
-import AdminPage from "./Components/Pages/AdminPage";
-import CreateExamPage from "./Components/Pages/CreateExamPage";
-import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
-import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
+import AdminPage from "./Components/Pages/Admin/AdminPage";
+import CreateExamPage from "./Components/Pages/Admin/CreateExamPage";
+import CreateQuestionPage from "./Components/Pages/Admin/CreateQuestionPage";
+import CreateExamItemPage from "./Components/Pages/Admin/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
 
 function App() {
@@ -37,16 +37,16 @@ function App() {
                 <Route path="/question">
                     <QuestionPage/>
                 </Route>
-                <Route path="/admin">
-                <AdminPage/>
-            </Route>
-                <Route path="/create-exam">
+                <Route exact={true} path="/admin">
+                    <AdminPage/>
+                </Route>
+                <Route path="/admin/maak-examen">
                     <CreateExamPage/>
                 </Route>
-                <Route path="/create-question">
+                <Route path="/admin/maak-vraag">
                     <CreateQuestionPage/>
                 </Route>
-                <Route path="/create-examItem">
+                <Route path="/admin/maak-examenitem">
                     <CreateExamItemPage/>
                 </Route>
                 <Route path="/login">

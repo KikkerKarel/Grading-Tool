@@ -22,7 +22,7 @@ class LogoutPage extends Component<props> {
                     <NavbarComponent/>
                 </div>
                 <section className="content-container">
-                    <h1>U bent uitgelogd</h1>
+                    <h1>U bent uitgelogd.</h1>
                 </section>
                 <Footer/>
             </div>

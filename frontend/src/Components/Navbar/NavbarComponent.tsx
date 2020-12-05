@@ -19,11 +19,24 @@ class NavbarComponent extends Component {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav className="nav-menu">
+                        {this.ifAdmin()}
                         <Nav.Link className="nav-links" href="/examens">Examens</Nav.Link>
                         {this.getButton()}
                     </Nav>
             </Navbar>
         );
+    }
+
+    ifAdmin()
+    {
+        let user : any = localStorage.getItem("user");
+
+        if( user !== null && user.toLowerCase() === "admin")
+        return (
+            <>
+                <Nav.Link className="nav-links" href="/admin">Admin paneel</Nav.Link>
+            </>
+        )
     }
 
     getButton()

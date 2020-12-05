@@ -1,13 +1,12 @@
 import {Component} from "react";
 import * as React from "react";
 import axios from "axios";
-import {Button, Col, Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
 interface iUser{
     id : number,
     username : string
 }
-
 
 function Send(
  examinerID : number,
@@ -15,7 +14,6 @@ function Send(
 ){
     axios.post(`/api/exams/create/${student}/${examinerID}`);
 }
-
 
 class CreateExamForm extends Component{
     state ={
@@ -41,8 +39,6 @@ class CreateExamForm extends Component{
         });
     }
 
-
-
     render() {
          let examiners;
          examiners = this.state.users.map(e => {
@@ -52,23 +48,22 @@ class CreateExamForm extends Component{
          })
 
         return (
-            <Form>
-                <Form.Group>
-                    <Form.Label>Naam examenleerling </Form.Label>
-                    <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({studentName: e.target.value}) } value={this.state.studentName.toString()} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Examinator: </Form.Label>
-                    <Form.Control as="select" id="select" onChange={(e) => this.SetExaminerID(e.target.value) } >
-                        <option value="choose">Kies een examinator </option>
-                        {examiners}
-                    </Form.Control>
-                </Form.Group>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Naam examenleerling: </Form.Label>
+                        <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({studentName: e.target.value}) } value={this.state.studentName.toString()} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Examinator: </Form.Label>
+                        <Form.Control as="select" id="select" onChange={(e) => this.SetExaminerID(e.target.value) } >
+                            <option value="choose">Kies een examinator </option>
+                            {examiners}
+                        </Form.Control>
+                    </Form.Group>
 
-
-                <Button variant="primary m-2" onClick={() => Send(parseInt(this.state.examinerID.toString()) , this.state.studentName.toString())}>Submit</Button>
-                <Button variant="primary m-2" type="" onClick={() => this.setState({studentName : ``})}>clear fields</Button>
-            </Form>
+                    <Button variant="primary m-2" onClick={() => Send(parseInt(this.state.examinerID.toString()) , this.state.studentName.toString())}>Maak aan</Button>
+                    <Button variant="primary m-2" type="" onClick={() => this.setState({studentName : ``})}>Velden legen</Button>
+                </Form>
         )
     }
 }

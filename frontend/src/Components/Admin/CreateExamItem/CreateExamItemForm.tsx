@@ -3,10 +3,6 @@ import * as React from "react";
 import axios from "axios";
 import {Button, Form} from "react-bootstrap";
 
-function Send(){
-    axios.post(``);
-}
-
 interface iChoice{
     id: number,
     text : string
@@ -23,7 +19,6 @@ interface iExam{
     id : number
 }
 
-
 class CreateExamItemForm extends Component{
     state ={
         myQuestions : Array<iQuestion>(),
@@ -38,13 +33,10 @@ class CreateExamItemForm extends Component{
 
     componentDidMount() {
         axios.get(`/api/exams/find/all`).then(response =>{
-            //console.log(response.data);
             this.setState({exams : response.data, examID : response.data[0].id});
         })
 
         axios.get(`/api/question/find/all`).then(response =>{
-            //console.log(response.data);
-
             this.setState({myQuestions : response.data, questionID : response.data[0].id, questionType : response.data[0].type });
         });
     }
@@ -57,9 +49,8 @@ class CreateExamItemForm extends Component{
         })
     }
 
-
     Input=(type : String, questionID : number)=>{
-        if (type=="CHOICE"){
+        if (type==="CHOICE"){
             let mcChoices = this.state.myQuestions.find(q => q.id === questionID)?.choices;
             let myChoices;
             myChoices = mcChoices?.map(c =>{
@@ -76,7 +67,7 @@ class CreateExamItemForm extends Component{
                 </>
             )
         }
-        else if(type=="TEXT"){
+        else if(type==="TEXT"){
             return(
                 <>
                     <Form.Control type="text" value={this.state.oqAnswer} placeholder="Open vraag antwoord" required onChange={(e) => this.setState({oqAnswer : e.target.value})} />
@@ -84,7 +75,6 @@ class CreateExamItemForm extends Component{
             )
         }
     }
-
 
     validateForm(type : String, oqinput : string){
         return type === "TEXT" && oqinput === "";
@@ -114,7 +104,6 @@ class CreateExamItemForm extends Component{
                  this.setState({message : error.data});
              });
          }
-
          this.setState({oqAnswer : ""});
     }
 
@@ -133,32 +122,27 @@ class CreateExamItemForm extends Component{
             );
         });
 
-
-
-
-
         return (
             <>
                 <h1>{this.state.message}</h1>
-            <Form onSubmit={(e) => this.SubmitForm(e)}>
-                <Form.Group>
-                    <Form.Label> ExamID:</Form.Label>
-                    <Form.Control as="select" onChange={(e) => this.setState({examID : e.target.value})}>
-                        {ExamIds}
-                    </Form.Control>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label> Vraag:</Form.Label>
-                    <Form.Control as="select" onChange={(e) => this.SetQuestion(e.target.value)}>
-                        {questions}
-                    </Form.Control>
-                </Form.Group>
-                <Form.Group>
-                    {this.Input(this.state.questionType, this.state.questionID)}
-                </Form.Group>
-
-                <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)} >Submit</Button>
-            </Form>
+                <Form onSubmit={(e) => this.SubmitForm(e)}>
+                    <Form.Group>
+                        <Form.Label> ExamID:</Form.Label>
+                        <Form.Control as="select" onChange={(e) => this.setState({examID : e.target.value})}>
+                            {ExamIds}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label> Vraag:</Form.Label>
+                        <Form.Control as="select" onChange={(e) => this.SetQuestion(e.target.value)}>
+                            {questions}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        {this.Input(this.state.questionType, this.state.questionID)}
+                    </Form.Group>
+                    <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Koppel vraag</Button>
+                </Form>
                 </>
         )
     }
