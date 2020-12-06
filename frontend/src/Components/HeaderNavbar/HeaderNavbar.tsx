@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Component} from "react";
-import '../_CSS/Button.css';
+import '../../CSS/Button.css';
 import {Button, Nav, Navbar} from "react-bootstrap";
 import './HeaderNavbar.css';
-import AuthService from "../../Services/auth.service"
-import {Redirect} from 'react-router-dom'
+import AuthService from "../../Services/auth.service";
+import {Redirect} from 'react-router-dom';
 
 class HeaderNavbar extends Component {
     render() {

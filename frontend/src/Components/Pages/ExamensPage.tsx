@@ -3,8 +3,8 @@ import {Component} from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
-import '../../Dashboard.css'
-import axios from 'axios'
+import '../../CSS/Dashboard.css';
+import axios from 'axios';
 import ExamTable from "../ExamTable/ExamTable";
 import AuthService from "../../Services/auth.service";
 import {Redirect} from "react-router";

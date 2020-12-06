@@ -2,13 +2,13 @@ import * as React from "react";
 import '../../HeaderNavbar/HeaderNavbar.css';
 import {Component} from "react";
 import Footer from "../../Footer/Footer";
-import '../../../Dashboard.css'
+import '../../../CSS/Dashboard.css';
 import HeaderNavbar from "../../HeaderNavbar/HeaderNavbar";
 import QuickCard from "../../Quick/QuickCard/QuickCard";
 import {CardDeck} from "react-bootstrap";
 import AuthService from "../../../Services/auth.service";
 import {Redirect} from "react-router";
-import "../CSS/Admin.css"
+import "../CSS/Admin.css";
 
 interface props {
 }

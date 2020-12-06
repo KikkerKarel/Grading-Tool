@@ -3,8 +3,8 @@ import {Component} from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
-import '../../Dashboard.css'
-import AuthService from "../../Services/auth.service"
+import '../../CSS/Dashboard.css';
+import AuthService from "../../Services/auth.service";
 
 interface props {
 }
