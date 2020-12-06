@@ -71,7 +71,7 @@ public class TextGradingService {
 
         //Get score out of 100
         int score = 100 / (correctWords.length / advice.getMatchingWordPositions().size());
-        log.info("Score out of 100 = {}", score);
+        log.info("UserScore out of 100 = {}", score);
 
         score = score / 20; //make it 0-5 range
         log.info("ranged = {}", score / 20);

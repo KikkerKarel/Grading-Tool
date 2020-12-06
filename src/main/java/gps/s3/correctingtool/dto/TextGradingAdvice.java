@@ -22,7 +22,7 @@ public class TextGradingAdvice {
     public TextGradingAdvice setSuggestedScore(Integer suggestedScore) {
 
         if(suggestedScore < 0 || suggestedScore > 5)
-            throw new IllegalArgumentException("Score must be in the 0 to 5 range!");
+            throw new IllegalArgumentException("UserScore must be in the 0 to 5 range!");
 
         this.suggestedScore = suggestedScore;
         return this;
