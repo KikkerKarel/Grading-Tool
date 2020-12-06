@@ -52,12 +52,12 @@ class UserScore extends Component<props> {
     render() {
         return (
             <div className="scores">
-                <div className="scoringdiv">
+                <div className="scoring-div">
                     <label className="scoring-text-label">Systeem aangeraden score</label>
                     {systemScore(this.state.systemRating)}
                 </div>
                 <br/>
-                <div className="scoringdiv">
+                <div className="scoring-div">
                     <label className="scoring-text-label">Gegeven score</label>
                     {(() => {
                         let Graded = this.state.previousScore;

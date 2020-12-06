@@ -1,7 +1,3 @@
-body{
-    font-family: 'Averta', sans-serif;
-}
-
 h4{
     height: 110px;
     text-align: center;
@@ -12,8 +8,7 @@ h4{
     padding-top: 8px
 }
 
-
-.AnswerComponent{
+.answer{
     height: 100%;
     width: 400px;
 }
@@ -28,16 +23,13 @@ textarea
     border-radius: 10px;
 }
 
-.Answer{
-    width: 400px;
-}
-
-.AnswerHeader
+.answer-header
 {
     font-size: 16px;
     font-weight: lighter;
 }
-.CorrectAnswer
+
+.correct-answer
 {
     width: 20%;
     height: 10%;
@@ -45,10 +37,7 @@ textarea
     margin-right: auto;
 }
 
-.buttondiv
+.button-div
 {
     text-align: center;
 }
-
-
-

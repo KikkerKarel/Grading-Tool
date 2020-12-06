@@ -48,6 +48,7 @@ class Answer extends Component<props> {
         let score = Cookies.get("score");
         let examId = this.state.examId;
         let questionId = this.props.questionId;
+
         axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
             window.location.replace("./");
         });
@@ -55,7 +56,7 @@ class Answer extends Component<props> {
 
     render() {
         return (
-            <div className="AnswerComponent">
+            <div className="answer">
                 <h4>{this.state.text}</h4>
                 <div className="Answer">
                 <Form.Group>
@@ -68,12 +69,11 @@ class Answer extends Component<props> {
                     <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer}
                                   className="CorrectAnswerText" readOnly={true}/>
                 </Form.Group>
-                <div className="buttondiv">
-                    <Button className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
-                    <Button className="btn--yellow" >Wijzigen</Button>
+                <div className="button-div">
+                    <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
+                    <Button id={"editQuestion"} className="btn--yellow" >Wijzigen</Button>
                 </div>
                 </div>
-
                 <UserScore questionId={this.props.questionId} examId={this.props.examId}/>
             </div>);
     }

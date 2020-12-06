@@ -7,16 +7,16 @@ class AddAnswer extends Component
         return (
             <>
                 <Form.Group className={"block-example border border-dark"}>
-                    <Row className={"RowPadding"}>
+                    <Row className={"row-padding"}>
                         <Col>
                             <Form.Label>Antwoord toevoegen (tekst)</Form.Label>
                             <Form.Control as="textarea" rows={3}/>
                         </Col>
-                        <Col className={"ButtonCol"}>
+                        <Col className={"button-col"}>
                             <br/>
-                            <Button className="WhiteText" variant="danger">Annuleren</Button>
+                            <Button className="white-text" variant="danger">Annuleren</Button>
                             <br/>
-                            <Button className="WhiteText" variant="success">Aanpassing/aanpassingen doorvoeren</Button>
+                            <Button className="white-text" variant="success">Aanpassing/aanpassingen doorvoeren</Button>
                         </Col>
                         <br/>
                     </Row>

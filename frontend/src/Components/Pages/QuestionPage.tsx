@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import '../../CSS/Dashboard.css';
+import '../../index.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTracker";
 import Cookies from 'js-cookie';
