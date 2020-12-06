@@ -57,22 +57,20 @@ class Answer extends Component<props> {
     render() {
         return (
             <div className="answer">
-                <h4>{this.state.text}</h4>
-                <div className="Answer">
-                <Form.Group>
-                    <Form.Label className="AnswerHeader">Antwoord (tekst)</Form.Label>
-                    <Form.Control as="textarea" rows={3} cols={30} readOnly={true} placeholder={this.state.studentAnswer}
-                                  className="AnswerText"/>
-                </Form.Group>
-                <Form.Group className="Answer">
-                    <Form.Label className="AnswerHeader">Goed gekeurde antwoorden (tekst)</Form.Label>
-                    <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer}
-                                  className="CorrectAnswerText" readOnly={true}/>
-                </Form.Group>
-                <div className="button-div">
-                    <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
-                    <Button id={"editQuestion"} className="btn--yellow" >Wijzigen</Button>
-                </div>
+                <h4 className={"text-center"}>{this.state.text}</h4>
+                <div>
+                    <Form.Group>
+                        <Form.Label className="answer-header">Antwoord (tekst)</Form.Label>
+                        <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.studentAnswer} disabled/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label className="answer-header">Goed gekeurde antwoorden (tekst)</Form.Label>
+                        <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer} disabled/>
+                    </Form.Group>
+                    <div className="button-div">
+                        <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
+                        <Button id={"editQuestion"} className="btn--yellow" >Wijzigen</Button>
+                    </div>
                 </div>
                 <UserScore questionId={this.props.questionId} examId={this.props.examId}/>
             </div>);

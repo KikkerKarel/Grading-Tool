@@ -12,9 +12,8 @@
     background: gray;
 }
 
-.Tracker{
+.tracker{
     width: 400px;
-    height: 57%;
     margin-left: 40px;
     border: #ced4da;
 }
@@ -28,49 +27,29 @@ p{
 
 .list-group-item{
     border: none;
-}
-
-.disabled-active{
-
+    color: black !important;
 }
 
 .list-group-item.active{
     opacity: 1;
     background-color: #dadbde;
-    color: black;
     border: none;
 }
 
-.ClosedQuestions{
-    height: 50%;
-    width: 100%;
-    /*background-color: #3C3A3A;*/
-    overflow: scroll;
+.open-questions{
+    height: 44.2%;
+    overflow-y: auto;
     overflow-x: hidden;
     border-style: solid;
     border-color: #ced4da;
     border-width: thin;
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
 }
 
-.OpenQuestions{
-    height: 50%;
-    width: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
-    border-style: solid;
-    border-color: #ced4da;
-    border-width: thin;
-    border-radius: 0;
-}
-
-.QuestionText{
+.question-text{
     margin-top: 0;
     margin-left: 1%;
-    width: 100%;
     font-size: 15px;
-    color: black;
     font-weight: bold;
 }
 
@@ -81,25 +60,20 @@ p{
     pointer-events: none;
 }
 
-.QuestionText:hover{
+.question-text:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-.Correct
+.answered
 {
-    color: #5aad5a;
+    color: #5aad5a !important;
 }
 
-.False
+.loading-bar
 {
-    color: red;
-}
-
-.LoadingBar
-{
+    margin-top: -1.5%;
     height: 15%;
-    width: 100%;
     border-radius: 0 0 10px 10px;
     border-style: solid;
     border-top: none;
@@ -109,7 +83,7 @@ p{
     justify-content: center;
 }
 
-.ProgressBar {
+.progress-bar-style {
     width: 90%;
     margin-top: auto;
     margin-bottom: auto;
@@ -119,12 +93,7 @@ p{
     background-color: #e94f2c;
 }
 
-.Bold{
+.bold{
     font-weight: 800;
     text-decoration: underline;
 }
-
-
-
-
-

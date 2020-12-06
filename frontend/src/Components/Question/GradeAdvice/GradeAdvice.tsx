@@ -5,13 +5,13 @@ class GradeCorrect extends Component
 {
     render() {
         return (
-            <div className="gradestadvice" id="correct">
-            <div className="headerdiv">
-                <label className="header">Gradest Advies</label>
+            <div className="gradest-advice" id="correct">
+            <div className="header-div">
+                <label className="header-text">Gradest Advies</label>
             </div>
-            <div className="expldiv">
-                <h1 className="h1">Keur goed!</h1>
-                <label className="infolabel">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel</label>
+            <div className="explanation-div">
+                <h1 className="explanation-header">Keur goed!</h1>
+                <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel</label>
             </div>
         </div>
         );
@@ -22,13 +22,13 @@ class GradeWrong extends Component
 {
     render() {
         return (
-            <div className="gradestadvice" id="wrong">
-            <div className="headerdiv">
-                <label className="header">Gradest Advies</label>
+            <div className="gradest-advice" id="wrong">
+            <div className="header-div">
+                <label className="header-text">Gradest Advies</label>
             </div>
-            <div className="expldiv">
-                <h1 className="h1">Keur fout!</h1>
-                <label className="infolabel">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel</label>
+            <div className="explanation-div">
+                <h1 className="explanation-header">Keur fout!</h1>
+                <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel</label>
             </div>
         </div>
         );
