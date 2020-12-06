@@ -27,7 +27,9 @@ class CreateExamItemPage extends Component {
                 <section className="content-container contentcenter">
                     <CreateExamItemForm />
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

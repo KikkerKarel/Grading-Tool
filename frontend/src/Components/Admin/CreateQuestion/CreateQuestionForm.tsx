@@ -93,7 +93,7 @@ componentDidMount() {
                 </>
             )
         }
-        else if( value===2){
+        else if(value===2){
             return(
                 <>
                     <Form.Control type="text" placeholder="Open vraag antwoord" required onChange={(e) => this.setState({OqCorrectAnswer : e.target.value})} />
@@ -105,7 +105,7 @@ componentDidMount() {
         return (
             <Form>
                 <Form.Group>
-                    <Form.Label> Vraag: </Form.Label>
+                    <Form.Label>Vraag:</Form.Label>
                     <Form.Control value={this.state.questionText.toString()}  placeholder="Vul een vraag in"  type="text" onChange={(e) => this.setState({questionText : e.target.value})}/>
                 </Form.Group>
                 <Form.Group>
@@ -117,7 +117,6 @@ componentDidMount() {
                         {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
                 </Col>
-
                 <Button variant="primary m-2" onClick={() =>
                     Send(this.state.questionText.toString(),
                         parseInt(this.state.type.toString()),
@@ -129,7 +128,7 @@ componentDidMount() {
                         this.state.OqCorrectAnswer.toString()
                         ) }>
                     Maak vraag</Button>
-                <Button variant="primary m-2" type="" onClick={() => this.setState({McAnswer1 : '', McAnswer2: '', McAnswer3 : '', McAnswer4 : '',questionText : '', type : 0}) }> Velden legen</Button>
+                <Button variant="primary m-2" type="" onClick={() => this.setState({McAnswer1 : '', McAnswer2: '', McAnswer3 : '', McAnswer4 : '',questionText : '', type : 0}) }>Velden legen</Button>
             </Form>
         )
     }

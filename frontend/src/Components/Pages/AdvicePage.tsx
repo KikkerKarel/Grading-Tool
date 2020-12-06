@@ -10,7 +10,6 @@ interface props{
 }
 
 class AdvicePage extends Component<props, {}> {
-
     state = {
         words: [],
         advice: {
@@ -78,11 +77,12 @@ class AdvicePage extends Component<props, {}> {
             </section>
 
             </div>
-            <Footer/>
+            <div className="footer">
+                <Footer/>
+            </div>
         </div>
         )
     }
-
 }
 
 export default AdvicePage

@@ -35,7 +35,9 @@ class AdminPage extends Component<props> {
                         <QuickCard image="Images/Dev-test" text="Maak een nieuwe examen vraag." link="admin/maak-vraag" title="Maak examen vraag"/>
                     </CardDeck>
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

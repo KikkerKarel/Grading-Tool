@@ -12,7 +12,9 @@ class HomePage extends Component {
                 </div>
                 <section className="content-container">
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

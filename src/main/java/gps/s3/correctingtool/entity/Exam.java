@@ -17,7 +17,7 @@ public class Exam {
     private ExamStatus status;
 
     @Column(nullable = false)
-    private String studentName;
+    private String examName;
 
     @ManyToOne
     @JoinColumn(name = "examinerId", referencedColumnName = "id")

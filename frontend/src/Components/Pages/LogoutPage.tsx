@@ -10,7 +10,6 @@ interface props {
 }
 
 class LogoutPage extends Component<props> {
-
     componentDidMount() {
         AuthService.logout();
     }
@@ -24,7 +23,9 @@ class LogoutPage extends Component<props> {
                 <section className="content-container">
                     <h1>U bent uitgelogd.</h1>
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

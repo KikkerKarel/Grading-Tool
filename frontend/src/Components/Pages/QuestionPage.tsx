@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import '../../Dashboard.css'
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
-import FooterComponent from "../Footer/Footer";
 import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTracker";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 class QuestionPage extends Component {
     state = {
@@ -29,7 +29,7 @@ class QuestionPage extends Component {
         });
     }
 
-    renderQuestionTrackComponent() {
+    renderQuestionComponents() {
         if (!this.state.isLoading) {
             return <QuestionTrackComponent Exam={this.state.Exam}/>
         }
@@ -42,9 +42,11 @@ class QuestionPage extends Component {
                     <HeaderNavbar/>
                 </div>
                 <section className="content-container flex">
-                        {this.renderQuestionTrackComponent()}
+                    {this.renderQuestionComponents()}
                 </section>
-                <FooterComponent/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

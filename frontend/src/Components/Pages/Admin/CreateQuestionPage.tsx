@@ -27,7 +27,9 @@ class CreateQuestionPage extends Component {
                 <section className="content-container contentcenter">
                     <CreateQuestionForm />
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

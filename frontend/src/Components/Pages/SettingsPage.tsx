@@ -9,7 +9,6 @@ interface props {
 }
 
 class SettingsPage extends Component<props> {
-
     render() {
         return (
             <div className="page-container">
@@ -17,9 +16,11 @@ class SettingsPage extends Component<props> {
                     <HeaderNavbar />
                 </div>
                 <section className="content-container">
-                    <h1>beepboop</h1>
+                    <h1>Instellingen</h1>
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

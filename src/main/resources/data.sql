@@ -46,12 +46,12 @@ INSERT INTO gradest.user (username, password, register_date, last_login) VALUES 
 */
 
 
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Petra', 'NOT_GRADED', 2);
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Mohammed', 'NOT_GRADED', 3);
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Senna', 'NOT_GRADED', 4);
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Jaap', 'NOT_GRADED', 5);
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Mark', 'NOT_GRADED', 6);
-INSERT INTO gradest.exam (student_name, status, examiner_id) VALUES ('Samantha', 'NOT_GRADED', 7);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2020 T1', 'NOT_GRADED', 2);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2020 T2', 'NOT_GRADED', 3);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2020 T3', 'NOT_GRADED', 4);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T1', 'NOT_GRADED', 5);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T2', 'NOT_GRADED', 6);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T3', 'NOT_GRADED', 7);
 
 
 /*

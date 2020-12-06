@@ -55,10 +55,10 @@ public class ExamController {
         return gradingTool.gradeMcExam(repo.findById(id));
     }
 
-    @PostMapping("/create/{student}/{examiner}")
-    public void CreateExam(@PathVariable("student") String studentName, @PathVariable("examiner") int examinerID) {
+    @PostMapping("/create/{examName}/{examiner}")
+    public void CreateExam(@PathVariable("examName") String examName, @PathVariable("examiner") int examinerID) {
         Exam exam = new Exam();
-        exam.setStudentName(studentName);
+        exam.setExamName(examName);
 
         long longID = examinerID;
 

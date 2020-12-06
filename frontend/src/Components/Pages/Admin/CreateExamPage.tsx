@@ -30,7 +30,9 @@ class CreateExamPage extends Component<props> {
                 <section className="content-container contentcenter">
                     <CreateExamForm />
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

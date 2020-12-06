@@ -33,7 +33,6 @@ class ExamensPage extends Component<props, {}> {
         }
 
         return (
-            <>
             <div className="page-container">
                 <div className="content-wrap">
                     <HeaderNavbar/>
@@ -45,8 +44,7 @@ class ExamensPage extends Component<props, {}> {
                 <div className="footer">
                     <Footer/>
                 </div>
-             </div>
-            </>
+            </div>
         );
     }
 }

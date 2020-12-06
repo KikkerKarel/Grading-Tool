@@ -12,15 +12,15 @@ interface props{
 const columns = [
     {
         dataField: 'id',
-        text: 'Exam ID'
+        text: 'Examen ID'
     },
     {
-        dataField: 'studentName',
-        text: 'Student Name',
+        dataField: 'examName',
+        text: 'Examen',
     },
     {
         dataField: 'status',
-        text: 'Exam Status',
+        text: 'Examen status',
         sort: true,
     }
 ];

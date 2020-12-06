@@ -24,7 +24,9 @@ class LoginPage extends Component<props> {
                     <HeaderNavbar/>
                     <Login/>
                 </div>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }
