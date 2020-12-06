@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  font-family: 'Averta', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -10,6 +17,17 @@
   min-height: 100vh;
 }
 
+.content-container{
+  top: 80px;
+  position: fixed;
+}
+
 .content-wrap{
   flex: 1;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

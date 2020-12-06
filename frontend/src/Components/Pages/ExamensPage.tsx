@@ -3,7 +3,6 @@ import {Component} from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
-import '../../CSS/Dashboard.css';
 import axios from 'axios';
 import ExamTable from "../ExamTable/ExamTable";
 import AuthService from "../../Services/auth.service";
@@ -38,7 +37,7 @@ class ExamensPage extends Component<props, {}> {
                     <HeaderNavbar/>
                 </div>
                 <div className="content-container">
-                    <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
+                    <h1 className="text-center mt-3">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>
                 </div>
                 <div className="footer">

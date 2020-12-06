@@ -3,7 +3,6 @@ import {Component} from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
-import '../../CSS/Dashboard.css';
 import Login from   "../Login/Login";
 
 interface props {

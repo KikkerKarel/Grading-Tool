@@ -2,7 +2,6 @@ import * as React from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import {Component} from "react";
 import Footer from "../Footer/Footer";
-import '../../CSS/Dashboard.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 
 interface props {
