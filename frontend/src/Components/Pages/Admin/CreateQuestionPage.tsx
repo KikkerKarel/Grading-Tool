@@ -11,12 +11,12 @@ import "../CSS/Admin.css";
 class CreateQuestionPage extends Component {
     render() {
         if(!AuthService.isLoggedIn())
-            return <Redirect to='/login' />
+            return <Redirect to='/inloggen'/>
 
         let user : any = localStorage.getItem("user");
 
         if(user.toLowerCase() !== "admin")
-            return <Redirect to='/examens' />
+            return <Redirect to='/examens'/>
 
         return (
             <div className="page-container">

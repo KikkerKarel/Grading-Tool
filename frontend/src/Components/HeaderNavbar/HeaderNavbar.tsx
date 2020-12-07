@@ -42,15 +42,15 @@ class HeaderNavbar extends Component {
     getButton()
     {
         if(AuthService.isLoggedIn())
-            return <Button href="/logout" onClick={this.onLogOut} className="btn--medium" variant="primary">Log Out</Button>
+            return <Button href="/uitloggen" onClick={this.onLogOut} className="btn--medium" variant="primary">Uitloggen</Button>
 
-        return <Button href="/login" className="btn--medium" variant="primary">Log in</Button>
+        return <Button href="/inloggen" className="btn--medium" variant="primary">Inloggen</Button>
     }
 
     onLogOut()
     {
         AuthService.logout();
-        return <Redirect to='/login'/>
+        return <Redirect to='/inloggen'/>
     }
 }
 

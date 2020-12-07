@@ -57,25 +57,23 @@ class AdvicePage extends Component<props, {}> {
                 <HeaderNavbar/>
             </div>
             <div className="content-wrap d-flex justify-content-center">
-            <section className="content-container">
+                <section className="content-container">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Text>
 
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                        <Card.Text>
+                                <h3 className="text-center mt-3">{this.state.advice.examItem.question.text}</h3>
 
-                            <h3 className="text-center mt-3">{this.state.advice.examItem.question.text}</h3>
+                                <h4 className="text-center mt-3">Correct antwoord:</h4>
+                                <p>{advice.examItem.question.textAnswer.value}</p>
 
-                            <h4 className="text-center mt-3">Correct antwoord:</h4>
-                            <p>{advice.examItem.question.textAnswer.value}</p>
-
-                            <h4 className="text-center mt-3">Gegeven antwoord:</h4>
-                            <div dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
-                        </Card.Text>
-                        <Card.Title>Score: {advice.suggestedScore} out of 5</Card.Title>
-                    </Card.Body>
-                </Card>
-            </section>
-
+                                <h4 className="text-center mt-3">Gegeven antwoord:</h4>
+                                <div dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
+                            </Card.Text>
+                            <Card.Title>Score: {advice.suggestedScore} out of 5</Card.Title>
+                        </Card.Body>
+                    </Card>
+                </section>
             </div>
             <div className="footer">
                 <Footer/>

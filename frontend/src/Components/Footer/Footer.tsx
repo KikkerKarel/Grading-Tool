@@ -12,7 +12,7 @@ class Footer extends Component{
             <div className="main-footer">
                 <div className="row">
                     <p className="col-sm">
-                        &copy;{new Date().getFullYear()} Gradest INC | All rights reserved | Terms Of Service | Privacy
+                        &copy;{new Date().getFullYear()} Gradest INC | Alle rechten voorbehouden | Servicevoorwaarden | Privacy
                     </p>
                 </div>
             </div>

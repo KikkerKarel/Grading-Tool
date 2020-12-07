@@ -2,23 +2,28 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
-import QuestionTrackComponent from "../Question/QuestionsTrack/QuestionsTracker";
+import QuestionTrackComponent from "../Question/QuestionElements/QuestionElements";
 import Cookies from 'js-cookie';
 import axios from "axios";
 import Footer from "../Footer/Footer";
+import AuthService from "../../Services/auth.service";
+import {Redirect} from "react-router";
 
 class QuestionPage extends Component {
     state = {
         isLoading: true,
         Exam: {},
         questionId: 0,
-        examId: 0,
+        examId: 0
     };
 
     async componentDidMount() {
         await this.setState({
             examId: Cookies.get("examId")
         });
+
+        if (!this.state.examId || this.state.examId === 0)
+        window.location.replace("/examens")
 
         await axios.get(`/api/exams/grade/${this.state.examId}`).then(response => {
             this.setState({
@@ -35,6 +40,9 @@ class QuestionPage extends Component {
     }
 
     render() {
+        if(!AuthService.isLoggedIn())
+            return <Redirect to='./inloggen'/>
+
         return (
             <div className="page-container">
                 <div className="content-wrap">

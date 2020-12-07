@@ -12,6 +12,7 @@ function Send(questionText : string,
               mcCorrectAnswer? : string,
               oqCorrectAnswer? : string,
         ){
+
     let questiontext = encodeURIComponent(questionText);
 
     axios.post(`/api/question/create/${questiontext}/${questionType}`).then(response => {
@@ -49,7 +50,7 @@ function Send(questionText : string,
         else if(oqCorrectAnswer !== ''){
             axios.post(`/api/question/addTextAnswer/${response.data.id}/${oqCorrectAnswer}`)
         }
-    } );
+    });
 }
 
 class CreateQuestionForm extends Component {
@@ -95,9 +96,7 @@ componentDidMount() {
         }
         else if(value===2){
             return(
-                <>
-                    <Form.Control type="text" placeholder="Open vraag antwoord" required onChange={(e) => this.setState({OqCorrectAnswer : e.target.value})} />
-                </>
+                <Form.Control type="text" placeholder="Open vraag antwoord" required onChange={(e) => this.setState({OqCorrectAnswer : e.target.value})} />
             )
         }
     }
@@ -110,7 +109,7 @@ componentDidMount() {
                 </Form.Group>
                 <Form.Group>
                     <Form.Check inline label="Gesloten vraag" name="QuestionType" id="MP" type="radio" onChange={() => this.setState({type: 1})} />
-                    <Form.Check inline label="Open vraag" name="QuestionType" id="OQ" type="radio" onChange={() => this.setState({type: 2})}/>
+                    <Form.Check inline label="Open vraag" name="QuestionType" id="OQ" type="radio" onChange={() => this.setState({type: 2, McAnswer2: "", McAnswer3: "", McAnswer4: "", McCorrectAnswer: ""})}/>
                 </Form.Group>
                 <Col>
                     <Form.Group >

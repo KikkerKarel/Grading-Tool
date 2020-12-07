@@ -35,7 +35,7 @@ class ExamTable extends Component<props> {
         const tableRowEvents = {
             onClick: (e: any, row: any, rowIndex: any) => {
                 Cookies.set('examId', row.id);
-                window.location.replace('/question/grade');
+                window.location.replace('/vraag/nakijken');
                 console.log(`Clicked on row with index: ${rowIndex}`);
             },
             onMouseEnter: (e: any, row: any) => {

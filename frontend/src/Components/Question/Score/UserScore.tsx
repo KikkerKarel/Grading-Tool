@@ -7,7 +7,7 @@ import systemScore from "./SystemScore";
 
 interface props {
     questionId?: number,
-    examId?: number,
+    examId?: number
 }
 
 class UserScore extends Component<props> {
@@ -19,7 +19,7 @@ class UserScore extends Component<props> {
         examId: Number
     }
 
-    changeValue(event: any){
+    changeValue(event : any){
         this.setState({valueStars: event}, () => Cookies.set("score", event));
     }
 
@@ -34,16 +34,17 @@ class UserScore extends Component<props> {
                         systemRating: Math.random()*(5 -1),
                         questionId: this.props.questionId,
                     }
-                ));
+                )
+            );
         }
     }
 
-     returnButtonClass(value:any) {
-        let Graded = this.state.previousScore;
+     returnButtonClass(value : any) {
+        let graded = this.state.previousScore;
         let buttonInactive = "rating-buttons";
         let buttonActive = "rating-buttons-correct";
 
-        if (value === Graded) {
+        if (value === graded) {
             return buttonActive;
         }
         return buttonInactive;
@@ -60,12 +61,12 @@ class UserScore extends Component<props> {
                 <div className="scoring-div">
                     <label className="scoring-text-label">Gegeven score</label>
                     {(() => {
-                        let Graded = this.state.previousScore;
+                        let graded = this.state.previousScore;
                         let userButtons = [];
 
                         for (let i =0; i < 6; i++)
                         {
-                            if (Graded !== null)
+                            if (graded !== null)
                             {
                                 userButtons.push(<Button className={this.returnButtonClass(i)} id="correctorRating" value={i} onClick={() => this.changeValue(i)}>{i.toString()}</Button>);
                             }

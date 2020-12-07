@@ -9,18 +9,15 @@ import {CardDeck} from "react-bootstrap";
 import AuthService from "../../../Services/auth.service";
 import {Redirect} from "react-router";
 
-interface props {
-}
-
-class AdminPage extends Component<props> {
+class AdminPage extends Component {
     render() {
         if(!AuthService.isLoggedIn())
-            return <Redirect to='/login' />
+            return <Redirect to='./inloggen'/>
 
         let user : any = localStorage.getItem("user");
 
         if(user.toLowerCase() !== "admin")
-            return <Redirect to='/examens' />
+            return <Redirect to='./examens'/>
 
         return (
             <div className="page-container">

@@ -25,16 +25,16 @@ function App() {
                 <Route exact path="/">
                     <HomePage/>
                 </Route>
-                <Route path="/examens">
-                    <ExamensPage/>
+                <Route path="/inloggen">
+                    <LoginPage/>
                 </Route>
                 <Route path="/instellingen">
                     <SettingsPage/>
                 </Route>
-                <Route path="/logout">
-                    <LogoutPage/>
+                <Route path="/examens">
+                    <ExamensPage/>
                 </Route>
-                <Route path="/question">
+                <Route path="/vraag">
                     <QuestionPage/>
                 </Route>
                 <Route exact={true} path="/admin">
@@ -49,8 +49,8 @@ function App() {
                 <Route path="/admin/maak-examenitem">
                     <CreateExamItemPage/>
                 </Route>
-                <Route path="/login">
-                    <LoginPage/>
+                <Route path="/uitloggen">
+                    <LogoutPage/>
                 </Route>
             </Switch>
         </Router>

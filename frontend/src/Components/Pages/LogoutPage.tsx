@@ -7,7 +7,7 @@ class LogoutPage extends Component{
     logout()
     {
         AuthService.logout();
-        return <Redirect to='./login' />
+        return <Redirect to='./inloggen' />
     }
 
     render() {

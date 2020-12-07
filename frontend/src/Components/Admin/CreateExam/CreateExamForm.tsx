@@ -48,21 +48,21 @@ class CreateExamForm extends Component{
          })
 
         return (
-                <Form>
-                    <Form.Group>
-                        <Form.Label>Naam examen:</Form.Label>
-                        <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({exam: e.target.value}) } value={this.state.exam.toString()} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Examinator:</Form.Label>
-                        <Form.Control as="select" id="select" onChange={(e) => this.SetExaminerID(e.target.value)}>
-                            <option value="choose" disabled selected>Kies een examinator </option>
-                            {examiners}
-                        </Form.Control>
-                    </Form.Group>
-                    <Button variant="primary m-2" onClick={() => Send(parseInt(this.state.examinerID.toString()) , this.state.exam.toString())}>Maak aan</Button>
-                    <Button variant="primary m-2" type="" onClick={() => this.setState({exam : ``})}>Velden legen</Button>
-                </Form>
+            <Form>
+                <Form.Group>
+                    <Form.Label>Naam examen:</Form.Label>
+                    <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({exam: e.target.value}) } value={this.state.exam.toString()} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Examinator:</Form.Label>
+                    <Form.Control as="select" id="select" onChange={(e) => this.SetExaminerID(e.target.value)}>
+                        <option value="choose" disabled selected>Kies een examinator </option>
+                        {examiners}
+                    </Form.Control>
+                </Form.Group>
+                <Button variant="primary m-2" onClick={() => Send(parseInt(this.state.examinerID.toString()) , this.state.exam.toString())}>Maak aan</Button>
+                <Button variant="primary m-2" type="" onClick={() => this.setState({exam : ``})}>Velden legen</Button>
+            </Form>
         )
     }
 }

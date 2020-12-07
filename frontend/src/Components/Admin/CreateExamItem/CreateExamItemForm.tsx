@@ -12,7 +12,7 @@ interface iQuestion{
     id : number,
     text: string,
     type: number,
-    choices : Array<iChoice>,
+    choices : Array<iChoice>
 }
 
 interface iExam{
@@ -74,9 +74,7 @@ class CreateExamItemForm extends Component{
         }
         else if(type==="TEXT"){
             return(
-                <>
-                    <Form.Control type="text" value={this.state.oqAnswer} placeholder="Open vraag antwoord" required onChange={(e) => this.setState({oqAnswer : e.target.value})} />
-                </>
+                <Form.Control type="text" value={this.state.oqAnswer} placeholder="Open vraag antwoord" required onChange={(e) => this.setState({oqAnswer : e.target.value})} />
             )
         }
     }

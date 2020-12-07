@@ -25,7 +25,7 @@ class ExamensPage extends Component<props, {}> {
         const {Exams, isLoading} = this.state;
 
         if(!AuthService.isLoggedIn())
-            return <Redirect to='/login' />
+            return <Redirect to='./inloggen' />
 
         if (isLoading) {
             return <p>Loading...</p>;

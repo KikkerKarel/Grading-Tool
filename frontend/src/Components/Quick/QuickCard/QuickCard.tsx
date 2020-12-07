@@ -6,7 +6,7 @@ interface props {
     title: string,
     text: string,
     image: string,
-    link: string,
+    link: string
 }
 
 class QuickCard extends Component<props>{
@@ -19,7 +19,7 @@ class QuickCard extends Component<props>{
                     <Card.Text>
                         {this.props.text}
                     </Card.Text>
-                    <Button className="button-quick-card" variant="primary" href={this.props.link}>Go</Button>
+                    <Button className="button-quick-card" variant="primary" href={this.props.link}>Gaan</Button>
                 </Card.Body>
             </Card>
         )

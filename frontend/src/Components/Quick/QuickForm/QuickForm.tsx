@@ -7,7 +7,7 @@ interface Object {
     type: string,
     placeholder: string,
     checkLabel1?: string,
-    checkLabel2?: string,
+    checkLabel2?: string
 }
 
 interface props {

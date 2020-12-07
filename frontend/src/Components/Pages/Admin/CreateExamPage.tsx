@@ -8,18 +8,15 @@ import AuthService from "../../../Services/auth.service";
 import {Redirect} from "react-router";
 import "../CSS/Admin.css";
 
-interface props {
-}
-
-class CreateExamPage extends Component<props> {
+class CreateExamPage extends Component {
     render() {
         if(!AuthService.isLoggedIn())
-            return <Redirect to='/login' />
+            return <Redirect to='/inloggen'/>
 
         let user : any = localStorage.getItem("user");
 
         if(user.toLowerCase() !== "admin")
-            return <Redirect to='/examens' />
+            return <Redirect to='/examens'/>
 
         return (
             <div className="page-container">

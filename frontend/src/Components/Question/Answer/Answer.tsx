@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 interface props {
     questionId?: number,
-    examId?: number,
+    examId?: number
 }
 
 class Answer extends Component<props> {
@@ -20,7 +20,6 @@ class Answer extends Component<props> {
 
     async componentDidMount() {
         axios.get(`../api/exams/question/${this.props.questionId}/${this.props.examId}`).then(response => {
-            console.log(response.data);
             this.setState({
                 text: response.data.question.text,
                 studentAnswer: response.data.studentTextAnswer,
@@ -66,7 +65,7 @@ class Answer extends Component<props> {
                         <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.studentAnswer} disabled/>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label className="answer-header">Goed gekeurde antwoorden (tekst)</Form.Label>
+                        <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
                         <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer} disabled/>
                     </Form.Group>
                     <div className="button-div">
@@ -75,7 +74,8 @@ class Answer extends Component<props> {
                     </div>
                 </div>
                 <UserScore questionId={this.props.questionId} examId={this.props.examId}/>
-            </div>);
+            </div>
+        );
     }
 }
 

@@ -22,7 +22,7 @@ class QuestionTracker extends Component <props>{
             studentName: String
         },
         questionId: 0,
-        examId: 0,
+        examId: 0
     };
 
     private foundQuestion : boolean = false;
@@ -33,6 +33,7 @@ class QuestionTracker extends Component <props>{
                 Exam : this.props.Exam
             }
         );
+
         Cookies.set('score', "0");
         this.state.Exam.items.forEach((examitem : any) =>{
             if ((examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) ||
@@ -76,7 +77,7 @@ class QuestionTracker extends Component <props>{
             return (
                 <>
                     <h1>Alle vragen zijn nagekeken: </h1>
-                    <Button onClick={() => window.location.replace("../Examens")}>
+                    <Button onClick={() => window.location.replace("./examens")}>
                         Ga terug naar de examentabel
                     </Button>
                 </>
@@ -86,7 +87,7 @@ class QuestionTracker extends Component <props>{
         let qID = this.state.questionId;
         let keyCount = 1;
 
-        function setTextClassname(gradedCorrect: any, id: any) {
+        function setTextClassname(gradedCorrect : any, id : any) {
             let prefix = 'question-text';
 
             if(id ===  qID)
