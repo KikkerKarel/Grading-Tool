@@ -45,10 +45,12 @@ class Answer extends Component<props> {
     }
 
     gradeClick = () =>{
-        let score = Cookies.get("score");
+        let cookieValue : any = Cookies.get("score");
+        let score: number = parseInt(cookieValue.toString());
         let examId = this.state.examId;
         let questionId = this.props.questionId;
 
+        if (!isNaN(score))
         axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
             window.location.replace("./");
         });
@@ -68,8 +70,8 @@ class Answer extends Component<props> {
                         <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer} disabled/>
                     </Form.Group>
                     <div className="button-div">
-                        <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick} >Verstuur score</Button>
-                        <Button id={"editQuestion"} className="btn--yellow" >Wijzigen</Button>
+                        <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick}>Verstuur score</Button>
+                        <Button id={"editQuestion"} className="btn--yellow" disabled>Wijzigen</Button>
                     </div>
                 </div>
                 <UserScore questionId={this.props.questionId} examId={this.props.examId}/>

@@ -1,32 +1,17 @@
-import * as React from "react";
 import {Component} from "react";
-import '../HeaderNavbar/HeaderNavbar.css';
-import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
-import Footer from "../Footer/Footer";
 import AuthService from "../../Services/auth.service";
+import {Redirect} from "react-router-dom";
+import * as React from "react";
 
-interface props {
-}
-
-class LogoutPage extends Component<props> {
-    componentDidMount() {
+class LogoutPage extends Component{
+    logout()
+    {
         AuthService.logout();
+        return <Redirect to='./login' />
     }
 
     render() {
-        return (
-            <div className="page-container">
-                <div className="content-wrap">
-                    <HeaderNavbar/>
-                </div>
-                <section className="content-container">
-                    <h1>U bent uitgelogd.</h1>
-                </section>
-                <div className="footer">
-                    <Footer/>
-                </div>
-            </div>
-        );
+        return this.logout()
     }
 }
 

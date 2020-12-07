@@ -46,7 +46,7 @@
     margin-left: 5px;
     border-radius: 4px;
     color: white;
-    background-color: #dfab42;
+    background-color: #dfab42 !important;
     text-decoration: none;
     box-shadow: 2px 2px 7px rgba(0,0,0,0.6);
 }
@@ -62,7 +62,7 @@
     width: 49%;
     border-radius: 4px;
     color: white;
-    background-color: #5aad5a;
+    background-color: #5aad5a !important;
     box-shadow: 2px 2px 7px rgba(0,0,0,0.6);
 }
 
