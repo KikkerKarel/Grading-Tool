@@ -5,7 +5,6 @@ import gps.s3.correctingtool.user.UserDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import gps.s3.correctingtool.repo.IUserRepo;
-
 import java.security.Principal;
 import java.time.Instant;
 import java.util.Collection;
@@ -13,7 +12,6 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
     private final IUserRepo userRepo;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -25,10 +23,12 @@ public class UserController {
 
     @PostMapping("/register")
     public void signUp(@RequestBody UserDTO userDTO) {
-        var user = new User();
+        User user = new User();
+
         user.setUsername(userDTO.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         user.setRegisterDate(Instant.now());
+
         userRepo.save(user);
     }
 

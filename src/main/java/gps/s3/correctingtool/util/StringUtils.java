@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class StringUtils {
-
     public static final List<String> SYMBOLS = List.of(":", ",", "-", "!", "_", "[", "]", "?", "~");
 
     public static String removeSymbols(String str)
@@ -15,7 +14,6 @@ public class StringUtils {
         {
             str = str.replace(symbol, "");
         }
-
         return str;
     }
 
@@ -35,5 +33,4 @@ public class StringUtils {
     {
         return new HashSet<>(toWords(text));
     }
-
 }

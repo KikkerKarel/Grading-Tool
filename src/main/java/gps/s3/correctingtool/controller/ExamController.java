@@ -2,26 +2,27 @@ package gps.s3.correctingtool.controller;
 
 import gps.s3.correctingtool.entity.*;
 import gps.s3.correctingtool.repo.*;
-import gps.s3.correctingtool.services.GradingTool;
+import gps.s3.correctingtool.services.ChoiceGradingTool;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/exams")
 public class ExamController {
-
     private final IExamRepo repo;
     private final IExamItemRepo itemRepo;
     private final IUserRepo uRepo;
-    private final GradingTool gradingTool;
+    private final ChoiceGradingTool choiceGradingTool;
 
-    public ExamController(IExamRepo repo, IExamItemRepo itemRepo,IUserRepo uRepo , GradingTool gradingTool) {
+    public ExamController(IExamRepo repo,
+                          IExamItemRepo itemRepo,
+                          IUserRepo uRepo,
+                          ChoiceGradingTool choiceGradingTool) {
         this.repo = repo;
         this.itemRepo = itemRepo;
         this.uRepo = uRepo;
-        this.gradingTool = gradingTool;
+        this.choiceGradingTool = choiceGradingTool;
     }
 
     @RequestMapping("/find/all")
@@ -36,7 +37,7 @@ public class ExamController {
 
     @RequestMapping("/me")
     public Collection<Exam> getMyExams(Principal principal) {
-        var user= uRepo.findByUsername(principal.getName());
+        User user = uRepo.findByUsername(principal.getName());
         return repo.findAllByExaminerId(user.getId());
     }
 
@@ -46,23 +47,23 @@ public class ExamController {
     }
 
     @RequestMapping("/question/{questionid}/{examid}")
-    public ExamItem byQuestion(@PathVariable("questionid") int questionid, @PathVariable("examid") int examid) {
+    public ExamItem byQuestion(@PathVariable("questionid") int questionid,
+                               @PathVariable("examid") int examid) {
         return itemRepo.findByQuestionIdAndExamId(questionid, examid);
     }
 
     @RequestMapping("/grade/{id}")
     public Exam gradeExam(@PathVariable("id") int id) {
-        return gradingTool.gradeMcExam(repo.findById(id));
+        return choiceGradingTool.gradeMcExam(repo.findById(id));
     }
 
     @PostMapping("/create/{examName}/{examiner}")
-    public void CreateExam(@PathVariable("examName") String examName, @PathVariable("examiner") int examinerID) {
+    public void CreateExam(@PathVariable("examName") String examName,
+                           @PathVariable("examiner") int examinerID) {
         Exam exam = new Exam();
         exam.setExamName(examName);
 
-        long longID = examinerID;
-
-        User user = uRepo.findById(longID).get();
+        User user = uRepo.findById((long) examinerID).get();
 
         exam.setExaminer(user);
         exam.setStatus(ExamStatus.NOT_GRADED);
@@ -84,7 +85,8 @@ public class ExamController {
     }
 
     @RequestMapping("/previousgrading/{questionid}/{examid}")
-    public ExamItem getExamItemPreviousGrade(@PathVariable("questionid") int questionid, @PathVariable("examid") int examid) {
+    public ExamItem getExamItemPreviousGrade(@PathVariable("questionid") int questionid,
+                                             @PathVariable("examid") int examid) {
         return itemRepo.findByQuestionIdAndExamId(questionid, examid);
     }
 }

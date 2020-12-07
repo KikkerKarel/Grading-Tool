@@ -2,33 +2,32 @@ package gps.s3.correctingtool.controller;
 
 import gps.s3.correctingtool.repo.*;
 import gps.s3.correctingtool.entity.*;
-import gps.s3.correctingtool.services.GradingTool;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.awt.print.Pageable;
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/question")
 public class QuestionController {
-
     private final IQuestionRepo qRepo;
     private final IChoiceRepo mcRepo;
     private final ITextAnswerRepo taRepo;
 
-    public QuestionController(IQuestionRepo qRepo, IChoiceRepo mcRepo, ITextAnswerRepo taRepo){
+    public QuestionController(IQuestionRepo qRepo,
+                              IChoiceRepo mcRepo,
+                              ITextAnswerRepo taRepo){
         this.qRepo = qRepo;
         this.mcRepo = mcRepo;
         this.taRepo = taRepo;
     }
 
     @PostMapping("/create/{questionText}/{questionType}")
-    public Question createQuestion(@PathVariable("questionText") String text, @PathVariable("questionType") int type){
+    public Question createQuestion(@PathVariable("questionText") String text,
+                                   @PathVariable("questionType") int type){
         Question question = new Question();
-        var questionType = type == 1 ? QuestionType.CHOICE : QuestionType.TEXT;
+        QuestionType questionType = type == 1 ? QuestionType.CHOICE : QuestionType.TEXT;
         question.setType(questionType);
         question.setText(text);
 
@@ -38,7 +37,9 @@ public class QuestionController {
     }
 
     @PostMapping("/addMcAnswer/{questionID}/{answerText}/{isCorrect}")
-    public void CreateMcAnswer(@PathVariable("questionID") int questionID, @PathVariable("answerText") String text,@PathVariable("isCorrect") Boolean isCorrect){
+    public void CreateMcAnswer(@PathVariable("questionID") int questionID,
+                               @PathVariable("answerText") String text,
+                               @PathVariable("isCorrect") Boolean isCorrect){
         ChoiceAnswer mcAnswer = new ChoiceAnswer();
         mcAnswer.setQuestionId(questionID);
         mcAnswer.setText(text);
@@ -48,7 +49,8 @@ public class QuestionController {
     }
 
     @PostMapping("/addTextAnswer/{questionID}/{answerText}")
-    public void CreateTextAnswer(@PathVariable("questionID") int questionID, @PathVariable("answerText") String text){
+    public void CreateTextAnswer(@PathVariable("questionID") int questionID,
+                                 @PathVariable("answerText") String text){
         CorrectAnswer textAnswer = new CorrectAnswer();
         textAnswer.setQuestionId(questionID);
         textAnswer.setText(text);
@@ -62,7 +64,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/mc/{questionID}")
-    public Collection<ChoiceAnswer> GetMcAnwersByQuestion(@PathVariable("questionID") int questionID){
+    public Collection<ChoiceAnswer> GetMcAnswersByQuestion(@PathVariable("questionID") int questionID){
         return mcRepo.findByQuestionId(questionID);
     }
 }
