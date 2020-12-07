@@ -32,7 +32,7 @@ class CreateExamForm extends Component{
 
     SetExaminerID =( username : string ) =>
     {
-        this.state.users.map(user => {
+        this.state.users.forEach(user =>{
             if (user.username === username) {
                 this.setState({examinerID : user.id})
             }

@@ -34,26 +34,25 @@ class QuestionTracker extends Component <props>{
             }
         );
         Cookies.set('score', "0");
-        {(() => {
-            this.state.Exam.items.map((examitem: any) => {
-                if (examitem.question.type == "TEXT" && examitem.gradedScore == null && !this.foundQuestion ||
-                    examitem.question.type == "TEXT" && examitem.questionId == this.state.questionId) {
-                    this.setState(
-                        {
-                            questionId : examitem.question.id,
-                            isLoading: false,
-                            examId: this.state.Exam.id,
-                        }
-                    );
-                    this.foundQuestion = true;
-                }
-            });
-        })()}
-    }
+        this.state.Exam.items.forEach((examitem : any) =>{
+            if ((examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) ||
+                (examitem.question.type === "TEXT" && examitem.questionId === this.state.questionId))
+            {
+                this.setState(
+                    {
+                        questionId : examitem.question.id,
+                        isLoading: false,
+                        examId: this.state.Exam.id,
+                    }
+                );
+                this.foundQuestion = true;
+            }
+        });
+    };
 
     handleClick = (event : any) =>{
         let targetId = event.target.getAttribute('data-rb-event-key');
-        let item: any= this.state.Exam.items.find((x:any) => x.question.id == targetId);
+        let item: any = this.state.Exam.items.find((x:any) => x.question.id.toString() === targetId.toString());
 
         this.setState({questionId: item.question.id});
         Cookies.set('score', item.score);
@@ -68,15 +67,15 @@ class QuestionTracker extends Component <props>{
                 </>
             )
         }
-    }
+    };
 
     render() {
         const {isLoading} = this.state;
 
         if (isLoading) {
             return (
-                <><
-                    h1>Alle vragen zijn nagekeken: </h1>
+                <>
+                    <h1>Alle vragen zijn nagekeken: </h1>
                     <Button onClick={() => window.location.replace("../Examens")}>
                         Ga terug naar de examentabel
                     </Button>
@@ -90,7 +89,7 @@ class QuestionTracker extends Component <props>{
         function setTextClassname(gradedCorrect: any, id: any) {
             let prefix = 'question-text';
 
-            if(id ==  qID)
+            if(id ===  qID)
             {
                 prefix = prefix + ' bold'
             }
@@ -104,31 +103,32 @@ class QuestionTracker extends Component <props>{
             }
         }
 
-        return (
+        return(
             <>
-            {this.renderAnswerComponent()}
-            <div className="tracker">
-                <ListGroup className="open-questions">
-                    <h1>
-                        <p>Open vragen:</p>
-                    </h1>
-                        {(() => {
-                            return this.state.Exam.items.map((examitem: any) => {
-                                if (examitem.question.type == "TEXT") {
-                                    return <ListGroup.Item
-                                        onClick={this.handleClick}
-                                        eventKey={examitem.questionId}
-                                        className={setTextClassname(examitem.gradedCorrect , examitem.questionId)}>
-                                        {keyCount++ + ". "+ examitem.question.text}
-                                    </ListGroup.Item>
-                                }
-                            })
-                        })()}
-                </ListGroup>
-                <div className="loading-bar">
-                    <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
+                {this.renderAnswerComponent()}
+                <div className="tracker">
+                    <ListGroup className="open-questions">
+                        <h1>
+                            <p>Open vragen:</p>
+                        </h1>
+                            {
+                                this.state.Exam.items.filter(
+                                    function(examitem : any)
+                                        {return examitem.question.type === "TEXT"})
+                                    .map((examitem : any) => {
+                                        return <ListGroup.Item
+                                            onClick={this.handleClick}
+                                            eventKey={examitem.questionId}
+                                            className={setTextClassname(examitem.gradedCorrect, examitem.questionId)}>
+                                            {keyCount++ + ". " + examitem.question.text}
+                                        </ListGroup.Item>
+                                })
+                            }
+                    </ListGroup>
+                    <div className="loading-bar">
+                        <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
+                    </div>
                 </div>
-            </div>
             </>
         );
     }
