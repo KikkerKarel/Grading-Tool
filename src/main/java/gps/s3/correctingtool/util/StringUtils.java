@@ -36,4 +36,23 @@ public class StringUtils {
         return new HashSet<>(toWords(text));
     }
 
+    public static Set<Integer> getMatchingPositions(String source, String target)
+    {
+        var matches = new HashSet<Integer>();
+
+        String[] sourceWords = source.split("\\s+");
+        String[] targetWords = target.split("\\s+");
+
+        for(int i = 0; i < sourceWords.length; i++)
+        {
+            String word = sourceWords[i];
+
+            //If the word is found in the correct answer's list of words, add its index to the list of matches
+            if(Arrays.stream(targetWords).anyMatch(w -> StringUtils.compareWords(w, word)))
+                matches.add(i);
+        }
+
+        return matches;
+    }
+
 }

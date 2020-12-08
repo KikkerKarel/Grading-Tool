@@ -23,4 +23,8 @@ public class Question {
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "questionId")
     private CorrectAnswer correctAnswer;
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "questionId")
+    private QuestionSettings settings;
 }

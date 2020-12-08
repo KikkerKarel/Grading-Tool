@@ -1,9 +1,15 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.entity.*;
-import gps.s3.correctingtool.repo.*;
-import gps.s3.correctingtool.services.GradingTool;
+import gps.s3.correctingtool.entity.Exam;
+import gps.s3.correctingtool.entity.ExamItem;
+import gps.s3.correctingtool.entity.ExamStatus;
+import gps.s3.correctingtool.entity.User;
+import gps.s3.correctingtool.repo.IExamItemRepo;
+import gps.s3.correctingtool.repo.IExamRepo;
+import gps.s3.correctingtool.repo.IUserRepo;
+import gps.s3.correctingtool.services.ChoiceAutoGrader;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Collection;
 
 @RestController
@@ -13,13 +19,13 @@ public class ExamController {
     private final IExamRepo repo;
     private final IExamItemRepo itemRepo;
     private final IUserRepo uRepo;
-    private final GradingTool gradingTool;
+    private final ChoiceAutoGrader choiceAutoGrader;
 
-    public ExamController(IExamRepo repo, IExamItemRepo itemRepo,IUserRepo uRepo , GradingTool gradingTool) {
+    public ExamController(IExamRepo repo, IExamItemRepo itemRepo, IUserRepo uRepo , ChoiceAutoGrader choiceAutoGrader) {
         this.repo = repo;
         this.itemRepo = itemRepo;
         this.uRepo = uRepo;
-        this.gradingTool = gradingTool;
+        this.choiceAutoGrader = choiceAutoGrader;
     }
 
     @RequestMapping("/find/all")
@@ -44,7 +50,7 @@ public class ExamController {
 
     @RequestMapping("/grade/{id}")
     public Exam gradeExam(@PathVariable("id") int id) {
-        return gradingTool.gradeMcExam(repo.findById(id));
+        return choiceAutoGrader.gradeMcExam(repo.findById(id));
     }
 
     @PostMapping("/create/{examTitle}/{examiner}")
