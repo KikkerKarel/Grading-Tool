@@ -42,6 +42,6 @@
     border-bottom: solid thin #ced4da;
 }
 
-.myNavbar a{
+.myNavbar .nav-item{
     padding-right: 1rem !important;
 }

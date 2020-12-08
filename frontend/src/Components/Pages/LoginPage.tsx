@@ -19,8 +19,10 @@ class LoginPage extends Component<props> {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap d-flex justify-content-center">
+                <div className="content-wrap">
                     <HeaderNavbar/>
+                </div>
+                <div className="content-container contentcenter mt-5">
                     <Login/>
                 </div>
                 <div className="footer">
