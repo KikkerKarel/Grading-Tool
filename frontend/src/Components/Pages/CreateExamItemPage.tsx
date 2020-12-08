@@ -12,13 +12,12 @@ class CreateExamItemPage extends Component {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <NavbarComponent />
-                </div>
                 <section className="content-container">
                     <CreateExamItemForm />
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

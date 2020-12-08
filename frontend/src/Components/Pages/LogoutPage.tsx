@@ -18,9 +18,6 @@ class LogoutPage extends Component<props> {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <NavbarComponent/>
-                </div>
                 <section className="content-container">
                     <h1>U bent uitgelogd</h1>
                 </section>

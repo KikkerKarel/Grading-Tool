@@ -15,13 +15,12 @@ class CreateExamPage extends Component<props> {
     render() {
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <NavbarComponent />
-                </div>
                 <section className="content-container">
-                    <CreateExamForm> </CreateExamForm>
+                    <CreateExamForm/>
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

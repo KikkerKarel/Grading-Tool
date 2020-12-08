@@ -25,6 +25,7 @@ import LoginPage from "./Components/Pages/LoginPage";
 function App() {
     return (
         <Router>
+            <NavbarComponent/>
             <Switch>
                 <Route exact path="/">
                     <HomePage/>
@@ -32,16 +33,13 @@ function App() {
                 <Route path="/examens">
                     <ExamensPage/>
                 </Route>
-                <Route path="/courses">
-                    <CoursesPage/>
-                </Route>
                 <Route path="/instellingen">
                     <SettingsPage/>
                 </Route>
-                <Route path="/logout">
+                <Route path="/uitloggen">
                     <LogoutPage/>
                 </Route>
-                <Route path="/question">
+                <Route path="/vraag">
                     <QuestionPage/>
                 </Route>
                 <Route path="/admin">
