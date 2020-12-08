@@ -1,15 +1,17 @@
 package gps.s3.correctingtool.controller;
 
-import gps.s3.correctingtool.repo.*;
-import gps.s3.correctingtool.entity.*;
-import gps.s3.correctingtool.services.GradingTool;
-import org.hibernate.HibernateException;
+import gps.s3.correctingtool.entity.ChoiceAnswer;
+import gps.s3.correctingtool.entity.CorrectAnswer;
+import gps.s3.correctingtool.entity.Question;
+import gps.s3.correctingtool.entity.QuestionType;
+import gps.s3.correctingtool.repo.IChoiceRepo;
+import gps.s3.correctingtool.repo.IQuestionRepo;
+import gps.s3.correctingtool.repo.ITextAnswerRepo;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Pageable;
 import java.util.Collection;
 
 @RestController

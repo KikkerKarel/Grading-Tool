@@ -1,12 +1,12 @@
 package gps.s3.correctingtool.services;
 
 import gps.s3.correctingtool.entity.*;
-import gps.s3.correctingtool.repo.*;
+import gps.s3.correctingtool.repo.IExamRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GradingTool {
+public class ChoiceAutoGrader {
     @Autowired
     IExamRepo repo;
 

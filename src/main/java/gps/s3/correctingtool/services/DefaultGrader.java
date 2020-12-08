@@ -10,9 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 @Service
 @Slf4j
 public class DefaultGrader extends GenericGrader {
@@ -22,12 +19,11 @@ public class DefaultGrader extends GenericGrader {
 
     @Override
     public boolean canGrade(QuestionSettings settings) {
-        return settings == null || settings.isDefault();
+        return true;
     }
 
     @Override
     public TextGradingAdvice getAdvice(ExamItem item) {
-        Objects.requireNonNull(item);
 
         var advice = new TextGradingAdvice().setExamItem(item);
 
@@ -38,6 +34,7 @@ public class DefaultGrader extends GenericGrader {
         String realAnswer = item.getQuestion().getCorrectAnswer().getText();
 
         String[] correctWords = realAnswer.split("\\s+");
+        var matchingWords = StringUtils.getMatchingPositions(studentAnswer, realAnswer);
 
         var questionHistory = repo.findExamItemByQuestionId(item.getQuestionId());
 
@@ -51,21 +48,21 @@ public class DefaultGrader extends GenericGrader {
 
 
         if(exactMatch.isPresent()) //If this same answer has been submitted before, return that score instead
-            return advice.setSuggestedScore(exactMatch.get().getGradedScore());
+            return advice.addFeedback("Dit exacte antwoord is ooit eerder beoordeeld").setSuggestedScore(exactMatch.get().getGradedScore());
 
-        if(advice.getMatchingWordPositions().isEmpty()) //If no words match, return score of 0
-            return advice.setSuggestedScore(0);
+        if(matchingWords.isEmpty()) //If no words match, return score of 0
+            return advice.addFeedback("Geen overeenkomende woorden gevonden!").setSuggestedScore(0);
 
         log.info("The given answer by the student is {}", studentAnswer);
         log.info("The correct answer in the database is {}", realAnswer);
-        log.info("Found {} matches out of {}", advice.getMatchingWordPositions().size(),  correctWords.length);
+        log.info("Found {} matches out of {}", matchingWords.size(),  correctWords.length);
 
         //Get score out of 100
-        int score = 100 / (correctWords.length / advice.getMatchingWordPositions().size());
+        int score = 100 / (correctWords.length / matchingWords.size());
         log.info("Score out of 100 = {}", score);
 
         score = score / 20; //make it 0-5 range
-        log.info("ranged = {}", score / 20);
+        log.info("ranged = {}", score);
 
         return advice.setSuggestedScore(score);
     }
