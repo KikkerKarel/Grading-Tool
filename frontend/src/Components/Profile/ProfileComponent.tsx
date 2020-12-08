@@ -4,12 +4,12 @@ import Footer from "../Footer";
 import './Profile.css';
 import axios from 'axios';
 import {ListGroup} from "react-bootstrap";
+import moment from "moment";
 
 class ProfileComponent extends Component
 {
     state = {
         username: "",
-        // registerDate: Date,
         lastLogin: Date,
         examinerID: Number,
         Exam: []
@@ -19,7 +19,6 @@ class ProfileComponent extends Component
         await axios.get(`/api/users/me`).then(response => {
             this.setState({
                 username: response.data.username,
-                // registerDate: response.data.registerDate,
                 lastLogin: response.data.lastLogin,
                 examinerID: response.data.id
             })
@@ -32,12 +31,15 @@ class ProfileComponent extends Component
        })
     }
 
+    formatDate()
+    {
+        return moment(`${this.state.lastLogin}`).utc().format("DD/MM/YYYY hh:mm:ss a");
+    }
+
 
     render() {
         const username = this.state.username;
-        // const registerDate = this.state.registerDate;
-        const lastLogin = this.state.lastLogin;
-
+        const lastLogin = this.formatDate();
 
         return (
             <div className="page-container">
@@ -53,7 +55,7 @@ class ProfileComponent extends Component
                 <div className="history-div">
                     <header className="history-header"> Nakijk geschiedenis </header>
                     {
-                        this.state.Exam.map((exam:any) => {
+                        this.state.Exam.reverse().map((exam:any) => {
                             if (exam !== null)
                             {
                                 if (exam.status === "GRADED")
@@ -70,10 +72,7 @@ class ProfileComponent extends Component
                         })
                     }
                 </div>
-
-                <div className="footer">
-                    <Footer/>
-                </div>
+                <Footer/>
             </div>
         );
     }
