@@ -2,7 +2,9 @@ package gps.s3.correctingtool.dto;
 
 import gps.s3.correctingtool.entity.ExamItem;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TextGradingAdvice {
@@ -10,6 +12,7 @@ public class TextGradingAdvice {
     private Integer suggestedScore;
     private Set<Integer> matchingWordPositions;
     private ExamItem examItem;
+    private List<String> feedback = new ArrayList<>();
 
     public TextGradingAdvice() {
         matchingWordPositions = new HashSet<>();
@@ -32,7 +35,7 @@ public class TextGradingAdvice {
         return matchingWordPositions;
     }
 
-    public TextGradingAdvice setMatchingWordPositions(HashSet<Integer> matchingWordPositions) {
+    public TextGradingAdvice setMatchingWordPositions(Set<Integer> matchingWordPositions) {
         this.matchingWordPositions = matchingWordPositions;
         return this;
     }
@@ -43,6 +46,21 @@ public class TextGradingAdvice {
 
     public TextGradingAdvice setExamItem(ExamItem examItem) {
         this.examItem = examItem;
+        return this;
+    }
+
+    public TextGradingAdvice addFeedback(String text)
+    {
+        this.feedback.add(text);
+        return this;
+    }
+
+    public List<String> getFeedback() {
+        return feedback;
+    }
+
+    public TextGradingAdvice setFeedback(List<String> feedback) {
+        this.feedback = feedback;
         return this;
     }
 }

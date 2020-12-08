@@ -10,6 +10,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM gradest.user;
 DELETE FROM gradest.exam;
 DELETE FROM gradest.question;
+DELETE FROM gradest.question_settings;
 DELETE FROM gradest.choice_answer;
 DELETE FROM gradest.correct_answer;
 DELETE FROM gradest.exam_item;
@@ -65,6 +66,16 @@ INSERT INTO gradest.question (text, type) VALUES ('Wat is het hardste materiaal 
 INSERT INTO gradest.question (text, type) VALUES ('Wat is de hoofdstad van Duitsland?', 'TEXT');
 INSERT INTO gradest.question (text, type) VALUES ('Wat is het hardste materiaal van het menselijk lichaam?', 'TEXT');
 
+INSERT INTO gradest.question (id, text, type) VALUES (5, 'Welke artiest uit welk land won de laatste Eurovisie songfestival?', 'TEXT');
+INSERT INTO gradest.question (id, text, type) VALUES (6, 'Wie is de uitvinder van de wisselstroomgenerator?', 'TEXT');
+
+/*
+ Settings
+ */
+
+INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (5, false, false, false, 0);
+INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (6, false, false, false, 0);
+
 
 /*
     Choice answers
@@ -89,6 +100,8 @@ INSERT INTO gradest.choice_answer (question_id, text, is_correct) VALUES (2, 'Ta
 
 INSERT INTO gradest.correct_answer (question_id, text) VALUES (3, 'Berlijn');
 INSERT INTO gradest.correct_answer (question_id, text) VALUES (4, 'Tandglazuur');
+INSERT INTO gradest.correct_answer (question_id, text) VALUES (5, 'Duncan Laurence uit Nederland won met Arcade');
+INSERT INTO gradest.correct_answer (question_id, text) VALUES (6, 'Nikola Tesla');
 
 
 /*
@@ -103,6 +116,9 @@ INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, studen
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (1, 2, null, 5, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (1, 3, 'Berlin', null, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (1, 4, 'Bot', null, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (1, 5, null, null, null, 'Dirk laurence');
+INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (1, 6, null, null, null, 'nikola tesla');
+
 
 
 /* Jens */
@@ -112,7 +128,7 @@ INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, studen
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (2, 2, null, 5, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (2, 3, 'Berlin', null, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (2, 4, 'Bot', null, null);
-
+INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (2, 5, null, null, null, 'Nederland won met Duncan Laurence - Arcade');
 
 /* Servi */
 

@@ -83,7 +83,7 @@ class QuestionTracker extends Component <props>{
                     "Donec diam mauris, mattis id maximus ut, tristique vitae sapien.",
                     "Cras erat nibh, consequat non turpis id, ornare lacinia justo.",
                     "enean accumsan lectus ac velit euismod, vitae bibendum ex tempor.",
-                    "Suspendisse pharetra congue condimentum. Nullam porttitor ultricies sem.",
+                    "Suspendisse pharetra congue condimentum. Nullam porttitor ultricies sem."
                 ]} />
             )
         }
@@ -96,7 +96,7 @@ class QuestionTracker extends Component <props>{
             return (
                 <>
                     <h1>Alle vragen zijn nagekeken: </h1>
-                    <Button onClick={() => window.location.replace("./examens")}>
+                    <Button onClick={() => window.location.replace("/examens")}>
                         Ga terug naar de examentabel
                     </Button>
                 </>

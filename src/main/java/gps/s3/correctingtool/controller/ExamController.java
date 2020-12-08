@@ -2,7 +2,7 @@ package gps.s3.correctingtool.controller;
 
 import gps.s3.correctingtool.entity.*;
 import gps.s3.correctingtool.repo.*;
-import gps.s3.correctingtool.services.ChoiceGradingTool;
+import gps.s3.correctingtool.services.ChoiceAutoGrader;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.Collection;
@@ -13,12 +13,12 @@ public class ExamController {
     private final IExamRepo repo;
     private final IExamItemRepo itemRepo;
     private final IUserRepo uRepo;
-    private final ChoiceGradingTool choiceGradingTool;
+    private final ChoiceAutoGrader choiceGradingTool;
 
     public ExamController(IExamRepo repo,
                           IExamItemRepo itemRepo,
                           IUserRepo uRepo,
-                          ChoiceGradingTool choiceGradingTool) {
+                          ChoiceAutoGrader choiceGradingTool) {
         this.repo = repo;
         this.itemRepo = itemRepo;
         this.uRepo = uRepo;
