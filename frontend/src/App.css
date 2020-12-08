@@ -5,6 +5,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (-webkit-device-pixel-ratio: 1.25) {
+  body {
+    zoom: 0.8;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.50) {
+  body {
+    zoom: 0.65;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.75) {
+  body {
+    zoom: 0.5;
+  }
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
