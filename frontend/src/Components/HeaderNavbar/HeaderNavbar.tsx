@@ -21,9 +21,7 @@ class HeaderNavbar extends Component {
                 <Navbar.Collapse style={{height: "80px"}}>
                     <div className="mr-auto"/>
                     <Nav className="nav-menu">
-
                         {this.ifAdmin()}
-                        <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
                         {this.getButton()}
                     </Nav>
                 </Navbar.Collapse>
@@ -35,11 +33,12 @@ class HeaderNavbar extends Component {
         let user: any = localStorage.getItem("user");
 
         if (user !== null && user.toLowerCase() === "admin")
-            return (
-                <>
-                    <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>
-                </>
-            )
+        {
+            return <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>
+        }
+        else if(user !== null){
+            return <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
+        }
     }
 
     getButton() {
