@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Component} from "react";
-import '../../CSS/Button.css';
+import '../../Button.css';
 import {Button, Nav, Navbar} from "react-bootstrap";
 import './HeaderNavbar.css';
 import AuthService from "../../Services/auth.service";
