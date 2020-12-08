@@ -13,8 +13,8 @@ const columns = [{
     dataField: 'id',
     text: 'Examen ID',
 }, {
-    dataField: 'studentName',
-    text: 'Naam Student'
+    dataField: 'exam_title',
+    text: 'Exam Title'
 }, {
     dataField: 'status',
     text: 'Examen Status',
