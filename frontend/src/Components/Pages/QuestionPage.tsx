@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
-import QuestionTrackComponent from "../Question/QuestionElements/QuestionElements";
 import Cookies from 'js-cookie';
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import AuthService from "../../Services/auth.service";
 import {Redirect} from "react-router";
+import QuestionElements from "../Question/QuestionElements/QuestionElements";
 
 class QuestionPage extends Component {
     state = {
@@ -37,7 +37,7 @@ class QuestionPage extends Component {
 
     renderQuestionComponents() {
         if (!this.state.isLoading) {
-            return <QuestionTrackComponent Exam={this.state.Exam}/>
+            return <QuestionElements Exam={this.state.Exam}/>
         }
     }
 
