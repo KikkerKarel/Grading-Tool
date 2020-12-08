@@ -27,13 +27,14 @@ public class QuestionController {
     public Question createQuestion(@PathVariable("questionText") String text,
                                    @PathVariable("questionType") int type){
         Question question = new Question();
+
         QuestionType questionType = type == 1 ? QuestionType.CHOICE : QuestionType.TEXT;
         question.setType(questionType);
         question.setText(text);
 
         qRepo.save(question);
 
-        return qRepo.findByText(text);
+        return qRepo.findById(question.getId());
     }
 
     @PostMapping("/addMcAnswer/{questionID}/{answerText}/{isCorrect}")

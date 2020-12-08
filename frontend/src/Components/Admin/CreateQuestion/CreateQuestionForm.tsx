@@ -46,16 +46,13 @@ class CreateQuestionForm extends Component {
     ) {
         let questiontext = encodeURIComponent(questionText);
         axios.post(`/api/question/create/${questiontext}/${questionType}`).then(response => {
-            console.log("Vraag toegevoegd");
-
             if (questionType === 1) {
-                if (mcAnswer1 !== '' && mcCorrectAnswer === mcAnswer1) {
+                if ((mcAnswer1) !== '' && (mcCorrectAnswer) === (mcAnswer1)) {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer1}/${true}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     });
 
                 } else if (mcAnswer1 !== '') {
@@ -63,8 +60,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -73,8 +69,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
 
                 } else if (mcAnswer2 !== '') {
@@ -82,8 +77,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -92,16 +86,14 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 } else if (mcAnswer3 !== '') {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer3}/${false}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -110,16 +102,14 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 } else if (mcAnswer4 !== '') {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer4}/${false}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
             } else if (oqCorrectAnswer !== '') {
@@ -127,8 +117,7 @@ class CreateQuestionForm extends Component {
                     .then(() => {
                         this.setState({message: "Gelukt!"}, () => this.clear());
                     }).catch(error => {
-                    this.setState({message: "Error... zie console"});
-                    console.log(error.response);
+                    this.setState({message : error.response});
                 })
             }
         });

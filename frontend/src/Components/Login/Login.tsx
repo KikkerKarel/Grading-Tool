@@ -43,33 +43,31 @@ class Login extends Component {
             return <Redirect to='./examens'/>
 
         return (
-            <>
-                <div className="mt-5 col-md-6">
-                    <Form>
-                        <h1>Login</h1>
-                        <Form.Group>
-                            <Alert variant="danger errorbox">
-                                <Alert.Heading>Foutmelding:</Alert.Heading>
-                                <Form.Text id="errormessage"/>
-                            </Alert>
-                        </Form.Group>
-                        <Form.Group controlId="formBasicName">
-                            <Form.Label>Gebruikersnaam:</Form.Label>
-                            <Form.Control onChange={(event) => { this.setState({username: event.target.value})}} type="username" placeholder="Gebruikersnaam" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Wachtwoord:</Form.Label>
-                            <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="Wachtwoord" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Onthou mij" />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" onClick={(event) => this.handleClick(event)}>
-                            Inloggen
-                        </Button>
-                    </Form>
-                </div>
-            </>
+            <div className="mt-5 col-md-6">
+                <Form>
+                    <h1>Login</h1>
+                    <Form.Group>
+                        <Alert variant="danger errorbox">
+                            <Alert.Heading>Foutmelding:</Alert.Heading>
+                            <Form.Text id="errormessage"/>
+                        </Alert>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicName">
+                        <Form.Label>Gebruikersnaam:</Form.Label>
+                        <Form.Control onChange={(event) => { this.setState({username: event.target.value})}} type="username" placeholder="Gebruikersnaam" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Wachtwoord:</Form.Label>
+                        <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="Wachtwoord" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Onthoud mij" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" onClick={(event) => this.handleClick(event)}>
+                        Inloggen
+                    </Button>
+                </Form>
+            </div>
         );
     }
 }

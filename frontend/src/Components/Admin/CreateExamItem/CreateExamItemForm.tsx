@@ -94,8 +94,7 @@ class CreateExamItemForm extends Component{
                 this.setState({message : "Gelukt!"});
                 this.delay(2500).then( () =>  this.setState({message: ``})  );
             }).catch(error =>{
-                this.setState({message : error.data});
-                this.delay(2500).then( () =>  this.setState({message: ``})  );
+                this.setState({message : error.response});
             });
         }
         else if(this.state.questionType ==="TEXT"){
@@ -105,7 +104,7 @@ class CreateExamItemForm extends Component{
                 this.setState({message : "Gelukt!"});
                 this.delay(2500).then( () =>  this.setState({message: ``})  );
             }).catch(error =>{
-                this.setState({message : error.data});
+                this.setState({message : error.response});
             });
         }
         this.setState({oqAnswer : ""});
@@ -149,8 +148,7 @@ class CreateExamItemForm extends Component{
                 <Form.Group>
                     {this.Input(this.state.questionType, this.state.questionID)}
                 </Form.Group>
-
-                <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Aanmaken</Button>
+                <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Koppelen</Button>
             </Form>
         )
     }

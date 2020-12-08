@@ -23,7 +23,7 @@ class CreateExamForm extends Component{
             this.setState({message : `Gelukt!`, exam : `` });
             this.delay(2500).then( () =>  this.setState({message: ``})  );
         }).catch((error) =>{
-            this.setState({message : error.response.data});
+            this.setState({message : error.response})
         })
     }
 
@@ -46,28 +46,26 @@ class CreateExamForm extends Component{
         })
 
         return (
-            <>
-                <Form>
-                    <Alert variant="primary">
-                        <Alert.Heading>Bericht:</Alert.Heading>
-                        <p className="message">
-                            {this.state.message}
-                        </p>
-                    </Alert>
-                    <Form.Group>
-                        <Form.Label>Naam examen:</Form.Label>
-                        <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({exam: e.target.value}) } value={this.state.exam.toString()} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Examinator:</Form.Label>
-                        <Form.Control as="select" id="select" onChange={(e) => this.setState({examinerID : e.target.value}) } >
-                            <option value="choose" disabled>Kies een examinator:</option>
-                            {examiners}
-                        </Form.Control>
-                    </Form.Group>
-                    <Button variant="primary m-2" onClick={() => this.Send( parseInt(this.state.examinerID.toString()), this.state.exam.toString()) }>Submit</Button>
-                </Form>
-            </>
+            <Form>
+                <Alert variant="primary">
+                    <Alert.Heading>Bericht:</Alert.Heading>
+                    <p className="message">
+                        {this.state.message}
+                    </p>
+                </Alert>
+                <Form.Group>
+                    <Form.Label>Naam examen:</Form.Label>
+                    <Form.Control type="text" placeholder="Naam" onChange={(e) => this.setState({exam: e.target.value}) } value={this.state.exam.toString()} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Examinator:</Form.Label>
+                    <Form.Control as="select" id="select" onChange={(e) => this.setState({examinerID : e.target.value}) } >
+                        <option value="choose" disabled>Kies een examinator:</option>
+                        {examiners}
+                    </Form.Control>
+                </Form.Group>
+                <Button variant="primary m-2" onClick={() => this.Send( parseInt(this.state.examinerID.toString()), this.state.exam.toString()) }>Aanmaken</Button>
+            </Form>
         )
     }
 }
