@@ -1,7 +1,7 @@
 import {Component} from "react";
 import * as React from "react";
 import axios from "axios";
-import {Button, Form} from "react-bootstrap";
+import {Alert, Button, Form} from "react-bootstrap";
 
 interface iChoice{
     id: number,
@@ -127,27 +127,31 @@ class CreateExamItemForm extends Component{
         });
 
         return (
-            <>
-                <h1>{this.state.message}</h1>
-                <Form onSubmit={(e) => this.SubmitForm(e)}>
-                    <Form.Group>
-                        <Form.Label>Examen:</Form.Label>
-                        <Form.Control as="select" onChange={(e) => this.setState({examID : e.target.value})}>
-                            {ExamIds}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Vraag:</Form.Label>
-                        <Form.Control as="select" onChange={(e) => this.SetQuestion( parseInt( e.target.value))}>
-                            {questions}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        {this.Input(this.state.questionType, this.state.questionID)}
-                    </Form.Group>
-                    <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Koppel</Button>
-                </Form>
-            </>
+            <Form onSubmit={(e) => this.SubmitForm(e)}>
+                <Alert variant="primary">
+                    <Alert.Heading>Bericht:</Alert.Heading>
+                    <p className="message">
+                        {this.state.message}
+                    </p>
+                </Alert>
+                <Form.Group>
+                    <Form.Label>Examen:</Form.Label>
+                    <Form.Control as="select" onChange={(e) => this.setState({examID : e.target.value})}>
+                        {ExamIds}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Vraag:</Form.Label>
+                    <Form.Control as="select" onChange={(e) => this.SetQuestion( parseInt( e.target.value))}>
+                        {questions}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    {this.Input(this.state.questionType, this.state.questionID)}
+                </Form.Group>
+
+                <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Aanmaken</Button>
+            </Form>
         )
     }
 }

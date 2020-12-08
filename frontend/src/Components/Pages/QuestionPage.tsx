@@ -12,7 +12,9 @@ import {Redirect} from "react-router";
 class QuestionPage extends Component {
     state = {
         isLoading: true,
-        Exam: {},
+        Exam: {
+            items: [],
+        },
         questionId: 0,
         examId: 0
     };
@@ -22,7 +24,7 @@ class QuestionPage extends Component {
             examId: Cookies.get("examId")
         });
 
-        if (!this.state.examId || this.state.examId === 0)
+        if (!this.state.examId || this.state.examId === 0 )
         window.location.replace("/examens")
 
         await axios.get(`/api/exams/grade/${this.state.examId}`).then(response => {

@@ -30,7 +30,7 @@ public class Exam {
     @JsonGetter("progress")
     public long getProgress()
     {
-        if(items.size() == 0)
+        if(items == null || items.size() == 0)
             return 100;
 
         return items.stream().filter(examItem -> examItem.getQuestion().getType() == QuestionType.TEXT).filter(ExamItem::isGraded).count() * 100 / items.stream().filter(examItem -> examItem.getQuestion().getType() == QuestionType.TEXT).count();
