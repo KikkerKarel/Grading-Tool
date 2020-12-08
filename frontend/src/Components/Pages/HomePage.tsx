@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from "../Navbar/NavbarComponent";
 import Footer from "../Footer";
+import {Nav} from "react-bootstrap";
 
 class HomePage extends Component {
     state = {
