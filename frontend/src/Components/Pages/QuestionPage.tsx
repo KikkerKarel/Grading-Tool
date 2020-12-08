@@ -50,7 +50,7 @@ class QuestionPage extends Component {
                 <div className="content-wrap">
                     <HeaderNavbar/>
                 </div>
-                <section className="content-container flex">
+                <section className="content-container flex mt-5">
                     {this.renderQuestionComponents()}
                 </section>
                 <div className="footer">

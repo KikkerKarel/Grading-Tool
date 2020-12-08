@@ -9,46 +9,55 @@ import {Redirect} from 'react-router-dom';
 class HeaderNavbar extends Component {
     render() {
         return (
-            <Navbar className="NavbarItems" expand="lg">
+            <Navbar className="myNavbar" expand="lg">
                 <Navbar.Brand href="/">
                     <img
-                    alt="Logo Citrus Andriessen"
-                    src="/Images/CitrusAndriessen.png"
-                    className="Citrus-logo"
+                        alt="Logo Citrus Andriessen"
+                        src="/Images/CitrusAndriessen.png"
+                        className="logo"
                     />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggleButton"/>
+                <Navbar.Collapse style={{height: "80px"}}>
+                    <div className="mr-auto"/>
                     <Nav className="nav-menu">
+
                         {this.ifAdmin()}
-                        <Nav.Link className="nav-links" href="/examens">Examens</Nav.Link>
+                        <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
                         {this.getButton()}
                     </Nav>
+                </Navbar.Collapse>
             </Navbar>
         );
     }
 
-    ifAdmin()
-    {
-        let user : any = localStorage.getItem("user");
+    ifAdmin() {
+        let user: any = localStorage.getItem("user");
 
-        if( user !== null && user.toLowerCase() === "admin")
+        if (user !== null && user.toLowerCase() === "admin")
+            return (
+                <>
+                    <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>
+                </>
+            )
+    }
+
+    getButton() {
+        if (AuthService.isLoggedIn()){
+            return (
+                <Nav.Link className="nav-item">
+                    <Button href="/uitloggen" onClick={this.onLogOut} className="btn--medium" variant="primary">Uitloggen</Button>
+                </Nav.Link>
+            )
+        }
         return (
-            <>
-                <Nav.Link className="nav-links" href="/admin">Admin paneel</Nav.Link>
-            </>
+            <Nav.Link className="nav-item">
+                <Button href="/inloggen" className="btn--medium" variant="primary">Inloggen</Button>
+            </Nav.Link>
         )
     }
 
-    getButton()
-    {
-        if(AuthService.isLoggedIn())
-            return <Button href="/uitloggen" onClick={this.onLogOut} className="btn--medium" variant="primary">Uitloggen</Button>
-
-        return <Button href="/inloggen" className="btn--medium" variant="primary">Inloggen</Button>
-    }
-
-    onLogOut()
-    {
+    onLogOut() {
         AuthService.logout();
         return <Redirect to='/inloggen'/>
     }

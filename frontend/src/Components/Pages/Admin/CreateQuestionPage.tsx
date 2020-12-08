@@ -23,7 +23,7 @@ class CreateQuestionPage extends Component {
                 <div className="content-wrap">
                     <HeaderNavbar />
                 </div>
-                <section className="content-container contentcenter">
+                <section className="content-container contentcenter mt-5">
                     <CreateQuestionForm />
                 </section>
                 <div className="footer">

@@ -24,7 +24,7 @@ class AdminPage extends Component {
                 <div className="content-wrap">
                     <HeaderNavbar />
                 </div>
-                <section className="content-container contentcenter">
+                <section className="content-container contentcenter mt-5">
                     <CardDeck>
                         <QuickCard image="Images/Dev-test" text="Maak een nieuw examen en koppel die." link="admin/maak-examen" title="Maak examen"/>
                         <QuickCard image="Images/Dev-test" text="Koppel een examen item aan een examen." link="admin/maak-examenitem" title="Koppel examen item"/>

@@ -23,7 +23,7 @@ class CreateExamPage extends Component {
                 <div className="content-wrap">
                     <HeaderNavbar />
                 </div>
-                <section className="content-container contentcenter">
+                <section className="content-container contentcenter mt-5">
                     <CreateExamForm />
                 </section>
                 <div className="footer">
