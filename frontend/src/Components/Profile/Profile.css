@@ -21,11 +21,16 @@
     font-weight: bold;
 }
 
-.history-div
+.toDoAmount
+{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.grade-div
 {
     position: fixed;
-    margin-left: 38%;
-    margin-top: 12%;
     height: 60%;
     width: 25%;
     border: solid 2px gray;
@@ -35,6 +40,18 @@
     overflow-y: scroll;
 }
 
+#toDo
+{
+    margin-left: 20%;
+    margin-top: 12%;
+}
+
+#done
+{
+    margin-left: 38%;
+    margin-top: 12%;
+}
+
 
 ::-webkit-scrollbar
 {
@@ -42,30 +59,35 @@
 }
 ::-webkit-scrollbar-thumb
 {
-    background-color: #e94f2c;
-}
-::-webkit-scrollbar-thumb:hover
-{
-    background-color: #f36748;
+    background-color: #c8c5c5;
 }
 
-
-.history-header
+.grade-header
 {
     margin-top: 10px;
     font-weight: bold;
     font-size: 20px;
 }
 
-.history-exam
+.grade-exam
 {
     margin-top: 5%;
     display: block;
-    border-top: solid 2px gray;
+    border-top: solid 2px #808080;
     border-bottom: solid 2px gray;
 }
 
-.history-exam-list
+.grade-exam-list
 {
     line-height: 10px;
+}
+
+#toGrade
+{
+    background-color: rgba(177,82,82, 0.8);
+}
+
+#graded
+{
+    background-color: rgba(0,98,0,0.5);
 }

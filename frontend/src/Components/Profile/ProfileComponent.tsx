@@ -12,7 +12,7 @@ class ProfileComponent extends Component
         username: "",
         lastLogin: Date,
         examinerID: Number,
-        Exam: []
+        Exam: [],
     }
 
    async componentDidMount() {
@@ -26,7 +26,7 @@ class ProfileComponent extends Component
 
        await axios.get(`api/exams/examiner/${this.state.examinerID}`).then(data => {
            this.setState({
-               Exam: data.data
+               Exam: data.data,
            })
        })
     }
@@ -40,6 +40,7 @@ class ProfileComponent extends Component
     render() {
         const username = this.state.username;
         const lastLogin = this.formatDate();
+        let amount = this.state.Exam.filter((event:any) => event.status === "NOT_GRADED").length;
 
         return (
             <div className="page-container">
@@ -50,21 +51,40 @@ class ProfileComponent extends Component
                 <div className="content-main">
                     <header className="user-header"> { username } </header>
                     <h1 className="lastLogin-h1"> Laatste login: { lastLogin }</h1>
+                    <h2 className="toDoAmount"> Aantal examens nog na te kijken: { amount }</h2>
                 </div>
 
-                <div className="history-div">
-                    <header className="history-header"> Nakijk geschiedenis </header>
+                {/*<div className="grade-div" id="toDo">*/}
+                {/*    <header className="grade-header"> Nog na te kijken </header>*/}
+                {/*    {*/}
+                {/*        this.state.Exam.map((exam:any) => {*/}
+                {/*            if(exam.status === "NOT_GRADED")*/}
+                {/*            {*/}
+                {/*                return <div className="grade-exam">*/}
+                {/*                    <ListGroup className="grade-exam-list">*/}
+                {/*                        <ListGroup.Item id="toGrade"> ID: {exam.id} </ListGroup.Item>*/}
+                {/*                        <ListGroup.Item id="toGrade"> Status: {exam.status} </ListGroup.Item>*/}
+                {/*                        <ListGroup.Item id="toGrade"> Student: {exam.studentName} </ListGroup.Item>*/}
+                {/*                    </ListGroup>*/}
+                {/*                </div>*/}
+                {/*            }*/}
+                {/*        })*/}
+                {/*    }*/}
+                {/*</div>*/}
+
+                <div className="grade-div" id="done">
+                    <header className="grade-header"> Nakijk geschiedenis </header>
                     {
                         this.state.Exam.reverse().map((exam:any) => {
                             if (exam !== null)
                             {
                                 if (exam.status === "GRADED")
                                 {
-                                    return <div className="history-exam">
-                                        <ListGroup className="history-exam-list">
-                                            <ListGroup.Item> ID: {exam.id} </ListGroup.Item>
-                                            <ListGroup.Item> Status: {exam.status} </ListGroup.Item>
-                                            <ListGroup.Item> Student: {exam.studentName} </ListGroup.Item>
+                                    return <div className="grade-exam">
+                                        <ListGroup className="grade-exam-list">
+                                            <ListGroup.Item  id="graded"> ID: {exam.id} </ListGroup.Item>
+                                            <ListGroup.Item  id="graded"> Status: {exam.status} </ListGroup.Item>
+                                            <ListGroup.Item  id="graded"> Student: {exam.studentName} </ListGroup.Item>
                                         </ListGroup>
                                     </div>
                                 }
