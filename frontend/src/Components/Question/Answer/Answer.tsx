@@ -27,6 +27,7 @@ class Answer extends Component<props> {
                 examId: response.data.examId,
             })
             Cookies.set('score', "0");
+            axios.put(`/api/exams/${this.props.examId}/status/GRADING_IN_PROGRESS`).then(() =>{});
         })
     }
 
@@ -51,7 +52,7 @@ class Answer extends Component<props> {
 
         if (!isNaN(score))
         axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
-            window.location.replace("./");
+            window.location.reload();
         });
     }
 

@@ -89,4 +89,14 @@ public class ExamController {
                                              @PathVariable("examid") int examid) {
         return itemRepo.findByQuestionIdAndExamId(questionid, examid);
     }
+
+    @PutMapping("/{examid}/status/{newStatus}")
+    public boolean ChangeExamStatus(@PathVariable("examid") int examID, @PathVariable("newStatus") String status ){
+        Exam exam = repo.findById(examID);
+        ExamStatus examStatus = ExamStatus.valueOf(status);
+        exam.setStatus(examStatus);
+        repo.save(exam);
+        return true;
+
+    }
 }

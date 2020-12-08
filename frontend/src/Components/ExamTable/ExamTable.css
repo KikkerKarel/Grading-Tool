@@ -13,9 +13,9 @@
 }
 
 thead, tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 tr td{
@@ -26,11 +26,6 @@ tr td{
 .theadClick thead tr th:nth-child(-n+2)
 {
     pointer-events: none;
-}
-
-.AWAITING_ASSIGNMENT
-{
-    background-color: rgb(160,160,160);
 }
 
 .NOT_GRADED

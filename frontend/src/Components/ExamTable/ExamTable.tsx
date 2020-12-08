@@ -31,16 +31,13 @@ class ExamTable extends Component<props> {
     };
 
     render() {
-        const {Exams} = this.state;
+        let {Exams} = this.state;
+        Exams = Exams.filter((exam : any) => exam.status !== "GRADED");
+
         const tableRowEvents = {
-            onClick: (e: any, row: any, rowIndex: any) => {
+            onClick: (e: any, row: any) => {
                 Cookies.set('examId', row.id);
-                window.location.replace('/vraag/nakijken');
-                console.log(`Clicked on row with index: ${rowIndex}`);
-            },
-            onMouseEnter: (e: any, row: any) => {
-                console.log(`Enter on row with index: ${row.id}`);
-                console.log(row.status)
+                window.location.href="/vraag/beoordelen";
             }
         }
 

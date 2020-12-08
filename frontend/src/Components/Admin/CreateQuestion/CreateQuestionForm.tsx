@@ -170,14 +170,14 @@ class CreateQuestionForm extends Component {
                     </p>
                 </Alert>
                 <Form.Group>
-                    <Form.Label> Vraag: </Form.Label>
+                    <Form.Label>Vraag:</Form.Label>
                     <Form.Control value={this.state.questionText.toString()} placeholder="Vul een vraag in"
                                   type="text" onChange={(e) => this.setState({questionText: e.target.value})}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Check inline label="Multiple Choice" name="QuestionType" id="MP" type="radio"
+                    <Form.Check inline label="Gesloten vraag" name="QuestionType" id="MP" type="radio"
                                 onChange={() => this.setState({type: 1})}/>
-                    <Form.Check inline label="Open Question" name="QuestionType" id="OQ" type="radio"
+                    <Form.Check inline label="Open vraag" name="QuestionType" id="OQ" type="radio"
                                 onChange={() => this.setState({type: 2})}/>
                 </Form.Group>
                 <Col>

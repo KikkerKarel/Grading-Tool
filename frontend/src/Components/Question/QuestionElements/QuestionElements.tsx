@@ -6,6 +6,7 @@ import './QuestionsTracker.css'
 import Answer from "../Answer/Answer";
 import Cookies from "js-cookie";
 import InfoBox from "../InfoBox/InfoBox";
+import axios from "axios";
 
 interface props{
     Exam : {}
@@ -18,7 +19,7 @@ class QuestionTracker extends Component <props>{
             examiner: {},
             id: Number,
             items: [],
-            progress: Number,
+            progress: 0,
             status: Number,
             studentName: String
         },
@@ -92,11 +93,14 @@ class QuestionTracker extends Component <props>{
     render() {
         const {isLoading} = this.state;
 
-        if (isLoading) {
+        if (isLoading && this.state.Exam.progress === 100) {
+            let examId = this.state.Exam.id;
+            axios.put(`/api/exams/${examId}/status/GRADED`).then(() =>{});
+
             return (
                 <>
                     <h1>Alle vragen zijn nagekeken: </h1>
-                    <Button onClick={() => window.location.replace("/examens")}>
+                    <Button onClick={() => window.location.href="/examens"}>
                         Ga terug naar de examentabel
                     </Button>
                 </>
