@@ -69,8 +69,7 @@ class Answer extends Component<props> {
                         <Form.Control as="textarea" rows={3} cols={30} placeholder={this.state.answer} disabled/>
                     </Form.Group>
                     <div className="button-div">
-                        <Button id={"gradeQuestion"} className="btn--green" onClick={this.gradeClick}>Verstuur score</Button>
-                        <Button id={"editQuestion"} className="btn--yellow" disabled>Wijzigen</Button>
+                        <Button id={"gradeQuestion"} className={"btn--green forced-width"} onClick={this.gradeClick}>Verstuur score</Button>
                     </div>
                 </div>
                 <UserScore questionId={this.props.questionId} examId={this.props.examId}/>

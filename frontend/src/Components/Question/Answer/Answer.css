@@ -30,3 +30,7 @@ textarea
 {
     text-align: center;
 }
+
+.forced-width{
+    width: 100% !important;
+}

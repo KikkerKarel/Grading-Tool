@@ -5,6 +5,7 @@ import {Button, ListGroup} from "react-bootstrap";
 import './QuestionsTracker.css'
 import Answer from "../Answer/Answer";
 import Cookies from "js-cookie";
+import InfoBox from "../InfoBox/InfoBox";
 
 interface props{
     Exam : {}
@@ -63,9 +64,27 @@ class QuestionTracker extends Component <props>{
     {
         if (!this.state.isLoading) {
             return(
-                <>
-                    <Answer questionId={this.state.questionId} examId={this.state.examId} />
-                </>
+                <Answer questionId={this.state.questionId} examId={this.state.examId} />
+            )
+        }
+    };
+
+
+    renderInfoBoxComponent()
+    {
+        if (!this.state.isLoading) {
+            return(
+                <InfoBox brokenRules={[
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    "Vivamus eleifend feugiat dui, at semper lorem eleifend et.",
+                    "Curabitur ac nunc tortor.",
+                    "Nunc quis placerat velit.",
+                    "Nullam vulputate nisl augue, vel semper justo sodales ut.",
+                    "Donec diam mauris, mattis id maximus ut, tristique vitae sapien.",
+                    "Cras erat nibh, consequat non turpis id, ornare lacinia justo.",
+                    "enean accumsan lectus ac velit euismod, vitae bibendum ex tempor.",
+                    "Suspendisse pharetra congue condimentum. Nullam porttitor ultricies sem.",
+                ]} />
             )
         }
     };
@@ -127,8 +146,10 @@ class QuestionTracker extends Component <props>{
                             }
                     </ListGroup>
                     <div className="loading-bar">
+                        <span className={"text-center mt-3"}>Progress:</span>
                         <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
                     </div>
+                    {this.renderInfoBoxComponent()}
                 </div>
             </>
         );

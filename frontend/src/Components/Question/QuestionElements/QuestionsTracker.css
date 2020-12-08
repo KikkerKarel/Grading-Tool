@@ -81,12 +81,14 @@ p{
     border-width: thin;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .progress-bar-style {
     width: 90%;
     margin-top: auto;
     margin-bottom: auto;
+    margin: auto;
 }
 
 .progress-bar{
