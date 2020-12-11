@@ -22,6 +22,11 @@ public class TextGradingAdvice {
         return suggestedScore;
     }
 
+    public boolean hasSuggestedScore()
+    {
+        return suggestedScore != null;
+    }
+
     public TextGradingAdvice setSuggestedScore(Integer suggestedScore) {
 
         if(suggestedScore < 0 || suggestedScore > 5)
