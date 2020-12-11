@@ -17,6 +17,7 @@ import CreateExamPage from "./Components/Pages/Admin/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/Admin/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/Admin/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
+import ProfilePage from "./Components/Pages/ProfilePage";
 
 function App() {
     return (
@@ -36,6 +37,9 @@ function App() {
                 </Route>
                 <Route path="/vraag">
                     <QuestionPage/>
+                </Route>
+                <Route>
+                    <ProfilePage/>
                 </Route>
                 <Route exact={true} path="/admin">
                     <AdminPage/>
