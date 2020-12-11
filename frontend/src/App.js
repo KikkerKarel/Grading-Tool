@@ -18,6 +18,7 @@ import CreateQuestionPage from "./Components/Pages/Admin/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/Admin/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
 import ProfilePage from "./Components/Pages/ProfilePage";
+import AdvicePage from "./Components/Pages/AdvicePage";
 
 function App() {
     return (
@@ -25,6 +26,9 @@ function App() {
             <Switch>
                 <Route exact path="/">
                     <HomePage/>
+                </Route>
+                <Route path="/advice">
+                    <AdvicePage/>
                 </Route>
                 <Route path="/inloggen">
                     <LoginPage/>
