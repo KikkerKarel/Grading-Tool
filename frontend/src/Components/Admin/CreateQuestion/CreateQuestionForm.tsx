@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Component} from "react";
-import {Alert, Button, Col, Form, InputGroup} from "react-bootstrap";
+import {Alert, Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
 
 class CreateQuestionForm extends Component {
@@ -15,10 +15,10 @@ class CreateQuestionForm extends Component {
         McCorrectAnswer: ``,
         OqCorrectAnswer: ``,
 
-        enumeration : false,
-        grammar : false,
-        quote : false,
-        maxWords : 0,
+        enumeration: false,
+        grammar: false,
+        quote: false,
+        maxWords: 0,
 
         message: ``
     }
@@ -34,22 +34,28 @@ class CreateQuestionForm extends Component {
             McAnswer3: '',
             McAnswer4: '',
             questionText: '',
+            OqCorrectAnswer : '',
             type: 0,
-            message: "Gelukt!"
+            message: "Gelukt!",
+            enumeration: false,
+            grammar: false,
+            quote: false,
+            maxWords: 0,
         })
         this.delay(2500).then(() => this.setState({message: ``}));
+        console.log(this.state);
     }
 
     Send() {
         let questiontext = encodeURIComponent(this.state.questionText);
         let maxWords = this.state.maxWords;
 
-        if(this.state.maxWords.toString() == "" || this.state.maxWords <=0 ){
+        if (this.state.maxWords.toString() === "" || this.state.maxWords <= 0) {
             maxWords = 0;
         }
 
 
-        axios.post(`/api/question/create/${questiontext}/${this.state.type}`).then(response => {
+        axios.post(`/api/question/create/${questiontext}/${this.state.type}/${this.state.enumeration}/${this.state.grammar}/${this.state.quote}/${maxWords}`).then(response => {
             if (this.state.type === 1) {
                 if ((this.state.McAnswer1) !== '' && (this.state.McCorrectAnswer) === (this.state.McAnswer1)) {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${this.state.McAnswer1}/${true}`)
@@ -164,14 +170,19 @@ class CreateQuestionForm extends Component {
                                       onChange={(e) => this.setState({OqCorrectAnswer: e.target.value})}/>
                     </Form.Group>
 
-                    <Form.Group >
-                        <Form.Check type="checkbox" label="Opsomming" checked ={this.state.enumeration} onChange={(e : any) => this.setState({enumeration : e.target.checked})} />
-                        <Form.Check type="checkbox" label="Hoofdlettergevoelig / Grammatica"  checked ={this.state.grammar} onChange={(e : any) => this.setState({grammar : e.target.checked})} />
-                        <Form.Check type="checkbox" label="Citaat"  checked ={this.state.quote} onChange={(e : any) => this.setState({quote : e.target.checked})} />
+                    <Form.Group>
+                        <Form.Check type="checkbox" label="Opsomming" checked={this.state.enumeration}
+                                    onChange={(e: any) => this.setState({enumeration: e.target.checked})}/>
+                        <Form.Check type="checkbox" label="Hoofdlettergevoelig / Grammatica"
+                                    checked={this.state.grammar}
+                                    onChange={(e: any) => this.setState({grammar: e.target.checked})}/>
+                        <Form.Check type="checkbox" label="Citaat" checked={this.state.quote}
+                                    onChange={(e: any) => this.setState({quote: e.target.checked})}/>
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Control type="number" defaultValue={0} placeholder="Maximaal aantal woorden" onChange={(e : any) => this.setState({maxWords : e.target.value})}/>
+                        <Form.Control type="number" defaultValue={0} value={this.state.maxWords} placeholder="Maximaal aantal woorden"
+                                      onChange={(e: any) => this.setState({maxWords: e.target.value})}/>
                     </Form.Group>
                 </div>
             )
@@ -180,7 +191,7 @@ class CreateQuestionForm extends Component {
 
     render() {
         return (
-            <Form>
+            <Form style={{width:"23rem"}}>
                 <Alert variant="primary">
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">
@@ -203,19 +214,8 @@ class CreateQuestionForm extends Component {
                         {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
                 </Col>
-                {/*<Button variant="primary m-2" onClick={() =>*/}
-                {/*    this.Send(this.state.questionText.toString(),*/}
-                {/*        this.state.type,*/}
-                {/*        this.state.McAnswer1,*/}
-                {/*        this.state.McAnswer2,*/}
-                {/*        this.state.McAnswer3,*/}
-                {/*        this.state.McAnswer4,*/}
-                {/*        this.state.McCorrectAnswer,*/}
-                {/*        this.state.OqCorrectAnswer*/}
-                {/*    )}>*/}
-                {/*    Aanmaken</Button>*/}
-                <Button onClick={() => console.log(this.state)} >State </Button>
-                <Button onClick={() => this.setState({enumeration : false})} >State </Button>
+                <Button variant="primary m-2" onClick={() => this.Send()}> Aanmaken</Button>
+                <Button variant="primary m-2" onClick={() => console.log(this.state)}> State</Button>
             </Form>
         )
     }
