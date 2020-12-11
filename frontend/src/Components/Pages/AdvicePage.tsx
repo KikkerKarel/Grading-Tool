@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Component} from "react";
 import axios from "axios";
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 import {Card} from "react-bootstrap";
 
 interface props{
@@ -10,7 +10,6 @@ interface props{
 }
 
 class AdvicePage extends Component<props, {}> {
-
     state = {
         words: [],
         advice: {
@@ -55,34 +54,33 @@ class AdvicePage extends Component<props, {}> {
         return(
         <div className="page-container">
             <div className="content-wrap ">
-                <NavbarComponent/>
+                <HeaderNavbar/>
             </div>
             <div className="content-wrap d-flex justify-content-center">
-            <section className="content-container">
+                <section className="content-container">
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Text>
 
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                        <Card.Text>
+                                <h3 className="text-center mt-3">{this.state.advice.examItem.question.text}</h3>
 
-                            <h3 className="text">{this.state.advice.examItem.question.text}</h3>
+                                <h4 className="text-center mt-3">Correct antwoord:</h4>
+                                <p>{advice.examItem.question.textAnswer.value}</p>
 
-                            <h4 className="text">Correct antwoord:</h4>
-                            <p>{advice.examItem.question.textAnswer.value}</p>
-
-                            <h4 className="text">Gegeven antwoord:</h4>
-                            <div dangerouslySetInnerHTML={{__html : words.join(" ")}}></div>
-                        </Card.Text>
-                        <Card.Title>Score: {advice.suggestedScore} out of 5</Card.Title>
-                    </Card.Body>
-                </Card>
-            </section>
-
+                                <h4 className="text-center mt-3">Gegeven antwoord:</h4>
+                                <div dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
+                            </Card.Text>
+                            <Card.Title>Score: {advice.suggestedScore} out of 5</Card.Title>
+                        </Card.Body>
+                    </Card>
+                </section>
             </div>
-            <Footer/>
+            <div className="footer">
+                <Footer/>
+            </div>
         </div>
         )
     }
-
 }
 
 export default AdvicePage

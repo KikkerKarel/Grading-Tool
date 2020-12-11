@@ -1,7 +1,6 @@
 package gps.s3.correctingtool;
 
 import org.modelmapper.ModelMapper;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -20,7 +19,7 @@ public class CorrectingtoolApplication extends SpringBootServletInitializer{
     }
 
     @Bean
-        public ModelMapper mapper()
+    public ModelMapper mapper()
     {
         return new ModelMapper();
     }

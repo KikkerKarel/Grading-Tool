@@ -19,7 +19,6 @@ import CreateExamPage from "./Components/Pages/CreateExamPage";
 import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
 import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
-import ProfilePage from "./Components/Pages/ProfilePage";
 
 
 
@@ -44,9 +43,6 @@ function App() {
                 </Route>
                 <Route path="/question">
                     <QuestionPage/>
-                </Route>
-                <Route path="/profiel">
-                    <ProfilePage />
                 </Route>
                 <Route path="/admin">
                 <AdminPage/>

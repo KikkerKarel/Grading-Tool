@@ -1,3 +1,28 @@
+body {
+  margin: 0;
+  font-family: 'Averta', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+  body {
+    zoom: 0.8;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.50) {
+  body {
+    zoom: 0.65;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 1.75) {
+  body {
+    zoom: 0.5;
+  }
+}
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -10,6 +35,17 @@
   min-height: 100vh;
 }
 
+.content-container{
+  top: 80px;
+  position: fixed;
+}
+
 .content-wrap{
   flex: 1;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

@@ -6,12 +6,13 @@ class AuthService {
             .post("login", { username, password })
             .then((response) => {
                 console.log(response);
+
                 if (response.status === 200 && response.data.token) {
+                    localStorage.setItem("user", username)
                     localStorage.setItem("token", response.data.token)
                     console.log("Set token!")
                     return localStorage.getItem("token");
                 }
-
                 return response;
             });
     }

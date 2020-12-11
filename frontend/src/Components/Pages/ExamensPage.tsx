@@ -1,11 +1,12 @@
 import * as React from "react";
 import {Component} from "react";
-import '../Navbar/Navbar.css';
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
-import '../../Dashboard.css'
-import axios from 'axios'
+import '../HeaderNavbar/HeaderNavbar.css';
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
+import axios from 'axios';
 import ExamTable from "../ExamTable/ExamTable";
+import AuthService from "../../Services/auth.service";
+import {Redirect} from "react-router";
 
 interface props {
 }
@@ -17,31 +18,32 @@ class ExamensPage extends Component<props, {}> {
     };
 
     async componentDidMount() {
-        axios.get(`/api/exams/find/all`).then(response => this.setState({Exams: response.data, isLoading: false}));
+        axios.get(`/api/exams/me`).then(response => this.setState({Exams: response.data, isLoading: false}));
     }
 
     render() {
         const {Exams, isLoading} = this.state;
 
+        if(!AuthService.isLoggedIn())
+            return <Redirect to='./inloggen' />
+
         if (isLoading) {
             return <p>Loading...</p>;
         }
+
         return (
-            <>
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <HeaderNavbar/>
                 </div>
                 <div className="content-container">
-                    <h1 className="text">Klik hieronder op het examen dat u wilt beoordelen:</h1>
+                    <h1 className="text-center mt-3">Klik hieronder op het examen dat u wilt beoordelen:</h1>
                     <ExamTable data={Exams}/>
                 </div>
                 <div className="footer">
                     <Footer/>
                 </div>
-
-             </div>
-                </>
+            </div>
         );
     }
 }

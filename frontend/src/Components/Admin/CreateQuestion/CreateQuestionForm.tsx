@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Component} from "react";
-import {Button, Col, Form} from "react-bootstrap";
+import {Alert, Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
 
 class CreateQuestionForm extends Component {
@@ -42,20 +42,17 @@ class CreateQuestionForm extends Component {
          mcAnswer3?: string,
          mcAnswer4?: string,
          mcCorrectAnswer?: string,
-         oqCorrectAnswer?: string,
+         oqCorrectAnswer?: string
     ) {
         let questiontext = encodeURIComponent(questionText);
         axios.post(`/api/question/create/${questiontext}/${questionType}`).then(response => {
-            console.log("Vraag toegevoegd");
-
             if (questionType === 1) {
-                if (mcAnswer1 !== '' && mcCorrectAnswer === mcAnswer1) {
+                if ((mcAnswer1) !== '' && (mcCorrectAnswer) === (mcAnswer1)) {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer1}/${true}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     });
 
                 } else if (mcAnswer1 !== '') {
@@ -63,8 +60,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -73,8 +69,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
 
                 } else if (mcAnswer2 !== '') {
@@ -82,8 +77,7 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -92,16 +86,14 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 } else if (mcAnswer3 !== '') {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer3}/${false}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
 
@@ -110,16 +102,14 @@ class CreateQuestionForm extends Component {
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 } else if (mcAnswer4 !== '') {
                     axios.post(`/api/question/addMcAnswer/${response.data.id}/${mcAnswer4}/${false}`)
                         .then(() => {
                             this.setState({message: "Gelukt!"}, () => this.clear());
                         }).catch(error => {
-                        this.setState({message: "Error... zie console"});
-                        console.log(error.response);
+                        this.setState({message : error.response});
                     })
                 }
             } else if (oqCorrectAnswer !== '') {
@@ -127,13 +117,10 @@ class CreateQuestionForm extends Component {
                     .then(() => {
                         this.setState({message: "Gelukt!"}, () => this.clear());
                     }).catch(error => {
-                    this.setState({message: "Error... zie console"});
-                    console.log(error.response);
+                    this.setState({message : error.response});
                 })
             }
-
         });
-
     }
 
     returnOption = (value: any) => {
@@ -167,51 +154,49 @@ class CreateQuestionForm extends Component {
             )
         } else if (value === 2) {
             return (
-                <>
-                    <Form.Control type="text" placeholder="Open vraag antwoord" required
-                                  onChange={(e) => this.setState({OqCorrectAnswer: e.target.value})}/>
-                </>
+                <Form.Control type="text" placeholder="Open vraag antwoord" required
+                              onChange={(e) => this.setState({OqCorrectAnswer: e.target.value})}/>
             )
         }
     }
 
-
     render() {
         return (
-            <>
-                <h1>{this.state.message}</h1>
-                <Form>
+            <Form>
+                <Alert variant="primary">
+                    <Alert.Heading>Bericht:</Alert.Heading>
+                    <p className="message">
+                        {this.state.message}
+                    </p>
+                </Alert>
+                <Form.Group>
+                    <Form.Label>Vraag:</Form.Label>
+                    <Form.Control value={this.state.questionText.toString()} placeholder="Vul een vraag in"
+                                  type="text" onChange={(e) => this.setState({questionText: e.target.value})}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Check inline label="Gesloten vraag" name="QuestionType" id="MP" type="radio"
+                                onChange={() => this.setState({type: 1})}/>
+                    <Form.Check inline label="Open vraag" name="QuestionType" id="OQ" type="radio"
+                                onChange={() => this.setState({type: 2})}/>
+                </Form.Group>
+                <Col>
                     <Form.Group>
-                        <Form.Label> Vraag: </Form.Label>
-                        <Form.Control value={this.state.questionText.toString()} placeholder="Vul een vraag in"
-                                      type="text" onChange={(e) => this.setState({questionText: e.target.value})}/>
+                        {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Check inline label="Multiple Choice" name="QuestionType" id="MP" type="radio"
-                                    onChange={() => this.setState({type: 1})}/>
-                        <Form.Check inline label="Open Question" name="QuestionType" id="OQ" type="radio"
-                                    onChange={() => this.setState({type: 2})}/>
-                    </Form.Group>
-                    <Col>
-                        <Form.Group>
-                            {this.Input(parseInt(this.state.type.toString()))}
-                        </Form.Group>
-                    </Col>
-
-                    <Button variant="primary m-2" onClick={() =>
-                        this.Send(this.state.questionText.toString(),
-                            this.state.type,
-                            this.state.McAnswer1,
-                            this.state.McAnswer2,
-                            this.state.McAnswer3,
-                            this.state.McAnswer4,
-                            this.state.McCorrectAnswer,
-                            this.state.OqCorrectAnswer
-                        )}>
-
-                        Submit</Button>
-                </Form>
-            </>
+                </Col>
+                <Button variant="primary m-2" onClick={() =>
+                    this.Send(this.state.questionText.toString(),
+                        this.state.type,
+                        this.state.McAnswer1,
+                        this.state.McAnswer2,
+                        this.state.McAnswer3,
+                        this.state.McAnswer4,
+                        this.state.McCorrectAnswer,
+                        this.state.OqCorrectAnswer
+                    )}>
+                    Aanmaken</Button>
+            </Form>
         )
     }
 }

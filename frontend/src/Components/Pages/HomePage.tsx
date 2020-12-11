@@ -1,29 +1,20 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
-import {Nav} from "react-bootstrap";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 
 class HomePage extends Component {
-    state = {
-
-    };
-
-    async componentDidMount() {
-
-    }
-
     render() {
-
-
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent/>
+                    <HeaderNavbar/>
                 </div>
                 <section className="content-container">
                 </section>
-                <Footer/>
+                <div className="footer">
+                    <Footer/>
+                </div>
             </div>
         );
     }

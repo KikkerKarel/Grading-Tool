@@ -17,7 +17,7 @@ public class Exam {
     private ExamStatus status;
 
     @Column(nullable = false)
-    private String studentName;
+    private String examName;
 
     @ManyToOne
     @JoinColumn(name = "examinerId", referencedColumnName = "id")
@@ -30,9 +30,12 @@ public class Exam {
     @JsonGetter("progress")
     public long getProgress()
     {
-        if(items.size() == 0)
+        long total = items.stream().filter(examItem -> examItem.getQuestion().getType() == QuestionType.TEXT).filter(ExamItem::isGraded).count();
+        long dividedBy = items.stream().filter(examItem -> examItem.getQuestion().getType() == QuestionType.TEXT).count();
+
+        if (dividedBy == 0)
             return 100;
 
-        return items.stream().filter(ExamItem::isGraded).count() * 100 / items.size();
+        return total * 100 / dividedBy;
     }
 }

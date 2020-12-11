@@ -1,6 +1,6 @@
 package gps.s3.correctingtool.security;
-import gps.s3.correctingtool.repo.IUserRepo;
 
+import gps.s3.correctingtool.repo.IUserRepo;
 import gps.s3.correctingtool.user.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -13,9 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import java.util.List;
-
 import static gps.s3.correctingtool.security.SecurityConstants.LOGIN_URL;
 import static gps.s3.correctingtool.security.SecurityConstants.SIGN_UP_URL;
 

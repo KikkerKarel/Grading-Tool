@@ -1,12 +1,12 @@
-.RowPadding
+.row-padding
 {
     padding: 8px 25px;
 }
-.ButtonCol
+.button-col
 {
     display: grid;
 }
-.WhiteText
+.white-text
 {
     color: white !important;
 }

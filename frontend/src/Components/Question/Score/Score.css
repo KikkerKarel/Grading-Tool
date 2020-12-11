@@ -1,26 +1,17 @@
-body{
-    font-family: 'Averta', sans-serif;
-}
-
-.ScoreComponent{
+.scores{
     justify-content: left;
 }
 
-.scoringdiv
+.scoring-div
 {
     text-align: center;
 }
-.textlabel
+
+.scoring-text-label
 {
     margin-top: 5%;
     color: gray;
     font-size: 15px;
-}
-
-.stars
-{
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .rating-buttons {
@@ -30,8 +21,7 @@ body{
 }
 
 .rating-buttons:focus {
-    background-color: #5aad5a;
-    color: black;
+    background-color: #e94f2c;
     outline: none !important;
     box-shadow: none;
 }
@@ -51,17 +41,11 @@ body{
 .rating-buttons-system:disabled {
     background-color: black;
     cursor: default;
-    color: white;
     border: solid 1px black;
 }
 
-.rating-buttons-system:hover{
-    color: white;
-    cursor: default;
-}
-
 #correctorRating:hover{
-     background-color: #5aad5a;
+     background-color: #e94f2c;
      color: white;
  }
 
@@ -70,7 +54,7 @@ body{
     cursor: default;
     border: solid 1px black;
 }
+
 .rating-buttons-system-correct:hover{
-    color: white;
     cursor: default;
 }
