@@ -29,6 +29,7 @@ public class SummaryAdvice {
 
         //Gather stats about the amount of graders, avg score
         var stats = advices.stream()
+                .filter(TextGradingAdvice::hasSuggestedScore)
                 .mapToInt(TextGradingAdvice::getSuggestedScore)
                 .summaryStatistics();
 
@@ -40,8 +41,9 @@ public class SummaryAdvice {
 
         this.suggestedScore = (int) stats.getAverage();
 
-        log.info("Generated summary advice collected from {} graders\n" +
-                "Average score: {}, highest: {}, lowest: {}", stats.getCount(), stats.getAverage(), stats.getMax(), stats.getMin());
+        log.info("Generated {} feedback items from {} graders", feedback.size(), advices.size());
+        log.info("Generated avg score of {} from {} graders. " +
+                "Highest: {}, Lowest: {}", stats.getAverage(), stats.getCount(), stats.getMax(), stats.getMin());
 
     }
 }

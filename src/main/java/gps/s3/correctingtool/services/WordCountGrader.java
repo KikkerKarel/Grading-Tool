@@ -20,11 +20,10 @@ public class WordCountGrader extends GenericGrader {
 
         if(item.getStudentTextAnswer().split("\\s+").length > settings.getMaxWords())
         {
-            return advice.setSuggestedScore(0)
-                    .addFeedback("Woordenlimiet overschreden!");
+            return advice.addFeedback("Woordenlimiet overschreden!");
         }
         else {
-            return advice.setSuggestedScore(5);
+            return advice;
         }
     }
 }
