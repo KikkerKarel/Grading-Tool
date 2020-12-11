@@ -40,7 +40,8 @@ class ProfileComponent extends Component
     render() {
         const username = this.state.username;
         const lastLogin = this.formatDate();
-        let amount = this.state.Exam.filter((event:any) => event.status === "NOT_GRADED").length;
+        let amount = this.state.Exam.filter((event:any) => event.status === "NOT_GRADED"
+            || event.status === "GRADING_IN_PROGRESS").length;
 
         return (
             <div className="page-container">
