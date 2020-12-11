@@ -12,7 +12,7 @@ class ProfileComponent extends Component
         username: "",
         lastLogin: Date,
         examinerID: Number,
-        Exam: [],
+        Exam: []
     }
 
    async componentDidMount() {
@@ -36,7 +36,6 @@ class ProfileComponent extends Component
         return moment(`${this.state.lastLogin}`).utc().format("DD/MM/YYYY hh:mm:ss a");
     }
 
-
     render() {
         const username = this.state.username;
         const lastLogin = this.formatDate();
@@ -48,26 +47,22 @@ class ProfileComponent extends Component
                 <div className="content-wrap">
                     <HeaderNavbar />
                 </div>
-
                 <div className="content-main">
-                    <header className="user-header"> { username } </header>
-                    <h1 className="lastLogin-h1"> Laatste login: { lastLogin }</h1>
-                    <h2 className="toDoAmount"> Aantal examens nog na te kijken: { amount }</h2>
+                    <header className="user-header text-center bold"> { username } </header>
+                    <h1 className="lastLogin-h1 text-center bold">Laatste login: { lastLogin }</h1>
+                    <h2 className="toDoAmount text-center bold">Aantal examens nog na te kijken: { amount }</h2>
                 </div>
-
-                <div className="grade-div" id="done">
-                    <header className="grade-header"> Nakijk geschiedenis </header>
+                <div className="grade-div text-center" id="done">
+                    <header className="grade-header bold">Nakijk geschiedenis </header>
                     {
-                        this.state.Exam.reverse().map((exam:any) => {
-                            if (exam !== null)
-                            {
-                                if (exam.status === "GRADED")
-                                {
+                        this.state.Exam.reverse().map(function (exam: any) {
+                            if (exam !== null) {
+                                if (exam.status === "GRADED") {
                                     return <div className="grade-exam">
                                         <ListGroup className="grade-exam-list">
-                                            <ListGroup.Item  id="graded"> ID: {exam.id} </ListGroup.Item>
-                                            <ListGroup.Item  id="graded"> Status: {exam.status} </ListGroup.Item>
-                                            <ListGroup.Item  id="graded"> Student: {exam.studentName} </ListGroup.Item>
+                                            <ListGroup.Item id="graded"> ID: {exam.id} </ListGroup.Item>
+                                            <ListGroup.Item id="graded"> Status: {exam.status} </ListGroup.Item>
+                                            <ListGroup.Item id="graded"> Exam: {exam.examName} </ListGroup.Item>
                                         </ListGroup>
                                     </div>
                                 }
