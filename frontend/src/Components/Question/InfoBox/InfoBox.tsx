@@ -14,7 +14,7 @@ class InfoBox extends Component<props> {
         });
 
         return (
-            <Container className="box mt-3">
+            <Container className="box spacing">
                 <Row>
                     <Col>
                         <h2 className="title">Infobox</h2>

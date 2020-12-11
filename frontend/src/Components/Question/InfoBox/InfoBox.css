@@ -7,8 +7,11 @@
     overflow-y: auto;
     height: 250px;
     margin: auto;
-
     color: #383230;
+}
+
+.spacing{
+    margin-top: 13px;
 }
 
 .box .title {

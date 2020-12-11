@@ -37,12 +37,18 @@ class HeaderNavbar extends Component {
             return(
                 <>
                     <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>
+                    <Nav.Link className="nav-item" href="/profiel">Profiel</Nav.Link>
                     <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
                 </>
             )
         }
         else if(user !== null){
-            return <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
+            return(
+                <>
+                    <Nav.Link className="nav-item" href="/profiel">Profiel</Nav.Link>
+                    <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
+                </>
+            )
         }
     }
 

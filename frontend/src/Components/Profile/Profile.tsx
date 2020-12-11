@@ -6,7 +6,7 @@ import axios from 'axios';
 import {ListGroup} from "react-bootstrap";
 import moment from "moment";
 
-class ProfileComponent extends Component
+class Profile extends Component
 {
     state = {
         username: "",
@@ -55,19 +55,18 @@ class ProfileComponent extends Component
                 <div className="grade-div text-center" id="done">
                     <header className="grade-header bold">Nakijk geschiedenis </header>
                     {
-                        this.state.Exam.reverse().map(function (exam: any) {
-                            if (exam !== null) {
-                                if (exam.status === "GRADED") {
-                                    return <div className="grade-exam">
-                                        <ListGroup className="grade-exam-list">
-                                            <ListGroup.Item id="graded"> ID: {exam.id} </ListGroup.Item>
-                                            <ListGroup.Item id="graded"> Status: {exam.status} </ListGroup.Item>
-                                            <ListGroup.Item id="graded"> Exam: {exam.examName} </ListGroup.Item>
-                                        </ListGroup>
-                                    </div>
-                                }
-                            }
-                        })
+                        this.state.Exam.reverse().filter(
+                            function(exam : any)
+                            {return exam.status === "GRADED"})
+                            .map((exam : any) => {
+                                return <div className="grade-exam">
+                                    <ListGroup className="grade-exam-list">
+                                        <ListGroup.Item id="graded"> ID: {exam.id} </ListGroup.Item>
+                                        <ListGroup.Item id="graded"> Status: {exam.status} </ListGroup.Item>
+                                        <ListGroup.Item id="graded"> Examen: {exam.examName} </ListGroup.Item>
+                                    </ListGroup>
+                                </div>
+                            })
                     }
                 </div>
                 <Footer/>
@@ -76,4 +75,4 @@ class ProfileComponent extends Component
     }
 }
 
-export default ProfileComponent;
+export default Profile;

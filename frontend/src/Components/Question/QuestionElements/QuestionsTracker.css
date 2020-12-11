@@ -37,7 +37,8 @@ p{
 }
 
 .open-questions{
-    height: 44.2%;
+    height: 280px;
+    max-height: 282px;
     overflow-y: auto;
     overflow-x: hidden;
     border-style: solid;
@@ -86,8 +87,6 @@ p{
 
 .progress-bar-style {
     width: 90%;
-    margin-top: auto;
-    margin-bottom: auto;
     margin: auto;
 }
 
