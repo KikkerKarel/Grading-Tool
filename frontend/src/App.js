@@ -7,20 +7,16 @@ import {
     Route,
 } from "react-router-dom";
 
-
 import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
-import CoursesPage from "./Components/Pages/CoursesPage";
 import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import QuestionPage from "./Components/Pages/QuestionPage";
-import AdminPage from "./Components/Pages/AdminPage";
-import CreateExamPage from "./Components/Pages/CreateExamPage";
-import CreateQuestionPage from "./Components/Pages/CreateQuestionPage";
-import CreateExamItemPage from "./Components/Pages/CreateExamItemPage";
+import AdminPage from "./Components/Pages/Admin/AdminPage";
+import CreateExamPage from "./Components/Pages/Admin/CreateExamPage";
+import CreateQuestionPage from "./Components/Pages/Admin/CreateQuestionPage";
+import CreateExamItemPage from "./Components/Pages/Admin/CreateExamItemPage";
 import LoginPage from "./Components/Pages/LoginPage";
-
-
 
 function App() {
     return (
@@ -29,40 +25,36 @@ function App() {
                 <Route exact path="/">
                     <HomePage/>
                 </Route>
-                <Route path="/examens">
-                    <ExamensPage/>
-                </Route>
-                <Route path="/courses">
-                    <CoursesPage/>
+                <Route path="/inloggen">
+                    <LoginPage/>
                 </Route>
                 <Route path="/instellingen">
                     <SettingsPage/>
                 </Route>
-                <Route path="/logout">
-                    <LogoutPage/>
+                <Route path="/examens">
+                    <ExamensPage/>
                 </Route>
-                <Route path="/question">
+                <Route path="/vraag">
                     <QuestionPage/>
                 </Route>
-                <Route path="/admin">
-                <AdminPage/>
-            </Route>
-                <Route path="/create-exam">
+                <Route exact={true} path="/admin">
+                    <AdminPage/>
+                </Route>
+                <Route path="/admin/maak-examen">
                     <CreateExamPage/>
                 </Route>
-                <Route path="/create-question">
+                <Route path="/admin/maak-vraag">
                     <CreateQuestionPage/>
                 </Route>
-                <Route path="/create-examItem">
+                <Route path="/admin/maak-examenitem">
                     <CreateExamItemPage/>
                 </Route>
-                <Route path="/login">
-                    <LoginPage/>
+                <Route path="/uitloggen">
+                    <LogoutPage/>
                 </Route>
             </Switch>
         </Router>
     );
-
 }
 
 export default App

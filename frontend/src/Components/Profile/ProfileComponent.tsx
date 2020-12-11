@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import NavbarComponent from "../Navbar/NavbarComponent";
-import Footer from "../Footer";
+import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
+import Footer from "../Footer/Footer";
 import './Profile.css';
 import axios from 'axios';
 import {ListGroup} from "react-bootstrap";
@@ -45,7 +45,7 @@ class ProfileComponent extends Component
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <NavbarComponent />
+                    <HeaderNavbar />
                 </div>
 
                 <div className="content-main">
