@@ -55,24 +55,6 @@ class ProfileComponent extends Component
                     <h2 className="toDoAmount"> Aantal examens nog na te kijken: { amount }</h2>
                 </div>
 
-                {/*<div className="grade-div" id="toDo">*/}
-                {/*    <header className="grade-header"> Nog na te kijken </header>*/}
-                {/*    {*/}
-                {/*        this.state.Exam.map((exam:any) => {*/}
-                {/*            if(exam.status === "NOT_GRADED")*/}
-                {/*            {*/}
-                {/*                return <div className="grade-exam">*/}
-                {/*                    <ListGroup className="grade-exam-list">*/}
-                {/*                        <ListGroup.Item id="toGrade"> ID: {exam.id} </ListGroup.Item>*/}
-                {/*                        <ListGroup.Item id="toGrade"> Status: {exam.status} </ListGroup.Item>*/}
-                {/*                        <ListGroup.Item id="toGrade"> Student: {exam.studentName} </ListGroup.Item>*/}
-                {/*                    </ListGroup>*/}
-                {/*                </div>*/}
-                {/*            }*/}
-                {/*        })*/}
-                {/*    }*/}
-                {/*</div>*/}
-
                 <div className="grade-div" id="done">
                     <header className="grade-header"> Nakijk geschiedenis </header>
                     {

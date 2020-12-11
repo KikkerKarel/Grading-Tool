@@ -38,7 +38,7 @@ function App() {
                 <Route path="/vraag">
                     <QuestionPage/>
                 </Route>
-                <Route>
+                <Route path="/profiel">
                     <ProfilePage/>
                 </Route>
                 <Route exact={true} path="/admin">
