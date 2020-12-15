@@ -34,7 +34,7 @@ class QuestionPage extends Component<any>{
         });
     }
 
-    renderQuestionComponents() {
+    renderQuestionElements() {
         if (!this.state.isLoading) {
             return <QuestionElements Exam={this.state.Exam}/>
         }
@@ -50,7 +50,7 @@ class QuestionPage extends Component<any>{
                     <HeaderNavbar/>
                 </div>
                 <section className="content-container flex mt-5">
-                    {this.renderQuestionComponents()}
+                    {this.renderQuestionElements()}
                 </section>
                 <div className="footer">
                     <Footer/>

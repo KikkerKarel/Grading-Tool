@@ -10,14 +10,13 @@ import {validateNames, validatePassword} from "./FormValidation";
 class Login extends Component {
     state = {
         redirect: false,
-        username : '',
-        password :''
+        username: '',
+        password: '',
     }
 
     handleClick(event: any)
     {
         event.preventDefault();
-        console.log(this.state);
 
         let errrormessage : any  = document.getElementById("errormessage");
         let errorbox : any  = document.getElementsByClassName("errorbox")[0];
@@ -38,6 +37,12 @@ class Login extends Component {
         }
     }
 
+    hideAlert()
+    {
+        let errorbox : any  = document.getElementsByClassName("errorbox")[0];
+        errorbox.style.display = "none";
+    }
+
     render() {
         if(this.state.redirect || AuthService.isLoggedIn())
             return <Redirect to='./examens'/>
@@ -46,12 +51,14 @@ class Login extends Component {
             <div className="mt-5 col-md-6">
                 <Form>
                     <h1>Login</h1>
+
                     <Form.Group>
-                        <Alert variant="danger errorbox">
+                        <Alert variant="danger errorbox" dismissible={true} onClose={() => this.hideAlert()}>
                             <Alert.Heading>Foutmelding:</Alert.Heading>
                             <Form.Text id="errormessage"/>
                         </Alert>
                     </Form.Group>
+
                     <Form.Group controlId="formBasicName">
                         <Form.Label>Gebruikersnaam:</Form.Label>
                         <Form.Control onChange={(event) => { this.setState({username: event.target.value})}} type="username" placeholder="Gebruikersnaam" />
@@ -60,10 +67,7 @@ class Login extends Component {
                         <Form.Label>Wachtwoord:</Form.Label>
                         <Form.Control onChange={(event) => { this.setState({password: event.target.value})}} type="password" placeholder="Wachtwoord" />
                     </Form.Group>
-                    <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Onthoud mij" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit" onClick={(event) => this.handleClick(event)}>
+                    <Button className="btn--medium btn btn-primary" type="submit" onClick={(event) => this.handleClick(event)}>
                         Inloggen
                     </Button>
                 </Form>

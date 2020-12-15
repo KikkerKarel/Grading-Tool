@@ -4,7 +4,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, ListGroup} from "react-bootstrap";
 import './QuestionsTracker.css'
 import Answer from "../Answer/Answer";
-import InfoBox from "../InfoBox/InfoBox";
 import axios from "axios";
 
 interface props{
@@ -72,26 +71,6 @@ class QuestionTracker extends Component <props>{
         }
     };
 
-
-    renderInfoBoxComponent()
-    {
-        if (!this.state.isLoading) {
-            return(
-                <InfoBox brokenRules={[
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    "Vivamus eleifend feugiat dui, at semper lorem eleifend et.",
-                    "Curabitur ac nunc tortor.",
-                    "Nunc quis placerat velit.",
-                    "Nullam vulputate nisl augue, vel semper justo sodales ut.",
-                    "Donec diam mauris, mattis id maximus ut, tristique vitae sapien.",
-                    "Cras erat nibh, consequat non turpis id, ornare lacinia justo.",
-                    "enean accumsan lectus ac velit euismod, vitae bibendum ex tempor.",
-                    "Suspendisse pharetra congue condimentum. Nullam porttitor ultricies sem."
-                ]} />
-            )
-        }
-    };
-
     render() {
         const {isLoading} = this.state;
 
@@ -155,7 +134,6 @@ class QuestionTracker extends Component <props>{
                         <span className={"text-center mt-3"}>Progress:</span>
                         <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
                     </div>
-                    {this.renderInfoBoxComponent()}
                 </div>
             </>
         );

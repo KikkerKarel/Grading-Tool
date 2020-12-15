@@ -21,10 +21,10 @@ class AdvicePage extends Component {
     async componentDidMount() {
         await axios.get("api/grade/advice/" + 2 + "/" + 5).then(response =>
             this.setState({
-            suggestedScore : response.data.suggestedScore,
-            matchingWordPositions : response.data.matchingWordPositions,
-            examItem : response.data.examItem,
-            feedback : response.data.feedback
+                suggestedScore : response.data.suggestedScore,
+                matchingWordPositions : response.data.matchingWordPositions,
+                examItem : response.data.examItem,
+                feedback : response.data.feedback
             })
         ).catch(err => console.log(err));
         console.log(this.state);

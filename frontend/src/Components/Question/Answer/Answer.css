@@ -34,3 +34,25 @@ textarea
 .forced-width{
     width: 100% !important;
 }
+
+.scroll-y{
+    overflow-y: auto;
+}
+
+.custom-box{
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    padding: 5px 12px;
+    overflow-y: auto;
+    height: 90px;
+    margin: auto;
+    color: #383230;
+    background-color: #e9ecef;
+}
+
+.special-styling{
+    right: 0;
+    position: absolute;
+    width: 25rem;
+    bottom: 0;
+}

@@ -5,9 +5,17 @@
 .btn {
     padding :8px 20px;
     border-radius: 4px;
-    outline: none;
+    outline: none !important;
     border: none;
     cursor: pointer;
+}
+
+.btn:focus {
+    background-color: #b93213;
+}
+
+.btn:active{
+    background-color: #b93213 !important;
 }
 
 .btn--primary{
