@@ -39,8 +39,7 @@ function App() {
                 <Route path="/examens">
                     <ExamensPage/>
                 </Route>
-                <Route path="/vraag">
-                    <QuestionPage/>
+                <Route path='/vraag/beoordelen/:examId' component={QuestionPage}>
                 </Route>
                 <Route path="/profiel">
                     <ProfilePage/>

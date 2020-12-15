@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Pages/CSS/QuestionPage.css'
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import AuthService from "../../Services/auth.service";
-import {Redirect} from "react-router";
+import {Redirect } from "react-router";
 import QuestionElements from "../Question/QuestionElements/QuestionElements";
 
-class QuestionPage extends Component {
+class QuestionPage extends Component<any>{
     state = {
         isLoading: true,
         Exam: {
@@ -21,7 +20,7 @@ class QuestionPage extends Component {
 
     async componentDidMount() {
         await this.setState({
-            examId: Cookies.get("examId")
+            examId: this.props.match.params.examId
         });
 
         if (!this.state.examId || this.state.examId === 0 )

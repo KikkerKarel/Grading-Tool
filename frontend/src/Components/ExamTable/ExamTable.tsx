@@ -3,7 +3,6 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ExamTable.css';
-import Cookies from "js-cookie";
 
 interface props{
     data?: any;
@@ -27,7 +26,8 @@ const columns = [
 
 class ExamTable extends Component<props> {
     state = {
-        Exams: this.props.data
+        Exams: this.props.data,
+        examId: 0
     };
 
     render() {
@@ -36,8 +36,9 @@ class ExamTable extends Component<props> {
 
         const tableRowEvents = {
             onClick: (e: any, row: any) => {
-                Cookies.set('examId', row.id);
-                window.location.href="/vraag/beoordelen";
+                this.setState({
+                    examId: row.id
+                },() =>  window.location.href="/vraag/beoordelen/" + this.state.examId)
             }
         }
 
