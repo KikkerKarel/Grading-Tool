@@ -6,13 +6,13 @@ import systemScore from "./SystemScore";
 
 interface props {
     questionId?: number,
-    examId?: number
+    examId?: number,
+    systemRating?: number
 }
 
 class UserScore extends Component<props> {
     state = {
         valueStars: Number,
-        systemRating: Number,
         previousScore: Number,
         questionId: Number,
         examId: Number,
@@ -35,7 +35,6 @@ class UserScore extends Component<props> {
                     {
                         previousScore: response.data.gradedScore,
                         valueStars: 0,
-                        systemRating: Math.random()*(5 -1),
                         questionId: this.props.questionId,
                     }
                 )
@@ -59,7 +58,7 @@ class UserScore extends Component<props> {
             <div className="scores">
                 <div className="scoring-div">
                     <label className="scoring-text-label">Systeem aangeraden score</label>
-                    {systemScore(this.state.systemRating)}
+                    {systemScore(this.props.systemRating)}
                 </div>
                 <br/>
                 <div className="scoring-div">

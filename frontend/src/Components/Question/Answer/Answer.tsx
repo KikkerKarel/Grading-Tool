@@ -102,7 +102,7 @@ class Answer extends Component<props> {
                         <Button id={"gradeQuestion"} className={"btn--green forced-width"} onClick={this.gradeClick}>Verstuur score</Button>
                     </div>
                 </div>
-                <UserScore questionId={this.props.questionId} examId={this.props.examId}/>
+                <UserScore questionId={this.props.questionId} examId={this.props.examId} systemRating={this.state.suggestedScore}/>
                 {this.renderInfoBoxComponent()}
             </div>
         );
