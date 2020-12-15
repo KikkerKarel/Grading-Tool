@@ -81,7 +81,7 @@ class QuestionTracker extends Component <props>{
             return (
                 <>
                     <h1>Alle vragen zijn nagekeken: </h1>
-                    <Button onClick={() => window.location.href="/examens"}>
+                    <Button className="btn--medium btn btn-primary" onClick={() => window.location.href="/examens"}>
                         Ga terug naar de examentabel
                     </Button>
                 </>
