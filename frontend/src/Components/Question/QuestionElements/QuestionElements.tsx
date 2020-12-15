@@ -4,7 +4,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import {Button, ListGroup} from "react-bootstrap";
 import './QuestionsTracker.css'
 import Answer from "../Answer/Answer";
-import Cookies from "js-cookie";
 import InfoBox from "../InfoBox/InfoBox";
 import axios from "axios";
 
@@ -24,7 +23,8 @@ class QuestionTracker extends Component <props>{
             studentName: String
         },
         questionId: 0,
-        examId: 0
+        examId: 0,
+        score: null
     };
 
     private foundQuestion : boolean = false;
@@ -32,11 +32,11 @@ class QuestionTracker extends Component <props>{
     async componentDidMount() {
         await this.setState(
             {
-                Exam : this.props.Exam
+                Exam: this.props.Exam,
+                score: 0
             }
         );
 
-        Cookies.set('score', "0");
         this.state.Exam.items.forEach((examitem : any) =>{
             if ((examitem.question.type === "TEXT" && examitem.gradedScore === null && !this.foundQuestion) ||
                 (examitem.question.type === "TEXT" && examitem.questionId === this.state.questionId))
@@ -57,8 +57,10 @@ class QuestionTracker extends Component <props>{
         let targetId = event.target.getAttribute('data-rb-event-key');
         let item: any = this.state.Exam.items.find((x:any) => x.question.id.toString() === targetId.toString());
 
-        this.setState({questionId: item.question.id});
-        Cookies.set('score', item.score);
+        this.setState({
+            questionId: item.question.id,
+            score: item.score
+        });
     };
 
     renderAnswerComponent()
@@ -110,12 +112,12 @@ class QuestionTracker extends Component <props>{
         let qID = this.state.questionId;
         let keyCount = 1;
 
-        function setTextClassname(gradedCorrect : any, id : any) {
+        function setTextClassname(gradedCorrect : any, id : number) {
             let prefix = 'question-text';
 
             if(id ===  qID)
             {
-                prefix = prefix + ' bold'
+                prefix = prefix + ' bold active'
             }
 
             if (gradedCorrect !== null)

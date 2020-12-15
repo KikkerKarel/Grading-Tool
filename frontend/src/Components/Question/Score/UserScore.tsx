@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import './Score.css';
-import Cookies from "js-cookie";
 import axios from "axios";
 import {Button, ButtonGroup} from "react-bootstrap";
 import systemScore from "./SystemScore";
@@ -16,11 +15,16 @@ class UserScore extends Component<props> {
         systemRating: Number,
         previousScore: Number,
         questionId: Number,
-        examId: Number
+        examId: Number,
+        score: 0
     }
 
     changeValue(event : any){
-        this.setState({valueStars: event}, () => Cookies.set("score", event));
+        this.setState(
+            {
+                valueStars: event,
+            });
+        localStorage.setItem("score", event);
     }
 
     async componentDidUpdate() {

@@ -3,7 +3,6 @@ import axios from 'axios'
 import {Button, Form} from 'react-bootstrap';
 import './Answer.css';
 import UserScore from "../Score/UserScore";
-import Cookies from "js-cookie";
 
 interface props {
     questionId?: number,
@@ -15,7 +14,8 @@ class Answer extends Component<props> {
         text: '',
         answer: '',
         studentAnswer: '',
-        examId: ''
+        examId: '',
+        score: null
     }
 
     async componentDidMount() {
@@ -25,8 +25,8 @@ class Answer extends Component<props> {
                 studentAnswer: response.data.studentTextAnswer,
                 answer: response.data.question.correctAnswer.text,
                 examId: response.data.examId,
+                score: 0
             })
-            Cookies.set('score', "0");
             axios.put(`/api/exams/${this.props.examId}/status/GRADING_IN_PROGRESS`).then(() =>{});
         })
     }
@@ -45,8 +45,8 @@ class Answer extends Component<props> {
     }
 
     gradeClick = () =>{
-        let cookieValue : any = Cookies.get("score");
-        let score: number = parseInt(cookieValue.toString());
+        let scoreValue: any = localStorage.getItem("score");
+        let score: number = parseInt(scoreValue.toString());
         let examId = this.state.examId;
         let questionId = this.props.questionId;
 
