@@ -1,6 +1,6 @@
 @startuml
 Controller->Gradest : request grading advice
-Gradest->StrategyPicker : request grader instance based on settings
-StrategyPicker->Gradest : return grader instance
+Gradest->StrategyPicker : request grader strategy based on settings
+StrategyPicker->Gradest : return grader strategies
 Gradest->Controller : return advice
 @enduml
