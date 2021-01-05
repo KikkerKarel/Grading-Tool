@@ -46,7 +46,7 @@ services:
       MYSQL_DATABASE: gradest
       MYSQL_USER: gradmin
       MYSQL_PASSWORD: gradmin
-      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: 'root'
     volumes:
       - db-gradest-data:/var/lib/mysql
     networks:
