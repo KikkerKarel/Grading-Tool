@@ -48,13 +48,13 @@ services:
       MYSQL_PASSWORD: gradmin
       MYSQL_ROOT_PASSWORD: ''
     volumes:
-      - db-data:/var/lib/mysql
+      - db-gradest-data:/var/lib/mysql
     networks:
       - backend
 
 # Volumes
 volumes:
-  db-data:
+  db-gradest-data:
 
 # Networks to be created to facilitate communication between containers
 networks:
