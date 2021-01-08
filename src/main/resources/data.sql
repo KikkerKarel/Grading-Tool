@@ -1,31 +1,8 @@
-SET UNIQUE_CHECKS=0;
+USE gradest;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 
-/*
-    Drop data
-*/
-
-
-DELETE FROM gradest.user;
-DELETE FROM gradest.exam;
-DELETE FROM gradest.question;
-DELETE FROM gradest.question_settings;
-DELETE FROM gradest.choice_answer;
-DELETE FROM gradest.correct_answer;
-DELETE FROM gradest.exam_item;
-
-
-/*
-    Change auto increment value
-*/
-
-
-ALTER TABLE gradest.user AUTO_INCREMENT = 1;
-ALTER TABLE gradest.exam AUTO_INCREMENT = 1;
-ALTER TABLE gradest.question AUTO_INCREMENT = 1;
-ALTER TABLE gradest.choice_answer AUTO_INCREMENT = 1;
-ALTER TABLE gradest.correct_answer AUTO_INCREMENT = 1;
 
 
 /*
@@ -164,6 +141,3 @@ INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, studen
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 2, null, 5, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 3, 'Berlin', null, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 4, 'Bot', null, null);
-
-SET UNIQUE_CHECKS=1;
-SET FOREIGN_KEY_CHECKS=1;
