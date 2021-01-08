@@ -15,14 +15,14 @@ class UserIntegrationTests {
     IUserRepo userRepo;
 
     @Test
-    public void getAllUsers_IsNotEmpty()
+    void getAllUsers_IsNotEmpty()
     {
         var x = userRepo.findAll();
         assertThat(x).isNotEmpty();
     }
 
     @Test
-    public void getUserByName()
+    void getUserByName()
     {
         User x = userRepo.findByUsername("Admin");
 
@@ -32,11 +32,11 @@ class UserIntegrationTests {
     }
 
     @Test
-    public void checkUserProperty_IsNotNull()
+    void checkUserProperty_IsNotNull()
     {
         User x = userRepo.findByUsername("Admin");
 
         assertThat(x.getRegisterDate()).isNotNull();
-        assertThat(x.getId()).isGreaterThan(0);
+        assertThat(x.getId()).isPositive();
     }
 }

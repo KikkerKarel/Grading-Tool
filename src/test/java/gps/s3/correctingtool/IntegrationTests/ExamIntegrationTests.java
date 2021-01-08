@@ -13,12 +13,12 @@ import static org.assertj.core.api.Assertions.*;
 @Transactional
 @SpringBootTest
 @ActiveProfiles("test")
-public class ExamIntegrationTests {
+class ExamIntegrationTests {
     @Autowired
     IExamRepo examRepo;
 
     @Test
-    public void getAllExams_IsNotEmpty()
+    void getAllExams_IsNotEmpty()
     {
         var x = examRepo.findAll();
 
@@ -26,11 +26,11 @@ public class ExamIntegrationTests {
     }
 
     @Test
-    public void checkExamProperty_IsNotNull()
+    void checkExamProperty_IsNotNull()
     {
         var x = examRepo.findById(1);
 
-        assertThat(x.getId()).isGreaterThan(0);
+        assertThat(x.getId()).isPositive();
 
         assertThat(x.getExamName()).isNotNull();
         assertThat(x.getExaminer()).isNotNull();
