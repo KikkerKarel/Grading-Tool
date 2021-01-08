@@ -10,7 +10,7 @@ public class QuoteGrader extends GenericGrader{
 
     @Override
     public boolean canGrade(QuestionSettings settings) {
-        return settings != null && settings.isCheckGrammar();
+        return settings != null && settings.isCheckQuote();
     }
 
     @Override
