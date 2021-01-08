@@ -1,6 +1,8 @@
 package gps.s3.correctingtool;
 
+import gps.s3.correctingtool.repo.IExamRepo;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -10,9 +12,14 @@ import static org.assertj.core.api.Assertions.*;
 @ActiveProfiles("test")
 class CorrectingtoolApplicationTests {
 
+    @Autowired
+    IExamRepo examRepo;
+
     @Test
     public void TestTrue() {
-        assertThat(true).isTrue();
+        var result = examRepo.findAll();
+
+        assertThat(result).isNotEmpty();
     }
 
     @Test
