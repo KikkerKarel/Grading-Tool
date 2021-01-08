@@ -4,7 +4,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from "axios";
 
-axios.defaults.baseURL = "http://gradest-api.v99.nl/";
+//axios.defaults.baseURL = "http://gradest-api.v99.nl/";
+axios.defaults.baseURL = "http://localhost:8080/";
 axios.interceptors.request.use(function (config) {
     config.headers.Authorization =  localStorage.getItem("token");
 

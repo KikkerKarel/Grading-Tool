@@ -43,6 +43,16 @@ INSERT INTO gradest.user (username, password, register_date, last_login) VALUES 
 
 
 /*
+    Inloggevens voor de PO
+*/
+
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Stephan', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Marker1', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Marker2', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+INSERT INTO gradest.user (username, password, register_date, last_login) VALUES ('Marker3', '$2a$10$/kTasUe4JFibs20IbQcSLOZh.1uxHid96INBYFTXRuCr54F5uiXfW', '2020-10-09 02:49:51', null);
+
+
+/*
     Exams
 */
 
@@ -54,6 +64,10 @@ INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Ne
 INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T2', 'NOT_GRADED', 6);
 INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T3', 'NOT_GRADED', 7);
 
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T1', 'NOT_GRADED', 8);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T2', 'NOT_GRADED', 9);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T1', 'NOT_GRADED', 10);
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T2', 'NOT_GRADED', 11);
 
 /*
     Questions
@@ -164,6 +178,43 @@ INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, studen
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 2, null, 5, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 3, 'Berlin', null, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (6, 4, 'Bot', null, null);
+
+
+/* Stephan */
+
+
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (7, 1, null, 1, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (7, 2, null, 5, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (7, 3, 'Berlin', null, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (7, 4, 'Bot', null, null);
+
+
+/* Marker1 */
+
+
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (8, 1, null, 1, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (8, 2, null, 5, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (8, 3, 'Berlin', null, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (8, 4, 'Bot', null, null);
+
+
+/* Marker2 */
+
+
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (9, 1, null, 1, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (9, 2, null, 5, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (9, 3, 'Berlin', null, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (9, 4, 'Bot', null, null);
+
+
+/* Marker3 */
+
+
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (10, 1, null, 1, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (10, 2, null, 5, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (10, 3, 'Berlin', null, null);
+INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (10, 4, 'Bot', null, null);
+
 
 SET UNIQUE_CHECKS=1;
 SET FOREIGN_KEY_CHECKS=1;

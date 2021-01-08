@@ -34,7 +34,7 @@ class HeaderNavbar extends Component {
     ifAdmin() {
         let user: any = localStorage.getItem("user");
 
-        if (user !== null && user.toLowerCase() === "admin") {
+        if (user !== null && user.toLowerCase() === "admin" || user !== null && user.toLowerCase() === "stephan" ) {
             return (
                 <>
                     <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>

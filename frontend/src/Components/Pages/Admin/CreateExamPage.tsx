@@ -19,8 +19,8 @@ class CreateExamPage extends Component {
 
         let user : any = localStorage.getItem("user");
 
-        if(user.toLowerCase() !== "admin")
-            return <Redirect to='/examens'/>
+        if(user.toLowerCase() !== "admin" && user.toLowerCase() !== "stephan" && user === null)
+            return <Redirect to='./examens'/>
 
         return (
             <div className="page-container">
