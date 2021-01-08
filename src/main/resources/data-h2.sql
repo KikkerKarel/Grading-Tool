@@ -46,12 +46,13 @@ INSERT INTO gradest.question (text, type) VALUES ('Wat is het hardste materiaal 
 INSERT INTO gradest.question (id, text, type) VALUES (5, 'Welke artiest uit welk land won de laatste Eurovisie songfestival?', 'TEXT');
 INSERT INTO gradest.question (id, text, type) VALUES (6, 'Wie is de uitvinder van de wisselstroomgenerator?', 'TEXT');
 
+
 /*
  Settings
  */
 
 INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (5, false, false, false, 0);
-INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (6, false, false, false, 0);
+INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (6, false, false, false, 2);
 
 
 /*
