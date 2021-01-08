@@ -20,7 +20,7 @@ public class GrammarGrader extends GenericGrader {
 
     @Override
     public TextGradingAdvice getAdvice(ExamItem item) {
-        var advice = new TextGradingAdvice();
+        var advice = new TextGradingAdvice().setExamItem(item);
         var words = item.getQuestion().getCorrectAnswer().getText().split(" ");
         var capitalWords = Arrays.asList(words).stream()
                 .filter(this::startsWithCapital).collect(Collectors.toList());

@@ -16,7 +16,7 @@ public class QuoteGrader extends GenericGrader{
     @Override
     public TextGradingAdvice getAdvice(ExamItem item) {
         var settings = item.getQuestion().getSettings();
-        var advice = new TextGradingAdvice();
+        var advice = new TextGradingAdvice().setExamItem(item);
         var answer = item.getStudentTextAnswer();
         var correct = item.getQuestion().getCorrectAnswer().getText();
 

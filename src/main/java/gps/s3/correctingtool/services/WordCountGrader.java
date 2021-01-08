@@ -16,7 +16,7 @@ public class WordCountGrader extends GenericGrader {
     @Override
     public TextGradingAdvice getAdvice(ExamItem item) {
         var settings = item.getQuestion().getSettings();
-        var advice = new TextGradingAdvice();
+        var advice = new TextGradingAdvice().setExamItem(item);
 
         if(item.getStudentTextAnswer().split("\\s+").length > settings.getMaxWords())
         {

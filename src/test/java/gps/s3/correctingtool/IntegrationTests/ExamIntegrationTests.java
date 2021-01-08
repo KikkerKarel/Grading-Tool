@@ -1,6 +1,5 @@
-package gps.s3.correctingtool;
+package gps.s3.correctingtool.IntegrationTests;
 
-import gps.s3.correctingtool.repo.IExamItemRepo;
 import gps.s3.correctingtool.repo.IExamRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

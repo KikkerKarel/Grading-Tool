@@ -31,6 +31,8 @@ INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Ne
 INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T2', 'NOT_GRADED', 6);
 INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('Testexamen Nederlands 2021 T3', 'NOT_GRADED', 7);
 
+INSERT INTO gradest.exam (exam_name, status, examiner_id) VALUES ('IntegrationTest examen', 'NOT_GRADED', 5);
+
 
 /*
     Questions
@@ -51,7 +53,7 @@ INSERT INTO gradest.question (id, text, type) VALUES (6, 'Wie is de uitvinder va
  Settings
  */
 
-INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (5, false, false, false, 0);
+INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (5, true, false, true, 0);
 INSERT INTO gradest.question_settings (question_id, check_enumeration, check_grammar, check_quote, max_words) VALUES (6, false, false, false, 2);
 
 
@@ -96,6 +98,10 @@ INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, studen
 INSERT INTO gradest.exam_item (exam_id, question_id, student_text_answer, student_choice_answer, graded_correct) VALUES (1, 4, 'Bot', null, null);
 INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (1, 5, null, null, null, 'Dirk laurence');
 INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (1, 6, null, null, null, 'nikola tesla');
+
+
+/* IntegrationTest */
+INSERT INTO gradest.exam_item (exam_id, question_id, graded_correct, graded_score, student_choice_answer, student_text_answer) VALUES (7, 6, null, null, null, 'nikola tesla denk ik');
 
 
 

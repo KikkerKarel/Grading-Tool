@@ -1,4 +1,4 @@
-package gps.s3.correctingtool;
+package gps.s3.correctingtool.IntegrationTests;
 
 import gps.s3.correctingtool.entity.User;
 import gps.s3.correctingtool.repo.IUserRepo;
@@ -10,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class UserIntegrationTests {
+class UserIntegrationTests {
     @Autowired
     IUserRepo userRepo;
 
