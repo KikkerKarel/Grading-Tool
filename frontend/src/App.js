@@ -7,9 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 
-import HomePage from "./Components/Pages/HomePage";
 import ExamensPage from "./Components/Pages/ExamensPage";
-import SettingsPage from "./Components/Pages/SettingsPage";
 import LogoutPage from "./Components/Pages/LogoutPage";
 import QuestionPage from "./Components/Pages/QuestionPage";
 import AdminPage from "./Components/Pages/Admin/AdminPage";
