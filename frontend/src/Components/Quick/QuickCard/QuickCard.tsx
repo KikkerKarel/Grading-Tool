@@ -15,11 +15,11 @@ class QuickCard extends Component<props>{
             <Card className="quick-cards" style={{ width: '18rem' }}>
                 <Card.Img src={this.props.image} />
                 <Card.Body>
-                    <Card.Title>{this.props.title}</Card.Title>
+                    <Card.Title className="title">{this.props.title}</Card.Title>
                     <Card.Text>
                         {this.props.text}
                     </Card.Text>
-                    <Button className="btn--medium btn btn-primary" variant="primary" href={this.props.link}>Gaan</Button>
+                    <Button className="btn--medium btn btn-primary" variant="primary" href={this.props.link} block>Gaan</Button>
                 </Card.Body>
             </Card>
         )
