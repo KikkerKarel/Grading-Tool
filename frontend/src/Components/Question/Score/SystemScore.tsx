@@ -1,7 +1,7 @@
 import {Button, ButtonGroup} from "react-bootstrap";
 import React from "react";
 
-function systemScore (score:any) {
+function systemScore(score: any) {
     let buttonInactive = "rating-buttons-system";
     let buttonActive = "rating-buttons-system-correct";
     let systemButtons = [];

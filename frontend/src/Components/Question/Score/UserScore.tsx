@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './Score.css';
 import axios from "axios";
-import {Button, ButtonGroup} from "react-bootstrap";
+import {Button, ButtonGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
 import systemScore from "./SystemScore";
 
 interface props {
@@ -18,12 +18,12 @@ class UserScore extends Component<props> {
         questionId: Number,
         examId: Number,
         score: 0,
-        disabled : true,
-        examItem : {
+        disabled: true,
+        examItem: {
             examId: '',
             studentTextAnswer: "",
             question: {
-                text : "",
+                text: "",
                 correctAnswer: {
                     text: ""
                 }
@@ -31,20 +31,23 @@ class UserScore extends Component<props> {
         },
     }
 
-    gradeClick = () =>{
+    gradeClick = () => {
         let scoreValue: any = localStorage.getItem("score");
         let score: number = parseInt(scoreValue.toString());
         let examId = this.state.examItem.examId;
         let questionId = this.props.questionId;
-console.log(scoreValue, score, examId, questionId);
+        console.log(scoreValue, score, examId, questionId);
         if (!isNaN(score))
             axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
                 window.location.reload();
             });
+        if (this.state.score === 0) {
+
+        }
     }
 
 
-    changeValue(event : any){
+    changeValue(event: any) {
         this.setState(
             {
                 valueStars: event,
@@ -54,8 +57,7 @@ console.log(scoreValue, score, examId, questionId);
     }
 
     async componentDidUpdate() {
-        if (this.props.questionId !== Number(this.state.questionId))
-        {
+        if (this.props.questionId !== Number(this.state.questionId)) {
             await axios.get(`../api/exams/previousgrading/${this.props.questionId}/${this.props.examId}`).then(response =>
                 this.setState(
                     {
@@ -69,7 +71,7 @@ console.log(scoreValue, score, examId, questionId);
         }
     }
 
-     returnButtonClass(value : any) {
+    returnButtonClass(value: any) {
         let graded = this.state.previousScore;
         let buttonInactive = "rating-buttons";
         let buttonActive = "rating-buttons-correct";
@@ -95,21 +97,28 @@ console.log(scoreValue, score, examId, questionId);
                         let graded = this.state.previousScore;
                         let userButtons = [];
 
-                        for (let i =0; i < 6; i++)
-                        {
-                            if (graded !== null)
-                            {
-                                userButtons.push(<Button className={this.returnButtonClass(i)} id="correctorRating" value={i} onClick={() => this.changeValue(i)}>{i.toString()}</Button>);
-                            }
-                            else{
-                                userButtons.push(<Button className="rating-buttons" id="correctorRating" value={i} onClick={() => this.changeValue(i)}>{i.toString()}</Button>);
+                        for (let i = 0; i < 6; i++) {
+                            if (graded !== null) {
+                                userButtons.push(<Button className={this.returnButtonClass(i)} id="correctorRating"
+                                                         value={i}
+                                                         onClick={() => this.changeValue(i)}>{i.toString()}</Button>);
+                            } else {
+                                userButtons.push(<Button className="rating-buttons" id="correctorRating" value={i}
+                                                         onClick={() => this.changeValue(i)}>{i.toString()}</Button>);
                             }
                         }
                         return <ButtonGroup>{userButtons}</ButtonGroup>;
                     })()}
                 </div>
                 <div className="button-div">
-                    <Button id={"gradeQuestion"} disabled={this.state.disabled} className={"btn--green forced-width"} onClick={this.gradeClick}>Verstuur score</Button>
+                    <OverlayTrigger placement={"right"}
+                                    overlay={<Tooltip id="tooltip-enabled">Vul eerst een score in.</Tooltip>}>
+                         <span className="d-inline-block">
+                             <Button id={"gradeQuestion"} style={{pointerEvents: 'none'}} disabled={this.state.disabled}
+                                     className={"btn--green forced-width"}
+                                     onClick={this.gradeClick}>Verstuur score</Button>
+                         </span>
+                    </OverlayTrigger>
                 </div>
             </div>
         );

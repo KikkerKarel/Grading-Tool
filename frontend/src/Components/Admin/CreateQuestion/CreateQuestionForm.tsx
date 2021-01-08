@@ -34,7 +34,7 @@ class CreateQuestionForm extends Component {
             McAnswer3: '',
             McAnswer4: '',
             questionText: '',
-            OqCorrectAnswer : '',
+            OqCorrectAnswer: '',
             type: 0,
             message: "Gelukt!",
             enumeration: false,
@@ -181,7 +181,8 @@ class CreateQuestionForm extends Component {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Control type="number" defaultValue={0} value={this.state.maxWords} placeholder="Maximaal aantal woorden"
+                        <Form.Control type="number" defaultValue={0} value={this.state.maxWords}
+                                      placeholder="Maximaal aantal woorden"
                                       onChange={(e: any) => this.setState({maxWords: e.target.value})}/>
                     </Form.Group>
                 </div>
@@ -191,7 +192,7 @@ class CreateQuestionForm extends Component {
 
     render() {
         return (
-            <Form style={{width:"23rem"}}>
+            <Form style={{width: "23rem"}}>
                 <Alert variant="primary">
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">

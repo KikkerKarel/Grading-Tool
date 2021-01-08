@@ -4,7 +4,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ExamTable.css';
 
-interface props{
+interface props {
     data?: any;
 }
 
@@ -32,13 +32,13 @@ class ExamTable extends Component<props> {
 
     render() {
         let {Exams} = this.state;
-        Exams = Exams.filter((exam : any) => exam.status !== "GRADED");
+        Exams = Exams.filter((exam: any) => exam.status !== "GRADED");
 
         const tableRowEvents = {
             onClick: (e: any, row: any) => {
                 this.setState({
                     examId: row.id
-                },() =>  window.location.href="/vraag/beoordelen/" + this.state.examId)
+                }, () => window.location.href = "/vraag/beoordelen/" + this.state.examId)
             }
         }
 
@@ -49,8 +49,8 @@ class ExamTable extends Component<props> {
         return (
             <div className="exam-table">
                 <BootstrapTable keyField='id'
-                                data={ Exams }
-                                columns={ columns }
+                                data={Exams}
+                                columns={columns}
                                 striped={false}
                                 bordered={false}
                                 hover

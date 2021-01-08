@@ -5,16 +5,17 @@ import Footer from "../Footer/Footer";
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import AuthService from "../../Services/auth.service";
 
-class SettingsPage extends Component{
+class SettingsPage extends Component {
     async componentDidMount() {
         if (!AuthService.isLoggedIn())
-        window.location.replace("/inloggen");
+            window.location.replace("/inloggen");
     }
+
     render() {
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <HeaderNavbar />
+                    <HeaderNavbar/>
                 </div>
                 <div className="content-container">
                     <h1>Instellingen</h1>

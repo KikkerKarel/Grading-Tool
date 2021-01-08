@@ -5,10 +5,10 @@ import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import AuthService from "../../Services/auth.service";
-import {Redirect } from "react-router";
+import {Redirect} from "react-router";
 import QuestionElements from "../Question/QuestionElements/QuestionElements";
 
-class QuestionPage extends Component<any>{
+class QuestionPage extends Component<any> {
     state = {
         isLoading: true,
         Exam: {
@@ -23,8 +23,8 @@ class QuestionPage extends Component<any>{
             examId: this.props.match.params.examId
         });
 
-        if (!this.state.examId || this.state.examId === 0 )
-        window.location.replace("/examens")
+        if (!this.state.examId || this.state.examId === 0)
+            window.location.replace("/examens")
 
         await axios.get(`/api/exams/grade/${this.state.examId}`).then(response => {
             this.setState({
@@ -41,7 +41,7 @@ class QuestionPage extends Component<any>{
     }
 
     render() {
-        if(!AuthService.isLoggedIn())
+        if (!AuthService.isLoggedIn())
             return <Redirect to='./inloggen'/>
 
         return (

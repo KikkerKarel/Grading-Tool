@@ -1,15 +1,15 @@
-.myNavbar{
+.myNavbar {
     background: white;
-    padding : 0;
+    padding: 0;
 }
 
-.myNavbar .logo{
-    padding-top:0.3rem;
+.myNavbar .logo {
+    padding-top: 0.3rem;
     max-height: 3.5rem;
     padding-left: 1rem;
 }
 
-.myNavbar .nav-item{
+.myNavbar .nav-item {
     text-align: center;
     line-height: 4.5rem;
     font-weight: bold;
@@ -19,29 +19,30 @@
     padding-left: 3rem !important;
 }
 
-.myNavbar .nav-item:hover{
+.myNavbar .nav-item:hover {
     color: #e94f2c;
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
-.myNavbar .navbar-collapse{
+
+.myNavbar .navbar-collapse {
     z-index: 1;
     background-color: white;
 }
 
-.myNavbar .toggleButton{
+.myNavbar .toggleButton {
     margin-right: 1rem;
 }
 
-.myNavbar .toggleButton:focus{
+.myNavbar .toggleButton:focus {
     margin-right: 1rem;
     outline: auto gray;
 }
 
-.myNavbar .collapsing{
+.myNavbar .collapsing {
     border-bottom: solid thin #ced4da;
 }
 
-.myNavbar .nav-item{
+.myNavbar .nav-item {
     padding-right: 1rem !important;
 }

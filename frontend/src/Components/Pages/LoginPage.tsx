@@ -3,17 +3,17 @@ import {Component} from "react";
 import '../HeaderNavbar/HeaderNavbar.css';
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
-import Login from   "../Login/Login";
+import Login from "../Login/Login";
 
 interface props {
-    name? : string
+    name?: string
 }
 
 class LoginPage extends Component<props> {
     state = {
         redirect: false,
-        username : '',
-        password :''
+        username: '',
+        password: ''
     }
 
     render() {

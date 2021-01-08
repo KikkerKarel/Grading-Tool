@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Button, Form, Col, Row} from 'react-bootstrap';
 
-class AddAnswer extends Component
-{
+class AddAnswer extends Component {
     render() {
         return (
             <Form.Group className={"block-example border border-dark"}>
