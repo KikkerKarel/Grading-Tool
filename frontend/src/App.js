@@ -24,17 +24,11 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/">
-                    <HomePage/>
-                </Route>
                 <Route path="/advice">
                     <AdvicePage/>
                 </Route>
-                <Route path="/inloggen">
+                <Route exact path="/">
                     <LoginPage/>
-                </Route>
-                <Route path="/instellingen">
-                    <SettingsPage/>
                 </Route>
                 <Route path="/examens">
                     <ExamensPage/>

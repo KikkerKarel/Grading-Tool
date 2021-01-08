@@ -56,7 +56,7 @@ class HeaderNavbar extends Component {
         if (AuthService.isLoggedIn()) {
             return (
                 <div className={"nav-item"}>
-                    <Button href="/uitloggen" onClick={this.onLogOut} className="btn--medium"
+                    <Button href="/" onClick={this.onLogOut} className="btn--medium"
                             variant="primary">Uitloggen</Button>
                 </div>
             )
