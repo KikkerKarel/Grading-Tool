@@ -8,6 +8,26 @@
     text-align: center;
 }
 
+.ahrefs{
+    color: white;
+}
+
+.xahrefs{
+    color: white;
+    pointer-events: none;
+}
+
+
+.ahrefs:hover{
+    color: #000000;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+}
+
+.placecontent{
+    place-content: center;
+}
+
 p {
     margin: 6px;
     font-size: 18px;

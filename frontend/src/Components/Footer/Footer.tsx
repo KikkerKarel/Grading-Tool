@@ -11,11 +11,14 @@ class Footer extends Component {
     render() {
         return (
             <div className="main-footer">
-                <div className="row">
-                    <p className="col-sm">
-                        &copy;{new Date().getFullYear()} Gradest INC | Alle rechten voorbehouden | Servicevoorwaarden |
-                        Privacy
-                    </p>
+                <div className="placecontent">
+                    <span className="xahrefs"> &copy;{new Date().getFullYear()} Gradest INC </span>
+                    <span> | </span>
+                    <span className="xahrefs"> Alle rechten voorbehouden </span>
+                    <span> | </span>
+                    <a className="ahrefs" href={'https://www.citrusandriessen.nl/en/disclaimer/'}> Disclaimer </a>
+                    <span> | </span>
+                    <a className="ahrefs" href={'https://www.citrusandriessen.nl/en/privacy/'}> Privacy </a>
                 </div>
             </div>
         );
