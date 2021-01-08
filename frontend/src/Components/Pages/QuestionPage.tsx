@@ -19,6 +19,8 @@ class QuestionPage extends Component<any> {
     };
 
     async componentDidMount() {
+        document.title="Gradest | Examen beantwoorden";
+
         await this.setState({
             examId: this.props.match.params.examId
         });

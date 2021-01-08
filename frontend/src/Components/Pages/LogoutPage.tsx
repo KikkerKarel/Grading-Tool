@@ -8,6 +8,9 @@ class LogoutPage extends Component {
         AuthService.logout();
         return <Redirect to='./inloggen'/>
     }
+    componentDidMount() {
+        document.title="Gradest | Uitloggen";
+    }
 
     render() {
         return this.logout()

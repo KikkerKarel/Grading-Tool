@@ -9,6 +9,10 @@ import {Redirect} from "react-router";
 import "../CSS/Admin.css";
 
 class CreateExamItemPage extends Component {
+   componentDidMount() {
+       document.title="Gradest | Examenitem aanmaken";
+   }
+
     render() {
         if(!AuthService.isLoggedIn())
             return <Redirect to='/inloggen'/>

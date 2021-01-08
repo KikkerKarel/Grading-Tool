@@ -16,6 +16,10 @@ class LoginPage extends Component<props> {
         password: ''
     }
 
+    componentDidMount() {
+        document.title="Gradest | Inloggen";
+    }
+
     render() {
         return (
             <div className="page-container">

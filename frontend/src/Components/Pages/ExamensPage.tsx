@@ -18,6 +18,7 @@ class ExamensPage extends Component<props, {}> {
     };
 
     async componentDidMount() {
+        document.title="Gradest | Examens";
         axios.get(`/api/exams/me`).then(response => this.setState({Exams: response.data, isLoading: false}));
     }
 

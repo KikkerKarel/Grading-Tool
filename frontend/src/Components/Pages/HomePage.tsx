@@ -4,6 +4,10 @@ import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import Footer from "../Footer/Footer";
 
 class HomePage extends Component {
+    componentDidMount() {
+        document.title="Gradest | Home";
+    }
+
     render() {
         return (
             <div className="page-container">

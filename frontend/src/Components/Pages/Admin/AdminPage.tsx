@@ -10,6 +10,10 @@ import AuthService from "../../../Services/auth.service";
 import {Redirect} from "react-router";
 
 class AdminPage extends Component {
+    componentDidMount() {
+        document.title="Gradest | Admin";
+    }
+
     render() {
         if(!AuthService.isLoggedIn())
             return <Redirect to='./inloggen'/>
