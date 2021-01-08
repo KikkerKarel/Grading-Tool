@@ -112,6 +112,10 @@ class QuestionTracker extends Component <props>{
             <>
                 {this.renderAnswerComponent()}
                 <div className="tracker">
+                    <div className="loading-bar">
+                        <span className={"text-center mt-3"}>Voortgang:</span>
+                        <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
+                    </div>
                     <ListGroup className="open-questions">
                         <h1>
                             <p>Open vragen:</p>
@@ -130,10 +134,7 @@ class QuestionTracker extends Component <props>{
                                 })
                             }
                     </ListGroup>
-                    <div className="loading-bar">
-                        <span className={"text-center mt-3"}>Progress:</span>
-                        <ProgressBar className="progress-bar-style" animated now={parseInt(this.state.Exam.progress.toString())} label={`${this.state.Exam.progress}%`}/>
-                    </div>
+
                 </div>
             </>
         );

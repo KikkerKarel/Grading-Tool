@@ -44,7 +44,7 @@ p{
     border-style: solid;
     border-color: #ced4da;
     border-width: thin;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
 }
 
 .question-text{
@@ -75,9 +75,9 @@ p{
 {
     margin-top: -1.5%;
     height: 15%;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px 10px 0 0;
     border-style: solid;
-    border-top: none;
+    border-bottom: none;
     border-color: #ced4da;
     border-width: thin;
     display: flex;

@@ -19,7 +19,7 @@ class QuickCard extends Component<props>{
                     <Card.Text>
                         {this.props.text}
                     </Card.Text>
-                    <Button className="button-quick-card" variant="primary" href={this.props.link}>Gaan</Button>
+                    <Button className="btn--medium btn btn-primary" variant="primary" href={this.props.link}>Gaan</Button>
                 </Card.Body>
             </Card>
         )

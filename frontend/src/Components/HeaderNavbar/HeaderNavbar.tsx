@@ -15,6 +15,8 @@ class HeaderNavbar extends Component {
                         alt="Logo Citrus Andriessen"
                         src="/Images/CitrusAndriessen.png"
                         className="logo"
+                        width="225"
+                        height="56"
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggleButton"/>
