@@ -7,7 +7,8 @@ import systemScore from "./SystemScore";
 interface props {
     questionId?: number,
     examId?: number,
-    systemRating?: number
+    systemRating?: number,
+    examItem?: Object,
 }
 
 class UserScore extends Component<props> {
@@ -16,13 +17,38 @@ class UserScore extends Component<props> {
         previousScore: Number,
         questionId: Number,
         examId: Number,
-        score: 0
+        score: 0,
+        disabled : true,
+        examItem : {
+            examId: '',
+            studentTextAnswer: "",
+            question: {
+                text : "",
+                correctAnswer: {
+                    text: ""
+                }
+            }
+        },
     }
+
+    gradeClick = () =>{
+        let scoreValue: any = localStorage.getItem("score");
+        let score: number = parseInt(scoreValue.toString());
+        let examId = this.state.examItem.examId;
+        let questionId = this.props.questionId;
+console.log(scoreValue, score, examId, questionId);
+        if (!isNaN(score))
+            axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
+                window.location.reload();
+            });
+    }
+
 
     changeValue(event : any){
         this.setState(
             {
                 valueStars: event,
+                disabled: false,
             });
         localStorage.setItem("score", event);
     }
@@ -36,6 +62,7 @@ class UserScore extends Component<props> {
                         previousScore: response.data.gradedScore,
                         valueStars: 0,
                         questionId: this.props.questionId,
+                        examItem: this.props.examItem,
                     }
                 )
             );
@@ -55,6 +82,7 @@ class UserScore extends Component<props> {
 
     render() {
         return (
+
             <div className="scores">
                 <div className="scoring-div">
                     <label className="scoring-text-label">Systeem aangeraden score</label>
@@ -79,6 +107,9 @@ class UserScore extends Component<props> {
                         }
                         return <ButtonGroup>{userButtons}</ButtonGroup>;
                     })()}
+                </div>
+                <div className="button-div">
+                    <Button id={"gradeQuestion"} disabled={this.state.disabled} className={"btn--green forced-width"} onClick={this.gradeClick}>Verstuur score</Button>
                 </div>
             </div>
         );

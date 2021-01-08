@@ -54,18 +54,6 @@ class Answer extends Component<props> {
         }
     }
 
-    gradeClick = () =>{
-        let scoreValue: any = localStorage.getItem("score");
-        let score: number = parseInt(scoreValue.toString());
-        let examId = this.state.examItem.examId;
-        let questionId = this.props.questionId;
-
-        if (!isNaN(score))
-        axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
-            window.location.reload();
-        });
-    }
-
     renderInfoBoxComponent()
     {
         return(
@@ -98,11 +86,9 @@ class Answer extends Component<props> {
                         <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
                         <div className={"custom-box"} dangerouslySetInnerHTML={{__html: this.state.examItem.question.correctAnswer.text}}/>
                     </Form.Group>
-                    <div className="button-div">
-                        <Button id={"gradeQuestion"} className={"btn--green forced-width"} onClick={this.gradeClick}>Verstuur score</Button>
-                    </div>
                 </div>
-                <UserScore questionId={this.props.questionId} examId={this.props.examId} systemRating={this.state.suggestedScore}/>
+                <UserScore examItem={this.state.examItem}
+                    questionId={this.props.questionId} examId={this.props.examId} systemRating={this.state.suggestedScore}/>
                 {this.renderInfoBoxComponent()}
             </div>
         );
