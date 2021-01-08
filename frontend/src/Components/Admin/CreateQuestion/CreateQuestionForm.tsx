@@ -2,6 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 import {Alert, Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
+import "../admin.css";
 
 class CreateQuestionForm extends Component {
     state = {
@@ -34,7 +35,7 @@ class CreateQuestionForm extends Component {
             McAnswer3: '',
             McAnswer4: '',
             questionText: '',
-            OqCorrectAnswer: '',
+            OqCorrectAnswer : '',
             type: 0,
             message: "Gelukt!",
             enumeration: false,
@@ -181,8 +182,7 @@ class CreateQuestionForm extends Component {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Control type="number" defaultValue={0} value={this.state.maxWords}
-                                      placeholder="Maximaal aantal woorden"
+                        <Form.Control type="number" defaultValue={0} value={this.state.maxWords} placeholder="Maximaal aantal woorden"
                                       onChange={(e: any) => this.setState({maxWords: e.target.value})}/>
                     </Form.Group>
                 </div>
@@ -192,8 +192,8 @@ class CreateQuestionForm extends Component {
 
     render() {
         return (
-            <Form style={{width: "23rem"}}>
-                <Alert variant="primary">
+            <Form style={{width:"23rem"}}>
+                <Alert variant="primary" className="OrangeAlert">
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">
                         {this.state.message}
@@ -215,8 +215,7 @@ class CreateQuestionForm extends Component {
                         {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
                 </Col>
-                <Button variant="primary m-2" onClick={() => this.Send()}> Aanmaken</Button>
-                <Button variant="primary m-2" onClick={() => console.log(this.state)}> State</Button>
+                <Button className="btn--medium btn btn-primary m2" style={{fontSize:"inherit"}} onClick={() => this.Send()}> Aanmaken</Button>
             </Form>
         )
     }
