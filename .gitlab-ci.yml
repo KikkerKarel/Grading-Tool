@@ -29,6 +29,21 @@ test:
         - target/surefire-reports/TEST-*.xml
         - target/failsafe-reports/TEST-*.xml
 
+backend image:
+  stage: build
+  script:
+    - 'docker build -t rachidd/gps-backend .'
+  only:
+    - master
+
+frontend image:
+  stage: build
+  script:
+    - 'cd frontend'
+    - 'docker build -t rachidd/gps-frontend .'
+  only:
+    - master
+
 cache:
   paths:
     - .m2/repository/
