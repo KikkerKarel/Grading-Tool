@@ -1,3 +1,5 @@
+image: docker:19.03.12
+
 stages:
   - compile
   - test
@@ -6,15 +8,15 @@ stages:
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
-image: adoptopenjdk/maven-openjdk11:latest
-
 compile:
+  image: adoptopenjdk/maven-openjdk11:latest
   stage: compile
   script:
     - 'echo $JAVA_HOME'
     - 'mvn compile'
 
 test:
+  image: adoptopenjdk/maven-openjdk11:latest
   stage: test
   script:
     - 'mvn test'
