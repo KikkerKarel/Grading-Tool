@@ -10,6 +10,7 @@ compile:
     - 'chmod +x mvnw'
   stage: compile
   script:
+    - 'echo $JAVA_HOME'
     - './mvnw compile'
 
 test:
