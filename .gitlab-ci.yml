@@ -5,9 +5,10 @@ stages:
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
+before_script:
+  - 'chmod +x mvnw'
+
 compile:
-  before_script:
-    - 'chmod +x mvnw'
   stage: compile
   script:
     - 'echo $JAVA_HOME'
