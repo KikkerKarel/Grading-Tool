@@ -4,6 +4,7 @@ stages:
   - compile
   - test
   - build
+  - deploy
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
