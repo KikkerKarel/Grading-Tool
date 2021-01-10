@@ -26,6 +26,8 @@ services:
   # Frontend Service
   gradest-client:
     build:
+      args:
+        - REACT_APP_AXIOS_BASE_URL=http://localhost:8080/
       context: frontend # Use an image built from the specified dockerfile in the `polling-app-client` directory.
       dockerfile: Dockerfile
     ports:
@@ -33,8 +35,6 @@ services:
     restart: always
     depends_on:
       - gradest-api
-    environment:
-      REACT_APP_AXIOS_BASE_URL: 'http://localhost:8080/'
     networks:
       - frontend
 

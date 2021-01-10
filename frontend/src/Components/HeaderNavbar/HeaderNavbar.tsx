@@ -16,6 +16,7 @@ class HeaderNavbar extends Component {
                         src="/Images/CitrusAndriessen.png"
                         className="logo"
                     />
+                    <h1>API Url: {process.env.REACT_APP_AXIOS_BASE_URL}</h1>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggleButton"/>
                 <Navbar.Collapse style={{height: "80px"}}>
