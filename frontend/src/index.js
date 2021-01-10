@@ -4,7 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from "axios";
 
-axios.defaults.baseURL = "http://gradest-api.v99.nl/";
+axios.defaults.baseURL = process.env.REACT_APP_AXIOS_BASE_URL;
 axios.interceptors.request.use(function (config) {
     config.headers.Authorization =  localStorage.getItem("token");
 
