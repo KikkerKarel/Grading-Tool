@@ -7,6 +7,7 @@ stages:
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  FRONTEND_BUILD_ARGS: "--build-arg HTTP_PROXY=http://10.20.30.2:1234"
 
 compile:
   image: adoptopenjdk/maven-openjdk11:latest
@@ -42,9 +43,21 @@ frontend image:
   stage: build
   script:
     - 'cd frontend'
-    - 'docker build -t rachidd/gps-frontend .'
+    - 'docker build $FRONTEND_BUILD_ARGS -t rachidd/gps-frontend .'
   only:
     - master
+
+
+dockerhub:
+  before_script:
+    - 'echo "$DOCKER_REGISTRY_PASS" | docker login --username $DOCKER_REGISTRY_USER --password-stdin'
+  stage: deploy
+  script:
+    - 'docker push rachidd/gps-backend'
+    - 'docker push rachidd/gps-frontend'
+  only:
+    - master
+
 
 cache:
   paths:
