@@ -8,13 +8,12 @@ stages:
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-  FRONTEND_BUILD_ARGS: "--build-arg HTTP_PROXY=http://10.20.30.2:1234"
+  FRONTEND_BUILD_ARGS: "--build-arg REACT_APP_AXIOS_BASE_URL=http://gradest-api.v99.nl/"
 
 compile:
   image: adoptopenjdk/maven-openjdk11:latest
   stage: compile
   script:
-    - 'echo $JAVA_HOME'
     - 'mvn compile'
 
 test:
@@ -48,7 +47,6 @@ frontend image:
   only:
     - master
 
-
 dockerhub:
   before_script:
     - 'echo "$DOCKER_REGISTRY_PASS" | docker login --username $DOCKER_REGISTRY_USER --password-stdin'
@@ -58,7 +56,6 @@ dockerhub:
     - 'docker push rachidd/gps-frontend'
   only:
     - master
-
 
 cache:
   paths:
