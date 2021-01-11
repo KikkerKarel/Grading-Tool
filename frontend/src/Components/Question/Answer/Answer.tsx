@@ -55,6 +55,12 @@ class Answer extends Component<props> {
         }
     }
 
+    renderInfoBoxComponent() {
+        return (
+            <InfoBox brokenRules={this.state.feedback}/>
+        )
+    };
+
     render() {
         if (this.state.suggestedScore === -1)
             return (<div>Invalid parameters</div>);
@@ -69,32 +75,24 @@ class Answer extends Component<props> {
         }
 
         return (
-            <>
-                    <div className="brand-card p-2 card col">
-
-                        <div>
-
-                            <h4 className={"text-center scroll-y"}>{this.state.examItem.question.text}</h4>
-
-                            <Form.Group>
-                                <Form.Label className="answer-header">Antwoord (tekst)</Form.Label>
-                                <div className={"custom-box"} dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
-                                <div className={"custom-box"}
-                                     dangerouslySetInnerHTML={{__html: this.state.examItem.question.correctAnswer.text}}/>
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                <div className="card brand-card">
-                    <div className="alert alert-primary"><InfoBox brokenRules={this.state.feedback}/></div>
-                    <UserScore examItem={this.state.examItem}
-                               questionId={this.props.questionId} examId={this.props.examId}
-                               systemRating={this.state.suggestedScore}/>
+            <div className="answer">
+                <h4 className={"text-center scroll-y"}>{this.state.examItem.question.text}</h4>
+                <div>
+                    <Form.Group>
+                        <Form.Label className="answer-header">Antwoord (tekst)</Form.Label>
+                        <div className={"custom-box"} dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
+                        <div className={"custom-box"}
+                             dangerouslySetInnerHTML={{__html: this.state.examItem.question.correctAnswer.text}}/>
+                    </Form.Group>
                 </div>
-                </>
+                <UserScore examItem={this.state.examItem}
+                           questionId={this.props.questionId} examId={this.props.examId}
+                           systemRating={this.state.suggestedScore}/>
+                {this.renderInfoBoxComponent()}
+            </div>
         );
     }
 }

@@ -70,9 +70,21 @@ p {
     color: #5aad5a !important;
 }
 
+.loading-bar {
+    margin-top: -1.5%;
+    height: 15%;
+    border-radius: 10px 10px 0 0;
+    border-style: solid;
+    border-bottom: none;
+    border-color: #ced4da;
+    border-width: thin;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .progress-bar-style {
-    min-width: 100%;
+    width: 90%;
     margin: auto;
 }
 

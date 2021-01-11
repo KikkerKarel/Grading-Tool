@@ -14,10 +14,10 @@ class InfoBox extends Component<props> {
         });
 
         return (
-            <Container>
+            <Container className="box spacing special-styling">
                 <Row>
                     <Col>
-                        <strong className="title">Aanvullend advies</strong>
+                        <h2 className="title">Infobox</h2>
                         <ul className="list">{rules}</ul>
                     </Col>
                 </Row>
