@@ -1,12 +1,12 @@
-.exam-table{
+.exam-table {
     padding: 10px;
-    width:70%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
 }
 
-.scroll{
+.scroll {
     overflow-y: auto;
     max-height: 500px !important;
     display: block;
@@ -18,28 +18,24 @@ thead, tbody tr {
     table-layout: fixed;
 }
 
-tr td{
+tr td {
     padding-left: 18px !important;
 }
 
 
-.theadClick thead tr th:nth-child(-n+2)
-{
+.theadClick thead tr th:nth-child(-n+2) {
     pointer-events: none;
 }
 
-.NOT_GRADED
-{
-    background-color: rgba(177,82,82, 0.8);
+.NOT_GRADED {
+    background-color: rgba(177, 82, 82, 0.8);
 }
 
-.GRADING_IN_PROGRESS
-{
+.GRADING_IN_PROGRESS {
 
-    background-color: rgba(233,148,44,0.7);
+    background-color: rgba(233, 148, 44, 0.7);
 }
 
-.GRADED
-{
-    background-color: rgba(0,98,0,0.5);
+.GRADED {
+    background-color: rgba(0, 98, 0, 0.5);
 }

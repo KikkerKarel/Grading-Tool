@@ -18,14 +18,15 @@ class ExamensPage extends Component<props, {}> {
     };
 
     async componentDidMount() {
+        document.title="Gradest | Examens";
         axios.get(`/api/exams/me`).then(response => this.setState({Exams: response.data, isLoading: false}));
     }
 
     render() {
         const {Exams, isLoading} = this.state;
 
-        if(!AuthService.isLoggedIn())
-            return <Redirect to='./inloggen' />
+        if (!AuthService.isLoggedIn())
+            return <Redirect to='./inloggen'/>
 
         if (isLoading) {
             return <p>Loading...</p>;

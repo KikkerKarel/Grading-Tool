@@ -1,7 +1,8 @@
-import {Component} from "react";
 import * as React from "react";
+import {Component} from "react";
 import axios from "axios";
 import {Alert, Button, Form} from "react-bootstrap";
+import "../admin.css";
 
 interface iChoice{
     id: number,
@@ -127,7 +128,7 @@ class CreateExamItemForm extends Component{
 
         return (
             <Form onSubmit={(e) => this.SubmitForm(e)}>
-                <Alert variant="primary">
+                <Alert variant="primary" className="OrangeAlert">
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">
                         {this.state.message}
@@ -148,7 +149,7 @@ class CreateExamItemForm extends Component{
                 <Form.Group>
                     {this.Input(this.state.questionType, this.state.questionID)}
                 </Form.Group>
-                <Button variant="primary m-2" type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Koppelen</Button>
+                <Button className="btn--medium btn btn-primary m2" style={{fontSize:"inherit"}} type="submit" disabled={this.validateForm(this.state.questionType, this.state.oqAnswer)}>Koppelen</Button>
             </Form>
         )
     }

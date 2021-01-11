@@ -1,4 +1,4 @@
-.main-footer{
+.main-footer {
     background-color: #e94f2c;
     color: white;
     padding: 1em;
@@ -6,6 +6,26 @@
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+
+.ahrefs{
+    color: white;
+}
+
+.xahrefs{
+    color: white;
+    pointer-events: none;
+}
+
+
+.ahrefs:hover{
+    color: #000000;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+}
+
+.placecontent{
+    place-content: center;
 }
 
 p {

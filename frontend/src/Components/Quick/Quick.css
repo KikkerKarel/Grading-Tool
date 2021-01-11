@@ -2,11 +2,15 @@
     margin: 20px;
     padding: 20px;
     border-radius: 5px;
-    background-color: #4d4d4d;
-    -webkit-box-shadow: 6px 6px 20px 0 rgba(0,0,0,0.75);
+    background-color:#fff;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
     color: white;
-    border: #1297d0 1px solid;
 }
+.quick-cards .title{
+    color:black;
+    font-weight: 600;
+}
+
 
 .quick-forms{
     width: 100%;

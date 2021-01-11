@@ -1,32 +1,27 @@
-.gradest-advice
-{
+.gradest-advice {
     margin-top: 2%;
     border-radius: 5px;
 }
 
-.header-div
-{
+.header-div {
     height: 30%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.header-text
-{
+.header-text {
     color: white;
     margin-left: 6%;
     font-weight: bold;
     margin-top: 4%;
 }
 
-.explanation-div
-{
+.explanation-div {
     border-top: solid thin black;
     display: inline-block;
 }
 
-.explanation-header
-{
+.explanation-header {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -34,20 +29,17 @@
     margin-top: 2%;
 }
 
-.explanation-text
-{
+.explanation-text {
     color: white;
     margin-top: 2%;
     margin-left: 6%;
     font-size: 13px;
 }
 
-#correct
-{
+#correct {
     background-color: green;
 }
 
-#wrong
-{
+#wrong {
     background-color: red;
 }

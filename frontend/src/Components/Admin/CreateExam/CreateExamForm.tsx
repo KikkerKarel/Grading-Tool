@@ -1,7 +1,8 @@
-import {Component} from "react";
 import * as React from "react";
+import {Component} from "react";
 import axios from "axios";
 import {Alert, Button, Form} from "react-bootstrap";
+import "../admin.css";
 
 interface iUser{
     id : number,
@@ -47,7 +48,7 @@ class CreateExamForm extends Component{
 
         return (
             <Form>
-                <Alert variant="primary">
+                <Alert variant="primary" className="OrangeAlert" >
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">
                         {this.state.message}
@@ -64,7 +65,7 @@ class CreateExamForm extends Component{
                         {examiners}
                     </Form.Control>
                 </Form.Group>
-                <Button variant="primary m-2" onClick={() => this.Send( parseInt(this.state.examinerID.toString()), this.state.exam.toString()) }>Aanmaken</Button>
+                <Button className="btn--medium btn btn-primary m2" style={{fontSize:"inherit"}} onClick={() => this.Send( parseInt(this.state.examinerID.toString()), this.state.exam.toString()) }>Aanmaken</Button>
             </Form>
         )
     }

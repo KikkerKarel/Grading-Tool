@@ -15,6 +15,8 @@ class HeaderNavbar extends Component {
                         alt="Logo Citrus Andriessen"
                         src="/Images/CitrusAndriessen.png"
                         className="logo"
+                        width="225"
+                        height="56"
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggleButton"/>
@@ -32,18 +34,16 @@ class HeaderNavbar extends Component {
     ifAdmin() {
         let user: any = localStorage.getItem("user");
 
-        if (user !== null && user.toLowerCase() === "admin")
-        {
-            return(
+        if (user !== null && user.toLowerCase() === "admin" || user !== null && user.toLowerCase() === "stephan" ) {
+            return (
                 <>
                     <Nav.Link className="nav-item" href="/admin">Admin paneel</Nav.Link>
                     <Nav.Link className="nav-item" href="/profiel">Profiel</Nav.Link>
                     <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
                 </>
             )
-        }
-        else if(user !== null){
-            return(
+        } else if (user !== null) {
+            return (
                 <>
                     <Nav.Link className="nav-item" href="/profiel">Profiel</Nav.Link>
                     <Nav.Link className="nav-item" href="/examens">Examens</Nav.Link>
@@ -53,17 +53,18 @@ class HeaderNavbar extends Component {
     }
 
     getButton() {
-        if (AuthService.isLoggedIn()){
-            return(
+        if (AuthService.isLoggedIn()) {
+            return (
                 <div className={"nav-item"}>
-                    <Button href="/uitloggen" onClick={this.onLogOut} className="btn--medium" variant="primary">Uitloggen</Button>
+                    <Button href="/" onClick={this.onLogOut} className="btn--medium"
+                            variant="primary">Uitloggen</Button>
                 </div>
             )
         }
         return (
-                <div className={"nav-item"}>
-                    <Button href="/inloggen" className="btn--medium" variant="primary">Inloggen</Button>
-                </div>
+            <div className={"nav-item"}>
+                <Button href="/inloggen" className="btn--medium" variant="primary">Inloggen</Button>
+            </div>
         )
     }
 

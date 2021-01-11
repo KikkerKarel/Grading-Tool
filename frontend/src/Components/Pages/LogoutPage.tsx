@@ -1,13 +1,15 @@
+import * as React from "react";
 import {Component} from "react";
 import AuthService from "../../Services/auth.service";
 import {Redirect} from "react-router-dom";
-import * as React from "react";
 
-class LogoutPage extends Component{
-    logout()
-    {
+class LogoutPage extends Component {
+    logout() {
         AuthService.logout();
-        return <Redirect to='./inloggen' />
+        return <Redirect to='./inloggen'/>
+    }
+    componentDidMount() {
+        document.title="Gradest | Uitloggen";
     }
 
     render() {

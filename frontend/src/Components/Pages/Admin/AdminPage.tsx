@@ -1,6 +1,6 @@
 import * as React from "react";
-import '../../HeaderNavbar/HeaderNavbar.css';
 import {Component} from "react";
+import '../../HeaderNavbar/HeaderNavbar.css';
 import Footer from "../../Footer/Footer";
 import '../../Quick/Quick.css';
 import HeaderNavbar from "../../HeaderNavbar/HeaderNavbar";
@@ -10,13 +10,17 @@ import AuthService from "../../../Services/auth.service";
 import {Redirect} from "react-router";
 
 class AdminPage extends Component {
+    componentDidMount() {
+        document.title="Gradest | Admin";
+    }
+
     render() {
         if(!AuthService.isLoggedIn())
             return <Redirect to='./inloggen'/>
 
         let user : any = localStorage.getItem("user");
 
-        if(user.toLowerCase() !== "admin")
+        if(user.toLowerCase() !== "admin" && user.toLowerCase() !== "stephan" && user === null)
             return <Redirect to='./examens'/>
 
         return (

@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import './GradeAdvice.css';
 
-class GradeCorrect extends Component
-{
+class GradeCorrect extends Component {
     render() {
         return (
             <div className="gradest-advice" id="correct">
@@ -11,15 +10,15 @@ class GradeCorrect extends Component
                 </div>
                 <div className="explanation-div">
                     <h1 className="explanation-header">Keur goed!</h1>
-                    <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel.</label>
+                    <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn
+                        optioneel.</label>
                 </div>
             </div>
         );
     }
 }
 
-class GradeWrong extends Component
-{
+class GradeWrong extends Component {
     render() {
         return (
             <div className="gradest-advice" id="wrong">
@@ -28,7 +27,8 @@ class GradeWrong extends Component
                 </div>
                 <div className="explanation-div">
                     <h1 className="explanation-header">Keur fout!</h1>
-                    <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn optioneel.</label>
+                    <label className="explanation-text">Hoofdletters, strepen, accenten en andere symbolen zijn
+                        optioneel.</label>
                 </div>
             </div>
         );

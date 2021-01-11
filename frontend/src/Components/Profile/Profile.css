@@ -1,28 +1,23 @@
-.content-main
-{
+.content-main {
     position: fixed;
     margin-top: 5%;
     height: 100%;
     width: 100%;
 }
 
-.user-header
-{
+.user-header {
     font-size: 30px;
 }
 
-.lastLogin-h1
-{
+.lastLogin-h1 {
     font-size: 20px;
 }
 
-.toDoAmount
-{
+.toDoAmount {
     font-size: 20px;
 }
 
-.grade-div
-{
+.grade-div {
     position: fixed;
     height: 60%;
     width: 25%;
@@ -32,52 +27,44 @@
     overflow-y: scroll;
 }
 
-#done
-{
+#done {
     margin-left: 38%;
     margin-top: 12%;
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
     background-color: #c8c5c5;
 }
 
-.grade-header
-{
+.grade-header {
     margin-top: 10px;
     font-size: 20px;
 }
 
-.grade-exam
-{
+.grade-exam {
     margin-top: 5%;
     display: block;
     border-top: solid 2px #808080;
     border-bottom: solid 2px gray;
 }
 
-.grade-exam-list
-{
+.grade-exam-list {
     line-height: 10px;
 }
 
-#toGrade
-{
-    background-color: rgba(177,82,82, 0.8);
+#toGrade {
+    background-color: rgba(177, 82, 82, 0.8);
 }
 
-#graded
-{
-    background-color: rgba(0,98,0,0.5);
+#graded {
+    background-color: rgba(0, 98, 0, 0.5);
 }
 
-.bold{
+.bold {
     font-weight: bold;
     text-decoration: none;
 }

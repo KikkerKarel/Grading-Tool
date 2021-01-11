@@ -21,16 +21,16 @@
 }
 
 .rating-buttons:focus {
-    background-color: #e94f2c;
-    outline: none !important;
-    box-shadow: none;
+    background-color: #5aad5a;
+    cursor: default;
+    border: solid 1px black;
 }
 
 .rating-buttons-correct
 {
     background-color: #5aad5a;
-    cursor: default;
-    border: solid 1px black;
+    outline: none !important;
+    box-shadow: none;
 }
 
 .rating-buttons-correct:hover{
@@ -45,12 +45,13 @@
 }
 
 #correctorRating:hover{
-     background-color: #e94f2c;
-     color: white;
+    background-color: rgba(90, 173, 90, 0.51);
+    color: black;
  }
 
 .rating-buttons-system-correct:disabled{
-    background-color: green;
+    background-color: #e94f2c;
+
     cursor: default;
     border: solid 1px black;
 }

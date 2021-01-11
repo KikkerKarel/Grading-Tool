@@ -6,8 +6,7 @@ import axios from 'axios';
 import {ListGroup} from "react-bootstrap";
 import moment from "moment";
 
-class Profile extends Component
-{
+class Profile extends Component {
     state = {
         username: "",
         lastLogin: Date,
@@ -15,7 +14,7 @@ class Profile extends Component
         Exam: []
     }
 
-   async componentDidMount() {
+    async componentDidMount() {
         await axios.get(`/api/users/me`).then(response => {
             this.setState({
                 username: response.data.username,
@@ -24,41 +23,41 @@ class Profile extends Component
             })
         })
 
-       await axios.get(`api/exams/examiner/${this.state.examinerID}`).then(data => {
-           this.setState({
-               Exam: data.data,
-           })
-       })
+        await axios.get(`api/exams/examiner/${this.state.examinerID}`).then(data => {
+            this.setState({
+                Exam: data.data,
+            })
+        })
     }
 
-    formatDate()
-    {
+    formatDate() {
         return moment(`${this.state.lastLogin}`).utc().format("DD/MM/YYYY hh:mm:ss a");
     }
 
     render() {
         const username = this.state.username;
         const lastLogin = this.formatDate();
-        let amount = this.state.Exam.filter((event:any) => event.status === "NOT_GRADED"
+        let amount = this.state.Exam.filter((event: any) => event.status === "NOT_GRADED"
             || event.status === "GRADING_IN_PROGRESS").length;
 
         return (
             <div className="page-container">
                 <div className="content-wrap">
-                    <HeaderNavbar />
+                    <HeaderNavbar/>
                 </div>
                 <div className="content-main">
-                    <header className="user-header text-center bold"> { username } </header>
-                    <h1 className="lastLogin-h1 text-center bold">Laatste login: { lastLogin }</h1>
-                    <h2 className="toDoAmount text-center bold">Aantal examens nog na te kijken: { amount }</h2>
+                    <header className="user-header text-center bold"> {username} </header>
+                    <h1 className="lastLogin-h1 text-center bold">Laatste login: {lastLogin}</h1>
+                    <h2 className="toDoAmount text-center bold">Aantal examens nog na te kijken: {amount}</h2>
                 </div>
                 <div className="grade-div text-center" id="done">
-                    <header className="grade-header bold">Nakijk geschiedenis </header>
+                    <header className="grade-header bold">Nakijk geschiedenis</header>
                     {
                         this.state.Exam.reverse().filter(
-                            function(exam : any)
-                            {return exam.status === "GRADED"})
-                            .map((exam : any) => {
+                            function (exam: any) {
+                                return exam.status === "GRADED"
+                            })
+                            .map((exam: any) => {
                                 return <div className="grade-exam">
                                     <ListGroup className="grade-exam-list">
                                         <ListGroup.Item id="graded"> ID: {exam.id} </ListGroup.Item>

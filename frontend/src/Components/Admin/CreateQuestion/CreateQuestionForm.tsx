@@ -2,6 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 import {Alert, Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
+import "../admin.css";
 
 class CreateQuestionForm extends Component {
     state = {
@@ -192,7 +193,7 @@ class CreateQuestionForm extends Component {
     render() {
         return (
             <Form style={{width:"23rem"}}>
-                <Alert variant="primary">
+                <Alert variant="primary" className="OrangeAlert">
                     <Alert.Heading>Bericht:</Alert.Heading>
                     <p className="message">
                         {this.state.message}
@@ -214,8 +215,7 @@ class CreateQuestionForm extends Component {
                         {this.Input(parseInt(this.state.type.toString()))}
                     </Form.Group>
                 </Col>
-                <Button variant="primary m-2" onClick={() => this.Send()}> Aanmaken</Button>
-                <Button variant="primary m-2" onClick={() => console.log(this.state)}> State</Button>
+                <Button className="btn--medium btn btn-primary m2" style={{fontSize:"inherit"}} onClick={() => this.Send()}> Aanmaken</Button>
             </Form>
         )
     }
