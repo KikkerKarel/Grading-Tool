@@ -17,7 +17,7 @@ class Footer extends Component{
                 </div>
                 <div className="row" style={{fontSize: '0.9rem'}}>
                     <span className="col-12 text-white small m-0 p-0">[cluster-1] @ {process.env.REACT_APP_AXIOS_BASE_URL}</span>
-                    <span className="col-12 text-white small m-0 p-0">{process.env.NODE_ENV} build</span>
+                    <span className="col-12 text-white small m-0 p-0">build 1.0 ({process.env.NODE_ENV})</span>
                 </div>
             </div>
         );
