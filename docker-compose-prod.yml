@@ -4,9 +4,16 @@ version: '3.7'
 
 # Define services
 services:
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 300
+
   # App backend service
   gps-backend:
-    image: rachidd/tdb-backend:latest
+    image: rachidd/gps-backend:latest
     ports:
       - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
     restart: always
