@@ -15,6 +15,10 @@ class Footer extends Component{
                         &copy;{new Date().getFullYear()} Gradest INC | Alle rechten voorbehouden | Servicevoorwaarden | Privacy
                     </p>
                 </div>
+                <div className="row" style={{fontSize: '0.9rem'}}>
+                    <span className="col-12 text-white small m-0 p-0">[cluster-1] @ {process.env.REACT_APP_AXIOS_BASE_URL}</span>
+                    <span className="col-12 text-white small m-0 p-0">{process.env.NODE_ENV} build</span>
+                </div>
             </div>
         );
     }
