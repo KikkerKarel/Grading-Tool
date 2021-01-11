@@ -61,27 +61,18 @@ class QuestionTracker extends Component <props> {
         });
     };
 
-    renderAnswerComponent() {
-        if (!this.state.isLoading) {
-            return (
-                <Answer questionId={this.state.questionId} examId={this.state.examId}/>
-            )
-        }
-    };
-
     render() {
         const {isLoading} = this.state;
 
         if (isLoading && this.state.Exam.progress === 100) {
             let examId = this.state.Exam.id;
-            axios.put(`/api/exams/${examId}/status/GRADED`).then(() => {
-            });
+            axios.put(`/api/exams/${examId}/status/GRADED`)
 
             return (
                 <>
-                    <h1>Alle vragen zijn nagekeken: </h1>
+                    <h1>Alle vragen zijn nagekeken</h1>
                     <Button className="btn--medium btn btn-primary" onClick={() => window.location.href = "/examens"}>
-                        Ga terug naar de examentabel
+                        Ga terug naar mijn examen overzicht
                     </Button>
                 </>
             )
@@ -106,15 +97,15 @@ class QuestionTracker extends Component <props> {
 
         return (
             <>
-                {this.renderAnswerComponent()}
-                <div className="tracker">
-                    <div className="loading-bar">
-                        <span className={"text-center mt-3"}>Voortgang:</span>
-                        <ProgressBar className="progress-bar-style" animated
-                                     now={parseInt(this.state.Exam.progress.toString())}
-                                     label={`${this.state.Exam.progress}%`}/>
-                    </div>
-                    <ListGroup className="open-questions">
+                <ListGroup className="row mx-auto mb-2">
+                    <div className="card">
+
+                        <div className="container">
+                            <p className={"text-center mt-3"}>Voortgang:</p>
+                            <ProgressBar className="progress-bar-style" animated
+                                         now={parseInt(this.state.Exam.progress.toString())}
+                                         label={`${this.state.Exam.progress}%`}/>
+                        </div>
                         <h1>
                             <p>Open vragen:</p>
                         </h1>
@@ -132,9 +123,15 @@ class QuestionTracker extends Component <props> {
                                     </ListGroup.Item>
                                 })
                         }
-                    </ListGroup>
 
+                    </div>
+
+                </ListGroup>
+
+                <div className="row mx-auto card-group">
+                    {!this.state.isLoading && <Answer questionId={this.state.questionId} examId={this.state.examId}/>}
                 </div>
+
             </>
         );
     }

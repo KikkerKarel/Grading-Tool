@@ -36,23 +36,15 @@ class QuestionPage extends Component<any> {
         });
     }
 
-    renderQuestionElements() {
-        if (!this.state.isLoading) {
-            return <QuestionElements Exam={this.state.Exam}/>
-        }
-    }
-
     render() {
         if (!AuthService.isLoggedIn())
             return <Redirect to='./inloggen'/>
 
         return (
             <div className="page-container">
-                <div className="content-wrap">
-                    <HeaderNavbar/>
-                </div>
-                <section className="content-container flex mt-5">
-                    {this.renderQuestionElements()}
+                <HeaderNavbar/>
+                <section className="mt-2 container">
+                    {!this.state.isLoading && <QuestionElements Exam={this.state.Exam}/>}
                 </section>
                 <div className="footer">
                     <Footer/>
