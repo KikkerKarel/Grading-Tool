@@ -75,10 +75,10 @@
 }
 
 .btn--green:hover{
-    padding: 8px 20px;
     transition: all 0.3s ease-out;
-    background: #228B22;
+    background-color: rgba(90,173,90,.51) !important;
     color: white;
+
 }
 
 .btn--large {

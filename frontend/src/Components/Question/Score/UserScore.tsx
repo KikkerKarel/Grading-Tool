@@ -83,16 +83,17 @@ class UserScore extends Component<props> {
     }
 
     render() {
+
         return (
 
             <div className="scores">
                 <div className="scoring-div">
-                    <label className="scoring-text-label">Systeem aangeraden score</label>
+                    <p className="scoring-text-label">Systeem aangeraden score</p>
                     {systemScore(this.props.systemRating)}
                 </div>
                 <br/>
                 <div className="scoring-div">
-                    <label className="scoring-text-label">Gegeven score</label>
+                    <p className="scoring-text-label">Gegeven score</p>
                     {(() => {
                         let graded = this.state.previousScore;
                         let userButtons = [];
@@ -110,16 +111,27 @@ class UserScore extends Component<props> {
                         return <ButtonGroup>{userButtons}</ButtonGroup>;
                     })()}
                 </div>
-                <div className="button-div">
-                    <OverlayTrigger placement={"right"}
-                                    overlay={<Tooltip id="tooltip-enabled">Vul eerst een score in.</Tooltip>}>
-                         <span className="d-inline-block">
-                             <Button id={"gradeQuestion"} style={{pointerEvents: 'none'}} disabled={this.state.disabled}
-                                     className={"btn--green forced-width"}
-                                     onClick={this.gradeClick}>Verstuur score</Button>
-                         </span>
-                    </OverlayTrigger>
-                </div>
+                {this.state.disabled ?
+                    <div className="button-div">
+                        <OverlayTrigger placement={"right"}
+                                        overlay={<Tooltip id="tooltip-enabled">Vul eerst een score in.</Tooltip>}>
+                    <span className="d-inline-block">
+                    <Button id={"gradeQuestion"} style={{pointerEvents: 'none'}} disabled={this.state.disabled}
+                            className={"btn--green forced-width"}
+                            onClick={this.gradeClick}>Verstuur score</Button>
+                    </span>
+                        </OverlayTrigger>
+                    </div>
+                    :
+                    <div className="button-div">
+                        <span className="d-inline-block">
+                    <Button id={"gradeQuestion"} disabled={this.state.disabled}
+                            className={"btn--green forced-width"}
+                            onClick={this.gradeClick}>Verstuur score</Button>
+                              </span>
+                    </div>
+                }
+
             </div>
         );
     }
