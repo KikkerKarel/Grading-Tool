@@ -25,10 +25,10 @@ public class EnumerationGrader extends GenericGrader {
             for (int i = 0; i < correctItems.size() ;i++){
                 if (correctItems.contains(studentItems[i])) {
                     amountCorrect++;
-                    advice.addFeedback("de student heeft " + studentItems.length
-                            + " opsommings items gegeven, terwijl het gevraagde aantal " + correctItems.size() + " was" );
                 }
             }
+            advice.addFeedback("Het gegeven antwoord bevat " + studentItems.length
+                    + " items, terwijl het gevraagde aantal items " + correctItems.size() + " was." );
         }
         else
         {
@@ -37,6 +37,9 @@ public class EnumerationGrader extends GenericGrader {
                     amountCorrect++;
                 }
             }
+        }
+        if (amountCorrect < correctItems.size()){
+            advice.addFeedback("In het gegeven antwoord ontbreken één of meerdere woorden." );
         }
 
         double score = (double)amountCorrect/correctItems.size() * 5;
