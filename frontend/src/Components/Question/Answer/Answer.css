@@ -5,6 +5,11 @@ h4 {
     border: 1px solid #ced4da;
     border-radius: 10px;
     padding-top: 8px;
+    word-break: break-word;
+    max-width: 400px;
+    padding: 5px 12px;
+    font-size: 22px;
+    font-weight: bolder;
 }
 
 .answer {
@@ -46,6 +51,8 @@ textarea {
     margin: auto;
     color: #383230;
     background-color: #e9ecef;
+    max-width: 400px;
+    word-break: break-all;
 }
 
 .special-styling {

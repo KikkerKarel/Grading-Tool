@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Pages/CSS/QuestionPage.css'
 import HeaderNavbar from "../HeaderNavbar/HeaderNavbar";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import AuthService from "../../Services/auth.service";
 import {Redirect} from "react-router";
 import QuestionElements from "../Question/QuestionElements/QuestionElements";
+import {Container, Row} from "react-bootstrap";
 
 class QuestionPage extends Component<any> {
     state = {
@@ -36,28 +36,22 @@ class QuestionPage extends Component<any> {
         });
     }
 
-    renderQuestionElements() {
-        if (!this.state.isLoading) {
-            return <QuestionElements Exam={this.state.Exam}/>
-        }
-    }
-
     render() {
         if (!AuthService.isLoggedIn())
             return <Redirect to='./inloggen'/>
 
         return (
+            <>
             <div className="page-container">
-                <div className="content-wrap">
-                    <HeaderNavbar/>
-                </div>
-                <section className="content-container flex mt-5">
-                    {this.renderQuestionElements()}
-                </section>
-                <div className="footer">
+                <HeaderNavbar/>
+                <Container className={"mt-3"}>
+                    <Row>
+                        {!this.state.isLoading && <QuestionElements Exam={this.state.Exam}/>}
+                    </Row>
                     <Footer/>
-                </div>
+                </Container>
             </div>
+        </>
         );
     }
 }

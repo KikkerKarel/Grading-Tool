@@ -41,9 +41,6 @@ class UserScore extends Component<props> {
             axios.put(`/api/exams/grade/${examId}/${questionId}/${score}`).then(() => {
                 window.location.reload();
             });
-        if (this.state.score === 0) {
-
-        }
     }
 
 
@@ -82,16 +79,37 @@ class UserScore extends Component<props> {
         return buttonInactive;
     }
 
-    render() {
+    getSendButton()
+    {
+        return <span className="d-inline-block">
+                <Button id={"gradeQuestion"}
+                               className={"btn--green forced-width"}
+                               onClick={this.gradeClick}>Verstuur score</Button>
+            </span>
+    }
 
+    getDisabledButton()
+    {
+        return <OverlayTrigger placement={"right"}
+                               overlay={<Tooltip id="tooltip-enabled">Selecteer eerst een score</Tooltip>}>
+                         <span className="d-inline-block">
+
+                             <Button id={"gradeQuestion"} style={{pointerEvents: 'none'}} disabled={this.state.disabled}
+                                     className={"btn--green forced-width"}
+                                     onClick={this.gradeClick}>Verstuur score</Button>
+                         </span>
+        </OverlayTrigger>
+    }
+
+    render() {
         return (
 
-            <div className="scores">
+            <div className="container">
                 <div className="scoring-div">
-                    <p className="scoring-text-label">Systeem aangeraden score</p>
+                    <p className="scoring-text-label">Gradest advies score</p>
                     {systemScore(this.props.systemRating)}
                 </div>
-                <br/>
+                <hr />
                 <div className="scoring-div">
                     <p className="scoring-text-label">Gegeven score</p>
                     {(() => {
@@ -111,27 +129,9 @@ class UserScore extends Component<props> {
                         return <ButtonGroup>{userButtons}</ButtonGroup>;
                     })()}
                 </div>
-                {this.state.disabled ?
-                    <div className="button-div">
-                        <OverlayTrigger placement={"right"}
-                                        overlay={<Tooltip id="tooltip-enabled">Vul eerst een score in.</Tooltip>}>
-                    <span className="d-inline-block">
-                    <Button id={"gradeQuestion"} style={{pointerEvents: 'none'}} disabled={this.state.disabled}
-                            className={"btn--green forced-width"}
-                            onClick={this.gradeClick}>Verstuur score</Button>
-                    </span>
-                        </OverlayTrigger>
-                    </div>
-                    :
-                    <div className="button-div">
-                        <span className="d-inline-block">
-                    <Button id={"gradeQuestion"} disabled={this.state.disabled}
-                            className={"btn--green forced-width"}
-                            onClick={this.gradeClick}>Verstuur score</Button>
-                              </span>
-                    </div>
-                }
-
+                <div className="button-div pb-2 mb-4">
+                    {this.state.disabled ? this.getDisabledButton() : this.getSendButton()}
+                </div>
             </div>
         );
     }
