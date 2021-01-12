@@ -68,7 +68,7 @@ class Profile extends Component {
                             })
                     }
                 </div>
-                <Footer/>
+                <Footer class="main-footer"/>
             </div>
         );
     }

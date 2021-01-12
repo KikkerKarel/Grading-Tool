@@ -48,7 +48,7 @@ class QuestionPage extends Component<any> {
                     <Row>
                         {!this.state.isLoading && <QuestionElements Exam={this.state.Exam}/>}
                     </Row>
-                    <Footer/>
+                    <Footer class="qpage-footer"/>
                 </Container>
             </div>
         </>

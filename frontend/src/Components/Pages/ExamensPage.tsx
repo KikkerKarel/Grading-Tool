@@ -42,7 +42,7 @@ class ExamensPage extends Component<props, {}> {
                     <ExamTable data={Exams}/>
                 </div>
                 <div className="footer">
-                    <Footer/>
+                    <Footer class="main-footer"/>
                 </div>
             </div>
         );

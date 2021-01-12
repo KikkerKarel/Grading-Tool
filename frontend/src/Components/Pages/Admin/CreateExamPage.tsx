@@ -31,7 +31,7 @@ class CreateExamPage extends Component {
                     <CreateExamForm />
                 </section>
                 <div className="footer">
-                    <Footer/>
+                    <Footer class="main-footer"/>
                 </div>
             </div>
         );
