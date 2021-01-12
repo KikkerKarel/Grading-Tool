@@ -42,7 +42,7 @@ class EnumerationGraderIntegrationTests {
     @Test
     void returnFeedback_WhenAnswerIsCorrect()
     {
-        var examItem = examItemRepo.findByQuestionIdAndExamId(6, 1);
+        var examItem = examItemRepo.findByQuestionIdAndExamId(7, 1);
         var x = grader.getAdvice(examItem);
 
         assertThat(x.getFeedback().size()).isZero();

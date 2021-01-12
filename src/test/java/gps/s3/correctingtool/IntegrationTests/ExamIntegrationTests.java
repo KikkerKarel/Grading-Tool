@@ -35,6 +35,6 @@ class ExamIntegrationTests {
         assertThat(x.getExamName()).isNotNull();
         assertThat(x.getExaminer()).isNotNull();
         assertThat(x.getStatus()).isNotNull();
-        assertThat(x.getItems().size()).isEqualTo(6);
+        assertThat(x.getItems().size()).isEqualTo(7);
     }
 }
