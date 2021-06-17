@@ -1,50 +1,40 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-import {Form} from 'react-bootstrap';
+import {Col, Form} from 'react-bootstrap';
 import './Answer.css';
 import UserScore from "../Score/UserScore";
 import InfoBox from "../InfoBox/InfoBox";
 
 interface props {
     questionId?: number,
-    examId?: number
+    score?: number,
+    suggestedScore?: number,
+    matchingWordPositions?: never[],
+    examItem: {
+        examId: number,
+        studentTextAnswer: string,
+        question: {
+            text: string,
+            correctAnswer: {
+                text: string
+            }
+        }
+    },
+    feedback: never[]
 }
 
 class Answer extends Component<props> {
     state = {
-        score: null,
-        suggestedScore: 0,
-        matchingWordPositions: [],
-        examItem: {
-            examId: '',
-            studentTextAnswer: "",
-            question: {
-                text: "",
-                correctAnswer: {
-                    text: ""
-                }
-            }
-        },
-        feedback: []
-    }
-
-    async componentDidMount() {
-        axios.get(`../api/grade/advice/${this.props.examId}/${this.props.questionId}`).then(response => {
-            this.setState({
-                suggestedScore: response.data.suggestedScore,
-                matchingWordPositions: response.data.matchingWordPositions,
-                examItem: response.data.examItem,
-                feedback: response.data.feedback,
-                score: 0
-            })
-            axios.put(`../api/exams/${this.props.examId}/status/GRADING_IN_PROGRESS`).then(() => {
-            });
-        })
+        score: this.props.score,
+        suggestedScore: this.props.suggestedScore,
+        matchingWordPositions: this.props.matchingWordPositions,
+        examItem: this.props.examItem,
+        feedback: this.props.feedback
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
         if (prevProps.questionId !== this.props.questionId) {
-            axios.get(`api/grade/advice/${this.props.examId}/${this.props.questionId}/`).then(response => {
+            axios.get(`api/grade/advice/${this.props.examItem.examId}/${this.props.questionId}/`).then(response => {
                 this.setState({
                     suggestedScore: response.data.suggestedScore,
                     matchingWordPositions: response.data.matchingWordPositions,
@@ -54,12 +44,6 @@ class Answer extends Component<props> {
             })
         }
     }
-
-    renderInfoBoxComponent() {
-        return (
-            <InfoBox brokenRules={this.state.feedback}/>
-        )
-    };
 
     render() {
         if (this.state.suggestedScore === -1)
@@ -75,24 +59,29 @@ class Answer extends Component<props> {
         }
 
         return (
-            <div className="answer">
-                <h4 className={"text-center scroll-y"}>{this.state.examItem.question.text}</h4>
-                <div>
-                    <Form.Group>
-                        <Form.Label className="answer-header">Antwoord (tekst)</Form.Label>
-                        <div className={"custom-box"} dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
-                        <div className={"custom-box"}
-                             dangerouslySetInnerHTML={{__html: this.state.examItem.question.correctAnswer.text}}/>
-                    </Form.Group>
-                </div>
-                <UserScore examItem={this.state.examItem}
-                           questionId={this.props.questionId} examId={this.props.examId}
-                           systemRating={this.state.suggestedScore}/>
-                {this.renderInfoBoxComponent()}
-            </div>
+            <>
+                <Col md={"auto"}>
+
+                    <div>
+
+                        <h4 className={"text-center scroll-y"}>{this.state.examItem.question.text}</h4>
+
+                        <Form.Group>
+                            <Form.Label className="answer-header">Door student gegeven antwoord/antwoorden (tekst)</Form.Label>
+                            <div className={"custom-box"} dangerouslySetInnerHTML={{__html: words.join(" ")}}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="answer-header">Goed gekeurde antwoord/antwoorden (tekst)</Form.Label>
+                            <div className={"custom-box"}
+                                 dangerouslySetInnerHTML={{__html: this.state.examItem.question.correctAnswer.text}}/>
+                        </Form.Group>
+                    </div>
+
+                    <UserScore examItem={this.state.examItem}
+                               questionId={this.props.questionId} examId={this.props.examItem.examId}
+                               systemRating={this.state.suggestedScore}/>
+                </Col>
+            </>
         );
     }
 }

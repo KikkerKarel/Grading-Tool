@@ -2,10 +2,23 @@
     background-color: #e94f2c;
     color: white;
     padding: 1em;
-    position: relative;
-    bottom: 0;
     width: 100%;
     text-align: center;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+.qpage-footer {
+    background-color: #e94f2c;
+    color: white;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin-top: 9.7vh;
 }
 
 .ahrefs{

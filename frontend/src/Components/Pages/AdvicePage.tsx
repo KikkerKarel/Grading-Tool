@@ -66,9 +66,6 @@ class AdvicePage extends Component {
                         </Card>
                     </section>
                 </div>
-                <div className="footer">
-                    <Footer/>
-                </div>
             </div>
         )
     }

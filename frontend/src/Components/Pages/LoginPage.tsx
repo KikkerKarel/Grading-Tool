@@ -30,7 +30,7 @@ class LoginPage extends Component<props> {
                     <Login/>
                 </div>
                 <div className="footer">
-                    <Footer/>
+                    <Footer class="main-footer"/>
                 </div>
             </div>
         );

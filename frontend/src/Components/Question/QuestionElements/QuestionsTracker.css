@@ -47,11 +47,45 @@ p {
     border-radius: 0 0 10px 10px;
 }
 
+.questions{
+    height: 22.75vh;
+    max-height: 22.75vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-flow: column;
+}
+
 .question-text {
     margin-top: 0;
     margin-left: 1%;
     font-size: 15px;
     font-weight: bold;
+}
+
+.custom-rounded{
+    border-radius: 10px;
+    background-color: white !important;
+    color: black;
+    transition: 1s;
+}
+
+.custom-rounded2{
+    border-radius: 10px;
+    border: 1px solid #d6d8db !important;
+    transition: 1s;
+}
+
+.special-height{
+    min-height: 38.75vh;
+}
+
+.ridge{
+    border-top: 2px ridge rgba(0,0,0,0.8);
+}
+
+.infobox{
+    max-height: 23.75vh;
+    height: 23.75vh;
 }
 
 #disable-hover {
@@ -70,21 +104,9 @@ p {
     color: #5aad5a !important;
 }
 
-.loading-bar {
-    margin-top: -1.5%;
-    height: 15%;
-    border-radius: 10px 10px 0 0;
-    border-style: solid;
-    border-bottom: none;
-    border-color: #ced4da;
-    border-width: thin;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .progress-bar-style {
-    width: 90%;
+    min-width: 100%;
     margin: auto;
 }
 

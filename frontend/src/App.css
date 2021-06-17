@@ -45,7 +45,12 @@ body {
 }
 
 .footer{
+  height:80px;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.brand-card {
+  min-width: 250px !important;
 }

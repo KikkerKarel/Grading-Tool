@@ -36,7 +36,7 @@ class AdminPage extends Component {
                     </CardDeck>
                 </section>
                 <div className="footer">
-                    <Footer/>
+                    <Footer class="main-footer"/>
                 </div>
             </div>
         );
